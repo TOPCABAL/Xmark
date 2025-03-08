@@ -373,39 +373,30 @@ function App() {
                 />
               </Tabs>
               <div className="flex space-x-2">
-                <Dropdown overlay={
-                  <Menu>
-                    <Menu.Item 
-                      key="import" 
-                      icon={<UploadOutlined />}
-                      onClick={() => setImportModalVisible(true)}
-                    >
-                      导入数据
-                    </Menu.Item>
-                    <Menu.Item 
-                      key="export" 
-                      icon={<ExportOutlined />}
-                      onClick={() => setExportModalVisible(true)}
-                    >
-                      导出数据
-                    </Menu.Item>
-                    <Menu.Item 
-                      key="sync" 
-                      icon={<CloudSyncOutlined />}
-                      onClick={() => setGoogleDriveSyncVisible(true)}
-                    >
-                      谷歌云盘同步
-                    </Menu.Item>
-                  </Menu>
-                }>
-                  <Button 
-                    type="primary" 
-                    icon={<CloudOutlined />} 
-                    size="small"
-                  >
-                    数据操作
-                  </Button>
-                </Dropdown>
+                <Button 
+                  type="primary" 
+                  icon={<UploadOutlined />} 
+                  size="small"
+                  onClick={() => setImportModalVisible(true)}
+                >
+                  导入数据
+                </Button>
+                <Button 
+                  type="primary" 
+                  icon={<ExportOutlined />} 
+                  size="small"
+                  onClick={() => setExportModalVisible(true)}
+                >
+                  导出数据
+                </Button>
+                <Button 
+                  type="primary" 
+                  icon={<CloudSyncOutlined />} 
+                  size="small"
+                  onClick={() => setGoogleDriveSyncVisible(true)}
+                >
+                  谷歌云盘同步
+                </Button>
               </div>
             </div>
             <div className="flex-1 overflow-hidden">
