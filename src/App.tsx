@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Layout, Row, Col, Card, Avatar, Input, Button, Typography, Divider, Tag } from 'antd';
+import { Layout, Row, Col, Card, Avatar, Input, Button, Typography, Divider, Tag, message } from 'antd';
 import { TwitterTimelineEmbed } from 'react-twitter-embed';
 import { CookieConsent } from './components/CookieConsent';
+import AccountList from './components/AccountList';
 
 const { TextArea } = Input;
 const { Title } = Typography;
@@ -14,13 +15,16 @@ const accounts = [
     username: "@bigbottle44",
     avatar: "https://randomuser.me/api/portraits/men/1.jpg",
     category: "技术学习",
+    verified: true,
+    following: true,
   },
   {
     id: "tweet2",
     name: "酷酷的编程猫",
     username: "@coolcoder99",
     avatar: "https://randomuser.me/api/portraits/women/2.jpg",
-    category: "编程",
+    verified: false,
+    following: false,
   },
   {
     id: "tweet3",
@@ -28,18 +32,55 @@ const accounts = [
     username: "@techpanda",
     avatar: "https://randomuser.me/api/portraits/men/3.jpg",
     category: "AI讨论",
+    verified: true,
+    following: true,
   },
+  {
+    id: "tweet4",
+    name: "前端达人",
+    username: "@frontendmaster",
+    avatar: "https://randomuser.me/api/portraits/women/4.jpg",
+    verified: false,
+    following: true,
+  },
+  {
+    id: "tweet5",
+    name: "区块链专家",
+    username: "@blockchain_expert",
+    avatar: "https://randomuser.me/api/portraits/men/5.jpg",
+    category: "区块链",
+    verified: true,
+    following: false,
+  },
+  {
+    id: "tweet6",
+    name: "设计师小明",
+    username: "@designer_xiaoming",
+    avatar: "https://randomuser.me/api/portraits/men/6.jpg",
+    verified: false,
+    following: true,
+  },
+  {
+    id: "tweet7",
+    name: "产品经理大卫",
+    username: "@pm_david",
+    avatar: "https://randomuser.me/api/portraits/men/7.jpg",
+    category: "产品",
+    verified: true,
+    following: true,
+  }
 ];
 
 function App() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [category, setCategory] = useState("");
   const [notes, setNotes] = useState("");
+  const [accountList, setAccountList] = useState(accounts);
 
-  const currentAccount = accounts[currentIndex];
+  const currentAccount = accountList[currentIndex];
 
   const handleNext = () => {
-    if (currentIndex < accounts.length - 1) {
+    if (currentIndex < accountList.length - 1) {
       setCurrentIndex(currentIndex + 1);
     }
   };
@@ -50,36 +91,36 @@ function App() {
     }
   };
 
+  // 处理关注状态切换
+  const handleToggleFollow = (accountId: string, newFollowState: boolean) => {
+    // 更新账号列表中的关注状态
+    const updatedAccounts = accountList.map(account => 
+      account.id === accountId 
+        ? { ...account, following: newFollowState } 
+        : account
+    );
+    
+    setAccountList(updatedAccounts);
+    
+    // 显示消息提示
+    const accountName = accountList.find(acc => acc.id === accountId)?.name;
+    message.success(`${newFollowState ? '已关注' : '已取消关注'} ${accountName}`);
+  };
+
   // 添加分组选项
   const categoryOptions = ["技术学习", "编程", "AI讨论", "投资", "娱乐", "其他"];
 
   return (
     <Layout style={{ height: '100vh', overflow: 'hidden' }}>
       <Row gutter={0} style={{ height: '100%' }}>
-        {/* 左侧 - 账号列表 - 增加明确的滚动样式 */}
-        <Col span={6} style={{ height: '100%', overflowY: 'auto', borderRight: '1px solid #f0f0f0' }}>
-          <div className="p-4">
-            <Title level={3} className="mb-4 sticky top-0 bg-white z-10 pb-2">账号列表</Title>
-            {accounts.map((account, index) => (
-              <Card 
-                key={account.id}
-                className={`mb-3 cursor-pointer hover:shadow-md transition-all ${currentIndex === index ? "bg-blue-100" : ""}`}
-                onClick={() => setCurrentIndex(index)}
-                style={{ borderRadius: '8px' }}
-              >
-                <div className="flex items-center gap-3">
-                  <Avatar size={48} src={account.avatar} />
-                  <div style={{ width: 'calc(100% - 60px)' }}>
-                    <p className="font-semibold">{account.name}</p>
-                    <p className="text-gray-500">{account.username}</p>
-                    {account.category && (
-                      <Tag color="blue" style={{ marginTop: '4px' }}>{account.category}</Tag>
-                    )}
-                  </div>
-                </div>
-              </Card>
-            ))}
-          </div>
+        {/* 左侧 - 账号列表 - 使用新的AccountList组件 */}
+        <Col span={6} style={{ height: '100%' }}>
+          <AccountList 
+            accounts={accountList} 
+            currentIndex={currentIndex} 
+            onSelectAccount={setCurrentIndex} 
+            onToggleFollow={handleToggleFollow}
+          />
         </Col>
 
         {/* 中间 - 推特主页嵌入 - 增加宽度和减少间距 */}
