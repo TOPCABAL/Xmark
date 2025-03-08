@@ -1,18 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Card, Avatar, Button, Tooltip, Input, Empty, message } from 'antd';
-import { CheckCircleFilled, UserOutlined, SearchOutlined } from '@ant-design/icons';
+import { Card, Avatar, Button, Tooltip, Input, Empty, message, Tag } from 'antd';
+import { CheckCircleFilled, UserOutlined, SearchOutlined, TeamOutlined, TwitterOutlined, TagOutlined } from '@ant-design/icons';
+import { AccountProps } from '../services/twitterService';
 
-// 账号类型定义
-interface AccountProps {
-  id: string;
-  name: string;
-  username: string;
-  avatar: string;
-  verified?: boolean;
-  following?: boolean;
-  category?: string;
-}
-
+// 组件属性接口
 interface AccountListProps {
   accounts: AccountProps[];
   currentIndex: number;
@@ -47,7 +38,8 @@ const AccountList: React.FC<AccountListProps> = ({
       const matchesSearch = 
         searchTerm === '' || 
         account.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
-        account.username.toLowerCase().includes(searchTerm.toLowerCase());
+        account.username.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        (account.description && account.description.toLowerCase().includes(searchTerm.toLowerCase()));
       
       // 分组过滤
       let matchesGroup = true;
@@ -103,6 +95,14 @@ const AccountList: React.FC<AccountListProps> = ({
   const extraPaddingHeight = needsExtraPadding 
     ? `${Math.max(500 - filteredAccounts.length * 100, 100)}px` 
     : '0px';
+
+  // 格式化关注者数量
+  const formatNumber = (num?: number) => {
+    if (num === undefined) return '';
+    if (num < 1000) return num.toString();
+    if (num < 1000000) return (num / 1000).toFixed(1) + 'K';
+    return (num / 1000000).toFixed(1) + 'M';
+  };
 
   return (
     <div className="flex flex-col h-full border-r border-gray-200" style={{ height: '100vh', maxHeight: '100vh' }}>
@@ -171,7 +171,7 @@ const AccountList: React.FC<AccountListProps> = ({
                   bodyStyle={{ padding: '12px' }}
                   onClick={() => onSelectAccount(originalIndex)}
                 >
-                  <div className="flex items-center">
+                  <div className="flex items-start">
                     <div className="mr-3">
                       {account.avatar ? (
                         <Avatar size={48} src={account.avatar} />
@@ -189,10 +189,39 @@ const AccountList: React.FC<AccountListProps> = ({
                             <CheckCircleFilled className="text-blue-400" />
                           </Tooltip>
                         )}
+                        {account.isAnnotated && (
+                          <Tooltip title="已标注">
+                            <Tag color="green" className="ml-1 flex items-center" style={{ padding: '0 4px', margin: 0 }}>
+                              <TagOutlined style={{ fontSize: '10px' }} />
+                            </Tag>
+                          </Tooltip>
+                        )}
                       </div>
                       <div className="text-gray-500 text-sm truncate">
                         {account.username}
                       </div>
+                      
+                      {/* 用户描述 */}
+                      {account.description && (
+                        <div className="mt-1 text-sm text-gray-600 line-clamp-2">
+                          {account.description}
+                        </div>
+                      )}
+                      
+                      {/* 用户指标 */}
+                      {account.metrics && (
+                        <div className="mt-1 flex text-xs text-gray-500 space-x-3">
+                          <span className="flex items-center">
+                            <TeamOutlined className="mr-1" /> 
+                            {formatNumber(account.metrics.followers)}
+                          </span>
+                          <span className="flex items-center">
+                            <TwitterOutlined className="mr-1" /> 
+                            {formatNumber(account.metrics.tweets)}
+                          </span>
+                        </div>
+                      )}
+                      
                       {account.category && (
                         <div className="mt-1">
                           <span className="bg-blue-100 text-blue-800 text-xs px-2 py-0.5 rounded-full">
