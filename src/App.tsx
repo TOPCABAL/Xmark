@@ -28,6 +28,8 @@ function App() {
   const [importModalVisible, setImportModalVisible] = useState(false);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState<string>("all"); // 活动标签：all, annotated, pending
+  const [twitterLoading, setTwitterLoading] = useState(false);
+  const [twitterError, setTwitterError] = useState(false);
 
   // 处理导入的Twitter数据
   const handleImportData = (importedAccounts: AccountProps[]) => {
@@ -143,6 +145,41 @@ function App() {
     setCategory(current.category || "");
     setNotes(current.notes || "");
   }, [currentIndex, displayAccounts]);
+
+  // 优化账号切换处理函数
+  const handleSelectAccount = (index: number) => {
+    // 重置Twitter嵌入状态
+    setTwitterLoading(true);
+    setTwitterError(false);
+    
+    // 更新当前选中的账号索引
+    setCurrentIndex(index);
+  };
+
+  // 处理Twitter嵌入组件加载完成事件
+  const handleTwitterLoaded = () => {
+    setTwitterLoading(false);
+  };
+
+  // 处理Twitter嵌入组件加载失败事件
+  const handleTwitterError = () => {
+    setTwitterLoading(false);
+    setTwitterError(true);
+  };
+
+  // 添加useEffect来处理Twitter加载状态
+  useEffect(() => {
+    // 每当currentIndex变化时，重置Twitter加载状态
+    setTwitterLoading(true);
+    
+    // 模拟加载延迟，1秒后设置为加载完成
+    const timer = setTimeout(() => {
+      setTwitterLoading(false);
+    }, 1000);
+    
+    // 清理函数
+    return () => clearTimeout(timer);
+  }, [currentIndex]);
 
   // 如果没有数据或正在加载，显示加载中状态
   if (loading) {
@@ -332,7 +369,7 @@ function App() {
               <AccountList 
                 accounts={displayAccounts} 
                 currentIndex={currentIndex} 
-                onSelectAccount={setCurrentIndex} 
+                onSelectAccount={handleSelectAccount} 
                 onToggleFollow={handleToggleFollow}
               />
             </div>
@@ -353,14 +390,38 @@ function App() {
           <div style={{ flex: 1, padding: '0 8px', display: 'flex', flexDirection: 'column' }}>
             {/* 推特组件容器 */}
             <div style={{ flex: 1, minHeight: '650px' }}>
-              <TwitterTimelineEmbed
-                sourceType="profile"
-                screenName={currentAccount.username.replace("@", "")}
-                options={{ height: 720 }}
-                noHeader
-                noFooter
-                transparent
-              />
+              {twitterLoading ? (
+                <div className="flex items-center justify-center h-full">
+                  <Spin size="large" tip="加载推特主页..." />
+                </div>
+              ) : twitterError ? (
+                <div className="flex flex-col items-center justify-center h-full">
+                  <p className="mb-4 text-lg">加载推特主页失败，请检查网络连接</p>
+                  <Button 
+                    onClick={() => {
+                      setTwitterLoading(true);
+                      setTwitterError(false);
+                      // 触发重新加载
+                      setTimeout(() => setTwitterLoading(false), 1000);
+                    }}
+                  >
+                    重新加载
+                  </Button>
+                </div>
+              ) : (
+                // 使用key属性确保在账号切换时重新渲染
+                <div className="w-full h-full">
+                  <TwitterTimelineEmbed
+                    key={currentAccount.id} 
+                    sourceType="profile"
+                    screenName={currentAccount.username.replace("@", "")}
+                    options={{ height: 720 }}
+                    noHeader
+                    noFooter
+                    transparent
+                  />
+                </div>
+              )}
             </div>
             
             {/* 导航按钮 */}

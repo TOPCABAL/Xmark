@@ -35,18 +35,9 @@ function transformTwitterResponse(twitterData: any[]): AccountProps[] {
       };
     }
     
-    // 根据用户名前三个字符构建默认分类
-    // 这只是示例逻辑，可以根据实际需求调整
-    let defaultCategory;
-    if (username) {
-      const firstChar = username.charAt(0).toLowerCase();
-      if ('abcdef'.includes(firstChar)) defaultCategory = '技术学习';
-      else if ('ghijkl'.includes(firstChar)) defaultCategory = '编程';
-      else if ('mnopqr'.includes(firstChar)) defaultCategory = 'AI讨论';
-      else if ('stuvwx'.includes(firstChar)) defaultCategory = '投资';
-      else defaultCategory = '其他';
-    }
-
+    // 不再为未分组账号随机分配分类
+    // 只保留原始数据中已有的分类信息
+    
     return {
       id: user.id_str || user.id,
       name: user.name,
@@ -54,7 +45,7 @@ function transformTwitterResponse(twitterData: any[]): AccountProps[] {
       avatar: avatar,
       verified: user.verified || false,
       following: true, // 从关注列表获取的用户默认已关注
-      category: user.category || defaultCategory,
+      category: user.category, // 只保留原始数据的分类，不再自动分配
       description: user.description,
       metrics,
       isAnnotated: false // 默认为未标注
