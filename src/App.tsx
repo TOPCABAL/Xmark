@@ -1,10 +1,24 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { Layout, Row, Col, Card, Avatar, Input, Button, Typography, Divider, Tag, message, Spin, Tabs } from 'antd';
+import { Layout, Row, Col, Card, Avatar, Input, Button, Typography, Divider, Tag, message, Spin, Tabs, Menu, Dropdown } from 'antd';
 import { TwitterTimelineEmbed } from 'react-twitter-embed';
-import { PlusOutlined, UploadOutlined, SaveOutlined, DatabaseOutlined, TagOutlined } from '@ant-design/icons';
+import { 
+  PlusOutlined, 
+  UploadOutlined, 
+  SaveOutlined, 
+  DatabaseOutlined, 
+  TagOutlined,
+  CloudOutlined,
+  CloudUploadOutlined,
+  CloudDownloadOutlined,
+  CloudSyncOutlined,
+  DownloadOutlined,
+  ExportOutlined
+} from '@ant-design/icons';
 import { CookieConsent } from './components/CookieConsent';
 import AccountList from './components/AccountList';
 import TwitterImport from './components/TwitterImport';
+import ExportModal from './components/ExportModal';
+import GoogleDriveSync from './components/GoogleDriveSync';
 import { AccountProps, loadLocalFollowingList, mergeWithAnnotatedAccounts } from './services/twitterService';
 import { getAnnotatedAccounts, saveAnnotatedAccount, AnnotatedAccount } from './services/localStorageService';
 
@@ -30,6 +44,8 @@ function App() {
   const [activeTab, setActiveTab] = useState<string>("all"); // 活动标签：all, annotated, pending
   const [twitterLoading, setTwitterLoading] = useState(false);
   const [twitterError, setTwitterError] = useState(false);
+  const [exportModalVisible, setExportModalVisible] = useState(false);
+  const [googleDriveSyncVisible, setGoogleDriveSyncVisible] = useState(false);
 
   // 处理导入的Twitter数据
   const handleImportData = (importedAccounts: AccountProps[]) => {
@@ -356,14 +372,41 @@ function App() {
                   key="pending"
                 />
               </Tabs>
-              <Button 
-                type="primary" 
-                icon={<UploadOutlined />} 
-                size="small"
-                onClick={() => setImportModalVisible(true)}
-              >
-                导入数据
-              </Button>
+              <div className="flex space-x-2">
+                <Dropdown overlay={
+                  <Menu>
+                    <Menu.Item 
+                      key="import" 
+                      icon={<UploadOutlined />}
+                      onClick={() => setImportModalVisible(true)}
+                    >
+                      导入数据
+                    </Menu.Item>
+                    <Menu.Item 
+                      key="export" 
+                      icon={<ExportOutlined />}
+                      onClick={() => setExportModalVisible(true)}
+                    >
+                      导出数据
+                    </Menu.Item>
+                    <Menu.Item 
+                      key="sync" 
+                      icon={<CloudSyncOutlined />}
+                      onClick={() => setGoogleDriveSyncVisible(true)}
+                    >
+                      谷歌云盘同步
+                    </Menu.Item>
+                  </Menu>
+                }>
+                  <Button 
+                    type="primary" 
+                    icon={<CloudOutlined />} 
+                    size="small"
+                  >
+                    数据操作
+                  </Button>
+                </Dropdown>
+              </div>
             </div>
             <div className="flex-1 overflow-hidden">
               <AccountList 
@@ -527,6 +570,43 @@ function App() {
         visible={importModalVisible}
         onCancel={() => setImportModalVisible(false)}
         onImport={handleImportData}
+      />
+      
+      {/* 数据导出对话框 */}
+      <ExportModal 
+        visible={exportModalVisible}
+        onCancel={() => setExportModalVisible(false)}
+        accounts={displayAccounts}
+      />
+      
+      {/* Google Drive同步对话框 */}
+      <GoogleDriveSync 
+        visible={googleDriveSyncVisible}
+        onCancel={() => setGoogleDriveSyncVisible(false)}
+        accounts={displayAccounts}
+        onImport={handleImportData}
+        onMerge={(importedAccounts) => {
+          // 合并数据
+          const existingIds = new Set(displayAccounts.map(acc => acc.id));
+          const newAccounts = importedAccounts.filter(acc => !existingIds.has(acc.id));
+          
+          if (newAccounts.length > 0) {
+            const updated = [...displayAccounts, ...newAccounts];
+            setDisplayAccounts(updated);
+            
+            // 更新API账号数据
+            const updatedApi = [...apiAccounts, ...newAccounts.filter(acc => !acc.isAnnotated)];
+            setApiAccounts(updatedApi);
+            
+            // 更新标注账号数据
+            const updatedAnnotated = [...annotatedAccounts, ...newAccounts.filter(acc => acc.isAnnotated)];
+            setAnnotatedAccounts(updatedAnnotated as AnnotatedAccount[]);
+            
+            message.success(`已添加 ${newAccounts.length} 个新账号`);
+          } else {
+            message.info('没有新的账号被添加，可能全部已存在');
+          }
+        }}
       />
       
       <CookieConsent />
