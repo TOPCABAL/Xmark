@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useMemo } from 'react';
-import { Layout, Row, Col, Card, Avatar, Input, Button, Typography, Divider, Tag, message, Spin, Tabs, Menu, Dropdown } from 'antd';
+import { useState, useEffect, useMemo } from 'react';
+import { Layout, Row, Col, Input, Button, Typography, Divider, Tag, message, Spin, Tabs } from 'antd';
 import { TwitterTimelineEmbed } from 'react-twitter-embed';
 import { 
   PlusOutlined, 
@@ -7,11 +7,7 @@ import {
   SaveOutlined, 
   DatabaseOutlined, 
   TagOutlined,
-  CloudOutlined,
-  CloudUploadOutlined,
-  CloudDownloadOutlined,
   CloudSyncOutlined,
-  DownloadOutlined,
   ExportOutlined
 } from '@ant-design/icons';
 import { CookieConsent } from './components/CookieConsent';
@@ -43,7 +39,6 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState<string>("all"); // 活动标签：all, annotated, pending
   const [twitterLoading, setTwitterLoading] = useState(false);
-  const [twitterError, setTwitterError] = useState(false);
   const [exportModalVisible, setExportModalVisible] = useState(false);
   const [googleDriveSyncVisible, setGoogleDriveSyncVisible] = useState(false);
 
@@ -166,7 +161,6 @@ function App() {
   const handleSelectAccount = (index: number) => {
     // 重置Twitter嵌入状态
     setTwitterLoading(true);
-    setTwitterError(false);
     
     // 更新当前选中的账号索引
     setCurrentIndex(index);
@@ -175,12 +169,6 @@ function App() {
   // 处理Twitter嵌入组件加载完成事件
   const handleTwitterLoaded = () => {
     setTwitterLoading(false);
-  };
-
-  // 处理Twitter嵌入组件加载失败事件
-  const handleTwitterError = () => {
-    setTwitterLoading(false);
-    setTwitterError(true);
   };
 
   // 添加useEffect来处理Twitter加载状态
@@ -427,20 +415,6 @@ function App() {
               {twitterLoading ? (
                 <div className="flex items-center justify-center h-full">
                   <Spin size="large" tip="加载推特主页..." />
-                </div>
-              ) : twitterError ? (
-                <div className="flex flex-col items-center justify-center h-full">
-                  <p className="mb-4 text-lg">加载推特主页失败，请检查网络连接</p>
-                  <Button 
-                    onClick={() => {
-                      setTwitterLoading(true);
-                      setTwitterError(false);
-                      // 触发重新加载
-                      setTimeout(() => setTwitterLoading(false), 1000);
-                    }}
-                  >
-                    重新加载
-                  </Button>
                 </div>
               ) : (
                 // 使用key属性确保在账号切换时重新渲染

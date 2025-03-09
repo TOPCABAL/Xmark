@@ -8,7 +8,6 @@ import {
   LogoutOutlined
 } from '@ant-design/icons';
 import { AccountProps } from '../services/twitterService';
-import { AnnotatedAccount } from '../services/localStorageService';
 import { 
   initGoogleDriveApi, 
   isGoogleSignedIn, 

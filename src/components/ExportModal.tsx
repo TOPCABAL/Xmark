@@ -5,7 +5,6 @@ import { AccountProps } from '../services/twitterService';
 import { exportAndDownload } from '../services/exportService';
 
 const { Text } = Typography;
-const { RangePicker } = DatePicker;
 
 interface ExportModalProps {
   visible: boolean;
