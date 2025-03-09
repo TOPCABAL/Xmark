@@ -445,14 +445,22 @@ function App() {
               ) : (
                 // 使用key属性确保在账号切换时重新渲染
                 <div className="w-full h-full">
+                  {/* 改回使用TwitterTimelineEmbed官方组件 */}
                   <TwitterTimelineEmbed
-                    key={currentAccount.id} 
+                    key={currentAccount.id}
                     sourceType="profile"
                     screenName={currentAccount.username.replace("@", "")}
-                    options={{ height: 720 }}
+                    options={{ 
+                      height: 720,
+                      tweetLimit: 1, // 限制只显示最少的推文
+                      chrome: "nofooter noheader transparent", // 移除页眉页脚
+                      showReplies: false, // 不显示回复
+                    }}
                     noHeader
                     noFooter
                     transparent
+                    onLoad={handleTwitterLoaded}
+                    placeholder={<Spin size="large" tip="加载个人资料中..." />}
                   />
                 </div>
               )}
