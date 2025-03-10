@@ -64,11 +64,8 @@ async function getUserData(username = 'dotyyds1234') {
     console.log(`使用HTTPS代理获取用户 ${username} 的数据: ${PROXY_HOST}:${PROXY_PORT}`);
     const response = await axios(options);
     
-    // 保存响应数据到文件
-    const filePath = path.join(__dirname, `${username}_description.json`);
-    fs.writeFileSync(filePath, JSON.stringify(response.data, null, 2));
-    
-    console.log(`成功获取用户 ${username} 的数据并保存到: ${filePath}`);
+    // 不再保存文件，只返回数据
+    console.log(`成功获取用户 ${username} 的数据`);
     return response.data;
   } catch (error) {
     console.error(`获取用户 ${username} 的数据失败:`, error.message);
@@ -85,7 +82,22 @@ async function main() {
   try {
     // 从命令行获取用户名，没有则使用默认值
     const username = process.argv[2] || 'dotyyds1234';
-    await getUserData(username);
+    
+    // 创建用户数据目录
+    const userDataDir = path.join(__dirname, '..', 'src', 'data', username);
+    if (!fs.existsSync(userDataDir)) {
+      fs.mkdirSync(userDataDir, { recursive: true });
+      console.log(`创建用户数据目录: ${userDataDir}`);
+    }
+    
+    // 获取用户数据
+    const userData = await getUserData(username);
+    
+    // 保存用户数据到文件
+    const filePath = path.join(userDataDir, 'profile.json');
+    fs.writeFileSync(filePath, JSON.stringify(userData, null, 2));
+    console.log(`成功保存用户 ${username} 的数据到: ${filePath}`);
+    
     console.log('操作完成');
   } catch (error) {
     console.error('程序执行失败:', error.message);

@@ -1,0 +1,602 @@
+
+  <!DOCTYPE html>
+  <html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elon Musk (@elonmusk) / X</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        background-color: #f7f9fa;
+        color: #0f1419;
+        line-height: 1.5;
+      }
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        background-color: white;
+        border-left: 1px solid #eff3f4;
+        border-right: 1px solid #eff3f4;
+      }
+      .profile-banner {
+        width: 100%;
+        height: 200px;
+        background-image: url('https://pbs.twimg.com/profile_banners/44196397/1739948056');
+        background-size: cover;
+        background-position: center;
+      }
+      .profile-info {
+        padding: 20px;
+        border-bottom: 1px solid #eff3f4;
+        position: relative;
+      }
+      .profile-avatar {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        border: 4px solid white;
+        position: absolute;
+        top: -60px;
+        left: 20px;
+      }
+      .profile-details {
+        margin-top: 60px;
+      }
+      .profile-name {
+        font-size: 20px;
+        font-weight: bold;
+      }
+      .profile-username {
+        font-size: 15px;
+        color: #536471;
+        margin-bottom: 12px;
+      }
+      .profile-bio {
+        margin-bottom: 12px;
+      }
+      .profile-meta {
+        display: flex;
+        gap: 20px;
+        color: #536471;
+        font-size: 14px;
+        margin-bottom: 12px;
+      }
+      .profile-stats {
+        display: flex;
+        gap: 20px;
+        margin-top: 12px;
+      }
+      .stat-value {
+        font-weight: bold;
+        color: #0f1419;
+      }
+      .stat-label {
+        color: #536471;
+      }
+      .tweets-container {
+        padding: 0;
+      }
+      .tweet {
+        padding: 15px;
+        border-bottom: 1px solid #eff3f4;
+      }
+      .pinned-tweet {
+        background-color: #f7f9fa;
+      }
+      .pinned-label {
+        font-size: 13px;
+        color: #536471;
+        margin-bottom: 8px;
+      }
+      .tweet-header {
+        display: flex;
+        margin-bottom: 10px;
+      }
+      .tweet-avatar {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+      .tweet-user-info {
+        display: flex;
+        flex-direction: column;
+      }
+      .tweet-name {
+        font-weight: bold;
+      }
+      .tweet-username, .tweet-date {
+        color: #536471;
+        font-size: 14px;
+      }
+      .tweet-content {
+        margin-bottom: 10px;
+      }
+      .tweet-media {
+        margin-top: 10px;
+        border-radius: 16px;
+        overflow: hidden;
+      }
+      .tweet-image, .tweet-video {
+        max-width: 100%;
+        border-radius: 16px;
+      }
+      .tweet-stats {
+        display: flex;
+        gap: 20px;
+        color: #536471;
+        font-size: 14px;
+      }
+      .no-tweets {
+        padding: 20px;
+        text-align: center;
+        color: #536471;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="profile-banner"></div>
+      <div class="profile-info">
+        <img src="https://pbs.twimg.com/profile_images/1893803697185910784/Na5lOWi5_normal.jpg" alt="Elon Musk" class="profile-avatar">
+        <div class="profile-details">
+          <h1 class="profile-name">Elon Musk</h1>
+          <div class="profile-username">@elonmusk</div>
+          <div class="profile-bio">无简介</div>
+          <div class="profile-meta">
+            
+            
+          </div>
+          <div class="profile-stats">
+            <div class="stat">
+              <span class="stat-value">219568070</span>
+              <span class="stat-label">关注者</span>
+            </div>
+            <div class="stat">
+              <span class="stat-value">1083</span>
+              <span class="stat-label">正在关注</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tweets-container">
+          <div class="tweet pinned-tweet">
+            <div class="pinned-label"><i class="fas fa-thumbtack"></i> 置顶推文</div>
+            <div class="tweet-header">
+              <img src="https://pbs.twimg.com/profile_images/1893803697185910784/Na5lOWi5_normal.jpg" alt="Elon Musk" class="tweet-avatar">
+              <div class="tweet-user-info">
+                <span class="tweet-name">Elon Musk</span>
+                <span class="tweet-username">@elonmusk</span>
+                <span class="tweet-date">2025/3/9 04:37:57</span>
+              </div>
+            </div>
+            <div class="tweet-content">
+              <p>Super yes FTW!!</p>
+              
+            </div>
+            <div class="tweet-stats">
+              <span class="tweet-replies"><i class="fa fa-comment"></i> 16322</span>
+              <span class="tweet-retweets"><i class="fa fa-retweet"></i> 13808</span>
+              <span class="tweet-likes"><i class="fa fa-heart"></i> 99974</span>
+            </div>
+          </div>
+        
+          <div class="tweet">
+            <div class="tweet-header">
+              <img src="https://pbs.twimg.com/profile_images/1893803697185910784/Na5lOWi5_normal.jpg" alt="Elon Musk" class="tweet-avatar">
+              <div class="tweet-user-info">
+                <span class="tweet-name">Elon Musk</span>
+                <span class="tweet-username">@elonmusk</span>
+                <span class="tweet-date">2025/3/10 14:38:47</span>
+              </div>
+            </div>
+            <div class="tweet-content">
+              <p>RT @RapidResponse47: GREAT WORK, @SecRubio: Rubio Cuts $60+ Billion In Waste From State Department, USAID https://t.co/qC5FnuNW3l</p>
+              
+            </div>
+            <div class="tweet-stats">
+              <span class="tweet-replies"><i class="fa fa-comment"></i> 0</span>
+              <span class="tweet-retweets"><i class="fa fa-retweet"></i> 1910</span>
+              <span class="tweet-likes"><i class="fa fa-heart"></i> 0</span>
+            </div>
+          </div>
+        
+          <div class="tweet">
+            <div class="tweet-header">
+              <img src="https://pbs.twimg.com/profile_images/1893803697185910784/Na5lOWi5_normal.jpg" alt="Elon Musk" class="tweet-avatar">
+              <div class="tweet-user-info">
+                <span class="tweet-name">Elon Musk</span>
+                <span class="tweet-username">@elonmusk</span>
+                <span class="tweet-date">2025/3/10 14:38:03</span>
+              </div>
+            </div>
+            <div class="tweet-content">
+              <p>https://t.co/jUqCwaJH2J</p>
+              <div class="tweet-media"><video controls src="https://video.twimg.com/amplify_video/1897687434495676416/pl/wAelYdVL4ve0w3u8.m3u8?tag=16" class="tweet-video"></video></div>
+            </div>
+            <div class="tweet-stats">
+              <span class="tweet-replies"><i class="fa fa-comment"></i> 1162</span>
+              <span class="tweet-retweets"><i class="fa fa-retweet"></i> 688</span>
+              <span class="tweet-likes"><i class="fa fa-heart"></i> 6161</span>
+            </div>
+          </div>
+        
+          <div class="tweet">
+            <div class="tweet-header">
+              <img src="https://pbs.twimg.com/profile_images/1893803697185910784/Na5lOWi5_normal.jpg" alt="Elon Musk" class="tweet-avatar">
+              <div class="tweet-user-info">
+                <span class="tweet-name">Elon Musk</span>
+                <span class="tweet-username">@elonmusk</span>
+                <span class="tweet-date">2025/3/10 14:36:32</span>
+              </div>
+            </div>
+            <div class="tweet-content">
+              <p>🤨</p>
+              
+            </div>
+            <div class="tweet-stats">
+              <span class="tweet-replies"><i class="fa fa-comment"></i> 409</span>
+              <span class="tweet-retweets"><i class="fa fa-retweet"></i> 268</span>
+              <span class="tweet-likes"><i class="fa fa-heart"></i> 1728</span>
+            </div>
+          </div>
+        
+          <div class="tweet">
+            <div class="tweet-header">
+              <img src="https://pbs.twimg.com/profile_images/1893803697185910784/Na5lOWi5_normal.jpg" alt="Elon Musk" class="tweet-avatar">
+              <div class="tweet-user-info">
+                <span class="tweet-name">Elon Musk</span>
+                <span class="tweet-username">@elonmusk</span>
+                <span class="tweet-date">2025/3/10 14:35:37</span>
+              </div>
+            </div>
+            <div class="tweet-content">
+              <p>RT @DOGE: More info on IAF: 
+In 2024, ~45% of spend went to administrative overhead. Only ~55% went to the grants, which then have multiple…</p>
+              
+            </div>
+            <div class="tweet-stats">
+              <span class="tweet-replies"><i class="fa fa-comment"></i> 0</span>
+              <span class="tweet-retweets"><i class="fa fa-retweet"></i> 2513</span>
+              <span class="tweet-likes"><i class="fa fa-heart"></i> 0</span>
+            </div>
+          </div>
+        
+          <div class="tweet">
+            <div class="tweet-header">
+              <img src="https://pbs.twimg.com/profile_images/1893803697185910784/Na5lOWi5_normal.jpg" alt="Elon Musk" class="tweet-avatar">
+              <div class="tweet-user-info">
+                <span class="tweet-name">Elon Musk</span>
+                <span class="tweet-username">@elonmusk</span>
+                <span class="tweet-date">2025/3/10 14:34:41</span>
+              </div>
+            </div>
+            <div class="tweet-content">
+              <p>RT @Rothmus: “5,600 SBA loans to borrowers whose only listed owner was 11-years-old or younger.”
+
+Lots of lemonade stands, obviously. https…</p>
+              
+            </div>
+            <div class="tweet-stats">
+              <span class="tweet-replies"><i class="fa fa-comment"></i> 0</span>
+              <span class="tweet-retweets"><i class="fa fa-retweet"></i> 296</span>
+              <span class="tweet-likes"><i class="fa fa-heart"></i> 0</span>
+            </div>
+          </div>
+        
+          <div class="tweet">
+            <div class="tweet-header">
+              <img src="https://pbs.twimg.com/profile_images/1893803697185910784/Na5lOWi5_normal.jpg" alt="Elon Musk" class="tweet-avatar">
+              <div class="tweet-user-info">
+                <span class="tweet-name">Elon Musk</span>
+                <span class="tweet-username">@elonmusk</span>
+                <span class="tweet-date">2025/3/10 14:34:22</span>
+              </div>
+            </div>
+            <div class="tweet-content">
+              <p>RT @teslaownersSV: Can’t believe we’re living in a time where this is becoming normal https://t.co/MD14WW2dgn</p>
+              <div class="tweet-media"><video controls src="https://video.twimg.com/amplify_video/1898607580395831296/pl/RtrItEmd6rIT2qpc.m3u8?tag=16&v=cfc" class="tweet-video"></video></div>
+            </div>
+            <div class="tweet-stats">
+              <span class="tweet-replies"><i class="fa fa-comment"></i> 0</span>
+              <span class="tweet-retweets"><i class="fa fa-retweet"></i> 141</span>
+              <span class="tweet-likes"><i class="fa fa-heart"></i> 0</span>
+            </div>
+          </div>
+        
+          <div class="tweet">
+            <div class="tweet-header">
+              <img src="https://pbs.twimg.com/profile_images/1893803697185910784/Na5lOWi5_normal.jpg" alt="Elon Musk" class="tweet-avatar">
+              <div class="tweet-user-info">
+                <span class="tweet-name">Elon Musk</span>
+                <span class="tweet-username">@elonmusk</span>
+                <span class="tweet-date">2025/3/10 14:32:26</span>
+              </div>
+            </div>
+            <div class="tweet-content">
+              <p>So true</p>
+              
+            </div>
+            <div class="tweet-stats">
+              <span class="tweet-replies"><i class="fa fa-comment"></i> 681</span>
+              <span class="tweet-retweets"><i class="fa fa-retweet"></i> 484</span>
+              <span class="tweet-likes"><i class="fa fa-heart"></i> 3964</span>
+            </div>
+          </div>
+        
+          <div class="tweet">
+            <div class="tweet-header">
+              <img src="https://pbs.twimg.com/profile_images/1893803697185910784/Na5lOWi5_normal.jpg" alt="Elon Musk" class="tweet-avatar">
+              <div class="tweet-user-info">
+                <span class="tweet-name">Elon Musk</span>
+                <span class="tweet-username">@elonmusk</span>
+                <span class="tweet-date">2025/3/10 14:32:07</span>
+              </div>
+            </div>
+            <div class="tweet-content">
+              <p>https://t.co/KQwLH3taW0</p>
+              <div class="tweet-media"><img src="https://pbs.twimg.com/media/GlqM-L0WoAAkIXv.jpg" alt="推文图片" class="tweet-image"></div>
+            </div>
+            <div class="tweet-stats">
+              <span class="tweet-replies"><i class="fa fa-comment"></i> 844</span>
+              <span class="tweet-retweets"><i class="fa fa-retweet"></i> 1001</span>
+              <span class="tweet-likes"><i class="fa fa-heart"></i> 8604</span>
+            </div>
+          </div>
+        
+          <div class="tweet">
+            <div class="tweet-header">
+              <img src="https://pbs.twimg.com/profile_images/1893803697185910784/Na5lOWi5_normal.jpg" alt="Elon Musk" class="tweet-avatar">
+              <div class="tweet-user-info">
+                <span class="tweet-name">Elon Musk</span>
+                <span class="tweet-username">@elonmusk</span>
+                <span class="tweet-date">2025/3/10 14:30:32</span>
+              </div>
+            </div>
+            <div class="tweet-content">
+              <p>RT @ablenessy: We're looking to add hardcore engineers to our team.  
+Focusing on accelerating delivery on features like voice mode. https:…</p>
+              
+            </div>
+            <div class="tweet-stats">
+              <span class="tweet-replies"><i class="fa fa-comment"></i> 0</span>
+              <span class="tweet-retweets"><i class="fa fa-retweet"></i> 114</span>
+              <span class="tweet-likes"><i class="fa fa-heart"></i> 0</span>
+            </div>
+          </div>
+        
+          <div class="tweet">
+            <div class="tweet-header">
+              <img src="https://pbs.twimg.com/profile_images/1893803697185910784/Na5lOWi5_normal.jpg" alt="Elon Musk" class="tweet-avatar">
+              <div class="tweet-user-info">
+                <span class="tweet-name">Elon Musk</span>
+                <span class="tweet-username">@elonmusk</span>
+                <span class="tweet-date">2025/3/10 14:30:04</span>
+              </div>
+            </div>
+            <div class="tweet-content">
+              <p>RT @Starlink: Starlink Mini is portable, fits IN a backpack, and connects in minutes 🛰️🎒</p>
+              
+            </div>
+            <div class="tweet-stats">
+              <span class="tweet-replies"><i class="fa fa-comment"></i> 0</span>
+              <span class="tweet-retweets"><i class="fa fa-retweet"></i> 295</span>
+              <span class="tweet-likes"><i class="fa fa-heart"></i> 0</span>
+            </div>
+          </div>
+        
+          <div class="tweet">
+            <div class="tweet-header">
+              <img src="https://pbs.twimg.com/profile_images/1893803697185910784/Na5lOWi5_normal.jpg" alt="Elon Musk" class="tweet-avatar">
+              <div class="tweet-user-info">
+                <span class="tweet-name">Elon Musk</span>
+                <span class="tweet-username">@elonmusk</span>
+                <span class="tweet-date">2025/3/10 14:24:34</span>
+              </div>
+            </div>
+            <div class="tweet-content">
+              <p>RT @SpaceX: View under the launch mount as Super Heavy's 33 Raptor engines ignite on Starship's eighth flight test https://t.co/WRCazkhyXs</p>
+              <div class="tweet-media"><video controls src="https://video.twimg.com/amplify_video/1898804705633136640/pl/xxvXcSnUqufw1w5C.m3u8?tag=16&v=cfc" class="tweet-video"></video></div>
+            </div>
+            <div class="tweet-stats">
+              <span class="tweet-replies"><i class="fa fa-comment"></i> 0</span>
+              <span class="tweet-retweets"><i class="fa fa-retweet"></i> 2770</span>
+              <span class="tweet-likes"><i class="fa fa-heart"></i> 0</span>
+            </div>
+          </div>
+        
+          <div class="tweet">
+            <div class="tweet-header">
+              <img src="https://pbs.twimg.com/profile_images/1893803697185910784/Na5lOWi5_normal.jpg" alt="Elon Musk" class="tweet-avatar">
+              <div class="tweet-user-info">
+                <span class="tweet-name">Elon Musk</span>
+                <span class="tweet-username">@elonmusk</span>
+                <span class="tweet-date">2025/3/10 14:21:47</span>
+              </div>
+            </div>
+            <div class="tweet-content">
+              <p>RT @EricRWeinstein: Driver in front of us (center) at the moment of being forced by unexpected oncoming driver over the line (at left), to…</p>
+              
+            </div>
+            <div class="tweet-stats">
+              <span class="tweet-replies"><i class="fa fa-comment"></i> 0</span>
+              <span class="tweet-retweets"><i class="fa fa-retweet"></i> 614</span>
+              <span class="tweet-likes"><i class="fa fa-heart"></i> 0</span>
+            </div>
+          </div>
+        
+          <div class="tweet">
+            <div class="tweet-header">
+              <img src="https://pbs.twimg.com/profile_images/1893803697185910784/Na5lOWi5_normal.jpg" alt="Elon Musk" class="tweet-avatar">
+              <div class="tweet-user-info">
+                <span class="tweet-name">Elon Musk</span>
+                <span class="tweet-username">@elonmusk</span>
+                <span class="tweet-date">2025/3/10 13:59:35</span>
+              </div>
+            </div>
+            <div class="tweet-content">
+              <p>RT @DOGE: All payments (and soon the justifications) will be posted publicly at https://t.co/CLY5mmtclZ.  The first 37,207 grant payments (…</p>
+              
+            </div>
+            <div class="tweet-stats">
+              <span class="tweet-replies"><i class="fa fa-comment"></i> 0</span>
+              <span class="tweet-retweets"><i class="fa fa-retweet"></i> 1104</span>
+              <span class="tweet-likes"><i class="fa fa-heart"></i> 0</span>
+            </div>
+          </div>
+        
+          <div class="tweet">
+            <div class="tweet-header">
+              <img src="https://pbs.twimg.com/profile_images/1893803697185910784/Na5lOWi5_normal.jpg" alt="Elon Musk" class="tweet-avatar">
+              <div class="tweet-user-info">
+                <span class="tweet-name">Elon Musk</span>
+                <span class="tweet-username">@elonmusk</span>
+                <span class="tweet-date">2025/3/10 12:25:02</span>
+              </div>
+            </div>
+            <div class="tweet-content">
+              <p>Yeah, why are liberals so violent?
+
+Legacy media propaganda is a major part of the problem.</p>
+              
+            </div>
+            <div class="tweet-stats">
+              <span class="tweet-replies"><i class="fa fa-comment"></i> 5584</span>
+              <span class="tweet-retweets"><i class="fa fa-retweet"></i> 4128</span>
+              <span class="tweet-likes"><i class="fa fa-heart"></i> 30206</span>
+            </div>
+          </div>
+        
+          <div class="tweet">
+            <div class="tweet-header">
+              <img src="https://pbs.twimg.com/profile_images/1893803697185910784/Na5lOWi5_normal.jpg" alt="Elon Musk" class="tweet-avatar">
+              <div class="tweet-user-info">
+                <span class="tweet-name">Elon Musk</span>
+                <span class="tweet-username">@elonmusk</span>
+                <span class="tweet-date">2025/3/10 12:23:08</span>
+              </div>
+            </div>
+            <div class="tweet-content">
+              <p>RT @MarcusHouse: How crazy is it that this is almost "normal". When SpaceX first mentioned they would try to catch vehicles out of the sky…</p>
+              
+            </div>
+            <div class="tweet-stats">
+              <span class="tweet-replies"><i class="fa fa-comment"></i> 0</span>
+              <span class="tweet-retweets"><i class="fa fa-retweet"></i> 610</span>
+              <span class="tweet-likes"><i class="fa fa-heart"></i> 0</span>
+            </div>
+          </div>
+        
+          <div class="tweet">
+            <div class="tweet-header">
+              <img src="https://pbs.twimg.com/profile_images/1893803697185910784/Na5lOWi5_normal.jpg" alt="Elon Musk" class="tweet-avatar">
+              <div class="tweet-user-info">
+                <span class="tweet-name">Elon Musk</span>
+                <span class="tweet-username">@elonmusk</span>
+                <span class="tweet-date">2025/3/10 12:22:34</span>
+              </div>
+            </div>
+            <div class="tweet-content">
+              <p>Seriously! The legacy media is whipping people into a frenzy. 
+
+As reported by the media, a suicide assassin guy was just shot trying to break into the White House this weekend.</p>
+              
+            </div>
+            <div class="tweet-stats">
+              <span class="tweet-replies"><i class="fa fa-comment"></i> 2850</span>
+              <span class="tweet-retweets"><i class="fa fa-retweet"></i> 7228</span>
+              <span class="tweet-likes"><i class="fa fa-heart"></i> 45354</span>
+            </div>
+          </div>
+        
+          <div class="tweet">
+            <div class="tweet-header">
+              <img src="https://pbs.twimg.com/profile_images/1893803697185910784/Na5lOWi5_normal.jpg" alt="Elon Musk" class="tweet-avatar">
+              <div class="tweet-user-info">
+                <span class="tweet-name">Elon Musk</span>
+                <span class="tweet-username">@elonmusk</span>
+                <span class="tweet-date">2025/3/10 12:13:48</span>
+              </div>
+            </div>
+            <div class="tweet-content">
+              <p>RT @SpaceX: Crew-10, SpaceX, and @NASA completed a full rehearsal of launch day activities https://t.co/jaHNri4LDE</p>
+              <div class="tweet-media"><img src="https://pbs.twimg.com/media/GlpZSJQaAAAusEg.jpg" alt="推文图片" class="tweet-image"><img src="https://pbs.twimg.com/media/GlpZSJRa4AAUxb7.jpg" alt="推文图片" class="tweet-image"><video controls src="https://video.twimg.com/ext_tw_video/1898928432924504064/pu/pl/PZsHtXXbwgGGiRoF.m3u8?tag=14" class="tweet-video"></video><video controls src="https://video.twimg.com/ext_tw_video/1898928440344203264/pu/pl/_nS6OyvtOuwusH00.m3u8?tag=14" class="tweet-video"></video></div>
+            </div>
+            <div class="tweet-stats">
+              <span class="tweet-replies"><i class="fa fa-comment"></i> 0</span>
+              <span class="tweet-retweets"><i class="fa fa-retweet"></i> 1147</span>
+              <span class="tweet-likes"><i class="fa fa-heart"></i> 0</span>
+            </div>
+          </div>
+        
+          <div class="tweet">
+            <div class="tweet-header">
+              <img src="https://pbs.twimg.com/profile_images/1893803697185910784/Na5lOWi5_normal.jpg" alt="Elon Musk" class="tweet-avatar">
+              <div class="tweet-user-info">
+                <span class="tweet-name">Elon Musk</span>
+                <span class="tweet-username">@elonmusk</span>
+                <span class="tweet-date">2025/3/10 11:54:43</span>
+              </div>
+            </div>
+            <div class="tweet-content">
+              <p>Biden’s own @USGAO estimated fraud at up to half a trillion dollars!</p>
+              
+            </div>
+            <div class="tweet-stats">
+              <span class="tweet-replies"><i class="fa fa-comment"></i> 1907</span>
+              <span class="tweet-retweets"><i class="fa fa-retweet"></i> 4594</span>
+              <span class="tweet-likes"><i class="fa fa-heart"></i> 22712</span>
+            </div>
+          </div>
+        
+          <div class="tweet">
+            <div class="tweet-header">
+              <img src="https://pbs.twimg.com/profile_images/1893803697185910784/Na5lOWi5_normal.jpg" alt="Elon Musk" class="tweet-avatar">
+              <div class="tweet-user-info">
+                <span class="tweet-name">Elon Musk</span>
+                <span class="tweet-username">@elonmusk</span>
+                <span class="tweet-date">2025/3/10 05:01:39</span>
+              </div>
+            </div>
+            <div class="tweet-content">
+              <p>RT @MikeBenzCyber: Europe has cancelled more elections than Russia</p>
+              
+            </div>
+            <div class="tweet-stats">
+              <span class="tweet-replies"><i class="fa fa-comment"></i> 0</span>
+              <span class="tweet-retweets"><i class="fa fa-retweet"></i> 12840</span>
+              <span class="tweet-likes"><i class="fa fa-heart"></i> 0</span>
+            </div>
+          </div>
+        
+          <div class="tweet">
+            <div class="tweet-header">
+              <img src="https://pbs.twimg.com/profile_images/1893803697185910784/Na5lOWi5_normal.jpg" alt="Elon Musk" class="tweet-avatar">
+              <div class="tweet-user-info">
+                <span class="tweet-name">Elon Musk</span>
+                <span class="tweet-username">@elonmusk</span>
+                <span class="tweet-date">2025/3/10 05:00:01</span>
+              </div>
+            </div>
+            <div class="tweet-content">
+              <p>RT @LauraLoomer: I don’t have a Tesla. I just found out while talking to my friend who has multiple Teslas that Teslas have something calle…</p>
+              
+            </div>
+            <div class="tweet-stats">
+              <span class="tweet-replies"><i class="fa fa-comment"></i> 0</span>
+              <span class="tweet-retweets"><i class="fa fa-retweet"></i> 6578</span>
+              <span class="tweet-likes"><i class="fa fa-heart"></i> 0</span>
+            </div>
+          </div>
+        </div>
+    </div>
+  </body>
+  </html>
+  

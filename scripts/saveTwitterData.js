@@ -351,9 +351,21 @@ async function saveTwitterProfile(username) {
   try {
     console.log(`开始获取用户 ${username} 的主页数据...`);
     
+    // 创建用户数据目录
+    const userDataDir = path.join(__dirname, '..', 'src', 'data', username);
+    if (!fs.existsSync(userDataDir)) {
+      fs.mkdirSync(userDataDir, { recursive: true });
+      console.log(`创建用户数据目录: ${userDataDir}`);
+    }
+    
     // 1. 获取用户简介数据
     console.log(`获取用户 ${username} 的简介数据...`);
     const userData = await getUserData(username);
+    
+    // 保存用户简介数据到src/data目录
+    const userProfilePath = path.join(userDataDir, 'profile.json');
+    fs.writeFileSync(userProfilePath, JSON.stringify(userData, null, 2));
+    console.log(`保存用户简介数据到: ${userProfilePath}`);
     
     // 2. 从用户数据中提取用户ID
     const userId = userData.data.user.result.rest_id;
@@ -364,29 +376,33 @@ async function saveTwitterProfile(username) {
     
     // 调用originTweets.js脚本获取推文数据
     const originTweetsPath = path.join(__dirname, '..', 'originTweets.js');
-    const tweetsJsonPath = path.join(__dirname, '..', `OriginTweets_${userId}.json`);
+    const tweetsJsonPath = path.join(userDataDir, 'tweets.json');
     
     // 检查是否已存在推文数据文件
+    let tweetsData;
     if (!fs.existsSync(tweetsJsonPath)) {
       console.log(`执行originTweets.js获取推文数据...`);
-      await execPromise(`node ${originTweetsPath} ${userId}`);
+      
+      // 执行originTweets.js脚本，并传递用户ID和输出目录
+      await execPromise(`node ${originTweetsPath} ${userId} "${userDataDir}"`);
+      
+      // 读取生成的推文数据
+      tweetsData = JSON.parse(fs.readFileSync(tweetsJsonPath, 'utf8'));
     } else {
       console.log(`已存在推文数据文件: ${tweetsJsonPath}`);
+      tweetsData = JSON.parse(fs.readFileSync(tweetsJsonPath, 'utf8'));
     }
-    
-    // 读取推文数据
-    const tweetsData = JSON.parse(fs.readFileSync(tweetsJsonPath, 'utf8'));
     
     // 4. 生成HTML
     console.log(`生成用户 ${username} 的主页HTML...`);
     const html = generateHTML(userData, tweetsData);
     
     // 5. 保存HTML文件
-    const filePath = path.join(__dirname, '..', `${username}_profile.html`);
-    fs.writeFileSync(filePath, html);
+    const htmlFilePath = path.join(userDataDir, 'profile.html');
+    fs.writeFileSync(htmlFilePath, html);
     
-    console.log(`成功保存用户 ${username} 的主页数据到: ${filePath}`);
-    return filePath;
+    console.log(`成功保存用户 ${username} 的主页数据到: ${htmlFilePath}`);
+    return htmlFilePath;
   } catch (error) {
     console.error(`保存用户 ${username} 的主页数据失败:`, error.message);
     throw error;

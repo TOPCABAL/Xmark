@@ -41,9 +41,10 @@ const buildOptions = (userId) => ({
 /**
  * 通过用户ID获取推文数据
  * @param {string} userId - Twitter用户ID
+ * @param {string} [outputDir] - 输出目录，如果提供则保存到该目录
  * @returns {Promise<Object>} 推文数据
  */
-async function getUserTweets(userId) {
+async function getUserTweets(userId, outputDir = null) {
   if (!userId) {
     throw new Error('用户ID不能为空');
   }
@@ -65,7 +66,15 @@ async function getUserTweets(userId) {
     const jsonData = JSON.parse(jsonString);
     
     // 保存响应数据到文件
-    const filePath = path.join(__dirname, `OriginTweets_${userId}.json`);
+    let filePath;
+    if (outputDir) {
+      // 如果提供了输出目录，保存到该目录
+      filePath = path.join(outputDir, 'tweets.json');
+    } else {
+      // 否则保存到默认位置
+      filePath = path.join(__dirname, `OriginTweets_${userId}.json`);
+    }
+    
     fs.writeFileSync(filePath, JSON.stringify(jsonData, null, 2));
     
     console.log(`成功获取用户 ${userId} 的推文并保存到: ${filePath}`);
@@ -89,22 +98,28 @@ async function main() {
     // 从命令行获取用户ID，默认为Elon Musk的ID
     const userId = process.argv[2] || '44196397';
     
-    console.log(`开始获取用户ID为 ${userId} 的推文`);
-    
-    // 获取推文数据
-    const tweetsData = await getUserTweets(userId);
-    
-    // 检查获取的数据
-    if (tweetsData && tweetsData.data && tweetsData.data.user && tweetsData.data.user.result) {
-      console.log('获取推文成功!');
+    // 检查是否提供了输出目录
+    let outputDir = null;
+    if (process.argv[3]) {
+      // 如果提供了第三个参数，将其作为输出目录
+      outputDir = process.argv[3];
       
-      // 输出用户信息
-      const userData = tweetsData.data.user.result;
-      if (userData.legacy) {
-        console.log(`用户名: ${userData.legacy.name || '未知'}`);
-        console.log(`用户昵称: @${userData.legacy.screen_name || '未知'}`);
+      // 确保目录存在
+      if (!fs.existsSync(outputDir)) {
+        fs.mkdirSync(outputDir, { recursive: true });
+        console.log(`创建输出目录: ${outputDir}`);
+      }
+    } else {
+      // 如果没有提供输出目录，创建默认目录
+      outputDir = path.join(__dirname, 'src', 'data', userId);
+      if (!fs.existsSync(outputDir)) {
+        fs.mkdirSync(outputDir, { recursive: true });
+        console.log(`创建默认输出目录: ${outputDir}`);
       }
     }
+    
+    console.log(`开始获取用户ID为 ${userId} 的推文`);
+    await getUserTweets(userId, outputDir);
     
     console.log('操作完成');
   } catch (error) {
