@@ -13,6 +13,82 @@
 - **交互反馈**：直观的UI设计，操作反馈及时有效
 - **优化的数据操作UI**：直接在导航栏显示数据操作按钮，无需下拉菜单，提高操作效率
 
+## 项目架构
+
+### 技术栈
+
+- **前端框架**: React 18
+- **语言**: TypeScript
+- **样式**: Tailwind CSS
+- **UI组件库**: Ant Design
+- **构建工具**: Vite
+- **包管理**: npm
+- **HTTP客户端**: Axios
+
+### 目录结构
+
+```
+xmark-app/
+├── src/                      # 源代码目录
+│   ├── components/           # UI组件
+│   │   ├── AccountList.tsx   # 账号列表组件
+│   │   ├── AnnotationControls.tsx  # 标注控制组件
+│   │   ├── AnnotationPanel.tsx     # 标注面板组件
+│   │   ├── TwitterEmbed.tsx        # Twitter嵌入组件
+│   │   ├── TwitterImport.tsx       # Twitter数据导入组件
+│   │   ├── TwitterSelector.tsx     # Twitter账号选择器
+│   │   ├── ExportModal.tsx         # 数据导出模态框
+│   │   └── ...                     # 其他组件
+│   ├── services/             # 服务层
+│   │   ├── twitterService.ts       # Twitter数据处理服务
+│   │   ├── localStorageService.ts  # 本地存储服务
+│   │   ├── exportService.ts        # 数据导出服务
+│   │   ├── googleDriveService.ts   # Google Drive同步服务
+│   │   └── ...                     # 其他服务
+│   ├── hooks/                # 自定义React钩子
+│   │   ├── useAnnotation.ts        # 标注逻辑钩子
+│   │   └── useTweetAnnotations.ts  # Tweet标注钩子
+│   ├── types/                # TypeScript类型定义
+│   │   └── index.ts                # 主要类型定义
+│   ├── styles/               # 样式文件
+│   ├── utils/                # 工具函数
+│   ├── data/                 # 静态数据
+│   ├── App.tsx               # 应用主组件
+│   └── main.tsx              # 应用入口点
+├── public/                   # 静态资源
+├── scripts/                  # 构建和工具脚本
+└── ... 其他配置文件
+```
+
+### 核心数据流
+
+1. **数据导入流程**:
+   - 用户从Twitter API复制JSON数据
+   - 通过`TwitterImport`组件将数据传入`twitterService`
+   - `twitterService`解析并标准化数据
+   - 数据被存储在本地状态和`localStorage`中
+
+2. **标注流程**:
+   - 用户从`AccountList`选择一个Twitter账号
+   - 所选账号在`TwitterEmbed`中展示
+   - 用户通过`AnnotationPanel`添加分类和备注
+   - 标注数据通过`useAnnotation`钩子更新
+   - 更新后的数据通过`localStorageService`持久化存储
+
+3. **数据导出流程**:
+   - 用户通过`ExportModal`选择导出格式
+   - `exportService`格式化数据
+   - 数据被下载为文件或同步到云服务
+
+### 主要组件关系
+
+- **App.tsx**: 应用根组件，管理全局状态和路由
+- **AccountList**: 显示Twitter账号列表，支持过滤和排序
+- **TwitterEmbed**: 嵌入式Twitter账号查看器
+- **AnnotationPanel**: 提供标注界面，包含分类和备注功能
+- **GoogleDriveSync**: 提供与Google Drive同步的功能
+- **TwitterImport**: 处理Twitter数据的导入
+
 ## 快速开始
 
 ### 安装依赖
