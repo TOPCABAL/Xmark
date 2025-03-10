@@ -1,0 +1,3430 @@
+{
+  "data": {
+    "user": {
+      "result": {
+        "__typename": "User",
+        "timeline_v2": {
+          "timeline": {
+            "instructions": [
+              {
+                "type": "TimelineClearCache"
+              },
+              {
+                "type": "TimelinePinEntry",
+                "entry": {
+                  "entryId": "tweet-1875517860904366363",
+                  "sortIndex": "1898753073916936192",
+                  "content": {
+                    "entryType": "TimelineTimelineItem",
+                    "__typename": "TimelineTimelineItem",
+                    "itemContent": {
+                      "itemType": "TimelineTweet",
+                      "__typename": "TimelineTweet",
+                      "tweet_results": {
+                        "result": {
+                          "__typename": "Tweet",
+                          "rest_id": "1875517860904366363",
+                          "core": {
+                            "user_results": {
+                              "result": {
+                                "__typename": "User",
+                                "id": "VXNlcjoxNDQ5Mjc0ODc0MzE3MjY2OTQ1",
+                                "rest_id": "1449274874317266945",
+                                "affiliates_highlighted_label": {},
+                                "has_graduated_access": true,
+                                "parody_commentary_fan_label": "None",
+                                "is_blue_verified": true,
+                                "profile_image_shape": "Circle",
+                                "legacy": {
+                                  "notifications": true,
+                                  "following": true,
+                                  "can_dm": true,
+                                  "can_media_tag": false,
+                                  "created_at": "Sat Oct 16 07:24:02 +0000 2021",
+                                  "default_profile": true,
+                                  "default_profile_image": false,
+                                  "description": "瞎几把喊单的，找你接盘的，别买，骂我看不见。",
+                                  "entities": {
+                                    "description": {
+                                      "urls": []
+                                    }
+                                  },
+                                  "fast_followers_count": 0,
+                                  "favourites_count": 182,
+                                  "followers_count": 60314,
+                                  "friends_count": 377,
+                                  "has_custom_timelines": false,
+                                  "is_translator": false,
+                                  "listed_count": 1647,
+                                  "location": "",
+                                  "media_count": 37,
+                                  "name": "憨巴龙王",
+                                  "normal_followers_count": 60314,
+                                  "pinned_tweet_ids_str": [
+                                    "1875517860904366363"
+                                  ],
+                                  "possibly_sensitive": false,
+                                  "profile_image_url_https": "https://pbs.twimg.com/profile_images/1701493248269881344/uXTOJ_0J_normal.jpg",
+                                  "profile_interstitial_type": "",
+                                  "screen_name": "dotyyds1234",
+                                  "statuses_count": 1280,
+                                  "translator_type": "none",
+                                  "verified": false,
+                                  "want_retweets": true,
+                                  "withheld_in_countries": []
+                                },
+                                "tipjar_settings": {}
+                              }
+                            }
+                          },
+                          "unmention_data": {},
+                          "edit_control": {
+                            "edit_tweet_ids": [
+                              "1875517860904366363"
+                            ],
+                            "editable_until_msecs": "1735996878000",
+                            "is_edit_eligible": false,
+                            "edits_remaining": "5"
+                          },
+                          "is_translatable": false,
+                          "views": {
+                            "count": "318138",
+                            "state": "EnabledWithCount"
+                          },
+                          "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+                          "legacy": {
+                            "bookmark_count": 7,
+                            "bookmarked": false,
+                            "created_at": "Sat Jan 04 12:21:18 +0000 2025",
+                            "conversation_id_str": "1875517860904366363",
+                            "display_text_range": [
+                              0,
+                              55
+                            ],
+                            "entities": {
+                              "hashtags": [],
+                              "media": [
+                                {
+                                  "display_url": "pic.x.com/cqATTSY8y5",
+                                  "expanded_url": "https://x.com/dotyyds1234/status/1875517860904366363/photo/1",
+                                  "id_str": "1875517854306770944",
+                                  "indices": [
+                                    56,
+                                    79
+                                  ],
+                                  "media_key": "3_1875517854306770944",
+                                  "media_url_https": "https://pbs.twimg.com/media/GgctjTPboAAK14F.jpg",
+                                  "type": "photo",
+                                  "url": "https://t.co/cqATTSY8y5",
+                                  "ext_media_availability": {
+                                    "status": "Available"
+                                  },
+                                  "features": {
+                                    "large": {
+                                      "faces": []
+                                    },
+                                    "medium": {
+                                      "faces": []
+                                    },
+                                    "small": {
+                                      "faces": []
+                                    },
+                                    "orig": {
+                                      "faces": []
+                                    }
+                                  },
+                                  "sizes": {
+                                    "large": {
+                                      "h": 2048,
+                                      "w": 942,
+                                      "resize": "fit"
+                                    },
+                                    "medium": {
+                                      "h": 1200,
+                                      "w": 552,
+                                      "resize": "fit"
+                                    },
+                                    "small": {
+                                      "h": 680,
+                                      "w": 313,
+                                      "resize": "fit"
+                                    },
+                                    "thumb": {
+                                      "h": 150,
+                                      "w": 150,
+                                      "resize": "crop"
+                                    }
+                                  },
+                                  "original_info": {
+                                    "height": 2048,
+                                    "width": 942,
+                                    "focus_rects": [
+                                      {
+                                        "x": 0,
+                                        "y": 811,
+                                        "w": 942,
+                                        "h": 528
+                                      },
+                                      {
+                                        "x": 0,
+                                        "y": 604,
+                                        "w": 942,
+                                        "h": 942
+                                      },
+                                      {
+                                        "x": 0,
+                                        "y": 538,
+                                        "w": 942,
+                                        "h": 1074
+                                      },
+                                      {
+                                        "x": 0,
+                                        "y": 133,
+                                        "w": 942,
+                                        "h": 1884
+                                      },
+                                      {
+                                        "x": 0,
+                                        "y": 0,
+                                        "w": 942,
+                                        "h": 2048
+                                      }
+                                    ]
+                                  },
+                                  "allow_download_status": {
+                                    "allow_download": true
+                                  },
+                                  "media_results": {
+                                    "result": {
+                                      "media_key": "3_1875517854306770944"
+                                    }
+                                  }
+                                }
+                              ],
+                              "symbols": [],
+                              "timestamps": [],
+                              "urls": [],
+                              "user_mentions": []
+                            },
+                            "extended_entities": {
+                              "media": [
+                                {
+                                  "display_url": "pic.x.com/cqATTSY8y5",
+                                  "expanded_url": "https://x.com/dotyyds1234/status/1875517860904366363/photo/1",
+                                  "id_str": "1875517854306770944",
+                                  "indices": [
+                                    56,
+                                    79
+                                  ],
+                                  "media_key": "3_1875517854306770944",
+                                  "media_url_https": "https://pbs.twimg.com/media/GgctjTPboAAK14F.jpg",
+                                  "type": "photo",
+                                  "url": "https://t.co/cqATTSY8y5",
+                                  "ext_media_availability": {
+                                    "status": "Available"
+                                  },
+                                  "features": {
+                                    "large": {
+                                      "faces": []
+                                    },
+                                    "medium": {
+                                      "faces": []
+                                    },
+                                    "small": {
+                                      "faces": []
+                                    },
+                                    "orig": {
+                                      "faces": []
+                                    }
+                                  },
+                                  "sizes": {
+                                    "large": {
+                                      "h": 2048,
+                                      "w": 942,
+                                      "resize": "fit"
+                                    },
+                                    "medium": {
+                                      "h": 1200,
+                                      "w": 552,
+                                      "resize": "fit"
+                                    },
+                                    "small": {
+                                      "h": 680,
+                                      "w": 313,
+                                      "resize": "fit"
+                                    },
+                                    "thumb": {
+                                      "h": 150,
+                                      "w": 150,
+                                      "resize": "crop"
+                                    }
+                                  },
+                                  "original_info": {
+                                    "height": 2048,
+                                    "width": 942,
+                                    "focus_rects": [
+                                      {
+                                        "x": 0,
+                                        "y": 811,
+                                        "w": 942,
+                                        "h": 528
+                                      },
+                                      {
+                                        "x": 0,
+                                        "y": 604,
+                                        "w": 942,
+                                        "h": 942
+                                      },
+                                      {
+                                        "x": 0,
+                                        "y": 538,
+                                        "w": 942,
+                                        "h": 1074
+                                      },
+                                      {
+                                        "x": 0,
+                                        "y": 133,
+                                        "w": 942,
+                                        "h": 1884
+                                      },
+                                      {
+                                        "x": 0,
+                                        "y": 0,
+                                        "w": 942,
+                                        "h": 2048
+                                      }
+                                    ]
+                                  },
+                                  "allow_download_status": {
+                                    "allow_download": true
+                                  },
+                                  "media_results": {
+                                    "result": {
+                                      "media_key": "3_1875517854306770944"
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            "favorite_count": 99,
+                            "favorited": false,
+                            "full_text": "这是假的啊，我没任何群，不收任何费，不接任何广告，不发币，所有找你加群，收费，说是我的币，都是假的，都是假的。 https://t.co/cqATTSY8y5",
+                            "is_quote_status": false,
+                            "lang": "zh",
+                            "possibly_sensitive": false,
+                            "possibly_sensitive_editable": true,
+                            "quote_count": 0,
+                            "reply_count": 27,
+                            "retweet_count": 5,
+                            "retweeted": false,
+                            "user_id_str": "1449274874317266945",
+                            "id_str": "1875517860904366363"
+                          },
+                          "quick_promote_eligibility": {
+                            "eligibility": "IneligibleNotProfessional"
+                          }
+                        }
+                      },
+                      "tweetDisplayType": "Tweet",
+                      "socialContext": {
+                        "type": "TimelineGeneralContext",
+                        "contextType": "Pin",
+                        "text": "已置顶"
+                      }
+                    },
+                    "clientEventInfo": {
+                      "component": "pinned_tweets",
+                      "element": "tweet"
+                    }
+                  }
+                }
+              },
+              {
+                "type": "TimelineAddEntries",
+                "entries": [
+                  {
+                    "entryId": "tweet-1898752650382106943",
+                    "sortIndex": "1898753073916936191",
+                    "content": {
+                      "entryType": "TimelineTimelineItem",
+                      "__typename": "TimelineTimelineItem",
+                      "itemContent": {
+                        "itemType": "TimelineTweet",
+                        "__typename": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "rest_id": "1898752650382106943",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "id": "VXNlcjoxNDQ5Mjc0ODc0MzE3MjY2OTQ1",
+                                  "rest_id": "1449274874317266945",
+                                  "affiliates_highlighted_label": {},
+                                  "has_graduated_access": true,
+                                  "parody_commentary_fan_label": "None",
+                                  "is_blue_verified": true,
+                                  "profile_image_shape": "Circle",
+                                  "legacy": {
+                                    "notifications": true,
+                                    "following": true,
+                                    "can_dm": true,
+                                    "can_media_tag": false,
+                                    "created_at": "Sat Oct 16 07:24:02 +0000 2021",
+                                    "default_profile": true,
+                                    "default_profile_image": false,
+                                    "description": "瞎几把喊单的，找你接盘的，别买，骂我看不见。",
+                                    "entities": {
+                                      "description": {
+                                        "urls": []
+                                      }
+                                    },
+                                    "fast_followers_count": 0,
+                                    "favourites_count": 182,
+                                    "followers_count": 60314,
+                                    "friends_count": 377,
+                                    "has_custom_timelines": false,
+                                    "is_translator": false,
+                                    "listed_count": 1647,
+                                    "location": "",
+                                    "media_count": 37,
+                                    "name": "憨巴龙王",
+                                    "normal_followers_count": 60314,
+                                    "pinned_tweet_ids_str": [
+                                      "1875517860904366363"
+                                    ],
+                                    "possibly_sensitive": false,
+                                    "profile_image_url_https": "https://pbs.twimg.com/profile_images/1701493248269881344/uXTOJ_0J_normal.jpg",
+                                    "profile_interstitial_type": "",
+                                    "screen_name": "dotyyds1234",
+                                    "statuses_count": 1280,
+                                    "translator_type": "none",
+                                    "verified": false,
+                                    "want_retweets": true,
+                                    "withheld_in_countries": []
+                                  },
+                                  "tipjar_settings": {}
+                                }
+                              }
+                            },
+                            "unmention_data": {},
+                            "edit_control": {
+                              "edit_tweet_ids": [
+                                "1898752650382106943"
+                              ],
+                              "editable_until_msecs": "1741536483000",
+                              "is_edit_eligible": true,
+                              "edits_remaining": "5"
+                            },
+                            "is_translatable": false,
+                            "views": {
+                              "count": "494",
+                              "state": "EnabledWithCount"
+                            },
+                            "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+                            "legacy": {
+                              "bookmark_count": 1,
+                              "bookmarked": false,
+                              "created_at": "Sun Mar 09 15:08:03 +0000 2025",
+                              "conversation_id_str": "1898752650382106943",
+                              "display_text_range": [
+                                0,
+                                99
+                              ],
+                              "entities": {
+                                "hashtags": [],
+                                "symbols": [],
+                                "timestamps": [],
+                                "urls": [],
+                                "user_mentions": []
+                              },
+                              "favorite_count": 13,
+                              "favorited": false,
+                              "full_text": "不是，突然刷了下推，怎么现在全都在说女大和谈恋爱的事了。\n\n最开始只是风无向没跟上一些热点，因为他没跟上，所以我也没跟上（他买我就买），我调侃下风无向被女大吸了神力。\n\n仅此而已。后来咋就变风格了。",
+                              "is_quote_status": false,
+                              "lang": "zh",
+                              "quote_count": 0,
+                              "reply_count": 3,
+                              "retweet_count": 0,
+                              "retweeted": false,
+                              "user_id_str": "1449274874317266945",
+                              "id_str": "1898752650382106943"
+                            },
+                            "quick_promote_eligibility": {
+                              "eligibility": "IneligibleNotProfessional"
+                            }
+                          }
+                        },
+                        "tweetDisplayType": "Tweet"
+                      },
+                      "clientEventInfo": {
+                        "component": "tweet",
+                        "element": "tweet",
+                        "details": {
+                          "timelinesDetails": {
+                            "injectionType": "RankedOrganicTweet",
+                            "controllerData": "DAACDAABDAABCgABAAAAAAAAAAAKAAkTVHCX6dUQBgAAAAA="
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "entryId": "tweet-1898712997067169838",
+                    "sortIndex": "1898753073916936190",
+                    "content": {
+                      "entryType": "TimelineTimelineItem",
+                      "__typename": "TimelineTimelineItem",
+                      "itemContent": {
+                        "itemType": "TimelineTweet",
+                        "__typename": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "rest_id": "1898712997067169838",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "id": "VXNlcjoxNDQ5Mjc0ODc0MzE3MjY2OTQ1",
+                                  "rest_id": "1449274874317266945",
+                                  "affiliates_highlighted_label": {},
+                                  "has_graduated_access": true,
+                                  "parody_commentary_fan_label": "None",
+                                  "is_blue_verified": true,
+                                  "profile_image_shape": "Circle",
+                                  "legacy": {
+                                    "notifications": true,
+                                    "following": true,
+                                    "can_dm": true,
+                                    "can_media_tag": false,
+                                    "created_at": "Sat Oct 16 07:24:02 +0000 2021",
+                                    "default_profile": true,
+                                    "default_profile_image": false,
+                                    "description": "瞎几把喊单的，找你接盘的，别买，骂我看不见。",
+                                    "entities": {
+                                      "description": {
+                                        "urls": []
+                                      }
+                                    },
+                                    "fast_followers_count": 0,
+                                    "favourites_count": 182,
+                                    "followers_count": 60314,
+                                    "friends_count": 377,
+                                    "has_custom_timelines": false,
+                                    "is_translator": false,
+                                    "listed_count": 1647,
+                                    "location": "",
+                                    "media_count": 37,
+                                    "name": "憨巴龙王",
+                                    "normal_followers_count": 60314,
+                                    "pinned_tweet_ids_str": [
+                                      "1875517860904366363"
+                                    ],
+                                    "possibly_sensitive": false,
+                                    "profile_image_url_https": "https://pbs.twimg.com/profile_images/1701493248269881344/uXTOJ_0J_normal.jpg",
+                                    "profile_interstitial_type": "",
+                                    "screen_name": "dotyyds1234",
+                                    "statuses_count": 1280,
+                                    "translator_type": "none",
+                                    "verified": false,
+                                    "want_retweets": true,
+                                    "withheld_in_countries": []
+                                  },
+                                  "tipjar_settings": {}
+                                }
+                              }
+                            },
+                            "unmention_data": {},
+                            "edit_control": {
+                              "edit_tweet_ids": [
+                                "1898712997067169838"
+                              ],
+                              "editable_until_msecs": "1741527029000",
+                              "is_edit_eligible": true,
+                              "edits_remaining": "5"
+                            },
+                            "is_translatable": false,
+                            "views": {
+                              "count": "34208",
+                              "state": "EnabledWithCount"
+                            },
+                            "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+                            "note_tweet": {
+                              "is_expandable": true,
+                              "note_tweet_results": {
+                                "result": {
+                                  "id": "Tm90ZVR3ZWV0OjE4OTg3MTI5OTY5NjIzMjg1NzY=",
+                                  "text": "本来就只是每天调侃下风无向，怎么现在全都来蹭了，最后说一篇心路历程吧。\n\n之前碰到过好几个喜欢，而且在暧昧的女生，我说包养，别人不同意，非要谈恋爱。然后我就不同意了。\n\n我谈过2次恋爱，一个4年一个5年。最后都补偿了很多很多....\n\n钱只是一方面，分手的时候太痛苦了，总感觉很愧疚。\n\n所以我之后对所有人都是开始就谈钱，而且把我所有的情况都说明白，不画饼。谈钱不等于我要当上位者，也有尊重也有感情。只不过分开的时候，我稍微补偿点，心里就过意的去了。\n\n不花钱骗炮骗感情谁都会。只不过，睡完麻烦事太多了，心里也过意不去。还有可能被写小作文。\n\n所以我都花钱买感情了，可能又一堆人在那yy我买到的不是真感情，不花钱跟我在一起的就不是图我钱了？？？至少我这样体验极佳。君子论迹不论心。\n\n我也不是没被骗过，每次最多也就十几万就止损了，我见过的套路可太多了。\n\n这只是我，我有点变态的。我也没说要改变谁的三观，你想咋样就咋样，我就分享下我的情况和状态，我还真过满开心的，也很心安理得。",
+                                  "entity_set": {
+                                    "hashtags": [],
+                                    "symbols": [],
+                                    "urls": [],
+                                    "user_mentions": []
+                                  }
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "bookmark_count": 24,
+                              "bookmarked": false,
+                              "created_at": "Sun Mar 09 12:30:29 +0000 2025",
+                              "conversation_id_str": "1898712997067169838",
+                              "display_text_range": [
+                                0,
+                                142
+                              ],
+                              "entities": {
+                                "hashtags": [],
+                                "symbols": [],
+                                "timestamps": [],
+                                "urls": [],
+                                "user_mentions": []
+                              },
+                              "favorite_count": 157,
+                              "favorited": false,
+                              "full_text": "本来就只是每天调侃下风无向，怎么现在全都来蹭了，最后说一篇心路历程吧。\n\n之前碰到过好几个喜欢，而且在暧昧的女生，我说包养，别人不同意，非要谈恋爱。然后我就不同意了。\n\n我谈过2次恋爱，一个4年一个5年。最后都补偿了很多很多....\n\n钱只是一方面，分手的时候太痛苦了，总感觉很愧疚。",
+                              "is_quote_status": false,
+                              "lang": "zh",
+                              "quote_count": 0,
+                              "reply_count": 52,
+                              "retweet_count": 7,
+                              "retweeted": false,
+                              "user_id_str": "1449274874317266945",
+                              "id_str": "1898712997067169838"
+                            },
+                            "quick_promote_eligibility": {
+                              "eligibility": "IneligibleNotProfessional"
+                            }
+                          }
+                        },
+                        "tweetDisplayType": "Tweet"
+                      },
+                      "clientEventInfo": {
+                        "component": "tweet",
+                        "element": "tweet",
+                        "details": {
+                          "timelinesDetails": {
+                            "injectionType": "RankedOrganicTweet",
+                            "controllerData": "DAACDAABDAABCgABAAAAAAAAAAAKAAkTVHCX6dUQBgAAAAA="
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "entryId": "tweet-1898018797942194502",
+                    "sortIndex": "1898753073916936189",
+                    "content": {
+                      "entryType": "TimelineTimelineItem",
+                      "__typename": "TimelineTimelineItem",
+                      "itemContent": {
+                        "itemType": "TimelineTweet",
+                        "__typename": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "rest_id": "1898018797942194502",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "id": "VXNlcjoxNDQ5Mjc0ODc0MzE3MjY2OTQ1",
+                                  "rest_id": "1449274874317266945",
+                                  "affiliates_highlighted_label": {},
+                                  "has_graduated_access": true,
+                                  "parody_commentary_fan_label": "None",
+                                  "is_blue_verified": true,
+                                  "profile_image_shape": "Circle",
+                                  "legacy": {
+                                    "notifications": true,
+                                    "following": true,
+                                    "can_dm": true,
+                                    "can_media_tag": false,
+                                    "created_at": "Sat Oct 16 07:24:02 +0000 2021",
+                                    "default_profile": true,
+                                    "default_profile_image": false,
+                                    "description": "瞎几把喊单的，找你接盘的，别买，骂我看不见。",
+                                    "entities": {
+                                      "description": {
+                                        "urls": []
+                                      }
+                                    },
+                                    "fast_followers_count": 0,
+                                    "favourites_count": 182,
+                                    "followers_count": 60314,
+                                    "friends_count": 377,
+                                    "has_custom_timelines": false,
+                                    "is_translator": false,
+                                    "listed_count": 1647,
+                                    "location": "",
+                                    "media_count": 37,
+                                    "name": "憨巴龙王",
+                                    "normal_followers_count": 60314,
+                                    "pinned_tweet_ids_str": [
+                                      "1875517860904366363"
+                                    ],
+                                    "possibly_sensitive": false,
+                                    "profile_image_url_https": "https://pbs.twimg.com/profile_images/1701493248269881344/uXTOJ_0J_normal.jpg",
+                                    "profile_interstitial_type": "",
+                                    "screen_name": "dotyyds1234",
+                                    "statuses_count": 1280,
+                                    "translator_type": "none",
+                                    "verified": false,
+                                    "want_retweets": true,
+                                    "withheld_in_countries": []
+                                  },
+                                  "tipjar_settings": {}
+                                }
+                              }
+                            },
+                            "unmention_data": {},
+                            "edit_control": {
+                              "edit_tweet_ids": [
+                                "1898018797942194502"
+                              ],
+                              "editable_until_msecs": "1741361519000",
+                              "is_edit_eligible": true,
+                              "edits_remaining": "5"
+                            },
+                            "is_translatable": false,
+                            "views": {
+                              "count": "99459",
+                              "state": "EnabledWithCount"
+                            },
+                            "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+                            "note_tweet": {
+                              "is_expandable": true,
+                              "note_tweet_results": {
+                                "result": {
+                                  "id": "Tm90ZVR3ZWV0OjE4OTgwMTg3OTc4NzA4OTEwMTA=",
+                                  "text": "我觉得吧，每个人的三观都不同，现在我不会接广告，但是也不会认为别人接广告有什么错。\n\n但是呢。我是最讨厌双标的人，接土狗广告，干着割韭菜的事情，去谴责商k女不干净，不道德。\n\n如果别人能接广告割韭菜，谁又愿意天天喝酒被人摸呢？\n\n自己道德水平极低，却玩双标站在道德制高点。\n\n当然我也不是抨击女性，如果真有富婆愿意花钱包养男大，男大也是愿意的。甚至我觉得愿意的男生比例上比女生多，只不过富婆相对于富翁来说，少太多了。\n\n其实我是觉得女生普遍道德水平比高的，因为跟欲望有关系，男生欲望更强。当通过正常能力获得的物质满足不了欲望的时候，就会降低自己的道德水平。\n\n是的，如果我是赚不到钱的kol，我也会接广告。（可惜我欲望太低了）",
+                                  "entity_set": {
+                                    "hashtags": [],
+                                    "symbols": [],
+                                    "urls": [],
+                                    "user_mentions": []
+                                  }
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "bookmark_count": 14,
+                              "bookmarked": false,
+                              "created_at": "Fri Mar 07 14:31:59 +0000 2025",
+                              "conversation_id_str": "1898018797942194502",
+                              "display_text_range": [
+                                0,
+                                136
+                              ],
+                              "entities": {
+                                "hashtags": [],
+                                "symbols": [],
+                                "timestamps": [],
+                                "urls": [],
+                                "user_mentions": []
+                              },
+                              "favorite_count": 220,
+                              "favorited": false,
+                              "full_text": "我觉得吧，每个人的三观都不同，现在我不会接广告，但是也不会认为别人接广告有什么错。\n\n但是呢。我是最讨厌双标的人，接土狗广告，干着割韭菜的事情，去谴责商k女不干净，不道德。\n\n如果别人能接广告割韭菜，谁又愿意天天喝酒被人摸呢？\n\n自己道德水平极低，却玩双标站在道德制高点。",
+                              "is_quote_status": false,
+                              "lang": "zh",
+                              "quote_count": 4,
+                              "reply_count": 45,
+                              "retweet_count": 10,
+                              "retweeted": false,
+                              "user_id_str": "1449274874317266945",
+                              "id_str": "1898018797942194502"
+                            },
+                            "quick_promote_eligibility": {
+                              "eligibility": "IneligibleNotProfessional"
+                            }
+                          }
+                        },
+                        "tweetDisplayType": "Tweet"
+                      },
+                      "clientEventInfo": {
+                        "component": "tweet",
+                        "element": "tweet",
+                        "details": {
+                          "timelinesDetails": {
+                            "injectionType": "RankedOrganicTweet",
+                            "controllerData": "DAACDAABDAABCgABAAAAAAAAAAAKAAkTVHCX6dUQBgAAAAA="
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "entryId": "tweet-1897987557214110178",
+                    "sortIndex": "1898753073916936188",
+                    "content": {
+                      "entryType": "TimelineTimelineItem",
+                      "__typename": "TimelineTimelineItem",
+                      "itemContent": {
+                        "itemType": "TimelineTweet",
+                        "__typename": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "rest_id": "1897987557214110178",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "id": "VXNlcjoxNDQ5Mjc0ODc0MzE3MjY2OTQ1",
+                                  "rest_id": "1449274874317266945",
+                                  "affiliates_highlighted_label": {},
+                                  "has_graduated_access": true,
+                                  "parody_commentary_fan_label": "None",
+                                  "is_blue_verified": true,
+                                  "profile_image_shape": "Circle",
+                                  "legacy": {
+                                    "notifications": true,
+                                    "following": true,
+                                    "can_dm": true,
+                                    "can_media_tag": false,
+                                    "created_at": "Sat Oct 16 07:24:02 +0000 2021",
+                                    "default_profile": true,
+                                    "default_profile_image": false,
+                                    "description": "瞎几把喊单的，找你接盘的，别买，骂我看不见。",
+                                    "entities": {
+                                      "description": {
+                                        "urls": []
+                                      }
+                                    },
+                                    "fast_followers_count": 0,
+                                    "favourites_count": 182,
+                                    "followers_count": 60314,
+                                    "friends_count": 377,
+                                    "has_custom_timelines": false,
+                                    "is_translator": false,
+                                    "listed_count": 1647,
+                                    "location": "",
+                                    "media_count": 37,
+                                    "name": "憨巴龙王",
+                                    "normal_followers_count": 60314,
+                                    "pinned_tweet_ids_str": [
+                                      "1875517860904366363"
+                                    ],
+                                    "possibly_sensitive": false,
+                                    "profile_image_url_https": "https://pbs.twimg.com/profile_images/1701493248269881344/uXTOJ_0J_normal.jpg",
+                                    "profile_interstitial_type": "",
+                                    "screen_name": "dotyyds1234",
+                                    "statuses_count": 1280,
+                                    "translator_type": "none",
+                                    "verified": false,
+                                    "want_retweets": true,
+                                    "withheld_in_countries": []
+                                  },
+                                  "tipjar_settings": {}
+                                }
+                              }
+                            },
+                            "unmention_data": {},
+                            "edit_control": {
+                              "edit_tweet_ids": [
+                                "1897987557214110178"
+                              ],
+                              "editable_until_msecs": "1741354071000",
+                              "is_edit_eligible": true,
+                              "edits_remaining": "5"
+                            },
+                            "is_translatable": false,
+                            "views": {
+                              "count": "218930",
+                              "state": "EnabledWithCount"
+                            },
+                            "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+                            "note_tweet": {
+                              "is_expandable": true,
+                              "note_tweet_results": {
+                                "result": {
+                                  "id": "Tm90ZVR3ZWV0OjE4OTc5ODc1NTcxMzg2MTIyMjU=",
+                                  "text": "其实有时候我也在思考。\n\n一个女大跟黄毛谈恋爱，和被风无向包养。\n\n为什么前者更容易让人原谅和接受。\n\n就是因为拜金的问题吗？那找工作也别看工资。\n\n或者有人说，如果一个女生能被你包养，那一定能被出钱更多的包养。\n\n你找工作，别人开更高的工资，更高好的待遇，更好的发展，你不跳槽啊，人往高处走，水往低处流。\n\n所以，到底问题出在了哪里。",
+                                  "entity_set": {
+                                    "hashtags": [],
+                                    "symbols": [],
+                                    "urls": [],
+                                    "user_mentions": []
+                                  }
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "bookmark_count": 37,
+                              "bookmarked": false,
+                              "created_at": "Fri Mar 07 12:27:51 +0000 2025",
+                              "conversation_id_str": "1897987557214110178",
+                              "display_text_range": [
+                                0,
+                                106
+                              ],
+                              "entities": {
+                                "hashtags": [],
+                                "symbols": [],
+                                "timestamps": [],
+                                "urls": [],
+                                "user_mentions": []
+                              },
+                              "favorite_count": 191,
+                              "favorited": false,
+                              "full_text": "其实有时候我也在思考。\n\n一个女大跟黄毛谈恋爱，和被风无向包养。\n\n为什么前者更容易让人原谅和接受。\n\n就是因为拜金的问题吗？那找工作也别看工资。\n\n或者有人说，如果一个女生能被你包养，那一定能被出钱更多的包养。",
+                              "is_quote_status": false,
+                              "lang": "zh",
+                              "quote_count": 7,
+                              "reply_count": 118,
+                              "retweet_count": 4,
+                              "retweeted": false,
+                              "user_id_str": "1449274874317266945",
+                              "id_str": "1897987557214110178"
+                            },
+                            "quick_promote_eligibility": {
+                              "eligibility": "IneligibleNotProfessional"
+                            }
+                          }
+                        },
+                        "tweetDisplayType": "Tweet"
+                      },
+                      "clientEventInfo": {
+                        "component": "tweet",
+                        "element": "tweet",
+                        "details": {
+                          "timelinesDetails": {
+                            "injectionType": "RankedOrganicTweet",
+                            "controllerData": "DAACDAABDAABCgABAAAAAAAAAAAKAAkTVHCX6dUQBgAAAAA="
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "entryId": "who-to-follow-1898753073916936197",
+                    "sortIndex": "1898753073916936187",
+                    "content": {
+                      "entryType": "TimelineTimelineModule",
+                      "__typename": "TimelineTimelineModule",
+                      "items": [
+                        {
+                          "entryId": "who-to-follow-1898753073916936197-user-1299360838403276801",
+                          "item": {
+                            "itemContent": {
+                              "itemType": "TimelineUser",
+                              "__typename": "TimelineUser",
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "id": "VXNlcjoxMjk5MzYwODM4NDAzMjc2ODAx",
+                                  "rest_id": "1299360838403276801",
+                                  "affiliates_highlighted_label": {},
+                                  "has_graduated_access": true,
+                                  "parody_commentary_fan_label": "None",
+                                  "is_blue_verified": true,
+                                  "profile_image_shape": "Circle",
+                                  "legacy": {
+                                    "following": false,
+                                    "can_dm": true,
+                                    "can_media_tag": true,
+                                    "created_at": "Fri Aug 28 14:59:10 +0000 2020",
+                                    "default_profile": true,
+                                    "default_profile_image": false,
+                                    "description": "| 🐸Prop Degen\n| 🌕️Prev Crypto VC & CEX\n| 💵Angel Investor of @monad_xyz @nubit_org\n\n| MEX🇲🇽 / YVR🇨🇦 / SIN🇸🇬\n| #Bitcoin er SINCE 2013\n| APE VIA https://t.co/BvqBb8L2qH |",
+                                    "entities": {
+                                      "description": {
+                                        "urls": [
+                                          {
+                                            "display_url": "GMGN.AI",
+                                            "expanded_url": "http://GMGN.AI",
+                                            "url": "https://t.co/BvqBb8L2qH",
+                                            "indices": [
+                                              142,
+                                              165
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "fast_followers_count": 0,
+                                    "favourites_count": 2216,
+                                    "followers_count": 122791,
+                                    "friends_count": 2284,
+                                    "has_custom_timelines": true,
+                                    "is_translator": false,
+                                    "listed_count": 1977,
+                                    "location": "Aperture Science",
+                                    "media_count": 690,
+                                    "name": "Kay Capital",
+                                    "normal_followers_count": 122791,
+                                    "pinned_tweet_ids_str": [
+                                      "1840721723173511395"
+                                    ],
+                                    "possibly_sensitive": false,
+                                    "profile_banner_url": "https://pbs.twimg.com/profile_banners/1299360838403276801/1637057359",
+                                    "profile_image_url_https": "https://pbs.twimg.com/profile_images/1795253482800447488/tdnbC9N3_normal.jpg",
+                                    "profile_interstitial_type": "",
+                                    "screen_name": "keyahayek",
+                                    "statuses_count": 3997,
+                                    "translator_type": "none",
+                                    "verified": false,
+                                    "want_retweets": false,
+                                    "withheld_in_countries": []
+                                  },
+                                  "tipjar_settings": {
+                                    "is_enabled": true
+                                  }
+                                }
+                              },
+                              "userDisplayType": "User",
+                              "socialContext": {
+                                "type": "TimelineGeneralContext",
+                                "contextType": "Follow",
+                                "text": "Shanks 及另外 9 人关注"
+                              }
+                            },
+                            "clientEventInfo": {
+                              "component": "suggest_who_to_follow",
+                              "element": "user",
+                              "details": {
+                                "timelinesDetails": {
+                                  "injectionType": "WhoToFollow",
+                                  "controllerData": "DAACDAACDAABCgABAAAAAAAAAEAAAAAA",
+                                  "sourceData": "DAABCgABfe1qmHEhBOAKAAIAAAAAAAAAAAAIAAIAAACDCAADAAAAAgwABQwAAgwAAgwAAQoAAQAAAAAAAABAAAAAAAA="
+                                }
+                              }
+                            }
+                          }
+                        },
+                        {
+                          "entryId": "who-to-follow-1898753073916936197-user-1442846065473032198",
+                          "item": {
+                            "itemContent": {
+                              "itemType": "TimelineUser",
+                              "__typename": "TimelineUser",
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "id": "VXNlcjoxNDQyODQ2MDY1NDczMDMyMTk4",
+                                  "rest_id": "1442846065473032198",
+                                  "affiliates_highlighted_label": {},
+                                  "has_graduated_access": true,
+                                  "parody_commentary_fan_label": "None",
+                                  "is_blue_verified": true,
+                                  "profile_image_shape": "Circle",
+                                  "legacy": {
+                                    "following": false,
+                                    "can_dm": true,
+                                    "can_media_tag": true,
+                                    "created_at": "Tue Sep 28 13:38:13 +0000 2021",
+                                    "default_profile": true,
+                                    "default_profile_image": false,
+                                    "description": "可能是最会讲段子的财经博主，商务合作联系:goupenguin@163.com | 近3亿用户的共同选择，出入金安全，启程Web3，就在币安：https://t.co/IhmlHJReNO",
+                                    "entities": {
+                                      "description": {
+                                        "urls": [
+                                          {
+                                            "display_url": "binance.com/en/join?ref=MY…",
+                                            "expanded_url": "https://www.binance.com/en/join?ref=MYHPEN5F",
+                                            "url": "https://t.co/IhmlHJReNO",
+                                            "indices": [
+                                              71,
+                                              94
+                                            ]
+                                          }
+                                        ]
+                                      },
+                                      "url": {
+                                        "urls": [
+                                          {
+                                            "display_url": "pub.vlinkx.cn/cvf38kgf",
+                                            "expanded_url": "https://pub.vlinkx.cn/cvf38kgf",
+                                            "url": "https://t.co/FQZRvyp3Vy",
+                                            "indices": [
+                                              0,
+                                              23
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "fast_followers_count": 0,
+                                    "favourites_count": 461,
+                                    "followers_count": 38736,
+                                    "friends_count": 1131,
+                                    "has_custom_timelines": true,
+                                    "is_translator": false,
+                                    "listed_count": 1001,
+                                    "location": "",
+                                    "media_count": 1793,
+                                    "name": "挖矿小企鹅 (Merlin🔮🧙)",
+                                    "normal_followers_count": 38736,
+                                    "pinned_tweet_ids_str": [
+                                      "1896178670085284033"
+                                    ],
+                                    "possibly_sensitive": false,
+                                    "profile_image_url_https": "https://pbs.twimg.com/profile_images/1442846204870725634/CYHkX85z_normal.jpg",
+                                    "profile_interstitial_type": "",
+                                    "screen_name": "Goupenguin",
+                                    "statuses_count": 3893,
+                                    "translator_type": "none",
+                                    "url": "https://t.co/FQZRvyp3Vy",
+                                    "verified": false,
+                                    "want_retweets": false,
+                                    "withheld_in_countries": []
+                                  },
+                                  "tipjar_settings": {
+                                    "is_enabled": true,
+                                    "bitcoin_handle": "1HwwQm9Kwqvg48Ucis8MKsXR2RZ4xMgyMa"
+                                  }
+                                }
+                              },
+                              "userDisplayType": "User",
+                              "socialContext": {
+                                "type": "TimelineGeneralContext",
+                                "contextType": "Follow",
+                                "text": "Mia米粒儿🩵 及另外 9 人关注"
+                              }
+                            },
+                            "clientEventInfo": {
+                              "component": "suggest_who_to_follow",
+                              "element": "user",
+                              "details": {
+                                "timelinesDetails": {
+                                  "injectionType": "WhoToFollow",
+                                  "controllerData": "DAACDAACDAABCgABAAAAAAAAAEAAAAAA",
+                                  "sourceData": "DAABCgABfe1qmHEhBOAKAAIAAAAAAAAAAAAIAAIAAACDCAADAAAAAgwABQwAAgwAAgwAAQoAAQAAAAAAAABAAAAAAAA="
+                                }
+                              }
+                            }
+                          }
+                        },
+                        {
+                          "entryId": "who-to-follow-1898753073916936197-user-1438452208014483462",
+                          "item": {
+                            "itemContent": {
+                              "itemType": "TimelineUser",
+                              "__typename": "TimelineUser",
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "id": "VXNlcjoxNDM4NDUyMjA4MDE0NDgzNDYy",
+                                  "rest_id": "1438452208014483462",
+                                  "affiliates_highlighted_label": {},
+                                  "has_graduated_access": true,
+                                  "parody_commentary_fan_label": "None",
+                                  "is_blue_verified": false,
+                                  "profile_image_shape": "Circle",
+                                  "legacy": {
+                                    "following": false,
+                                    "can_dm": true,
+                                    "can_media_tag": true,
+                                    "created_at": "Thu Sep 16 10:38:33 +0000 2021",
+                                    "default_profile": true,
+                                    "default_profile_image": false,
+                                    "description": "crypto gambling duguai",
+                                    "entities": {
+                                      "description": {
+                                        "urls": []
+                                      }
+                                    },
+                                    "fast_followers_count": 0,
+                                    "favourites_count": 216,
+                                    "followers_count": 19831,
+                                    "friends_count": 343,
+                                    "has_custom_timelines": false,
+                                    "is_translator": false,
+                                    "listed_count": 537,
+                                    "location": "",
+                                    "media_count": 126,
+                                    "name": "fuckcapital.eth",
+                                    "normal_followers_count": 19831,
+                                    "pinned_tweet_ids_str": [
+                                      "1749287451028529634"
+                                    ],
+                                    "possibly_sensitive": false,
+                                    "profile_banner_url": "https://pbs.twimg.com/profile_banners/1438452208014483462/1704576364",
+                                    "profile_image_url_https": "https://pbs.twimg.com/profile_images/1737750880823476224/i3p6V6cD_normal.jpg",
+                                    "profile_interstitial_type": "",
+                                    "screen_name": "fuck_capital",
+                                    "statuses_count": 1044,
+                                    "translator_type": "none",
+                                    "verified": false,
+                                    "want_retweets": false,
+                                    "withheld_in_countries": []
+                                  },
+                                  "professional": {
+                                    "rest_id": "1587929238610460672",
+                                    "professional_type": "Creator",
+                                    "category": [
+                                      {
+                                        "id": 713,
+                                        "name": "科技",
+                                        "icon_name": "IconBriefcaseStroke"
+                                      }
+                                    ]
+                                  },
+                                  "tipjar_settings": {}
+                                }
+                              },
+                              "userDisplayType": "User",
+                              "socialContext": {
+                                "type": "TimelineGeneralContext",
+                                "contextType": "Follow",
+                                "text": "lky🌟 及另外 9 人关注"
+                              }
+                            },
+                            "clientEventInfo": {
+                              "component": "suggest_who_to_follow",
+                              "element": "user",
+                              "details": {
+                                "timelinesDetails": {
+                                  "injectionType": "WhoToFollow",
+                                  "controllerData": "DAACDAACDAABCgABAAAAAAAAAEAAAAAA",
+                                  "sourceData": "DAABCgABfe1qmHEhBOAKAAIAAAAAAAAAAAAIAAIAAACDCAADAAAAAgwABQwAAgwAAgwAAQoAAQAAAAAAAABAAAAAAAA="
+                                }
+                              }
+                            }
+                          }
+                        }
+                      ],
+                      "displayType": "Vertical",
+                      "header": {
+                        "displayType": "Classic",
+                        "text": "Who to follow",
+                        "sticky": false
+                      },
+                      "footer": {
+                        "displayType": "Classic",
+                        "text": "显示更多",
+                        "landingUrl": {
+                          "url": "twitter://connect_people?user_id=1449274874317266945&display_location=profile_wtf_showmore",
+                          "urlType": "DeepLink"
+                        }
+                      },
+                      "clientEventInfo": {
+                        "component": "suggest_who_to_follow",
+                        "details": {
+                          "timelinesDetails": {
+                            "injectionType": "WhoToFollow",
+                            "controllerData": "DAACDAACDAABCgABAAAAAAAAAEAAAAAA",
+                            "sourceData": "DAABCgABfe1qmHEhBOAKAAIAAAAAAAAAAAAIAAIAAACDCAADAAAAAgwABQwAAgwAAgwAAQoAAQAAAAAAAABAAAAAAAA="
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "entryId": "tweet-1897951071454253466",
+                    "sortIndex": "1898753073916936186",
+                    "content": {
+                      "entryType": "TimelineTimelineItem",
+                      "__typename": "TimelineTimelineItem",
+                      "itemContent": {
+                        "itemType": "TimelineTweet",
+                        "__typename": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "rest_id": "1897951071454253466",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "id": "VXNlcjoxNDQ5Mjc0ODc0MzE3MjY2OTQ1",
+                                  "rest_id": "1449274874317266945",
+                                  "affiliates_highlighted_label": {},
+                                  "has_graduated_access": true,
+                                  "parody_commentary_fan_label": "None",
+                                  "is_blue_verified": true,
+                                  "profile_image_shape": "Circle",
+                                  "legacy": {
+                                    "notifications": true,
+                                    "following": true,
+                                    "can_dm": true,
+                                    "can_media_tag": false,
+                                    "created_at": "Sat Oct 16 07:24:02 +0000 2021",
+                                    "default_profile": true,
+                                    "default_profile_image": false,
+                                    "description": "瞎几把喊单的，找你接盘的，别买，骂我看不见。",
+                                    "entities": {
+                                      "description": {
+                                        "urls": []
+                                      }
+                                    },
+                                    "fast_followers_count": 0,
+                                    "favourites_count": 182,
+                                    "followers_count": 60314,
+                                    "friends_count": 377,
+                                    "has_custom_timelines": false,
+                                    "is_translator": false,
+                                    "listed_count": 1647,
+                                    "location": "",
+                                    "media_count": 37,
+                                    "name": "憨巴龙王",
+                                    "normal_followers_count": 60314,
+                                    "pinned_tweet_ids_str": [
+                                      "1875517860904366363"
+                                    ],
+                                    "possibly_sensitive": false,
+                                    "profile_image_url_https": "https://pbs.twimg.com/profile_images/1701493248269881344/uXTOJ_0J_normal.jpg",
+                                    "profile_interstitial_type": "",
+                                    "screen_name": "dotyyds1234",
+                                    "statuses_count": 1280,
+                                    "translator_type": "none",
+                                    "verified": false,
+                                    "want_retweets": true,
+                                    "withheld_in_countries": []
+                                  },
+                                  "tipjar_settings": {}
+                                }
+                              }
+                            },
+                            "unmention_data": {},
+                            "edit_control": {
+                              "edit_tweet_ids": [
+                                "1897951071454253466"
+                              ],
+                              "editable_until_msecs": "1741345372000",
+                              "is_edit_eligible": true,
+                              "edits_remaining": "5"
+                            },
+                            "is_translatable": false,
+                            "views": {
+                              "count": "252174",
+                              "state": "EnabledWithCount"
+                            },
+                            "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+                            "note_tweet": {
+                              "is_expandable": true,
+                              "note_tweet_results": {
+                                "result": {
+                                  "id": "Tm90ZVR3ZWV0OjE4OTc5NTEwNzE0MDQwMTU2MTc=",
+                                  "text": "我觉得吧，有些事情，经历过才能评价吧。\n\n我花钱认识的女大，别人一个月就只要2万，天天关心我，刚认识就给我送3000的鞋子，给我家人送金首饰。她知道我有多少钱，在一起半年了，从来不主动找我要礼物，要钱。\n\n我有时候就在想，你们都说花钱找到的不好，不花钱找的，如果知道我的资产，半年20万能打住吗？",
+                                  "entity_set": {
+                                    "hashtags": [],
+                                    "symbols": [],
+                                    "urls": [],
+                                    "user_mentions": []
+                                  }
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "bookmark_count": 88,
+                              "bookmarked": false,
+                              "created_at": "Fri Mar 07 10:02:52 +0000 2025",
+                              "conversation_id_str": "1897951071454253466",
+                              "display_text_range": [
+                                0,
+                                101
+                              ],
+                              "entities": {
+                                "hashtags": [],
+                                "symbols": [],
+                                "timestamps": [],
+                                "urls": [],
+                                "user_mentions": []
+                              },
+                              "favorite_count": 405,
+                              "favorited": false,
+                              "full_text": "我觉得吧，有些事情，经历过才能评价吧。\n\n我花钱认识的女大，别人一个月就只要2万，天天关心我，刚认识就给我送3000的鞋子，给我家人送金首饰。她知道我有多少钱，在一起半年了，从来不主动找我要礼物，要钱。",
+                              "is_quote_status": false,
+                              "lang": "zh",
+                              "quote_count": 4,
+                              "reply_count": 267,
+                              "retweet_count": 22,
+                              "retweeted": false,
+                              "user_id_str": "1449274874317266945",
+                              "id_str": "1897951071454253466"
+                            },
+                            "quick_promote_eligibility": {
+                              "eligibility": "IneligibleNotProfessional"
+                            }
+                          }
+                        },
+                        "tweetDisplayType": "Tweet"
+                      },
+                      "clientEventInfo": {
+                        "component": "tweet",
+                        "element": "tweet",
+                        "details": {
+                          "timelinesDetails": {
+                            "injectionType": "RankedOrganicTweet",
+                            "controllerData": "DAACDAABDAABCgABAAAAAAAAAAAKAAkTVHCX6dUQBgAAAAA="
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "entryId": "tweet-1897241704903905748",
+                    "sortIndex": "1898753073916936185",
+                    "content": {
+                      "entryType": "TimelineTimelineItem",
+                      "__typename": "TimelineTimelineItem",
+                      "itemContent": {
+                        "itemType": "TimelineTweet",
+                        "__typename": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "rest_id": "1897241704903905748",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "id": "VXNlcjoxNDQ5Mjc0ODc0MzE3MjY2OTQ1",
+                                  "rest_id": "1449274874317266945",
+                                  "affiliates_highlighted_label": {},
+                                  "has_graduated_access": true,
+                                  "parody_commentary_fan_label": "None",
+                                  "is_blue_verified": true,
+                                  "profile_image_shape": "Circle",
+                                  "legacy": {
+                                    "notifications": true,
+                                    "following": true,
+                                    "can_dm": true,
+                                    "can_media_tag": false,
+                                    "created_at": "Sat Oct 16 07:24:02 +0000 2021",
+                                    "default_profile": true,
+                                    "default_profile_image": false,
+                                    "description": "瞎几把喊单的，找你接盘的，别买，骂我看不见。",
+                                    "entities": {
+                                      "description": {
+                                        "urls": []
+                                      }
+                                    },
+                                    "fast_followers_count": 0,
+                                    "favourites_count": 182,
+                                    "followers_count": 60314,
+                                    "friends_count": 377,
+                                    "has_custom_timelines": false,
+                                    "is_translator": false,
+                                    "listed_count": 1647,
+                                    "location": "",
+                                    "media_count": 37,
+                                    "name": "憨巴龙王",
+                                    "normal_followers_count": 60314,
+                                    "pinned_tweet_ids_str": [
+                                      "1875517860904366363"
+                                    ],
+                                    "possibly_sensitive": false,
+                                    "profile_image_url_https": "https://pbs.twimg.com/profile_images/1701493248269881344/uXTOJ_0J_normal.jpg",
+                                    "profile_interstitial_type": "",
+                                    "screen_name": "dotyyds1234",
+                                    "statuses_count": 1280,
+                                    "translator_type": "none",
+                                    "verified": false,
+                                    "want_retweets": true,
+                                    "withheld_in_countries": []
+                                  },
+                                  "tipjar_settings": {}
+                                }
+                              }
+                            },
+                            "unmention_data": {},
+                            "edit_control": {
+                              "edit_tweet_ids": [
+                                "1897241704903905748"
+                              ],
+                              "editable_until_msecs": "1741176246000",
+                              "is_edit_eligible": true,
+                              "edits_remaining": "5"
+                            },
+                            "is_translatable": false,
+                            "views": {
+                              "count": "181044",
+                              "state": "EnabledWithCount"
+                            },
+                            "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+                            "legacy": {
+                              "bookmark_count": 13,
+                              "bookmarked": false,
+                              "created_at": "Wed Mar 05 11:04:06 +0000 2025",
+                              "conversation_id_str": "1897241704903905748",
+                              "display_text_range": [
+                                0,
+                                54
+                              ],
+                              "entities": {
+                                "hashtags": [],
+                                "symbols": [],
+                                "timestamps": [],
+                                "urls": [],
+                                "user_mentions": []
+                              },
+                              "favorite_count": 218,
+                              "favorited": false,
+                              "full_text": "准备把巴赫卖了。确实没啥用了，出门谁都不想开，争先恐后开问界。\n\n本来我朋友说接手的，现在一问，要买问界了。",
+                              "is_quote_status": false,
+                              "lang": "zh",
+                              "quote_count": 3,
+                              "reply_count": 137,
+                              "retweet_count": 6,
+                              "retweeted": false,
+                              "user_id_str": "1449274874317266945",
+                              "id_str": "1897241704903905748"
+                            },
+                            "quick_promote_eligibility": {
+                              "eligibility": "IneligibleNotProfessional"
+                            }
+                          }
+                        },
+                        "tweetDisplayType": "Tweet"
+                      },
+                      "clientEventInfo": {
+                        "component": "tweet",
+                        "element": "tweet",
+                        "details": {
+                          "timelinesDetails": {
+                            "injectionType": "RankedOrganicTweet",
+                            "controllerData": "DAACDAABDAABCgABAAAAAAAAAAAKAAkTVHCX6dUQBgAAAAA="
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "entryId": "tweet-1897184737837600989",
+                    "sortIndex": "1898753073916936184",
+                    "content": {
+                      "entryType": "TimelineTimelineItem",
+                      "__typename": "TimelineTimelineItem",
+                      "itemContent": {
+                        "itemType": "TimelineTweet",
+                        "__typename": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "rest_id": "1897184737837600989",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "id": "VXNlcjoxNDQ5Mjc0ODc0MzE3MjY2OTQ1",
+                                  "rest_id": "1449274874317266945",
+                                  "affiliates_highlighted_label": {},
+                                  "has_graduated_access": true,
+                                  "parody_commentary_fan_label": "None",
+                                  "is_blue_verified": true,
+                                  "profile_image_shape": "Circle",
+                                  "legacy": {
+                                    "notifications": true,
+                                    "following": true,
+                                    "can_dm": true,
+                                    "can_media_tag": false,
+                                    "created_at": "Sat Oct 16 07:24:02 +0000 2021",
+                                    "default_profile": true,
+                                    "default_profile_image": false,
+                                    "description": "瞎几把喊单的，找你接盘的，别买，骂我看不见。",
+                                    "entities": {
+                                      "description": {
+                                        "urls": []
+                                      }
+                                    },
+                                    "fast_followers_count": 0,
+                                    "favourites_count": 182,
+                                    "followers_count": 60314,
+                                    "friends_count": 377,
+                                    "has_custom_timelines": false,
+                                    "is_translator": false,
+                                    "listed_count": 1647,
+                                    "location": "",
+                                    "media_count": 37,
+                                    "name": "憨巴龙王",
+                                    "normal_followers_count": 60314,
+                                    "pinned_tweet_ids_str": [
+                                      "1875517860904366363"
+                                    ],
+                                    "possibly_sensitive": false,
+                                    "profile_image_url_https": "https://pbs.twimg.com/profile_images/1701493248269881344/uXTOJ_0J_normal.jpg",
+                                    "profile_interstitial_type": "",
+                                    "screen_name": "dotyyds1234",
+                                    "statuses_count": 1280,
+                                    "translator_type": "none",
+                                    "verified": false,
+                                    "want_retweets": true,
+                                    "withheld_in_countries": []
+                                  },
+                                  "tipjar_settings": {}
+                                }
+                              }
+                            },
+                            "unmention_data": {},
+                            "edit_control": {
+                              "edit_tweet_ids": [
+                                "1897184737837600989"
+                              ],
+                              "editable_until_msecs": "1741162664000",
+                              "is_edit_eligible": true,
+                              "edits_remaining": "5"
+                            },
+                            "is_translatable": false,
+                            "views": {
+                              "count": "340999",
+                              "state": "EnabledWithCount"
+                            },
+                            "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+                            "note_tweet": {
+                              "is_expandable": true,
+                              "note_tweet_results": {
+                                "result": {
+                                  "id": "Tm90ZVR3ZWV0OjE4OTcxODQ3Mzc3NjYzNjcyMzI=",
+                                  "text": "我上初中的时候，有一个小孩跟着混混大哥，借着大哥的名头作威作福，在大哥的授意下去调戏女生，狼狈为奸。\n\n后来这个小孩又去舔其他大哥，让这个大哥很不爽，最后这个小孩受到了校领导的赏识，校领导给他颁发了一个奖状。\n\n他借着这个奖状更加猖狂，在同学面前疯狂炫耀，趾高气昂。同学都非常的瞧不起他。\n\n大哥看着他混的这么好了，都巴结到校领导了，就更不爽了，所以就叫了一群人，把他打了一顿。\n\n就像其他的校园霸凌一样，大哥下手不是最狠的，有些人跟他一点关系都没，反而下了更重的死手。\n\n这个小孩被打了以后，就把大哥以前干的肮脏的事情都捅了出来。同学们不想得罪大哥，也不敢多出声，反而指责他不应该背叛大哥，被打就应该受着，不然连学校都待不下去。\n\n以上都是我编的。我也没有被校园霸凌过，反而我上初中的时候有个人一直欺负我，我们班的大哥看不下去叫了一群人把他打了一顿，但是我后来也没欺负他。\n\n我的人生路上一直有人照顾我，大哥初中辍学了，15年后我通过人找到了他，给了他3万，感谢当年他结束别人对我的欺凌。",
+                                  "entity_set": {
+                                    "hashtags": [],
+                                    "symbols": [],
+                                    "urls": [],
+                                    "user_mentions": []
+                                  }
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "bookmark_count": 40,
+                              "bookmarked": false,
+                              "created_at": "Wed Mar 05 07:17:44 +0000 2025",
+                              "conversation_id_str": "1897184737837600989",
+                              "display_text_range": [
+                                0,
+                                104
+                              ],
+                              "entities": {
+                                "hashtags": [],
+                                "symbols": [],
+                                "timestamps": [],
+                                "urls": [],
+                                "user_mentions": []
+                              },
+                              "favorite_count": 531,
+                              "favorited": false,
+                              "full_text": "我上初中的时候，有一个小孩跟着混混大哥，借着大哥的名头作威作福，在大哥的授意下去调戏女生，狼狈为奸。\n\n后来这个小孩又去舔其他大哥，让这个大哥很不爽，最后这个小孩受到了校领导的赏识，校领导给他颁发了一个奖状。",
+                              "is_quote_status": false,
+                              "lang": "zh",
+                              "quote_count": 11,
+                              "reply_count": 121,
+                              "retweet_count": 35,
+                              "retweeted": false,
+                              "user_id_str": "1449274874317266945",
+                              "id_str": "1897184737837600989"
+                            },
+                            "quick_promote_eligibility": {
+                              "eligibility": "IneligibleNotProfessional"
+                            }
+                          }
+                        },
+                        "tweetDisplayType": "Tweet"
+                      },
+                      "clientEventInfo": {
+                        "component": "tweet",
+                        "element": "tweet",
+                        "details": {
+                          "timelinesDetails": {
+                            "injectionType": "RankedOrganicTweet",
+                            "controllerData": "DAACDAABDAABCgABAAAAAAAAAAAKAAkTVHCX6dUQBgAAAAA="
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "entryId": "tweet-1897099430710624766",
+                    "sortIndex": "1898753073916936183",
+                    "content": {
+                      "entryType": "TimelineTimelineItem",
+                      "__typename": "TimelineTimelineItem",
+                      "itemContent": {
+                        "itemType": "TimelineTweet",
+                        "__typename": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "rest_id": "1897099430710624766",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "id": "VXNlcjoxNDQ5Mjc0ODc0MzE3MjY2OTQ1",
+                                  "rest_id": "1449274874317266945",
+                                  "affiliates_highlighted_label": {},
+                                  "has_graduated_access": true,
+                                  "parody_commentary_fan_label": "None",
+                                  "is_blue_verified": true,
+                                  "profile_image_shape": "Circle",
+                                  "legacy": {
+                                    "notifications": true,
+                                    "following": true,
+                                    "can_dm": true,
+                                    "can_media_tag": false,
+                                    "created_at": "Sat Oct 16 07:24:02 +0000 2021",
+                                    "default_profile": true,
+                                    "default_profile_image": false,
+                                    "description": "瞎几把喊单的，找你接盘的，别买，骂我看不见。",
+                                    "entities": {
+                                      "description": {
+                                        "urls": []
+                                      }
+                                    },
+                                    "fast_followers_count": 0,
+                                    "favourites_count": 182,
+                                    "followers_count": 60314,
+                                    "friends_count": 377,
+                                    "has_custom_timelines": false,
+                                    "is_translator": false,
+                                    "listed_count": 1647,
+                                    "location": "",
+                                    "media_count": 37,
+                                    "name": "憨巴龙王",
+                                    "normal_followers_count": 60314,
+                                    "pinned_tweet_ids_str": [
+                                      "1875517860904366363"
+                                    ],
+                                    "possibly_sensitive": false,
+                                    "profile_image_url_https": "https://pbs.twimg.com/profile_images/1701493248269881344/uXTOJ_0J_normal.jpg",
+                                    "profile_interstitial_type": "",
+                                    "screen_name": "dotyyds1234",
+                                    "statuses_count": 1280,
+                                    "translator_type": "none",
+                                    "verified": false,
+                                    "want_retweets": true,
+                                    "withheld_in_countries": []
+                                  },
+                                  "tipjar_settings": {}
+                                }
+                              }
+                            },
+                            "unmention_data": {},
+                            "edit_control": {
+                              "edit_tweet_ids": [
+                                "1897099430710624766"
+                              ],
+                              "editable_until_msecs": "1741142325000",
+                              "is_edit_eligible": true,
+                              "edits_remaining": "5"
+                            },
+                            "is_translatable": false,
+                            "views": {
+                              "count": "434555",
+                              "state": "EnabledWithCount"
+                            },
+                            "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+                            "note_tweet": {
+                              "is_expandable": true,
+                              "note_tweet_results": {
+                                "result": {
+                                  "id": "Tm90ZVR3ZWV0OjE4OTcwOTk0MzA2MjI1ODQ4MzY=",
+                                  "text": "我哭了一早上，我恨自己弱懦了，如果是以前，我一定会第一时间出来面对我看不惯的事情。\n\n我不是怕，我不怕以后没人带我赚钱，我不需要依靠任何人。\n\n我只是不想惹得一身骚，不想影响我的快乐生活，但还是影响睡眠了。\n\n我很早就知道一些事情了（保证是一手的，不是什么群传的），没你们想的那么简单。\n\n嗯哼是个小人，谁不恨一个背刺的人呢？嗯哼也一直巴结我，说个小插曲，他真的能想尽办法舔人，他记得我生日，在我生日给我发了188红包。（我微博公开过生日）\n\n但其实我也没理他，我觉得他到处舔，就是不靠谱的。\n\n但是呢，一大堆莫须有的罪名，\n\n1.80万来说，我也经常请人，但是怎么都不可能说为了一个小人物天天组局。你自己信吗？\n\n2.发币应该不是嗯哼发的，他就是个傻逼，被人利用站在台前的。至于是谁，你知道的。\n\n其他私生活的事呢，我没证据，但是根据可靠知情人爆料就是，很乱。我也不多说了。\n\n罪犯也是有人权的，犯了什么罪就是什么罪，不能把一大堆莫须有的罪名强加于他的身上。\n\n我觉得大多数都不知道实情，知道的可能也不会说，你在现实中也不会为一个罪犯申冤。更不可能说替罪犯得罪强权。\n\n再者，如果你们非要主观评价，那骂嗯哼的人，有多少黑料呢？",
+                                  "entity_set": {
+                                    "hashtags": [],
+                                    "symbols": [],
+                                    "urls": [],
+                                    "user_mentions": []
+                                  }
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "bookmark_count": 58,
+                              "bookmarked": false,
+                              "created_at": "Wed Mar 05 01:38:45 +0000 2025",
+                              "conversation_id_str": "1897099430710624766",
+                              "display_text_range": [
+                                0,
+                                143
+                              ],
+                              "entities": {
+                                "hashtags": [],
+                                "symbols": [],
+                                "timestamps": [],
+                                "urls": [],
+                                "user_mentions": []
+                              },
+                              "favorite_count": 663,
+                              "favorited": false,
+                              "full_text": "我哭了一早上，我恨自己弱懦了，如果是以前，我一定会第一时间出来面对我看不惯的事情。\n\n我不是怕，我不怕以后没人带我赚钱，我不需要依靠任何人。\n\n我只是不想惹得一身骚，不想影响我的快乐生活，但还是影响睡眠了。\n\n我很早就知道一些事情了（保证是一手的，不是什么群传的），没你们想的那么简单。",
+                              "is_quote_status": false,
+                              "lang": "zh",
+                              "quote_count": 27,
+                              "reply_count": 285,
+                              "retweet_count": 36,
+                              "retweeted": false,
+                              "user_id_str": "1449274874317266945",
+                              "id_str": "1897099430710624766"
+                            },
+                            "quick_promote_eligibility": {
+                              "eligibility": "IneligibleNotProfessional"
+                            }
+                          }
+                        },
+                        "tweetDisplayType": "Tweet"
+                      },
+                      "clientEventInfo": {
+                        "component": "tweet",
+                        "element": "tweet",
+                        "details": {
+                          "timelinesDetails": {
+                            "injectionType": "RankedOrganicTweet",
+                            "controllerData": "DAACDAABDAABCgABAAAAAAAAAAAKAAkTVHCX6dUQBgAAAAA="
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "entryId": "tweet-1897082794729501015",
+                    "sortIndex": "1898753073916936182",
+                    "content": {
+                      "entryType": "TimelineTimelineItem",
+                      "__typename": "TimelineTimelineItem",
+                      "itemContent": {
+                        "itemType": "TimelineTweet",
+                        "__typename": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "rest_id": "1897082794729501015",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "id": "VXNlcjoxNDQ5Mjc0ODc0MzE3MjY2OTQ1",
+                                  "rest_id": "1449274874317266945",
+                                  "affiliates_highlighted_label": {},
+                                  "has_graduated_access": true,
+                                  "parody_commentary_fan_label": "None",
+                                  "is_blue_verified": true,
+                                  "profile_image_shape": "Circle",
+                                  "legacy": {
+                                    "notifications": true,
+                                    "following": true,
+                                    "can_dm": true,
+                                    "can_media_tag": false,
+                                    "created_at": "Sat Oct 16 07:24:02 +0000 2021",
+                                    "default_profile": true,
+                                    "default_profile_image": false,
+                                    "description": "瞎几把喊单的，找你接盘的，别买，骂我看不见。",
+                                    "entities": {
+                                      "description": {
+                                        "urls": []
+                                      }
+                                    },
+                                    "fast_followers_count": 0,
+                                    "favourites_count": 182,
+                                    "followers_count": 60314,
+                                    "friends_count": 377,
+                                    "has_custom_timelines": false,
+                                    "is_translator": false,
+                                    "listed_count": 1647,
+                                    "location": "",
+                                    "media_count": 37,
+                                    "name": "憨巴龙王",
+                                    "normal_followers_count": 60314,
+                                    "pinned_tweet_ids_str": [
+                                      "1875517860904366363"
+                                    ],
+                                    "possibly_sensitive": false,
+                                    "profile_image_url_https": "https://pbs.twimg.com/profile_images/1701493248269881344/uXTOJ_0J_normal.jpg",
+                                    "profile_interstitial_type": "",
+                                    "screen_name": "dotyyds1234",
+                                    "statuses_count": 1280,
+                                    "translator_type": "none",
+                                    "verified": false,
+                                    "want_retweets": true,
+                                    "withheld_in_countries": []
+                                  },
+                                  "tipjar_settings": {}
+                                }
+                              }
+                            },
+                            "unmention_data": {},
+                            "edit_control": {
+                              "edit_tweet_ids": [
+                                "1897082794729501015"
+                              ],
+                              "editable_until_msecs": "1741138359000",
+                              "is_edit_eligible": true,
+                              "edits_remaining": "5"
+                            },
+                            "is_translatable": false,
+                            "views": {
+                              "count": "171450",
+                              "state": "EnabledWithCount"
+                            },
+                            "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+                            "legacy": {
+                              "bookmark_count": 22,
+                              "bookmarked": false,
+                              "created_at": "Wed Mar 05 00:32:39 +0000 2025",
+                              "conversation_id_str": "1897082794729501015",
+                              "display_text_range": [
+                                0,
+                                91
+                              ],
+                              "entities": {
+                                "hashtags": [],
+                                "symbols": [],
+                                "timestamps": [],
+                                "urls": [],
+                                "user_mentions": []
+                              },
+                              "favorite_count": 466,
+                              "favorited": false,
+                              "full_text": "真的就是真的，假的就是假的。为什么别人能爆我的私生活，让所有人嘲笑。而我不能反击，暴露别人的私生活？\n\n就是因为我没钱？没权？没势？长得丑？\n\n为什么玩双标，为什么被欺负了就要闭嘴？",
+                              "is_quote_status": false,
+                              "lang": "zh",
+                              "quote_count": 3,
+                              "reply_count": 97,
+                              "retweet_count": 18,
+                              "retweeted": false,
+                              "user_id_str": "1449274874317266945",
+                              "id_str": "1897082794729501015"
+                            },
+                            "quick_promote_eligibility": {
+                              "eligibility": "IneligibleNotProfessional"
+                            }
+                          }
+                        },
+                        "tweetDisplayType": "Tweet"
+                      },
+                      "clientEventInfo": {
+                        "component": "tweet",
+                        "element": "tweet",
+                        "details": {
+                          "timelinesDetails": {
+                            "injectionType": "RankedOrganicTweet",
+                            "controllerData": "DAACDAABDAABCgABAAAAAAAAAAAKAAkTVHCX6dUQBgAAAAA="
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "entryId": "tweet-1897078766792478754",
+                    "sortIndex": "1898753073916936181",
+                    "content": {
+                      "entryType": "TimelineTimelineItem",
+                      "__typename": "TimelineTimelineItem",
+                      "itemContent": {
+                        "itemType": "TimelineTweet",
+                        "__typename": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "rest_id": "1897078766792478754",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "id": "VXNlcjoxNDQ5Mjc0ODc0MzE3MjY2OTQ1",
+                                  "rest_id": "1449274874317266945",
+                                  "affiliates_highlighted_label": {},
+                                  "has_graduated_access": true,
+                                  "parody_commentary_fan_label": "None",
+                                  "is_blue_verified": true,
+                                  "profile_image_shape": "Circle",
+                                  "legacy": {
+                                    "notifications": true,
+                                    "following": true,
+                                    "can_dm": true,
+                                    "can_media_tag": false,
+                                    "created_at": "Sat Oct 16 07:24:02 +0000 2021",
+                                    "default_profile": true,
+                                    "default_profile_image": false,
+                                    "description": "瞎几把喊单的，找你接盘的，别买，骂我看不见。",
+                                    "entities": {
+                                      "description": {
+                                        "urls": []
+                                      }
+                                    },
+                                    "fast_followers_count": 0,
+                                    "favourites_count": 182,
+                                    "followers_count": 60314,
+                                    "friends_count": 377,
+                                    "has_custom_timelines": false,
+                                    "is_translator": false,
+                                    "listed_count": 1647,
+                                    "location": "",
+                                    "media_count": 37,
+                                    "name": "憨巴龙王",
+                                    "normal_followers_count": 60314,
+                                    "pinned_tweet_ids_str": [
+                                      "1875517860904366363"
+                                    ],
+                                    "possibly_sensitive": false,
+                                    "profile_image_url_https": "https://pbs.twimg.com/profile_images/1701493248269881344/uXTOJ_0J_normal.jpg",
+                                    "profile_interstitial_type": "",
+                                    "screen_name": "dotyyds1234",
+                                    "statuses_count": 1280,
+                                    "translator_type": "none",
+                                    "verified": false,
+                                    "want_retweets": true,
+                                    "withheld_in_countries": []
+                                  },
+                                  "tipjar_settings": {}
+                                }
+                              }
+                            },
+                            "unmention_data": {},
+                            "edit_control": {
+                              "edit_tweet_ids": [
+                                "1897078766792478754"
+                              ],
+                              "editable_until_msecs": "1741137398000",
+                              "is_edit_eligible": true,
+                              "edits_remaining": "5"
+                            },
+                            "is_translatable": false,
+                            "views": {
+                              "count": "56399",
+                              "state": "EnabledWithCount"
+                            },
+                            "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+                            "legacy": {
+                              "bookmark_count": 3,
+                              "bookmarked": false,
+                              "created_at": "Wed Mar 05 00:16:38 +0000 2025",
+                              "conversation_id_str": "1897078766792478754",
+                              "display_text_range": [
+                                0,
+                                32
+                              ],
+                              "entities": {
+                                "hashtags": [],
+                                "symbols": [],
+                                "timestamps": [],
+                                "urls": [],
+                                "user_mentions": []
+                              },
+                              "favorite_count": 107,
+                              "favorited": false,
+                              "full_text": "如果一个人犯罪了，但是被黑恶势力强加了莫须有的罪名，应该怎么办。",
+                              "is_quote_status": false,
+                              "lang": "zh",
+                              "quote_count": 0,
+                              "reply_count": 54,
+                              "retweet_count": 0,
+                              "retweeted": false,
+                              "user_id_str": "1449274874317266945",
+                              "id_str": "1897078766792478754"
+                            },
+                            "quick_promote_eligibility": {
+                              "eligibility": "IneligibleNotProfessional"
+                            }
+                          }
+                        },
+                        "tweetDisplayType": "Tweet"
+                      },
+                      "clientEventInfo": {
+                        "component": "tweet",
+                        "element": "tweet",
+                        "details": {
+                          "timelinesDetails": {
+                            "injectionType": "RankedOrganicTweet",
+                            "controllerData": "DAACDAABDAABCgABAAAAAAAAAAAKAAkTVHCX6dUQBgAAAAA="
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "entryId": "tweet-1897071534466064873",
+                    "sortIndex": "1898753073916936180",
+                    "content": {
+                      "entryType": "TimelineTimelineItem",
+                      "__typename": "TimelineTimelineItem",
+                      "itemContent": {
+                        "itemType": "TimelineTweet",
+                        "__typename": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "rest_id": "1897071534466064873",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "id": "VXNlcjoxNDQ5Mjc0ODc0MzE3MjY2OTQ1",
+                                  "rest_id": "1449274874317266945",
+                                  "affiliates_highlighted_label": {},
+                                  "has_graduated_access": true,
+                                  "parody_commentary_fan_label": "None",
+                                  "is_blue_verified": true,
+                                  "profile_image_shape": "Circle",
+                                  "legacy": {
+                                    "notifications": true,
+                                    "following": true,
+                                    "can_dm": true,
+                                    "can_media_tag": false,
+                                    "created_at": "Sat Oct 16 07:24:02 +0000 2021",
+                                    "default_profile": true,
+                                    "default_profile_image": false,
+                                    "description": "瞎几把喊单的，找你接盘的，别买，骂我看不见。",
+                                    "entities": {
+                                      "description": {
+                                        "urls": []
+                                      }
+                                    },
+                                    "fast_followers_count": 0,
+                                    "favourites_count": 182,
+                                    "followers_count": 60314,
+                                    "friends_count": 377,
+                                    "has_custom_timelines": false,
+                                    "is_translator": false,
+                                    "listed_count": 1647,
+                                    "location": "",
+                                    "media_count": 37,
+                                    "name": "憨巴龙王",
+                                    "normal_followers_count": 60314,
+                                    "pinned_tweet_ids_str": [
+                                      "1875517860904366363"
+                                    ],
+                                    "possibly_sensitive": false,
+                                    "profile_image_url_https": "https://pbs.twimg.com/profile_images/1701493248269881344/uXTOJ_0J_normal.jpg",
+                                    "profile_interstitial_type": "",
+                                    "screen_name": "dotyyds1234",
+                                    "statuses_count": 1280,
+                                    "translator_type": "none",
+                                    "verified": false,
+                                    "want_retweets": true,
+                                    "withheld_in_countries": []
+                                  },
+                                  "tipjar_settings": {}
+                                }
+                              }
+                            },
+                            "unmention_data": {},
+                            "edit_control": {
+                              "edit_tweet_ids": [
+                                "1897071534466064873"
+                              ],
+                              "editable_until_msecs": "1741135674000",
+                              "is_edit_eligible": true,
+                              "edits_remaining": "5"
+                            },
+                            "is_translatable": false,
+                            "views": {
+                              "count": "72944",
+                              "state": "EnabledWithCount"
+                            },
+                            "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+                            "legacy": {
+                              "bookmark_count": 6,
+                              "bookmarked": false,
+                              "created_at": "Tue Mar 04 23:47:54 +0000 2025",
+                              "conversation_id_str": "1897071534466064873",
+                              "display_text_range": [
+                                0,
+                                130
+                              ],
+                              "entities": {
+                                "hashtags": [],
+                                "symbols": [],
+                                "timestamps": [],
+                                "urls": [],
+                                "user_mentions": []
+                              },
+                              "favorite_count": 177,
+                              "favorited": false,
+                              "full_text": "昨晚做了一个梦，梦见我骂了一个混社会的，他带着100多个人追我。最后把我逼到墙角，那种无力感。\n\n我想摇人，但是我看了下好友列表，就算全来，都没他们人多。而且我感觉也没有人会帮我，他们人太多了，帮我也要被挨打。\n\n这种无力感，让我陷入的深深的绝望。最后惊醒了。",
+                              "is_quote_status": false,
+                              "lang": "zh",
+                              "quote_count": 0,
+                              "reply_count": 70,
+                              "retweet_count": 1,
+                              "retweeted": false,
+                              "user_id_str": "1449274874317266945",
+                              "id_str": "1897071534466064873"
+                            },
+                            "quick_promote_eligibility": {
+                              "eligibility": "IneligibleNotProfessional"
+                            }
+                          }
+                        },
+                        "tweetDisplayType": "Tweet"
+                      },
+                      "clientEventInfo": {
+                        "component": "tweet",
+                        "element": "tweet",
+                        "details": {
+                          "timelinesDetails": {
+                            "injectionType": "RankedOrganicTweet",
+                            "controllerData": "DAACDAABDAABCgABAAAAAAAAAAAKAAkTVHCX6dUQBgAAAAA="
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "entryId": "tweet-1896969860258955344",
+                    "sortIndex": "1898753073916936179",
+                    "content": {
+                      "entryType": "TimelineTimelineItem",
+                      "__typename": "TimelineTimelineItem",
+                      "itemContent": {
+                        "itemType": "TimelineTweet",
+                        "__typename": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "rest_id": "1896969860258955344",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "id": "VXNlcjoxNDQ5Mjc0ODc0MzE3MjY2OTQ1",
+                                  "rest_id": "1449274874317266945",
+                                  "affiliates_highlighted_label": {},
+                                  "has_graduated_access": true,
+                                  "parody_commentary_fan_label": "None",
+                                  "is_blue_verified": true,
+                                  "profile_image_shape": "Circle",
+                                  "legacy": {
+                                    "notifications": true,
+                                    "following": true,
+                                    "can_dm": true,
+                                    "can_media_tag": false,
+                                    "created_at": "Sat Oct 16 07:24:02 +0000 2021",
+                                    "default_profile": true,
+                                    "default_profile_image": false,
+                                    "description": "瞎几把喊单的，找你接盘的，别买，骂我看不见。",
+                                    "entities": {
+                                      "description": {
+                                        "urls": []
+                                      }
+                                    },
+                                    "fast_followers_count": 0,
+                                    "favourites_count": 182,
+                                    "followers_count": 60314,
+                                    "friends_count": 377,
+                                    "has_custom_timelines": false,
+                                    "is_translator": false,
+                                    "listed_count": 1647,
+                                    "location": "",
+                                    "media_count": 37,
+                                    "name": "憨巴龙王",
+                                    "normal_followers_count": 60314,
+                                    "pinned_tweet_ids_str": [
+                                      "1875517860904366363"
+                                    ],
+                                    "possibly_sensitive": false,
+                                    "profile_image_url_https": "https://pbs.twimg.com/profile_images/1701493248269881344/uXTOJ_0J_normal.jpg",
+                                    "profile_interstitial_type": "",
+                                    "screen_name": "dotyyds1234",
+                                    "statuses_count": 1280,
+                                    "translator_type": "none",
+                                    "verified": false,
+                                    "want_retweets": true,
+                                    "withheld_in_countries": []
+                                  },
+                                  "tipjar_settings": {}
+                                }
+                              }
+                            },
+                            "unmention_data": {},
+                            "edit_control": {
+                              "edit_tweet_ids": [
+                                "1896969860258955344"
+                              ],
+                              "editable_until_msecs": "1741111433000",
+                              "is_edit_eligible": true,
+                              "edits_remaining": "5"
+                            },
+                            "is_translatable": false,
+                            "views": {
+                              "count": "148269",
+                              "state": "EnabledWithCount"
+                            },
+                            "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+                            "legacy": {
+                              "bookmark_count": 18,
+                              "bookmarked": false,
+                              "created_at": "Tue Mar 04 17:03:53 +0000 2025",
+                              "conversation_id_str": "1896969860258955344",
+                              "display_text_range": [
+                                0,
+                                36
+                              ],
+                              "entities": {
+                                "hashtags": [],
+                                "symbols": [],
+                                "timestamps": [],
+                                "urls": [],
+                                "user_mentions": []
+                              },
+                              "favorite_count": 283,
+                              "favorited": false,
+                              "full_text": "风无向跟我说我，永远不要搞圈内的女生。\n\n所以我从来不跟圈内的女生聊天。",
+                              "is_quote_status": false,
+                              "lang": "zh",
+                              "quote_count": 1,
+                              "reply_count": 79,
+                              "retweet_count": 5,
+                              "retweeted": false,
+                              "user_id_str": "1449274874317266945",
+                              "id_str": "1896969860258955344"
+                            },
+                            "quick_promote_eligibility": {
+                              "eligibility": "IneligibleNotProfessional"
+                            }
+                          }
+                        },
+                        "tweetDisplayType": "Tweet"
+                      },
+                      "clientEventInfo": {
+                        "component": "tweet",
+                        "element": "tweet",
+                        "details": {
+                          "timelinesDetails": {
+                            "injectionType": "RankedOrganicTweet",
+                            "controllerData": "DAACDAABDAABCgABAAAAAAAAAAAKAAkTVHCX6dUQBgAAAAA="
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "entryId": "tweet-1896952718717337845",
+                    "sortIndex": "1898753073916936178",
+                    "content": {
+                      "entryType": "TimelineTimelineItem",
+                      "__typename": "TimelineTimelineItem",
+                      "itemContent": {
+                        "itemType": "TimelineTweet",
+                        "__typename": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "rest_id": "1896952718717337845",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "id": "VXNlcjoxNDQ5Mjc0ODc0MzE3MjY2OTQ1",
+                                  "rest_id": "1449274874317266945",
+                                  "affiliates_highlighted_label": {},
+                                  "has_graduated_access": true,
+                                  "parody_commentary_fan_label": "None",
+                                  "is_blue_verified": true,
+                                  "profile_image_shape": "Circle",
+                                  "legacy": {
+                                    "notifications": true,
+                                    "following": true,
+                                    "can_dm": true,
+                                    "can_media_tag": false,
+                                    "created_at": "Sat Oct 16 07:24:02 +0000 2021",
+                                    "default_profile": true,
+                                    "default_profile_image": false,
+                                    "description": "瞎几把喊单的，找你接盘的，别买，骂我看不见。",
+                                    "entities": {
+                                      "description": {
+                                        "urls": []
+                                      }
+                                    },
+                                    "fast_followers_count": 0,
+                                    "favourites_count": 182,
+                                    "followers_count": 60314,
+                                    "friends_count": 377,
+                                    "has_custom_timelines": false,
+                                    "is_translator": false,
+                                    "listed_count": 1647,
+                                    "location": "",
+                                    "media_count": 37,
+                                    "name": "憨巴龙王",
+                                    "normal_followers_count": 60314,
+                                    "pinned_tweet_ids_str": [
+                                      "1875517860904366363"
+                                    ],
+                                    "possibly_sensitive": false,
+                                    "profile_image_url_https": "https://pbs.twimg.com/profile_images/1701493248269881344/uXTOJ_0J_normal.jpg",
+                                    "profile_interstitial_type": "",
+                                    "screen_name": "dotyyds1234",
+                                    "statuses_count": 1280,
+                                    "translator_type": "none",
+                                    "verified": false,
+                                    "want_retweets": true,
+                                    "withheld_in_countries": []
+                                  },
+                                  "tipjar_settings": {}
+                                }
+                              }
+                            },
+                            "unmention_data": {},
+                            "edit_control": {
+                              "edit_tweet_ids": [
+                                "1896952718717337845"
+                              ],
+                              "editable_until_msecs": "1741107346000",
+                              "is_edit_eligible": true,
+                              "edits_remaining": "5"
+                            },
+                            "is_translatable": false,
+                            "views": {
+                              "count": "78811",
+                              "state": "EnabledWithCount"
+                            },
+                            "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+                            "legacy": {
+                              "bookmark_count": 6,
+                              "bookmarked": false,
+                              "created_at": "Tue Mar 04 15:55:46 +0000 2025",
+                              "conversation_id_str": "1896952718717337845",
+                              "display_text_range": [
+                                0,
+                                19
+                              ],
+                              "entities": {
+                                "hashtags": [],
+                                "symbols": [],
+                                "timestamps": [],
+                                "urls": [],
+                                "user_mentions": []
+                              },
+                              "favorite_count": 86,
+                              "favorited": false,
+                              "full_text": "一晚上全网in11了？有人能带我去吗？",
+                              "is_quote_status": false,
+                              "lang": "zh",
+                              "quote_count": 0,
+                              "reply_count": 45,
+                              "retweet_count": 0,
+                              "retweeted": false,
+                              "user_id_str": "1449274874317266945",
+                              "id_str": "1896952718717337845"
+                            },
+                            "quick_promote_eligibility": {
+                              "eligibility": "IneligibleNotProfessional"
+                            }
+                          }
+                        },
+                        "tweetDisplayType": "Tweet"
+                      },
+                      "clientEventInfo": {
+                        "component": "tweet",
+                        "element": "tweet",
+                        "details": {
+                          "timelinesDetails": {
+                            "injectionType": "RankedOrganicTweet",
+                            "controllerData": "DAACDAABDAABCgABAAAAAAAAAAAKAAkTVHCX6dUQBgAAAAA="
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "entryId": "tweet-1896760993239400697",
+                    "sortIndex": "1898753073916936177",
+                    "content": {
+                      "entryType": "TimelineTimelineItem",
+                      "__typename": "TimelineTimelineItem",
+                      "itemContent": {
+                        "itemType": "TimelineTweet",
+                        "__typename": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "rest_id": "1896760993239400697",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "id": "VXNlcjoxNDQ5Mjc0ODc0MzE3MjY2OTQ1",
+                                  "rest_id": "1449274874317266945",
+                                  "affiliates_highlighted_label": {},
+                                  "has_graduated_access": true,
+                                  "parody_commentary_fan_label": "None",
+                                  "is_blue_verified": true,
+                                  "profile_image_shape": "Circle",
+                                  "legacy": {
+                                    "notifications": true,
+                                    "following": true,
+                                    "can_dm": true,
+                                    "can_media_tag": false,
+                                    "created_at": "Sat Oct 16 07:24:02 +0000 2021",
+                                    "default_profile": true,
+                                    "default_profile_image": false,
+                                    "description": "瞎几把喊单的，找你接盘的，别买，骂我看不见。",
+                                    "entities": {
+                                      "description": {
+                                        "urls": []
+                                      }
+                                    },
+                                    "fast_followers_count": 0,
+                                    "favourites_count": 182,
+                                    "followers_count": 60314,
+                                    "friends_count": 377,
+                                    "has_custom_timelines": false,
+                                    "is_translator": false,
+                                    "listed_count": 1647,
+                                    "location": "",
+                                    "media_count": 37,
+                                    "name": "憨巴龙王",
+                                    "normal_followers_count": 60314,
+                                    "pinned_tweet_ids_str": [
+                                      "1875517860904366363"
+                                    ],
+                                    "possibly_sensitive": false,
+                                    "profile_image_url_https": "https://pbs.twimg.com/profile_images/1701493248269881344/uXTOJ_0J_normal.jpg",
+                                    "profile_interstitial_type": "",
+                                    "screen_name": "dotyyds1234",
+                                    "statuses_count": 1280,
+                                    "translator_type": "none",
+                                    "verified": false,
+                                    "want_retweets": true,
+                                    "withheld_in_countries": []
+                                  },
+                                  "tipjar_settings": {}
+                                }
+                              }
+                            },
+                            "unmention_data": {},
+                            "edit_control": {
+                              "edit_tweet_ids": [
+                                "1896760993239400697"
+                              ],
+                              "editable_until_msecs": "1741061635000",
+                              "is_edit_eligible": true,
+                              "edits_remaining": "5"
+                            },
+                            "is_translatable": false,
+                            "views": {
+                              "count": "130488",
+                              "state": "EnabledWithCount"
+                            },
+                            "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+                            "note_tweet": {
+                              "is_expandable": true,
+                              "note_tweet_results": {
+                                "result": {
+                                  "id": "Tm90ZVR3ZWV0OjE4OTY3NjA5OTMxNzY1NTE0MjQ=",
+                                  "text": "不要总是问我有没有牛，熊了吗。我是典型的不预测，只跟随。\n\n即便我预测了，我也不会坚信自己的预测，一旦有不好的事件驱动，我就会立马跟随行情。\n\n我在去年的时候，确实相信trump上台会发政策，会通过eth etf，会放水，会有牛市，所以我买了eth。\n\n但是最后没发政策，发了老婆币，我就全跑了。所以我很少公开讨论几个月后一定怎么样，大多数时候只是讨论近期的情况，而且也只有一小部分时间能有确定性，大多数时候都很无序。",
+                                  "entity_set": {
+                                    "hashtags": [],
+                                    "symbols": [],
+                                    "urls": [],
+                                    "user_mentions": []
+                                  }
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "bookmark_count": 80,
+                              "bookmarked": false,
+                              "created_at": "Tue Mar 04 03:13:55 +0000 2025",
+                              "conversation_id_str": "1896760993239400697",
+                              "display_text_range": [
+                                0,
+                                125
+                              ],
+                              "entities": {
+                                "hashtags": [],
+                                "symbols": [],
+                                "timestamps": [],
+                                "urls": [],
+                                "user_mentions": []
+                              },
+                              "favorite_count": 386,
+                              "favorited": false,
+                              "full_text": "不要总是问我有没有牛，熊了吗。我是典型的不预测，只跟随。\n\n即便我预测了，我也不会坚信自己的预测，一旦有不好的事件驱动，我就会立马跟随行情。\n\n我在去年的时候，确实相信trump上台会发政策，会通过eth etf，会放水，会有牛市，所以我买了eth。",
+                              "is_quote_status": false,
+                              "lang": "zh",
+                              "quote_count": 5,
+                              "reply_count": 55,
+                              "retweet_count": 29,
+                              "retweeted": false,
+                              "user_id_str": "1449274874317266945",
+                              "id_str": "1896760993239400697"
+                            },
+                            "quick_promote_eligibility": {
+                              "eligibility": "IneligibleNotProfessional"
+                            }
+                          }
+                        },
+                        "tweetDisplayType": "Tweet"
+                      },
+                      "clientEventInfo": {
+                        "component": "tweet",
+                        "element": "tweet",
+                        "details": {
+                          "timelinesDetails": {
+                            "injectionType": "RankedOrganicTweet",
+                            "controllerData": "DAACDAABDAABCgABAAAAAAAAAAAKAAkTVHCX6dUQBgAAAAA="
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "entryId": "tweet-1896755500592812441",
+                    "sortIndex": "1898753073916936176",
+                    "content": {
+                      "entryType": "TimelineTimelineItem",
+                      "__typename": "TimelineTimelineItem",
+                      "itemContent": {
+                        "itemType": "TimelineTweet",
+                        "__typename": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "rest_id": "1896755500592812441",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "id": "VXNlcjoxNDQ5Mjc0ODc0MzE3MjY2OTQ1",
+                                  "rest_id": "1449274874317266945",
+                                  "affiliates_highlighted_label": {},
+                                  "has_graduated_access": true,
+                                  "parody_commentary_fan_label": "None",
+                                  "is_blue_verified": true,
+                                  "profile_image_shape": "Circle",
+                                  "legacy": {
+                                    "notifications": true,
+                                    "following": true,
+                                    "can_dm": true,
+                                    "can_media_tag": false,
+                                    "created_at": "Sat Oct 16 07:24:02 +0000 2021",
+                                    "default_profile": true,
+                                    "default_profile_image": false,
+                                    "description": "瞎几把喊单的，找你接盘的，别买，骂我看不见。",
+                                    "entities": {
+                                      "description": {
+                                        "urls": []
+                                      }
+                                    },
+                                    "fast_followers_count": 0,
+                                    "favourites_count": 182,
+                                    "followers_count": 60314,
+                                    "friends_count": 377,
+                                    "has_custom_timelines": false,
+                                    "is_translator": false,
+                                    "listed_count": 1647,
+                                    "location": "",
+                                    "media_count": 37,
+                                    "name": "憨巴龙王",
+                                    "normal_followers_count": 60314,
+                                    "pinned_tweet_ids_str": [
+                                      "1875517860904366363"
+                                    ],
+                                    "possibly_sensitive": false,
+                                    "profile_image_url_https": "https://pbs.twimg.com/profile_images/1701493248269881344/uXTOJ_0J_normal.jpg",
+                                    "profile_interstitial_type": "",
+                                    "screen_name": "dotyyds1234",
+                                    "statuses_count": 1280,
+                                    "translator_type": "none",
+                                    "verified": false,
+                                    "want_retweets": true,
+                                    "withheld_in_countries": []
+                                  },
+                                  "tipjar_settings": {}
+                                }
+                              }
+                            },
+                            "unmention_data": {},
+                            "edit_control": {
+                              "edit_tweet_ids": [
+                                "1896755500592812441"
+                              ],
+                              "editable_until_msecs": "1741060326000",
+                              "is_edit_eligible": true,
+                              "edits_remaining": "5"
+                            },
+                            "is_translatable": false,
+                            "views": {
+                              "count": "210558",
+                              "state": "EnabledWithCount"
+                            },
+                            "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+                            "note_tweet": {
+                              "is_expandable": true,
+                              "note_tweet_results": {
+                                "result": {
+                                  "id": "Tm90ZVR3ZWV0OjE4OTY3NTU1MDA1MjU2OTkwNzI=",
+                                  "text": "跟大大行情基本一模一样，19年10月25号那天晚上发的新闻联播，一开始还好，到了12点直接爆了。\n\nBtc一晚上涨了50%，然后就是无限阴跌，跌了半个月回去了。\n\n现在都是聪明人越来越多以及美股的利空，所以行情走的越来越快了。\n\n前段时间山寨也是，半个月等于18年一年的走势。\n\n我以前就是背k线，我觉得是有用的，历史总是押韵的。当然，也不要死记硬背，一些关键行情是什么原因导致的走势最重要。",
+                                  "entity_set": {
+                                    "hashtags": [],
+                                    "symbols": [],
+                                    "urls": [],
+                                    "user_mentions": []
+                                  }
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "bookmark_count": 123,
+                              "bookmarked": false,
+                              "created_at": "Tue Mar 04 02:52:06 +0000 2025",
+                              "conversation_id_str": "1896755500592812441",
+                              "display_text_range": [
+                                0,
+                                138
+                              ],
+                              "entities": {
+                                "hashtags": [],
+                                "symbols": [],
+                                "timestamps": [],
+                                "urls": [],
+                                "user_mentions": []
+                              },
+                              "favorite_count": 505,
+                              "favorited": true,
+                              "full_text": "跟大大行情基本一模一样，19年10月25号那天晚上发的新闻联播，一开始还好，到了12点直接爆了。\n\nBtc一晚上涨了50%，然后就是无限阴跌，跌了半个月回去了。\n\n现在都是聪明人越来越多以及美股的利空，所以行情走的越来越快了。\n\n前段时间山寨也是，半个月等于18年一年的走势。",
+                              "is_quote_status": false,
+                              "lang": "zh",
+                              "quote_count": 4,
+                              "reply_count": 77,
+                              "retweet_count": 44,
+                              "retweeted": false,
+                              "user_id_str": "1449274874317266945",
+                              "id_str": "1896755500592812441"
+                            },
+                            "quick_promote_eligibility": {
+                              "eligibility": "IneligibleNotProfessional"
+                            }
+                          }
+                        },
+                        "tweetDisplayType": "Tweet"
+                      },
+                      "clientEventInfo": {
+                        "component": "tweet",
+                        "element": "tweet",
+                        "details": {
+                          "timelinesDetails": {
+                            "injectionType": "RankedOrganicTweet",
+                            "controllerData": "DAACDAABDAABCgABAAAAAAAAAAAKAAkTVHCX6dUQBgAAAAA="
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "entryId": "profile-conversation-1898753073916936209",
+                    "sortIndex": "1898753073916936175",
+                    "content": {
+                      "entryType": "TimelineTimelineModule",
+                      "__typename": "TimelineTimelineModule",
+                      "items": [
+                        {
+                          "entryId": "profile-conversation-1898753073916936209-tweet-1896670471401455699",
+                          "dispensable": true,
+                          "item": {
+                            "itemContent": {
+                              "itemType": "TimelineTweet",
+                              "__typename": "TimelineTweet",
+                              "tweet_results": {
+                                "result": {
+                                  "__typename": "Tweet",
+                                  "rest_id": "1896670471401455699",
+                                  "core": {
+                                    "user_results": {
+                                      "result": {
+                                        "__typename": "User",
+                                        "id": "VXNlcjoxNDQ5Mjc0ODc0MzE3MjY2OTQ1",
+                                        "rest_id": "1449274874317266945",
+                                        "affiliates_highlighted_label": {},
+                                        "has_graduated_access": true,
+                                        "parody_commentary_fan_label": "None",
+                                        "is_blue_verified": true,
+                                        "profile_image_shape": "Circle",
+                                        "legacy": {
+                                          "notifications": true,
+                                          "following": true,
+                                          "can_dm": true,
+                                          "can_media_tag": false,
+                                          "created_at": "Sat Oct 16 07:24:02 +0000 2021",
+                                          "default_profile": true,
+                                          "default_profile_image": false,
+                                          "description": "瞎几把喊单的，找你接盘的，别买，骂我看不见。",
+                                          "entities": {
+                                            "description": {
+                                              "urls": []
+                                            }
+                                          },
+                                          "fast_followers_count": 0,
+                                          "favourites_count": 182,
+                                          "followers_count": 60314,
+                                          "friends_count": 377,
+                                          "has_custom_timelines": false,
+                                          "is_translator": false,
+                                          "listed_count": 1647,
+                                          "location": "",
+                                          "media_count": 37,
+                                          "name": "憨巴龙王",
+                                          "normal_followers_count": 60314,
+                                          "pinned_tweet_ids_str": [
+                                            "1875517860904366363"
+                                          ],
+                                          "possibly_sensitive": false,
+                                          "profile_image_url_https": "https://pbs.twimg.com/profile_images/1701493248269881344/uXTOJ_0J_normal.jpg",
+                                          "profile_interstitial_type": "",
+                                          "screen_name": "dotyyds1234",
+                                          "statuses_count": 1280,
+                                          "translator_type": "none",
+                                          "verified": false,
+                                          "want_retweets": true,
+                                          "withheld_in_countries": []
+                                        },
+                                        "tipjar_settings": {}
+                                      }
+                                    }
+                                  },
+                                  "unmention_data": {},
+                                  "edit_control": {
+                                    "edit_tweet_ids": [
+                                      "1896670471401455699"
+                                    ],
+                                    "editable_until_msecs": "1741040053000",
+                                    "is_edit_eligible": false,
+                                    "edits_remaining": "5"
+                                  },
+                                  "is_translatable": false,
+                                  "views": {
+                                    "count": "242223",
+                                    "state": "EnabledWithCount"
+                                  },
+                                  "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+                                  "note_tweet": {
+                                    "is_expandable": true,
+                                    "note_tweet_results": {
+                                      "result": {
+                                        "id": "Tm90ZVR3ZWV0OjE4OTY2NzA0NzEzMTc1NTMxNTI=",
+                                        "text": "自己运气真好，21年开始，几个大顶全逃了，所以基本0回撤。这回更是有意思。虽然最后没买trump，但是把eth换了sol。\n\n然后在老婆币出来后大幅减仓，trump正式就职没提到币圈以后全部清仓。均价卖在265了。等于3800卖了e。\n\n如果没这波换sol，可能又要跟去年一样，被eth坑一手。\n\n基本都是防守取胜的，这个赚一点，那个赚一点，日积月累堆的。没有暴富，没有beta，很累。\n\n回想起来，我这种玩法，最艰难的时刻就是像别人Trump 赚了大钱的那几天，我日思夜想的睡不着，但是也不想去追，也不想乱操作，只要一直不买就不会亏钱。",
+                                        "entity_set": {
+                                          "hashtags": [],
+                                          "symbols": [],
+                                          "urls": [],
+                                          "user_mentions": []
+                                        }
+                                      }
+                                    }
+                                  },
+                                  "legacy": {
+                                    "bookmark_count": 172,
+                                    "bookmarked": false,
+                                    "created_at": "Mon Mar 03 21:14:13 +0000 2025",
+                                    "conversation_id_str": "1896670471401455699",
+                                    "display_text_range": [
+                                      0,
+                                      147
+                                    ],
+                                    "entities": {
+                                      "hashtags": [],
+                                      "symbols": [],
+                                      "timestamps": [],
+                                      "urls": [],
+                                      "user_mentions": []
+                                    },
+                                    "favorite_count": 711,
+                                    "favorited": false,
+                                    "full_text": "自己运气真好，21年开始，几个大顶全逃了，所以基本0回撤。这回更是有意思。虽然最后没买trump，但是把eth换了sol。\n\n然后在老婆币出来后大幅减仓，trump正式就职没提到币圈以后全部清仓。均价卖在265了。等于3800卖了e。\n\n如果没这波换sol，可能又要跟去年一样，被eth坑一手。",
+                                    "is_quote_status": false,
+                                    "lang": "zh",
+                                    "quote_count": 8,
+                                    "reply_count": 105,
+                                    "retweet_count": 73,
+                                    "retweeted": false,
+                                    "user_id_str": "1449274874317266945",
+                                    "id_str": "1896670471401455699"
+                                  },
+                                  "quick_promote_eligibility": {
+                                    "eligibility": "IneligibleNotProfessional"
+                                  }
+                                }
+                              },
+                              "tweetDisplayType": "Tweet"
+                            },
+                            "clientEventInfo": {
+                              "component": "tweet",
+                              "element": "tweet",
+                              "details": {
+                                "timelinesDetails": {
+                                  "injectionType": "RankedOrganicTweet",
+                                  "controllerData": "DAACDAABDAABCgABAAAAAAAAAAAKAAkTVHCX6dUQBgAAAAA="
+                                }
+                              }
+                            }
+                          }
+                        },
+                        {
+                          "entryId": "profile-conversation-1898753073916936209-tweet-1896672757167129085",
+                          "dispensable": false,
+                          "item": {
+                            "itemContent": {
+                              "itemType": "TimelineTweet",
+                              "__typename": "TimelineTweet",
+                              "tweet_results": {
+                                "result": {
+                                  "__typename": "Tweet",
+                                  "rest_id": "1896672757167129085",
+                                  "core": {
+                                    "user_results": {
+                                      "result": {
+                                        "__typename": "User",
+                                        "id": "VXNlcjoxNDQ5Mjc0ODc0MzE3MjY2OTQ1",
+                                        "rest_id": "1449274874317266945",
+                                        "affiliates_highlighted_label": {},
+                                        "has_graduated_access": true,
+                                        "parody_commentary_fan_label": "None",
+                                        "is_blue_verified": true,
+                                        "profile_image_shape": "Circle",
+                                        "legacy": {
+                                          "notifications": true,
+                                          "following": true,
+                                          "can_dm": true,
+                                          "can_media_tag": false,
+                                          "created_at": "Sat Oct 16 07:24:02 +0000 2021",
+                                          "default_profile": true,
+                                          "default_profile_image": false,
+                                          "description": "瞎几把喊单的，找你接盘的，别买，骂我看不见。",
+                                          "entities": {
+                                            "description": {
+                                              "urls": []
+                                            }
+                                          },
+                                          "fast_followers_count": 0,
+                                          "favourites_count": 182,
+                                          "followers_count": 60314,
+                                          "friends_count": 377,
+                                          "has_custom_timelines": false,
+                                          "is_translator": false,
+                                          "listed_count": 1647,
+                                          "location": "",
+                                          "media_count": 37,
+                                          "name": "憨巴龙王",
+                                          "normal_followers_count": 60314,
+                                          "pinned_tweet_ids_str": [
+                                            "1875517860904366363"
+                                          ],
+                                          "possibly_sensitive": false,
+                                          "profile_image_url_https": "https://pbs.twimg.com/profile_images/1701493248269881344/uXTOJ_0J_normal.jpg",
+                                          "profile_interstitial_type": "",
+                                          "screen_name": "dotyyds1234",
+                                          "statuses_count": 1280,
+                                          "translator_type": "none",
+                                          "verified": false,
+                                          "want_retweets": true,
+                                          "withheld_in_countries": []
+                                        },
+                                        "tipjar_settings": {}
+                                      }
+                                    }
+                                  },
+                                  "unmention_data": {},
+                                  "edit_control": {
+                                    "edit_tweet_ids": [
+                                      "1896672757167129085"
+                                    ],
+                                    "editable_until_msecs": "1741040598000",
+                                    "is_edit_eligible": false,
+                                    "edits_remaining": "5"
+                                  },
+                                  "is_translatable": false,
+                                  "views": {
+                                    "count": "48963",
+                                    "state": "EnabledWithCount"
+                                  },
+                                  "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+                                  "legacy": {
+                                    "bookmark_count": 52,
+                                    "bookmarked": false,
+                                    "created_at": "Mon Mar 03 21:23:18 +0000 2025",
+                                    "conversation_id_str": "1896670471401455699",
+                                    "display_text_range": [
+                                      0,
+                                      130
+                                    ],
+                                    "entities": {
+                                      "hashtags": [],
+                                      "symbols": [],
+                                      "timestamps": [],
+                                      "urls": [],
+                                      "user_mentions": []
+                                    },
+                                    "favorite_count": 292,
+                                    "favorited": false,
+                                    "full_text": "我基本都是靠事件驱动做交易的，大多数思路都说了。因为xxx做xxx，很少说看到多少多少。比方说trump上台不提币圈，就像渣男给你画大饼，说升职加薪一定对你好，但是最后真升职了，鸟都不鸟你了。大资金是非常清醒的，对于渣男，只有见到钱才可以。pua？傻白甜才信。",
+                                    "in_reply_to_screen_name": "dotyyds1234",
+                                    "in_reply_to_status_id_str": "1896670471401455699",
+                                    "in_reply_to_user_id_str": "1449274874317266945",
+                                    "is_quote_status": false,
+                                    "lang": "zh",
+                                    "quote_count": 0,
+                                    "reply_count": 5,
+                                    "retweet_count": 27,
+                                    "retweeted": false,
+                                    "user_id_str": "1449274874317266945",
+                                    "id_str": "1896672757167129085"
+                                  },
+                                  "quick_promote_eligibility": {
+                                    "eligibility": "IneligibleNotProfessional"
+                                  }
+                                }
+                              },
+                              "tweetDisplayType": "Tweet"
+                            },
+                            "clientEventInfo": {
+                              "component": "tweet",
+                              "element": "tweet",
+                              "details": {
+                                "timelinesDetails": {
+                                  "injectionType": "RankedOrganicTweet",
+                                  "controllerData": "DAACDAABDAABCgABAAAAAAAAAAAKAAkTVHCX6dUQBgAAAAA="
+                                }
+                              }
+                            }
+                          }
+                        }
+                      ],
+                      "metadata": {
+                        "conversationMetadata": {
+                          "allTweetIds": [
+                            "1896670471401455699",
+                            "1896672757167129085"
+                          ],
+                          "enableDeduplication": true
+                        }
+                      },
+                      "displayType": "VerticalConversation",
+                      "clientEventInfo": {
+                        "component": "suggest_ranked_organic_tweet",
+                        "details": {
+                          "timelinesDetails": {
+                            "injectionType": "RankedOrganicTweet",
+                            "controllerData": "DAACDAABDAABCgABAAAAAAAAAAAKAAkTVHCX6dUQBgAAAAA="
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "entryId": "tweet-1896661603036319926",
+                    "sortIndex": "1898753073916936174",
+                    "content": {
+                      "entryType": "TimelineTimelineItem",
+                      "__typename": "TimelineTimelineItem",
+                      "itemContent": {
+                        "itemType": "TimelineTweet",
+                        "__typename": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "rest_id": "1896661603036319926",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "id": "VXNlcjoxNDQ5Mjc0ODc0MzE3MjY2OTQ1",
+                                  "rest_id": "1449274874317266945",
+                                  "affiliates_highlighted_label": {},
+                                  "has_graduated_access": true,
+                                  "parody_commentary_fan_label": "None",
+                                  "is_blue_verified": true,
+                                  "profile_image_shape": "Circle",
+                                  "legacy": {
+                                    "notifications": true,
+                                    "following": true,
+                                    "can_dm": true,
+                                    "can_media_tag": false,
+                                    "created_at": "Sat Oct 16 07:24:02 +0000 2021",
+                                    "default_profile": true,
+                                    "default_profile_image": false,
+                                    "description": "瞎几把喊单的，找你接盘的，别买，骂我看不见。",
+                                    "entities": {
+                                      "description": {
+                                        "urls": []
+                                      }
+                                    },
+                                    "fast_followers_count": 0,
+                                    "favourites_count": 182,
+                                    "followers_count": 60314,
+                                    "friends_count": 377,
+                                    "has_custom_timelines": false,
+                                    "is_translator": false,
+                                    "listed_count": 1647,
+                                    "location": "",
+                                    "media_count": 37,
+                                    "name": "憨巴龙王",
+                                    "normal_followers_count": 60314,
+                                    "pinned_tweet_ids_str": [
+                                      "1875517860904366363"
+                                    ],
+                                    "possibly_sensitive": false,
+                                    "profile_image_url_https": "https://pbs.twimg.com/profile_images/1701493248269881344/uXTOJ_0J_normal.jpg",
+                                    "profile_interstitial_type": "",
+                                    "screen_name": "dotyyds1234",
+                                    "statuses_count": 1280,
+                                    "translator_type": "none",
+                                    "verified": false,
+                                    "want_retweets": true,
+                                    "withheld_in_countries": []
+                                  },
+                                  "tipjar_settings": {}
+                                }
+                              }
+                            },
+                            "unmention_data": {},
+                            "edit_control": {
+                              "edit_tweet_ids": [
+                                "1896661603036319926"
+                              ],
+                              "editable_until_msecs": "1741037939000",
+                              "is_edit_eligible": true,
+                              "edits_remaining": "5"
+                            },
+                            "is_translatable": false,
+                            "views": {
+                              "count": "106881",
+                              "state": "EnabledWithCount"
+                            },
+                            "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+                            "legacy": {
+                              "bookmark_count": 59,
+                              "bookmarked": false,
+                              "created_at": "Mon Mar 03 20:38:59 +0000 2025",
+                              "conversation_id_str": "1896661603036319926",
+                              "display_text_range": [
+                                0,
+                                132
+                              ],
+                              "entities": {
+                                "hashtags": [],
+                                "symbols": [],
+                                "timestamps": [],
+                                "urls": [],
+                                "user_mentions": []
+                              },
+                              "favorite_count": 266,
+                              "favorited": false,
+                              "full_text": ".....还行？其实今天美股开盘，我看到英伟达跌了4%。就全卖了。思路昨天早上都说了。\n\n英伟达跌，就跟币圈btc跌一样，都不会好过的。\n\n下次抄底就不知道了，当然sol又跌到120+抄底的性价比还是很高的，这种大支撑比较难跌破。\n\n现在还是美股主导，看不懂美股。",
+                              "is_quote_status": false,
+                              "lang": "zh",
+                              "quote_count": 2,
+                              "reply_count": 40,
+                              "retweet_count": 21,
+                              "retweeted": false,
+                              "user_id_str": "1449274874317266945",
+                              "id_str": "1896661603036319926"
+                            },
+                            "quick_promote_eligibility": {
+                              "eligibility": "IneligibleNotProfessional"
+                            }
+                          }
+                        },
+                        "tweetDisplayType": "Tweet"
+                      },
+                      "clientEventInfo": {
+                        "component": "tweet",
+                        "element": "tweet",
+                        "details": {
+                          "timelinesDetails": {
+                            "injectionType": "RankedOrganicTweet",
+                            "controllerData": "DAACDAABDAABCgABAAAAAAAAAAAKAAkTVHCX6dUQBgAAAAA="
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "entryId": "tweet-1896408996564873666",
+                    "sortIndex": "1898753073916936173",
+                    "content": {
+                      "entryType": "TimelineTimelineItem",
+                      "__typename": "TimelineTimelineItem",
+                      "itemContent": {
+                        "itemType": "TimelineTweet",
+                        "__typename": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "rest_id": "1896408996564873666",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "id": "VXNlcjoxNDQ5Mjc0ODc0MzE3MjY2OTQ1",
+                                  "rest_id": "1449274874317266945",
+                                  "affiliates_highlighted_label": {},
+                                  "has_graduated_access": true,
+                                  "parody_commentary_fan_label": "None",
+                                  "is_blue_verified": true,
+                                  "profile_image_shape": "Circle",
+                                  "legacy": {
+                                    "notifications": true,
+                                    "following": true,
+                                    "can_dm": true,
+                                    "can_media_tag": false,
+                                    "created_at": "Sat Oct 16 07:24:02 +0000 2021",
+                                    "default_profile": true,
+                                    "default_profile_image": false,
+                                    "description": "瞎几把喊单的，找你接盘的，别买，骂我看不见。",
+                                    "entities": {
+                                      "description": {
+                                        "urls": []
+                                      }
+                                    },
+                                    "fast_followers_count": 0,
+                                    "favourites_count": 182,
+                                    "followers_count": 60314,
+                                    "friends_count": 377,
+                                    "has_custom_timelines": false,
+                                    "is_translator": false,
+                                    "listed_count": 1647,
+                                    "location": "",
+                                    "media_count": 37,
+                                    "name": "憨巴龙王",
+                                    "normal_followers_count": 60314,
+                                    "pinned_tweet_ids_str": [
+                                      "1875517860904366363"
+                                    ],
+                                    "possibly_sensitive": false,
+                                    "profile_image_url_https": "https://pbs.twimg.com/profile_images/1701493248269881344/uXTOJ_0J_normal.jpg",
+                                    "profile_interstitial_type": "",
+                                    "screen_name": "dotyyds1234",
+                                    "statuses_count": 1280,
+                                    "translator_type": "none",
+                                    "verified": false,
+                                    "want_retweets": true,
+                                    "withheld_in_countries": []
+                                  },
+                                  "tipjar_settings": {}
+                                }
+                              }
+                            },
+                            "unmention_data": {},
+                            "edit_control": {
+                              "edit_tweet_ids": [
+                                "1896408996564873666"
+                              ],
+                              "editable_until_msecs": "1740977713000",
+                              "is_edit_eligible": true,
+                              "edits_remaining": "5"
+                            },
+                            "is_translatable": false,
+                            "views": {
+                              "count": "246241",
+                              "state": "EnabledWithCount"
+                            },
+                            "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+                            "note_tweet": {
+                              "is_expandable": true,
+                              "note_tweet_results": {
+                                "result": {
+                                  "id": "Tm90ZVR3ZWV0OjE4OTY0MDg5OTY0NzY3OTY5Mjg=",
+                                  "text": "我觉得大多数亏钱的原因就是过于急躁，包括很多kol。\n\n我有个朋友，去年11月让我带她玩，就梭哈了doge，翻倍走了，然后几次大跌抄底赚十几点。平均一个月操作一次。\n\n主要是别人啥都不懂，也不看，谁赚钱她都不知道，不用跟谁去比较，只关注自己，赚点小钱就很开心。\n\n币本位赚钱很简单，就死拿，行情的好的时候套利，或者山寨玩玩，赚到的钱都换币。\n\nU本位赚钱也很简单，就死等，等行情好，等大暴跌。每次都舔2口就跑。\n\n就怕你没赚大钱的能力还想着跟那些车头去比较。",
+                                  "entity_set": {
+                                    "hashtags": [],
+                                    "symbols": [],
+                                    "urls": [],
+                                    "user_mentions": []
+                                  }
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "bookmark_count": 352,
+                              "bookmarked": false,
+                              "created_at": "Mon Mar 03 03:55:13 +0000 2025",
+                              "conversation_id_str": "1896408996564873666",
+                              "display_text_range": [
+                                0,
+                                130
+                              ],
+                              "entities": {
+                                "hashtags": [],
+                                "symbols": [],
+                                "timestamps": [],
+                                "urls": [],
+                                "user_mentions": []
+                              },
+                              "favorite_count": 948,
+                              "favorited": false,
+                              "full_text": "我觉得大多数亏钱的原因就是过于急躁，包括很多kol。\n\n我有个朋友，去年11月让我带她玩，就梭哈了doge，翻倍走了，然后几次大跌抄底赚十几点。平均一个月操作一次。\n\n主要是别人啥都不懂，也不看，谁赚钱她都不知道，不用跟谁去比较，只关注自己，赚点小钱就很开心。",
+                              "is_quote_status": false,
+                              "lang": "zh",
+                              "quote_count": 22,
+                              "reply_count": 106,
+                              "retweet_count": 142,
+                              "retweeted": false,
+                              "user_id_str": "1449274874317266945",
+                              "id_str": "1896408996564873666"
+                            },
+                            "quick_promote_eligibility": {
+                              "eligibility": "IneligibleNotProfessional"
+                            }
+                          }
+                        },
+                        "tweetDisplayType": "Tweet"
+                      },
+                      "clientEventInfo": {
+                        "component": "tweet",
+                        "element": "tweet",
+                        "details": {
+                          "timelinesDetails": {
+                            "injectionType": "RankedOrganicTweet",
+                            "controllerData": "DAACDAABDAABCgABAAAAAAAAAAAKAAkTVHCX6dUQBgAAAAA="
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "entryId": "tweet-1896404275200405880",
+                    "sortIndex": "1898753073916936172",
+                    "content": {
+                      "entryType": "TimelineTimelineItem",
+                      "__typename": "TimelineTimelineItem",
+                      "itemContent": {
+                        "itemType": "TimelineTweet",
+                        "__typename": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "rest_id": "1896404275200405880",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "id": "VXNlcjoxNDQ5Mjc0ODc0MzE3MjY2OTQ1",
+                                  "rest_id": "1449274874317266945",
+                                  "affiliates_highlighted_label": {},
+                                  "has_graduated_access": true,
+                                  "parody_commentary_fan_label": "None",
+                                  "is_blue_verified": true,
+                                  "profile_image_shape": "Circle",
+                                  "legacy": {
+                                    "notifications": true,
+                                    "following": true,
+                                    "can_dm": true,
+                                    "can_media_tag": false,
+                                    "created_at": "Sat Oct 16 07:24:02 +0000 2021",
+                                    "default_profile": true,
+                                    "default_profile_image": false,
+                                    "description": "瞎几把喊单的，找你接盘的，别买，骂我看不见。",
+                                    "entities": {
+                                      "description": {
+                                        "urls": []
+                                      }
+                                    },
+                                    "fast_followers_count": 0,
+                                    "favourites_count": 182,
+                                    "followers_count": 60314,
+                                    "friends_count": 377,
+                                    "has_custom_timelines": false,
+                                    "is_translator": false,
+                                    "listed_count": 1647,
+                                    "location": "",
+                                    "media_count": 37,
+                                    "name": "憨巴龙王",
+                                    "normal_followers_count": 60314,
+                                    "pinned_tweet_ids_str": [
+                                      "1875517860904366363"
+                                    ],
+                                    "possibly_sensitive": false,
+                                    "profile_image_url_https": "https://pbs.twimg.com/profile_images/1701493248269881344/uXTOJ_0J_normal.jpg",
+                                    "profile_interstitial_type": "",
+                                    "screen_name": "dotyyds1234",
+                                    "statuses_count": 1280,
+                                    "translator_type": "none",
+                                    "verified": false,
+                                    "want_retweets": true,
+                                    "withheld_in_countries": []
+                                  },
+                                  "tipjar_settings": {}
+                                }
+                              }
+                            },
+                            "unmention_data": {},
+                            "edit_control": {
+                              "edit_tweet_ids": [
+                                "1896404275200405880"
+                              ],
+                              "editable_until_msecs": "1740976587000",
+                              "is_edit_eligible": true,
+                              "edits_remaining": "5"
+                            },
+                            "is_translatable": false,
+                            "views": {
+                              "count": "237039",
+                              "state": "EnabledWithCount"
+                            },
+                            "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+                            "legacy": {
+                              "bookmark_count": 205,
+                              "bookmarked": false,
+                              "created_at": "Mon Mar 03 03:36:27 +0000 2025",
+                              "conversation_id_str": "1896404275200405880",
+                              "display_text_range": [
+                                0,
+                                145
+                              ],
+                              "entities": {
+                                "hashtags": [],
+                                "symbols": [],
+                                "timestamps": [],
+                                "urls": [],
+                                "user_mentions": []
+                              },
+                              "favorite_count": 740,
+                              "favorited": true,
+                              "full_text": "我认为消息是改变不了趋势的，除非实质性利好，昨晚像是19年10月大大那样放空炮的消息。\n\n现在资金走势都是看美股，美股不好啥都不行。\n\n3.7之前逃跑可能是共识，开完会可能就无了。\n\n当然，为了防止我错了，所以我留了一点仓位在这2天观察。\n\n以上都是个人看法，我也不是神，只赚自己能赚的钱。",
+                              "is_quote_status": false,
+                              "lang": "zh",
+                              "quote_count": 5,
+                              "reply_count": 83,
+                              "retweet_count": 47,
+                              "retweeted": false,
+                              "user_id_str": "1449274874317266945",
+                              "id_str": "1896404275200405880"
+                            },
+                            "quick_promote_eligibility": {
+                              "eligibility": "IneligibleNotProfessional"
+                            }
+                          }
+                        },
+                        "tweetDisplayType": "Tweet"
+                      },
+                      "clientEventInfo": {
+                        "component": "tweet",
+                        "element": "tweet",
+                        "details": {
+                          "timelinesDetails": {
+                            "injectionType": "RankedOrganicTweet",
+                            "controllerData": "DAACDAABDAABCgABAAAAAAAAAAAKAAkTVHCX6dUQBgAAAAA="
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "entryId": "cursor-top-1898753073916936193",
+                    "sortIndex": "1898753073916936193",
+                    "content": {
+                      "entryType": "TimelineTimelineCursor",
+                      "__typename": "TimelineTimelineCursor",
+                      "value": "DAABCgABGlm53FcAJxEKAAIaWbl5ulthPwgAAwAAAAEAAA",
+                      "cursorType": "Top"
+                    }
+                  },
+                  {
+                    "entryId": "cursor-bottom-1898753073916936171",
+                    "sortIndex": "1898753073916936171",
+                    "content": {
+                      "entryType": "TimelineTimelineCursor",
+                      "__typename": "TimelineTimelineCursor",
+                      "value": "DAABCgABGlm53Fb__-kKAAIaUWGkBdoxeAgAAwAAAAIAAA",
+                      "cursorType": "Bottom"
+                    }
+                  }
+                ]
+              }
+            ],
+            "metadata": {
+              "scribeConfig": {
+                "page": "profileBest"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,462 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户数据</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+        .user-info {
+            background-color: #f5f8fa;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .user-info img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-right: 15px;
+            float: left;
+        }
+        .user-header {
+            display: flex;
+            align-items: center;
+        }
+        .verified-badge {
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            background-color: #1da1f2;
+            border-radius: 50%;
+            margin-left: 5px;
+            position: relative;
+        }
+        .verified-badge:after {
+            content: "✓";
+            color: white;
+            position: absolute;
+            font-size: 12px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .user-info h1 {
+            margin-top: 0;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+        }
+        .user-info p {
+            margin: 5px 0;
+            color: #657786;
+        }
+        .user-desc {
+            clear: both;
+            padding-top: 15px;
+        }
+        .user-meta {
+            color: #657786;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+        .user-meta span {
+            margin-right: 15px;
+        }
+        .user-stats {
+            clear: both;
+            padding-top: 15px;
+            display: flex;
+            gap: 20px;
+        }
+        .user-stats div {
+            flex: 1;
+        }
+        .tweet {
+            background-color: white;
+            border: 1px solid #e1e8ed;
+            border-radius: 15px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .tweet-header {
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        .tweet-text {
+            margin-bottom: 10px;
+        }
+        .tweet-media {
+            margin: 10px 0;
+        }
+        .tweet-media img, .tweet-media video {
+            max-width: 100%;
+            max-height: 400px;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+        .tweet-stats {
+            color: #657786;
+            display: flex;
+            gap: 15px;
+        }
+        .tweet-date {
+            color: #657786;
+            font-size: 0.9em;
+        }
+        .no-tweets {
+            text-align: center;
+            padding: 40px;
+            color: #657786;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="user-info">
+
+        <div class="user-header">
+            <img src="https://pbs.twimg.com/profile_images/1701493248269881344/uXTOJ_0J_normal.jpg" alt="憨巴龙王">
+            <div>
+                <h1>憨巴龙王 <span class="verified-badge"></span></h1>
+                <p>@dotyyds1234</p>
+            </div>
+        </div>
+        
+        <div class="user-desc">
+            <p>瞎几把喊单的，找你接盘的，别买，骂我看不见。</p>
+            
+            <div class="user-meta">
+                
+                <span>🗓️ 2021年10月加入</span>
+            </div>
+            
+            <div class="user-stats">
+                <div>关注: 377</div>
+                <div>粉丝: 60315</div>
+                <div>推文: 1280</div>
+                <div>喜欢: 182</div>
+            </div>
+        </div>
+    </div>
+
+    <h2>推文 (19)</h2>
+
+    <div class="tweet">
+        <div class="tweet-header">
+            憨巴龙王 
+            (@dotyyds1234)
+        </div>
+        <div class="tweet-text">这是假的啊，我没任何群，不收任何费，不接任何广告，不发币，所有找你加群，收费，说是我的币，都是假的，都是假的。 https://t.co/cqATTSY8y5</div>
+        <div class="tweet-media">
+            <img src="https://pbs.twimg.com/media/GgctjTPboAAK14F.jpg" alt="图片">
+        </div>
+        <div class="tweet-stats">
+            <span>回复: 27</span>
+            <span>转发: 5</span>
+            <span>引用: 0</span>
+            <span>喜欢: 99</span>
+        </div>
+        <div class="tweet-date">2025/1/4 20:21:18</div>
+    </div>
+
+    <div class="tweet">
+        <div class="tweet-header">
+            憨巴龙王 
+            (@dotyyds1234)
+        </div>
+        <div class="tweet-text">不是，突然刷了下推，怎么现在全都在说女大和谈恋爱的事了。<br><br>最开始只是风无向没跟上一些热点，因为他没跟上，所以我也没跟上（他买我就买），我调侃下风无向被女大吸了神力。<br><br>仅此而已。后来咋就变风格了。</div>
+
+        <div class="tweet-stats">
+            <span>回复: 3</span>
+            <span>转发: 0</span>
+            <span>引用: 0</span>
+            <span>喜欢: 13</span>
+        </div>
+        <div class="tweet-date">2025/3/9 23:08:03</div>
+    </div>
+
+    <div class="tweet">
+        <div class="tweet-header">
+            憨巴龙王 
+            (@dotyyds1234)
+        </div>
+        <div class="tweet-text">本来就只是每天调侃下风无向，怎么现在全都来蹭了，最后说一篇心路历程吧。<br><br>之前碰到过好几个喜欢，而且在暧昧的女生，我说包养，别人不同意，非要谈恋爱。然后我就不同意了。<br><br>我谈过2次恋爱，一个4年一个5年。最后都补偿了很多很多....<br><br>钱只是一方面，分手的时候太痛苦了，总感觉很愧疚。</div>
+
+        <div class="tweet-stats">
+            <span>回复: 52</span>
+            <span>转发: 7</span>
+            <span>引用: 0</span>
+            <span>喜欢: 157</span>
+        </div>
+        <div class="tweet-date">2025/3/9 20:30:29</div>
+    </div>
+
+    <div class="tweet">
+        <div class="tweet-header">
+            憨巴龙王 
+            (@dotyyds1234)
+        </div>
+        <div class="tweet-text">我觉得吧，每个人的三观都不同，现在我不会接广告，但是也不会认为别人接广告有什么错。<br><br>但是呢。我是最讨厌双标的人，接土狗广告，干着割韭菜的事情，去谴责商k女不干净，不道德。<br><br>如果别人能接广告割韭菜，谁又愿意天天喝酒被人摸呢？<br><br>自己道德水平极低，却玩双标站在道德制高点。</div>
+
+        <div class="tweet-stats">
+            <span>回复: 45</span>
+            <span>转发: 10</span>
+            <span>引用: 4</span>
+            <span>喜欢: 220</span>
+        </div>
+        <div class="tweet-date">2025/3/7 22:31:59</div>
+    </div>
+
+    <div class="tweet">
+        <div class="tweet-header">
+            憨巴龙王 
+            (@dotyyds1234)
+        </div>
+        <div class="tweet-text">其实有时候我也在思考。<br><br>一个女大跟黄毛谈恋爱，和被风无向包养。<br><br>为什么前者更容易让人原谅和接受。<br><br>就是因为拜金的问题吗？那找工作也别看工资。<br><br>或者有人说，如果一个女生能被你包养，那一定能被出钱更多的包养。</div>
+
+        <div class="tweet-stats">
+            <span>回复: 118</span>
+            <span>转发: 4</span>
+            <span>引用: 7</span>
+            <span>喜欢: 191</span>
+        </div>
+        <div class="tweet-date">2025/3/7 20:27:51</div>
+    </div>
+
+    <div class="tweet">
+        <div class="tweet-header">
+            憨巴龙王 
+            (@dotyyds1234)
+        </div>
+        <div class="tweet-text">我觉得吧，有些事情，经历过才能评价吧。<br><br>我花钱认识的女大，别人一个月就只要2万，天天关心我，刚认识就给我送3000的鞋子，给我家人送金首饰。她知道我有多少钱，在一起半年了，从来不主动找我要礼物，要钱。</div>
+
+        <div class="tweet-stats">
+            <span>回复: 267</span>
+            <span>转发: 22</span>
+            <span>引用: 4</span>
+            <span>喜欢: 405</span>
+        </div>
+        <div class="tweet-date">2025/3/7 18:02:52</div>
+    </div>
+
+    <div class="tweet">
+        <div class="tweet-header">
+            憨巴龙王 
+            (@dotyyds1234)
+        </div>
+        <div class="tweet-text">准备把巴赫卖了。确实没啥用了，出门谁都不想开，争先恐后开问界。<br><br>本来我朋友说接手的，现在一问，要买问界了。</div>
+
+        <div class="tweet-stats">
+            <span>回复: 137</span>
+            <span>转发: 6</span>
+            <span>引用: 3</span>
+            <span>喜欢: 218</span>
+        </div>
+        <div class="tweet-date">2025/3/5 19:04:06</div>
+    </div>
+
+    <div class="tweet">
+        <div class="tweet-header">
+            憨巴龙王 
+            (@dotyyds1234)
+        </div>
+        <div class="tweet-text">我上初中的时候，有一个小孩跟着混混大哥，借着大哥的名头作威作福，在大哥的授意下去调戏女生，狼狈为奸。<br><br>后来这个小孩又去舔其他大哥，让这个大哥很不爽，最后这个小孩受到了校领导的赏识，校领导给他颁发了一个奖状。</div>
+
+        <div class="tweet-stats">
+            <span>回复: 121</span>
+            <span>转发: 35</span>
+            <span>引用: 11</span>
+            <span>喜欢: 531</span>
+        </div>
+        <div class="tweet-date">2025/3/5 15:17:44</div>
+    </div>
+
+    <div class="tweet">
+        <div class="tweet-header">
+            憨巴龙王 
+            (@dotyyds1234)
+        </div>
+        <div class="tweet-text">我哭了一早上，我恨自己弱懦了，如果是以前，我一定会第一时间出来面对我看不惯的事情。<br><br>我不是怕，我不怕以后没人带我赚钱，我不需要依靠任何人。<br><br>我只是不想惹得一身骚，不想影响我的快乐生活，但还是影响睡眠了。<br><br>我很早就知道一些事情了（保证是一手的，不是什么群传的），没你们想的那么简单。</div>
+
+        <div class="tweet-stats">
+            <span>回复: 285</span>
+            <span>转发: 36</span>
+            <span>引用: 27</span>
+            <span>喜欢: 663</span>
+        </div>
+        <div class="tweet-date">2025/3/5 09:38:45</div>
+    </div>
+
+    <div class="tweet">
+        <div class="tweet-header">
+            憨巴龙王 
+            (@dotyyds1234)
+        </div>
+        <div class="tweet-text">真的就是真的，假的就是假的。为什么别人能爆我的私生活，让所有人嘲笑。而我不能反击，暴露别人的私生活？<br><br>就是因为我没钱？没权？没势？长得丑？<br><br>为什么玩双标，为什么被欺负了就要闭嘴？</div>
+
+        <div class="tweet-stats">
+            <span>回复: 97</span>
+            <span>转发: 18</span>
+            <span>引用: 3</span>
+            <span>喜欢: 466</span>
+        </div>
+        <div class="tweet-date">2025/3/5 08:32:39</div>
+    </div>
+
+    <div class="tweet">
+        <div class="tweet-header">
+            憨巴龙王 
+            (@dotyyds1234)
+        </div>
+        <div class="tweet-text">如果一个人犯罪了，但是被黑恶势力强加了莫须有的罪名，应该怎么办。</div>
+
+        <div class="tweet-stats">
+            <span>回复: 54</span>
+            <span>转发: 0</span>
+            <span>引用: 0</span>
+            <span>喜欢: 107</span>
+        </div>
+        <div class="tweet-date">2025/3/5 08:16:38</div>
+    </div>
+
+    <div class="tweet">
+        <div class="tweet-header">
+            憨巴龙王 
+            (@dotyyds1234)
+        </div>
+        <div class="tweet-text">昨晚做了一个梦，梦见我骂了一个混社会的，他带着100多个人追我。最后把我逼到墙角，那种无力感。<br><br>我想摇人，但是我看了下好友列表，就算全来，都没他们人多。而且我感觉也没有人会帮我，他们人太多了，帮我也要被挨打。<br><br>这种无力感，让我陷入的深深的绝望。最后惊醒了。</div>
+
+        <div class="tweet-stats">
+            <span>回复: 70</span>
+            <span>转发: 1</span>
+            <span>引用: 0</span>
+            <span>喜欢: 177</span>
+        </div>
+        <div class="tweet-date">2025/3/5 07:47:54</div>
+    </div>
+
+    <div class="tweet">
+        <div class="tweet-header">
+            憨巴龙王 
+            (@dotyyds1234)
+        </div>
+        <div class="tweet-text">风无向跟我说我，永远不要搞圈内的女生。<br><br>所以我从来不跟圈内的女生聊天。</div>
+
+        <div class="tweet-stats">
+            <span>回复: 79</span>
+            <span>转发: 5</span>
+            <span>引用: 1</span>
+            <span>喜欢: 283</span>
+        </div>
+        <div class="tweet-date">2025/3/5 01:03:53</div>
+    </div>
+
+    <div class="tweet">
+        <div class="tweet-header">
+            憨巴龙王 
+            (@dotyyds1234)
+        </div>
+        <div class="tweet-text">一晚上全网in11了？有人能带我去吗？</div>
+
+        <div class="tweet-stats">
+            <span>回复: 45</span>
+            <span>转发: 0</span>
+            <span>引用: 0</span>
+            <span>喜欢: 86</span>
+        </div>
+        <div class="tweet-date">2025/3/4 23:55:46</div>
+    </div>
+
+    <div class="tweet">
+        <div class="tweet-header">
+            憨巴龙王 
+            (@dotyyds1234)
+        </div>
+        <div class="tweet-text">不要总是问我有没有牛，熊了吗。我是典型的不预测，只跟随。<br><br>即便我预测了，我也不会坚信自己的预测，一旦有不好的事件驱动，我就会立马跟随行情。<br><br>我在去年的时候，确实相信trump上台会发政策，会通过eth etf，会放水，会有牛市，所以我买了eth。</div>
+
+        <div class="tweet-stats">
+            <span>回复: 55</span>
+            <span>转发: 29</span>
+            <span>引用: 5</span>
+            <span>喜欢: 386</span>
+        </div>
+        <div class="tweet-date">2025/3/4 11:13:55</div>
+    </div>
+
+    <div class="tweet">
+        <div class="tweet-header">
+            憨巴龙王 
+            (@dotyyds1234)
+        </div>
+        <div class="tweet-text">跟大大行情基本一模一样，19年10月25号那天晚上发的新闻联播，一开始还好，到了12点直接爆了。<br><br>Btc一晚上涨了50%，然后就是无限阴跌，跌了半个月回去了。<br><br>现在都是聪明人越来越多以及美股的利空，所以行情走的越来越快了。<br><br>前段时间山寨也是，半个月等于18年一年的走势。</div>
+
+        <div class="tweet-stats">
+            <span>回复: 77</span>
+            <span>转发: 44</span>
+            <span>引用: 4</span>
+            <span>喜欢: 505</span>
+        </div>
+        <div class="tweet-date">2025/3/4 10:52:06</div>
+    </div>
+
+    <div class="tweet">
+        <div class="tweet-header">
+            憨巴龙王 
+            (@dotyyds1234)
+        </div>
+        <div class="tweet-text">.....还行？其实今天美股开盘，我看到英伟达跌了4%。就全卖了。思路昨天早上都说了。<br><br>英伟达跌，就跟币圈btc跌一样，都不会好过的。<br><br>下次抄底就不知道了，当然sol又跌到120+抄底的性价比还是很高的，这种大支撑比较难跌破。<br><br>现在还是美股主导，看不懂美股。</div>
+
+        <div class="tweet-stats">
+            <span>回复: 40</span>
+            <span>转发: 21</span>
+            <span>引用: 2</span>
+            <span>喜欢: 266</span>
+        </div>
+        <div class="tweet-date">2025/3/4 04:38:59</div>
+    </div>
+
+    <div class="tweet">
+        <div class="tweet-header">
+            憨巴龙王 
+            (@dotyyds1234)
+        </div>
+        <div class="tweet-text">我觉得大多数亏钱的原因就是过于急躁，包括很多kol。<br><br>我有个朋友，去年11月让我带她玩，就梭哈了doge，翻倍走了，然后几次大跌抄底赚十几点。平均一个月操作一次。<br><br>主要是别人啥都不懂，也不看，谁赚钱她都不知道，不用跟谁去比较，只关注自己，赚点小钱就很开心。</div>
+
+        <div class="tweet-stats">
+            <span>回复: 106</span>
+            <span>转发: 142</span>
+            <span>引用: 22</span>
+            <span>喜欢: 948</span>
+        </div>
+        <div class="tweet-date">2025/3/3 11:55:13</div>
+    </div>
+
+    <div class="tweet">
+        <div class="tweet-header">
+            憨巴龙王 
+            (@dotyyds1234)
+        </div>
+        <div class="tweet-text">我认为消息是改变不了趋势的，除非实质性利好，昨晚像是19年10月大大那样放空炮的消息。<br><br>现在资金走势都是看美股，美股不好啥都不行。<br><br>3.7之前逃跑可能是共识，开完会可能就无了。<br><br>当然，为了防止我错了，所以我留了一点仓位在这2天观察。<br><br>以上都是个人看法，我也不是神，只赚自己能赚的钱。</div>
+
+        <div class="tweet-stats">
+            <span>回复: 83</span>
+            <span>转发: 47</span>
+            <span>引用: 5</span>
+            <span>喜欢: 740</span>
+        </div>
+        <div class="tweet-date">2025/3/3 11:36:27</div>
+    </div>
+
+</body>
+</html>

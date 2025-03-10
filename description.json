@@ -1,0 +1,85 @@
+{
+    "data": {
+      "user": {
+        "result": {
+          "__typename": "User",
+          "id": "VXNlcjoxNDQ5Mjc0ODc0MzE3MjY2OTQ1",
+          "rest_id": "1449274874317266945",
+          "affiliates_highlighted_label": {},
+          "has_graduated_access": true,
+          "parody_commentary_fan_label": "None",
+          "is_blue_verified": true,
+          "profile_image_shape": "Circle",
+          "legacy": {
+            "notifications": true,
+            "following": true,
+            "can_dm": true,
+            "can_media_tag": false,
+            "created_at": "Sat Oct 16 07:24:02 +0000 2021",
+            "default_profile": true,
+            "default_profile_image": false,
+            "description": "瞎几把喊单的，找你接盘的，别买，骂我看不见。",
+            "entities": {
+              "description": {
+                "urls": []
+              }
+            },
+            "fast_followers_count": 0,
+            "favourites_count": 182,
+            "followers_count": 60315,
+            "friends_count": 377,
+            "has_custom_timelines": false,
+            "is_translator": false,
+            "listed_count": 1647,
+            "location": "",
+            "media_count": 37,
+            "name": "憨巴龙王",
+            "normal_followers_count": 60315,
+            "pinned_tweet_ids_str": [
+              "1875517860904366363"
+            ],
+            "possibly_sensitive": false,
+            "profile_image_url_https": "https://pbs.twimg.com/profile_images/1701493248269881344/uXTOJ_0J_normal.jpg",
+            "profile_interstitial_type": "",
+            "screen_name": "dotyyds1234",
+            "statuses_count": 1280,
+            "translator_type": "none",
+            "verified": false,
+            "want_retweets": true,
+            "withheld_in_countries": []
+          },
+          "tipjar_settings": {},
+          "legacy_extended_profile": {},
+          "is_profile_translatable": false,
+          "has_hidden_subscriptions_on_profile": false,
+          "verification_info": {
+            "is_identity_verified": true,
+            "reason": {
+              "description": {
+                "text": "这个账号已通过认证。了解更多",
+                "entities": [
+                  {
+                    "from_index": 10,
+                    "to_index": 14,
+                    "ref": {
+                      "url": "https://help.twitter.com/managing-your-account/about-twitter-verified-accounts",
+                      "url_type": "ExternalUrl"
+                    }
+                  }
+                ]
+              },
+              "verified_since_msec": "1712112194447"
+            }
+          },
+          "highlights_info": {
+            "can_highlight_tweets": true,
+            "highlighted_tweets": "1"
+          },
+          "user_seed_tweet_count": 0,
+          "premium_gifting_eligible": false,
+          "business_account": {},
+          "creator_subscriptions_count": 0
+        }
+      }
+    }
+  }
