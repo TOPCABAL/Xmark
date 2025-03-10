@@ -1,0 +1,324 @@
+
+  <!DOCTYPE html>
+  <html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onefly.eth (@Onefly_eth) / X</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        background-color: #f7f9fa;
+        color: #0f1419;
+        line-height: 1.5;
+      }
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        background-color: white;
+        border-left: 1px solid #eff3f4;
+        border-right: 1px solid #eff3f4;
+      }
+      .profile-banner {
+        width: 100%;
+        height: 200px;
+        background-image: url('https://pbs.twimg.com/profile_banners/1392861982529753094/1728315542');
+        background-size: cover;
+        background-position: center;
+      }
+      .profile-info {
+        padding: 20px;
+        border-bottom: 1px solid #eff3f4;
+        position: relative;
+      }
+      .profile-avatar {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        border: 4px solid white;
+        position: absolute;
+        top: -60px;
+        left: 20px;
+      }
+      .profile-details {
+        margin-top: 60px;
+      }
+      .profile-name {
+        font-size: 20px;
+        font-weight: bold;
+      }
+      .profile-username {
+        font-size: 15px;
+        color: #536471;
+        margin-bottom: 12px;
+      }
+      .profile-bio {
+        margin-bottom: 12px;
+      }
+      .profile-meta {
+        display: flex;
+        gap: 20px;
+        color: #536471;
+        font-size: 14px;
+        margin-bottom: 12px;
+      }
+      .profile-stats {
+        display: flex;
+        gap: 20px;
+        margin-top: 12px;
+      }
+      .stat-value {
+        font-weight: bold;
+        color: #0f1419;
+      }
+      .stat-label {
+        color: #536471;
+      }
+      .tweets-container {
+        padding: 0;
+      }
+      .tweet {
+        padding: 15px;
+        border-bottom: 1px solid #eff3f4;
+      }
+      .pinned-tweet {
+        background-color: #f7f9fa;
+      }
+      .pinned-label {
+        font-size: 13px;
+        color: #536471;
+        margin-bottom: 8px;
+      }
+      .tweet-header {
+        display: flex;
+        margin-bottom: 10px;
+      }
+      .tweet-avatar {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+      .tweet-user-info {
+        display: flex;
+        flex-direction: column;
+      }
+      .tweet-name {
+        font-weight: bold;
+      }
+      .tweet-username, .tweet-date {
+        color: #536471;
+        font-size: 14px;
+      }
+      .tweet-content {
+        margin-bottom: 10px;
+      }
+      .tweet-media {
+        margin-top: 10px;
+        border-radius: 16px;
+        overflow: hidden;
+      }
+      .tweet-image, .tweet-video {
+        max-width: 100%;
+        border-radius: 16px;
+      }
+      .tweet-stats {
+        display: flex;
+        gap: 20px;
+        color: #536471;
+        font-size: 14px;
+      }
+      .no-tweets {
+        padding: 20px;
+        text-align: center;
+        color: #536471;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="profile-banner"></div>
+      <div class="profile-info">
+        <img src="https://pbs.twimg.com/profile_images/1843314373873602560/UTch9-5m_normal.jpg" alt="Onefly.eth" class="profile-avatar">
+        <div class="profile-details">
+          <h1 class="profile-name">Onefly.eth</h1>
+          <div class="profile-username">@Onefly_eth</div>
+          <div class="profile-bio">CS Master | 保安集团 Founder | 社区主理人 @OnePollo_Alpha | meme交流群入口 : https://t.co/6EXpPzteQP
+一级Web3打土狗教程：https://t.co/B9DTfwCQom
+交易所新手注册教程：https://t.co/xEzHUE7m4w</div>
+          <div class="profile-meta">
+            <div><i class="fas fa-map-marker-alt"></i> Web3</div>
+            <div><i class="fas fa-link"></i> <a href="https://gmgn.ai/?ref=cLf0ZwzZ&chain=sol" target="_blank">https://gmgn.ai/?ref=cLf0ZwzZ&chain=sol</a></div>
+          </div>
+          <div class="profile-stats">
+            <div class="stat">
+              <span class="stat-value">2985</span>
+              <span class="stat-label">关注者</span>
+            </div>
+            <div class="stat">
+              <span class="stat-value">1623</span>
+              <span class="stat-label">正在关注</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tweets-container">
+          <div class="tweet pinned-tweet">
+            <div class="pinned-label"><i class="fas fa-thumbtack"></i> 置顶推文</div>
+            <div class="tweet-header">
+              <img src="https://pbs.twimg.com/profile_images/1843314373873602560/UTch9-5m_normal.jpg" alt="Onefly.eth" class="tweet-avatar">
+              <div class="tweet-user-info">
+                <span class="tweet-name">Onefly.eth</span>
+                <span class="tweet-username">@Onefly_eth</span>
+                <span class="tweet-date">2024/12/20 13:03:26</span>
+              </div>
+            </div>
+            <div class="tweet-content">
+              <p>免费的微信交流群没位置了（500人已满）
+现在只有tg群了 因为tg群不限制人数 下面尝试运营tg群
+
+社区经验复盘 资料 群：https://t.co/e7sUC0aUZr
+土狗 交流 群：https://t.co/ua4OHEK8YM
+土狗 监控 群：https://t.co/hYh1Pt8ZM6</p>
+              
+            </div>
+            <div class="tweet-stats">
+              <span class="tweet-replies"><i class="fa fa-comment"></i> 2</span>
+              <span class="tweet-retweets"><i class="fa fa-retweet"></i> 1</span>
+              <span class="tweet-likes"><i class="fa fa-heart"></i> 4</span>
+            </div>
+          </div>
+        
+          <div class="tweet">
+            <div class="tweet-header">
+              <img src="https://pbs.twimg.com/profile_images/1843314373873602560/UTch9-5m_normal.jpg" alt="Onefly.eth" class="tweet-avatar">
+              <div class="tweet-user-info">
+                <span class="tweet-name">Onefly.eth</span>
+                <span class="tweet-username">@Onefly_eth</span>
+                <span class="tweet-date">2025/3/9 17:02:11</span>
+              </div>
+            </div>
+            <div class="tweet-content">
+              <p>1000X Security💂社区 X Infini 社区联名卡 重磅上线！
+
+为方便大家链上赚钱链下花，Infini携手保安集团推出联名卡！ 
+
+这张联名卡可绑定微信、支付宝，有效规避出金时遭遇黑钱的风险，同时为大家提供了一种无需出金即可线下消费的便捷方式！（实体卡也即将面世） https://t.co/LPIawY1H5c</p>
+              <div class="tweet-media"><img src="https://pbs.twimg.com/media/GlllCwPaMAAtTib.jpg" alt="推文图片" class="tweet-image"></div>
+            </div>
+            <div class="tweet-stats">
+              <span class="tweet-replies"><i class="fa fa-comment"></i> 0</span>
+              <span class="tweet-retweets"><i class="fa fa-retweet"></i> 1</span>
+              <span class="tweet-likes"><i class="fa fa-heart"></i> 2</span>
+            </div>
+          </div>
+        
+          <div class="tweet">
+            <div class="tweet-header">
+              <img src="https://pbs.twimg.com/profile_images/1843314373873602560/UTch9-5m_normal.jpg" alt="Onefly.eth" class="tweet-avatar">
+              <div class="tweet-user-info">
+                <span class="tweet-name">Onefly.eth</span>
+                <span class="tweet-username">@Onefly_eth</span>
+                <span class="tweet-date">2025/3/6 23:10:12</span>
+              </div>
+            </div>
+            <div class="tweet-content">
+              <p>The founder of MANUS is Xiao Hong, who led the Monica team to release MANUS, claiming it to be the world's first general-purpose AI agent. 
+MANUS的创始人叫肖弘，他领导的Monica团队发布了MANUS，号称全球首款通用型AI智能体
+
+$XIAOHONG 6.3k
+
+6xYggHP2wKLPA1KCx4U6U61KDp8QuZUwpo4nyY4Mpump https://t.co/ZNvOPg0pCV</p>
+              <div class="tweet-media"><img src="https://pbs.twimg.com/media/GlXdMAIagAAsP7s.png" alt="推文图片" class="tweet-image"></div>
+            </div>
+            <div class="tweet-stats">
+              <span class="tweet-replies"><i class="fa fa-comment"></i> 1</span>
+              <span class="tweet-retweets"><i class="fa fa-retweet"></i> 0</span>
+              <span class="tweet-likes"><i class="fa fa-heart"></i> 0</span>
+            </div>
+          </div>
+        
+          <div class="tweet">
+            <div class="tweet-header">
+              <img src="https://pbs.twimg.com/profile_images/1843314373873602560/UTch9-5m_normal.jpg" alt="Onefly.eth" class="tweet-avatar">
+              <div class="tweet-user-info">
+                <span class="tweet-name">Onefly.eth</span>
+                <span class="tweet-username">@Onefly_eth</span>
+                <span class="tweet-date">2025/3/6 17:24:15</span>
+              </div>
+            </div>
+            <div class="tweet-content">
+              <p>日本长野茶臼山动物园现在在推特最火的小熊猫Mugi
+
+Mugi, the red panda currently the most popular on Twitter at Chausuyama Zoo in Nagano, Japan. $Mugi 
+
+C1LnGzggHbsuaTWTmZwZMAYq5YxZu8j36SY1K9s5pump
+
+https://t.co/o5nOIvOInR</p>
+              
+            </div>
+            <div class="tweet-stats">
+              <span class="tweet-replies"><i class="fa fa-comment"></i> 1</span>
+              <span class="tweet-retweets"><i class="fa fa-retweet"></i> 0</span>
+              <span class="tweet-likes"><i class="fa fa-heart"></i> 0</span>
+            </div>
+          </div>
+        
+          <div class="tweet">
+            <div class="tweet-header">
+              <img src="https://pbs.twimg.com/profile_images/1843314373873602560/UTch9-5m_normal.jpg" alt="Onefly.eth" class="tweet-avatar">
+              <div class="tweet-user-info">
+                <span class="tweet-name">Onefly.eth</span>
+                <span class="tweet-username">@Onefly_eth</span>
+                <span class="tweet-date">2025/3/6 16:24:19</span>
+              </div>
+            </div>
+            <div class="tweet-content">
+              <p>之前蜜雪港股上市炒了一波 霸王茶姬美股上市也有机会
+$CHAGE 5.6k
+
+7QjMQzesgxu32P3dgD6yFJ7VMoTU1ZFAp8F3zG7vpump
+
+https://t.co/5nmiraMxgt https://t.co/UhX3T7zPcR</p>
+              <div class="tweet-media"><img src="https://pbs.twimg.com/media/GlV_-e9aYAA2B04.jpg" alt="推文图片" class="tweet-image"></div>
+            </div>
+            <div class="tweet-stats">
+              <span class="tweet-replies"><i class="fa fa-comment"></i> 1</span>
+              <span class="tweet-retweets"><i class="fa fa-retweet"></i> 0</span>
+              <span class="tweet-likes"><i class="fa fa-heart"></i> 1</span>
+            </div>
+          </div>
+        
+          <div class="tweet">
+            <div class="tweet-header">
+              <img src="https://pbs.twimg.com/profile_images/1843314373873602560/UTch9-5m_normal.jpg" alt="Onefly.eth" class="tweet-avatar">
+              <div class="tweet-user-info">
+                <span class="tweet-name">Onefly.eth</span>
+                <span class="tweet-username">@Onefly_eth</span>
+                <span class="tweet-date">2025/3/6 14:54:56</span>
+              </div>
+            </div>
+            <div class="tweet-content">
+              <p>$MONICA 10k 叙事是 $manus 的母公司
+TBWL9unkiL5ekkau65yTZSKhCDK5AwaSHBjeb2ppump
+
+https://t.co/WzN1F24rD5 https://t.co/hWfmR5pGqZ</p>
+              <div class="tweet-media"><img src="https://pbs.twimg.com/media/GlVp8njXwAAiIcF.png" alt="推文图片" class="tweet-image"></div>
+            </div>
+            <div class="tweet-stats">
+              <span class="tweet-replies"><i class="fa fa-comment"></i> 1</span>
+              <span class="tweet-retweets"><i class="fa fa-retweet"></i> 0</span>
+              <span class="tweet-likes"><i class="fa fa-heart"></i> 5</span>
+            </div>
+          </div>
+        </div>
+    </div>
+  </body>
+  </html>
+  

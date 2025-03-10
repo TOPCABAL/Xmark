@@ -53,7 +53,7 @@ async function getUserData() {
     const response = await axios(options);
     
     // 保存响应数据到文件
-    const filePath = path.join(__dirname, 'description.json');
+    const filePath = path.join(__dirname, 'OriginDescription.json');
     fs.writeFileSync(filePath, JSON.stringify(response.data, null, 2));
     
     console.log(`成功获取数据并保存到: ${filePath}`);

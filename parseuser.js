@@ -560,7 +560,7 @@ function generateHtml(data) {
 
 // 主函数
 function main() {
-    const filePath = path.resolve(__dirname, 'User.json');
+    const filePath = path.resolve(__dirname, 'tweets.json');
     
     console.log(`正在解析文件: ${filePath}`);
     const userData = parseUserJson(filePath);
