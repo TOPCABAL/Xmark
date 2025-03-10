@@ -1,0 +1,83 @@
+{
+  "data": {
+    "user": {
+      "result": {
+        "__typename": "User",
+        "id": "VXNlcjoxODY5OTUyMzc4ODk3ODcwODQ5",
+        "rest_id": "1869952378897870849",
+        "affiliates_highlighted_label": {},
+        "has_graduated_access": true,
+        "parody_commentary_fan_label": "None",
+        "is_blue_verified": false,
+        "profile_image_shape": "Circle",
+        "legacy": {
+          "following": true,
+          "can_dm": false,
+          "can_media_tag": true,
+          "created_at": "Fri Dec 20 03:46:55 +0000 2024",
+          "default_profile": true,
+          "default_profile_image": false,
+          "description": "Story-native AI Agent launchpad and exchange powered by ai(3,3) (soon) \n\n@virtuals_io + @aerodromefi",
+          "entities": {
+            "description": {
+              "urls": []
+            },
+            "url": {
+              "urls": [
+                {
+                  "display_url": "story.fun",
+                  "expanded_url": "https://story.fun",
+                  "url": "https://t.co/ptTmuwJ7ru",
+                  "indices": [
+                    0,
+                    23
+                  ]
+                }
+              ]
+            }
+          },
+          "fast_followers_count": 0,
+          "favourites_count": 23,
+          "followers_count": 6029,
+          "friends_count": 6,
+          "has_custom_timelines": false,
+          "is_translator": false,
+          "listed_count": 26,
+          "location": "Story Protocol",
+          "media_count": 1,
+          "name": "story.fun — ai(3,3) 🏝️",
+          "normal_followers_count": 6029,
+          "pinned_tweet_ids_str": [
+            "1898045355922743661"
+          ],
+          "possibly_sensitive": false,
+          "profile_banner_url": "https://pbs.twimg.com/profile_banners/1869952378897870849/1740042393",
+          "profile_image_url_https": "https://pbs.twimg.com/profile_images/1892501001380249600/m8Leq-zc_normal.png",
+          "profile_interstitial_type": "",
+          "screen_name": "storydotfun",
+          "statuses_count": 11,
+          "translator_type": "none",
+          "url": "https://t.co/ptTmuwJ7ru",
+          "verified": false,
+          "want_retweets": true,
+          "withheld_in_countries": []
+        },
+        "tipjar_settings": {},
+        "legacy_extended_profile": {},
+        "is_profile_translatable": false,
+        "has_hidden_subscriptions_on_profile": false,
+        "verification_info": {
+          "is_identity_verified": false
+        },
+        "highlights_info": {
+          "can_highlight_tweets": true,
+          "highlighted_tweets": "2"
+        },
+        "user_seed_tweet_count": 0,
+        "premium_gifting_eligible": false,
+        "business_account": {},
+        "creator_subscriptions_count": 0
+      }
+    }
+  }
+}

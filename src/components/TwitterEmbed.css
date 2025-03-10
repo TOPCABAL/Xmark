@@ -1,16 +1,24 @@
 .twitter-embed-container {
   width: 100%;
   height: 100%;
-  overflow: auto;
+  overflow: hidden;
   border-radius: 8px;
+  background-color: #f7f9fa;
+  max-width: 100%;
+  margin: 0 auto;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
 }
 
-.twitter-content-container {
+.twitter-iframe {
   width: 100%;
-  height: 100%;
-  padding: 0;
-  margin: 0;
-  overflow: auto;
+  height: calc(100vh - 100px);
+  border: none;
+  overflow-y: auto !important;
+  overflow-x: hidden;
+  flex: 1;
+  min-width: 400px;
 }
 
 .loading-spinner-container {
@@ -19,6 +27,7 @@
   align-items: center;
   justify-content: center;
   height: 100%;
+  min-height: calc(100vh - 100px);
   padding: 30px;
 }
 
@@ -38,6 +47,7 @@
   align-items: center;
   justify-content: center;
   height: 100%;
+  min-height: calc(100vh - 100px);
   padding: 30px;
   text-align: center;
   color: #657786;
@@ -57,9 +67,17 @@
 .error-hint {
   font-size: 14px;
   color: #657786;
+  line-height: 1.5;
 }
 
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+/* 媒体查询，为小屏幕调整宽度 */
+@media (max-width: 1600px) {
+  .twitter-embed-container {
+    max-width: 100%;
+  }
 } 

@@ -4,7 +4,7 @@
       "id": "12345678",
       "name": "憨巴龙王",
       "username": "dotyyds1234",
-      "profile_image_url": "https://randomuser.me/api/portraits/men/1.jpg",
+      "profile_image_url": "https://pbs.twimg.com/profile_images/1701493248269881344/uXTOJ_0J_normal.jpg",
       "verified": true,
       "description": "技术爱好者，分享前沿科技资讯",
       "public_metrics": {
@@ -18,7 +18,7 @@
       "id": "Rocky258459",
       "name": "Rocky",
       "username": "Rocky258459",
-      "profile_image_url": "https://randomuser.me/api/portraits/women/2.jpg",
+      "profile_image_url": "https://pbs.twimg.com/profile_images/1687287469837025280/X3GnFR9P_normal.jpg",
       "verified": false,
       "description": "前端开发者，React & Vue 爱好者",
       "public_metrics": {
@@ -27,7 +27,21 @@
         "tweet_count": 2345,
         "listed_count": 67
       }
-    }  
+    },
+    {
+      "id": "Onefly_eth",
+      "name": "Onefly.eth",
+      "username": "Onefly_eth",
+      "profile_image_url": "https://pbs.twimg.com/profile_images/1843314373873602560/UTch9-5m_normal.jpg",
+      "verified": false,
+      "description": "前端开发者，React & Vue 爱好者",
+      "public_metrics": {
+        "followers_count": 4567,
+        "following_count": 789,
+        "tweet_count": 2345,
+        "listed_count": 67
+      }
+    } 
   ],
   "meta": {
     "result_count": 7,

@@ -333,9 +333,9 @@ function App() {
     <Layout style={{ minHeight: '100vh' }}>
       <CookieConsent />
       
-      <Layout.Content style={{ padding: '0', display: 'flex', height: 'calc(100vh - 64px)' }}>
+      <Layout.Content style={{ padding: '0', display: 'flex', height: 'calc(100vh - 64px)', overflow: 'hidden' }}>
         {/* 左侧侧边栏 - 账号列表 */}
-        <div style={{ width: '360px', borderRight: '1px solid #f0f0f0', overflowY: 'auto', height: '100%' }}>
+        <div style={{ width: '510px', borderRight: '1px solid #f0f0f0', overflowY: 'auto', height: '100%' }}>
           <div className="flex flex-col h-full">
             <div className="p-2 flex items-center justify-between border-b border-gray-200">
               <Tabs 
@@ -411,7 +411,7 @@ function App() {
         </div>
         
         {/* 中间内容区 - 推特页面 */}
-        <div style={{ flex: 1, overflowY: 'auto', height: '100%', position: 'relative' }}>
+        <div style={{ flex: 1, minWidth: '400px', overflowY: 'hidden', height: '100%', position: 'relative', borderLeft: 'none', borderRight: 'none' }}>
           {twitterLoading ? (
             <div style={{ padding: '20px', textAlign: 'center' }}>
               <Spin />
@@ -429,7 +429,7 @@ function App() {
         </div>
         
         {/* 右侧侧边栏 - 标注区域 */}
-        <div style={{ width: '300px', padding: '20px', borderLeft: '1px solid #f0f0f0', height: '100%', overflowY: 'auto' }}>
+        <div style={{ width: '560px', padding: '15px', borderLeft: '1px solid #f0f0f0', height: '100%', overflowY: 'auto' }}>
           <div className="p-4">
             <div className="flex justify-between items-center mb-4">
               <Title level={3} className="m-0">分组 & 备注</Title>

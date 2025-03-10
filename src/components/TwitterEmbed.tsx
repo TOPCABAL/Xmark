@@ -13,7 +13,22 @@ const TwitterEmbed: React.FC<TwitterEmbedProps> = ({ screenName = 'dotyyds1234' 
   const [htmlContent, setHtmlContent] = useState('');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+
+  // 调整iframe高度以填充容器
+  const adjustHeight = () => {
+    if (iframeRef.current && containerRef.current) {
+      const containerHeight = containerRef.current.clientHeight;
+      iframeRef.current.style.height = `${containerHeight}px`;
+    }
+  };
+
+  // 监听窗口大小变化
+  useEffect(() => {
+    window.addEventListener('resize', adjustHeight);
+    return () => window.removeEventListener('resize', adjustHeight);
+  }, []);
 
   useEffect(() => {
     const fetchTwitterProfile = async () => {
@@ -48,36 +63,69 @@ const TwitterEmbed: React.FC<TwitterEmbedProps> = ({ screenName = 'dotyyds1234' 
     }
   }, [screenName]); // 当screenName变化时重新加载
 
-  // 当HTML内容加载后，将其设置到容器中
+  // 当HTML内容加载后
   useEffect(() => {
-    if (htmlContent && containerRef.current) {
-      // 从HTML中提取<body>标签内容
-      const bodyContent = htmlContent.match(/<body[^>]*>([\s\S]*)<\/body>/i)?.[1] || htmlContent;
-      containerRef.current.innerHTML = bodyContent;
+    if (htmlContent && iframeRef.current) {
+      const iframe = iframeRef.current;
+      const iframeDoc = iframe.contentDocument || iframe.contentWindow?.document;
       
-      // 添加CSS处理
-      const styleElement = document.createElement('style');
-      styleElement.textContent = `
-        .container {
-          width: 100% !important;
-          max-width: 100% !important;
-        }
-      `;
-      containerRef.current.appendChild(styleElement);
-      
-      // 添加事件监听器到链接
-      const links = containerRef.current.querySelectorAll('a');
-      links.forEach(link => {
-        link.addEventListener('click', (e) => {
-          e.preventDefault();
-          window.open(link.href, '_blank');
+      if (iframeDoc) {
+        // 写入完整的HTML内容，包含所有样式
+        iframeDoc.open();
+        iframeDoc.write(htmlContent);
+        
+        // 添加额外的样式，调整内容宽度
+        iframeDoc.write(`
+          <style>
+            body {
+              max-width: 700px !important;
+              margin: 0 auto !important;
+              overflow-x: hidden !important;
+              padding: 15px 20px !important;
+            }
+            
+            /* 确保文本不溢出容器 */
+            p, div, span, h1, h2, h3, h4, h5, h6 {
+              word-wrap: break-word !important;
+              overflow-wrap: break-word !important;
+            }
+            
+            /* 确保图片响应式适应宽度 */
+            img, video {
+              max-width: 100% !important;
+              height: auto !important;
+            }
+            
+            @media (max-width: 800px) {
+              body {
+                max-width: 95% !important;
+              }
+            }
+          </style>
+        `);
+        
+        iframeDoc.close();
+        
+        // 添加事件监听器处理iframe内部链接
+        iframeDoc.addEventListener('click', (e) => {
+          const target = e.target as HTMLElement;
+          if (target.tagName === 'A') {
+            e.preventDefault();
+            const href = (target as HTMLAnchorElement).href;
+            if (href) {
+              window.open(href, '_blank');
+            }
+          }
         });
-      });
+        
+        // 调整高度
+        adjustHeight();
+      }
     }
   }, [htmlContent]);
 
   return (
-    <div className="twitter-embed-container">
+    <div ref={containerRef} className="twitter-embed-container">
       {loading ? (
         <div className="loading-spinner-container">
           <div className="loading-spinner"></div>
@@ -95,7 +143,13 @@ const TwitterEmbed: React.FC<TwitterEmbedProps> = ({ screenName = 'dotyyds1234' 
           </p>
         </div>
       ) : (
-        <div ref={containerRef} className="twitter-content-container"></div>
+        <iframe 
+          ref={iframeRef}
+          className="twitter-iframe"
+          title={`${screenName}的Twitter资料`}
+          sandbox="allow-same-origin allow-scripts"
+          scrolling="yes"
+        />
       )}
     </div>
   );
