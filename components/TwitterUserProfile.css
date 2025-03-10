@@ -1,0 +1,135 @@
+.twitter-profile-container {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  color: #333;
+}
+
+.user-info {
+  background-color: #f5f8fa;
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.user-info img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-right: 15px;
+  float: left;
+}
+
+.user-header {
+  display: flex;
+  align-items: center;
+}
+
+.verified-badge {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  background-color: #1da1f2;
+  border-radius: 50%;
+  margin-left: 5px;
+  position: relative;
+}
+
+.verified-badge:after {
+  content: "✓";
+  color: white;
+  position: absolute;
+  font-size: 12px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.user-info h1 {
+  margin-top: 0;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.user-info p {
+  margin: 5px 0;
+  color: #657786;
+}
+
+.user-desc {
+  clear: both;
+  padding-top: 15px;
+}
+
+.user-meta {
+  color: #657786;
+  font-size: 0.9em;
+  margin-top: 10px;
+}
+
+.user-meta span {
+  margin-right: 15px;
+}
+
+.user-stats {
+  clear: both;
+  padding-top: 15px;
+  display: flex;
+  gap: 20px;
+}
+
+.user-stats div {
+  flex: 1;
+}
+
+.tweet {
+  background-color: white;
+  border: 1px solid #e1e8ed;
+  border-radius: 15px;
+  padding: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.tweet-header {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.tweet-text {
+  margin-bottom: 10px;
+}
+
+.tweet-media {
+  margin: 10px 0;
+}
+
+.tweet-media img, 
+.tweet-media video {
+  max-width: 100%;
+  max-height: 400px;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+.tweet-stats {
+  color: #657786;
+  display: flex;
+  gap: 15px;
+}
+
+.tweet-date {
+  color: #657786;
+  font-size: 0.9em;
+}
+
+.no-tweets {
+  text-align: center;
+  padding: 40px;
+  color: #657786;
+  font-style: italic;
+} 

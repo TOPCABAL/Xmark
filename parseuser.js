@@ -42,6 +42,11 @@ function parseUserJson(filePath) {
         console.log('提取的用户信息:');
         console.log(JSON.stringify(extractedData, null, 2));
         
+        // 保存解析后的数据为JSON文件
+        const jsonOutputPath = path.resolve(__dirname, 'userData.json');
+        fs.writeFileSync(jsonOutputPath, JSON.stringify(extractedData, null, 2));
+        console.log(`解析后的JSON数据已保存到: ${jsonOutputPath}`);
+        
         // 生成HTML并保存
         generateHtml(extractedData);
         
