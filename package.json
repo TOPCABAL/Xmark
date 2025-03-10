@@ -11,8 +11,11 @@
   },
   "dependencies": {
     "antd": "^5.24.3",
+    "axios": "^1.8.2",
+    "https-proxy-agent": "^7.0.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "socks-proxy-agent": "^8.0.5",
     "uuid": "^11.1.0"
   },
   "devDependencies": {

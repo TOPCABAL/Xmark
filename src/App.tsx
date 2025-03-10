@@ -16,7 +16,7 @@ import ExportModal from './components/ExportModal';
 import GoogleDriveSync from './components/GoogleDriveSync';
 import { AccountProps, loadLocalFollowingList, mergeWithAnnotatedAccounts } from './services/twitterService';
 import { getAnnotatedAccounts, saveAnnotatedAccount, AnnotatedAccount } from './services/localStorageService';
-import TwitterEmbed from "./components/TwitterEmbed";
+import TwitterSelector from "./components/TwitterSelector";
 
 const { TextArea } = Input;
 const { Title } = Typography;
@@ -419,7 +419,7 @@ function App() {
               ) : (
                 // 使用key属性确保在账号切换时重新渲染
                 <div className="w-full h-full">
-                  <TwitterEmbed screenName={currentAccount.username.replace("@", "")} />
+                  <TwitterSelector />
                 </div>
               )}
             </div>
