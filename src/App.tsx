@@ -7,7 +7,8 @@ import {
   DatabaseOutlined, 
   TagOutlined,
   CloudSyncOutlined,
-  ExportOutlined
+  ExportOutlined,
+  TwitterOutlined
 } from '@ant-design/icons';
 import { CookieConsent } from './components/CookieConsent';
 import AccountList from './components/AccountList';
@@ -17,6 +18,7 @@ import GoogleDriveSync from './components/GoogleDriveSync';
 import { AccountProps, loadLocalFollowingList, mergeWithAnnotatedAccounts } from './services/twitterService';
 import { getAnnotatedAccounts, saveAnnotatedAccount, AnnotatedAccount } from './services/localStorageService';
 import TwitterSelector from "./components/TwitterSelector";
+import TwitterEmbed from './components/TwitterEmbed';
 
 const { TextArea } = Input;
 const { Title } = Typography;
@@ -41,6 +43,9 @@ function App() {
   const [twitterLoading, setTwitterLoading] = useState(false);
   const [exportModalVisible, setExportModalVisible] = useState(false);
   const [googleDriveSyncVisible, setGoogleDriveSyncVisible] = useState(false);
+  
+  // 当前选中的Twitter用户名
+  const [currentScreenName, setCurrentScreenName] = useState<string>('');
 
   // 处理导入的Twitter数据
   const handleImportData = (importedAccounts: AccountProps[]) => {
@@ -157,13 +162,18 @@ function App() {
     setNotes(current.notes || "");
   }, [currentIndex, displayAccounts]);
 
-  // 优化账号切换处理函数
+  // 处理选择账号
   const handleSelectAccount = (index: number) => {
-    // 重置Twitter嵌入状态
-    setTwitterLoading(true);
-    
-    // 更新当前选中的账号索引
     setCurrentIndex(index);
+    
+    if (index >= 0 && index < displayAccounts.length) {
+      const account = displayAccounts[index];
+      setCategory(account.category || "");
+      setNotes(account.notes || "");
+      
+      // 设置当前选中用户名
+      setCurrentScreenName(account.username);
+    }
   };
 
   // 处理Twitter嵌入组件加载完成事件
@@ -320,10 +330,12 @@ function App() {
   const categoryOptions = ["技术学习", "编程", "AI讨论", "投资", "娱乐", "其他"];
 
   return (
-    <Layout style={{ height: '100vh', overflow: 'hidden' }}>
-      <Row gutter={0} style={{ height: '100%' }}>
-        {/* 左侧 - 账号列表 */}
-        <Col span={6} style={{ height: '100%' }}>
+    <Layout style={{ minHeight: '100vh' }}>
+      <CookieConsent />
+      
+      <Layout.Content style={{ padding: '0', display: 'flex', height: 'calc(100vh - 64px)' }}>
+        {/* 左侧侧边栏 - 账号列表 */}
+        <div style={{ width: '360px', borderRight: '1px solid #f0f0f0', overflowY: 'auto', height: '100%' }}>
           <div className="flex flex-col h-full">
             <div className="p-2 flex items-center justify-between border-b border-gray-200">
               <Tabs 
@@ -396,48 +408,28 @@ function App() {
               />
             </div>
           </div>
-        </Col>
-
-        {/* 中间 - 推特主页嵌入 */}
-        <Col span={10} style={{ height: '100%', display: 'flex', flexDirection: 'column', borderRight: '1px solid #f0f0f0' }}>
-          <div className="p-4 pb-0">
-            <Title level={3} className="mb-2">
-              {currentAccount.name} 的推特主页
-              {currentAccount.isAnnotated && (
-                <Tag color="green" className="ml-2">已标注</Tag>
-              )}
-            </Title>
-          </div>
-          
-          <div style={{ flex: 1, padding: '0 8px', display: 'flex', flexDirection: 'column' }}>
-            {/* 推特组件容器 */}
-            <div style={{ flex: 1, minHeight: '650px' }}>
-              {twitterLoading ? (
-                <div className="flex items-center justify-center h-full">
-                  <Spin size="large" tip="加载推特主页..." />
-                </div>
-              ) : (
-                // 使用key属性确保在账号切换时重新渲染
-                <div className="w-full h-full">
-                  <TwitterSelector />
-                </div>
-              )}
-            </div>
-            
-            {/* 导航按钮 */}
-            <div className="flex justify-between p-4">
-              <Button onClick={handlePrev} disabled={currentIndex === 0}>
-                上一个账号
-              </Button>
-              <Button onClick={handleNext} disabled={currentIndex === displayAccounts.length - 1}>
-                下一个账号
-              </Button>
-            </div>
-          </div>
-        </Col>
+        </div>
         
-        {/* 右侧 - 分类与备注 */}
-        <Col span={8} style={{ height: '100%', overflowY: 'auto' }}>
+        {/* 中间内容区 - 推特页面 */}
+        <div style={{ flex: 1, overflowY: 'auto', height: '100%', position: 'relative' }}>
+          {twitterLoading ? (
+            <div style={{ padding: '20px', textAlign: 'center' }}>
+              <Spin />
+              <p style={{ marginTop: '10px' }}>加载Twitter页面中...</p>
+            </div>
+          ) : currentScreenName ? (
+            <TwitterEmbed screenName={currentScreenName} />
+          ) : (
+            <div style={{ padding: '40px', textAlign: 'center', color: '#999' }}>
+              <TwitterOutlined style={{ fontSize: '48px', marginBottom: '20px', color: '#1DA1F2' }} />
+              <Title level={4}>请从左侧列表选择一个账号</Title>
+              <p>选择账号后，这里将显示其Twitter资料</p>
+            </div>
+          )}
+        </div>
+        
+        {/* 右侧侧边栏 - 标注区域 */}
+        <div style={{ width: '300px', padding: '20px', borderLeft: '1px solid #f0f0f0', height: '100%', overflowY: 'auto' }}>
           <div className="p-4">
             <div className="flex justify-between items-center mb-4">
               <Title level={3} className="m-0">分组 & 备注</Title>
@@ -519,8 +511,8 @@ function App() {
               </div>
             )}
           </div>
-        </Col>
-      </Row>
+        </div>
+      </Layout.Content>
 
       {/* Twitter数据导入对话框 */}
       <TwitterImport 
@@ -565,8 +557,6 @@ function App() {
           }
         }}
       />
-      
-      <CookieConsent />
     </Layout>
   );
 }

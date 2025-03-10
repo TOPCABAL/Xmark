@@ -655,4 +655,95 @@ export function mergeWithAnnotatedAccounts(apiAccounts: AccountProps[], annotate
     
     return apiAccount;
   });
+}
+
+// 添加一个导入Twitter用户数据的函数
+export async function createTwitterUser(username: string, userData: any, tweetsData?: any) {
+  try {
+    // 移除用户名中的@符号
+    const cleanUsername = username.replace('@', '');
+    
+    // 调用API端点
+    const response = await fetch('http://localhost:3001/api/twitter-profile/create', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username: cleanUsername,
+        userData,
+        tweetsData
+      }),
+    });
+    
+    const result = await response.json();
+    
+    if (!result.success) {
+      throw new Error(result.message || '创建用户数据失败');
+    }
+    
+    return result;
+  } catch (error) {
+    console.error('创建Twitter用户数据失败:', error);
+    throw error;
+  }
+}
+
+// 添加或增强解析Twitter数据的功能
+export function extractTwitterUserData(jsonData: any) {
+  try {
+    let userData = null;
+    let tweetsData = null;
+    
+    // 尝试确定数据类型
+    if (typeof jsonData === 'string') {
+      try {
+        jsonData = JSON.parse(jsonData);
+      } catch (error) {
+        console.error('JSON解析失败:', error);
+        throw new Error('无效的JSON格式');
+      }
+    }
+    
+    // 检查是否有用户资料数据
+    if (jsonData?.data?.user?.result?.legacy) {
+      userData = jsonData;
+    }
+    
+    // 检查是否有推文数据
+    if (jsonData?.data?.user?.result?.timeline_v2) {
+      tweetsData = jsonData;
+    }
+    
+    // 如果无法确定数据类型
+    if (!userData && !tweetsData) {
+      // 可能是其他格式，尝试查找常见的用户资料字段
+      if (jsonData?.legacy || jsonData?.screen_name || jsonData?.profile_image_url_https) {
+        // 构建一个符合预期结构的用户数据对象
+        userData = {
+          data: {
+            user: {
+              result: {
+                legacy: {
+                  ...jsonData,
+                  // 确保必要字段存在
+                  name: jsonData.name || jsonData.screen_name || 'Unknown User',
+                  screen_name: jsonData.screen_name || 'unknown',
+                  profile_image_url_https: jsonData.profile_image_url_https || '',
+                  description: jsonData.description || '',
+                  followers_count: jsonData.followers_count || 0,
+                  friends_count: jsonData.friends_count || 0,
+                }
+              }
+            }
+          }
+        };
+      }
+    }
+    
+    return { userData, tweetsData };
+  } catch (error) {
+    console.error('提取Twitter数据失败:', error);
+    throw error;
+  }
 } 

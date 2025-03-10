@@ -1,0 +1,164 @@
+
+  <!DOCTYPE html>
+  <html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ed Tang (@techpanda) | Twitter</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        background-color: #f7f9fa;
+        color: #0f1419;
+        line-height: 1.3;
+      }
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+      }
+      .profile-header {
+        position: relative;
+      }
+      .profile-banner {
+        width: 100%;
+        height: 200px;
+        background-color: #1DA1F2;
+        background-size: cover;
+        background-position: center;
+      }
+      .profile-avatar {
+        width: 130px;
+        height: 130px;
+        border-radius: 50%;
+        border: 4px solid white;
+        position: absolute;
+        left: 15px;
+        top: 130px;
+      }
+      .profile-info {
+        margin-top: 70px;
+        padding: 15px;
+      }
+      .profile-name {
+        font-size: 20px;
+        font-weight: bold;
+      }
+      .profile-username {
+        font-size: 15px;
+        color: #536471;
+        margin-bottom: 12px;
+      }
+      .profile-bio {
+        margin-bottom: 12px;
+        white-space: pre-line;
+      }
+      .profile-meta {
+        display: flex;
+        margin-bottom: 16px;
+        color: #536471;
+      }
+      .profile-meta div {
+        margin-right: 20px;
+      }
+      .profile-meta a {
+        color: #0f1419;
+        text-decoration: none;
+      }
+      .profile-meta a:hover {
+        text-decoration: underline;
+      }
+      .profile-meta i {
+        width: 20px;
+        margin-right: 2px;
+        color: #536471;
+      }
+      .profile-links a {
+        color: #1DA1F2;
+        text-decoration: none;
+      }
+      .profile-links a:hover {
+        text-decoration: underline;
+      }
+      .tweet {
+        background-color: white;
+        border: 1px solid #eff3f4;
+        border-radius: 16px;
+        padding: 15px;
+        margin-bottom: 12px;
+      }
+      .pinned-tweet {
+        border-left: 3px solid #1DA1F2;
+      }
+      .pinned-label {
+        font-size: 13px;
+        color: #536471;
+        margin-bottom: 8px;
+      }
+      .tweet-header {
+        display: flex;
+        margin-bottom: 10px;
+      }
+      .tweet-avatar {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+      .tweet-user-info {
+        display: flex;
+        flex-direction: column;
+      }
+      .tweet-name {
+        font-weight: bold;
+      }
+      .tweet-username, .tweet-date {
+        font-size: 14px;
+        color: #536471;
+      }
+      .tweet-content {
+        margin-bottom: 10px;
+        white-space: pre-line;
+      }
+      .tweet-stats {
+        display: flex;
+        color: #536471;
+        font-size: 14px;
+      }
+      .tweet-stats span {
+        margin-right: 20px;
+      }
+      .tweets-container {
+        padding: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="profile-header">
+        <div class="profile-banner" style="background-image: url('')"></div>
+        <img src="https://pbs.twimg.com/profile_images/378800000126192183/9c92f0a14c6d7486f0f2e91180f4ecb1_normal.jpeg" class="profile-avatar" alt="Ed Tang">
+      </div>
+      <div class="profile-info">
+        <h1 class="profile-name">Ed Tang</h1>
+        <div class="profile-username">@techpanda</div>
+        <div class="profile-bio">无简介</div>
+        <div class="profile-meta">
+          <div><i class="fas fa-map-marker-alt"></i>California</div>
+          
+        </div>
+        <div class="profile-meta">
+          <div><a href="https://twitter.com/techpanda/following"><b>32</b> 正在关注</a></div>
+          <div><a href="https://twitter.com/techpanda/followers"><b>1</b> 关注者</a></div>
+        </div>
+      </div>
+      <div class="tweets-container"></div>
+    </div>
+  </body>
+  </html>
+  

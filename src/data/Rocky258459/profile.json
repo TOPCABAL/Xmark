@@ -1,0 +1,130 @@
+{
+  "data": {
+    "user": {
+      "result": {
+        "__typename": "User",
+        "id": "VXNlcjoxNjg3Mjg2ODU5ODc2MjM3MzEy",
+        "rest_id": "1687286859876237312",
+        "affiliates_highlighted_label": {},
+        "has_graduated_access": true,
+        "parody_commentary_fan_label": "None",
+        "is_blue_verified": true,
+        "profile_image_shape": "Circle",
+        "legacy": {
+          "notifications": true,
+          "following": true,
+          "can_dm": true,
+          "can_media_tag": true,
+          "created_at": "Fri Aug 04 02:18:42 +0000 2023",
+          "default_profile": true,
+          "default_profile_image": false,
+          "description": "📄项目交互，操作记录！ \n💌合作DM：https://t.co/1zKsMfmzAX\nOKX Web3钱包现已支持100+公链\n提供钱包、多链 Swap、BRC-20铭刻&交易、NFT 市场、DeFi挖矿一站式服务 \n#web3入口 一个就够https://t.co/U3ThbqgXTA",
+          "entities": {
+            "description": {
+              "urls": [
+                {
+                  "display_url": "t.me/Rockys666",
+                  "expanded_url": "http://t.me/Rockys666",
+                  "url": "https://t.co/1zKsMfmzAX",
+                  "indices": [
+                    19,
+                    42
+                  ]
+                },
+                {
+                  "display_url": "okx.com/cn/web3?channe…",
+                  "expanded_url": "http://www.okx.com/cn/web3?channelid=ACE514158",
+                  "url": "https://t.co/U3ThbqgXTA",
+                  "indices": [
+                    121,
+                    144
+                  ]
+                }
+              ]
+            },
+            "url": {
+              "urls": [
+                {
+                  "display_url": "t.me/+e6Zxh9ZaImFkY…",
+                  "expanded_url": "https://t.me/+e6Zxh9ZaImFkYWVl",
+                  "url": "https://t.co/3zMPtOgv8G",
+                  "indices": [
+                    0,
+                    23
+                  ]
+                }
+              ]
+            }
+          },
+          "fast_followers_count": 0,
+          "favourites_count": 202,
+          "followers_count": 25756,
+          "friends_count": 1112,
+          "has_custom_timelines": false,
+          "is_translator": false,
+          "listed_count": 247,
+          "location": "香港",
+          "media_count": 1660,
+          "name": "Rocky",
+          "normal_followers_count": 25756,
+          "pinned_tweet_ids_str": [
+            "1876207013715423409"
+          ],
+          "possibly_sensitive": false,
+          "profile_banner_url": "https://pbs.twimg.com/profile_banners/1687286859876237312/1691116052",
+          "profile_image_url_https": "https://pbs.twimg.com/profile_images/1687287469837025280/X3GnFR9P_normal.jpg",
+          "profile_interstitial_type": "",
+          "screen_name": "Rocky258459",
+          "statuses_count": 5497,
+          "translator_type": "none",
+          "url": "https://t.co/3zMPtOgv8G",
+          "verified": false,
+          "want_retweets": true,
+          "withheld_in_countries": []
+        },
+        "professional": {
+          "rest_id": "1692050283311018255",
+          "professional_type": "Creator",
+          "category": [
+            {
+              "id": 192,
+              "name": "金融服务",
+              "icon_name": "IconBriefcaseStroke"
+            }
+          ]
+        },
+        "tipjar_settings": {},
+        "legacy_extended_profile": {},
+        "is_profile_translatable": false,
+        "has_hidden_subscriptions_on_profile": false,
+        "verification_info": {
+          "is_identity_verified": false,
+          "reason": {
+            "description": {
+              "text": "这个账号已通过认证。了解更多",
+              "entities": [
+                {
+                  "from_index": 10,
+                  "to_index": 14,
+                  "ref": {
+                    "url": "https://help.twitter.com/managing-your-account/about-twitter-verified-accounts",
+                    "url_type": "ExternalUrl"
+                  }
+                }
+              ]
+            },
+            "verified_since_msec": "1723019879705"
+          }
+        },
+        "highlights_info": {
+          "can_highlight_tweets": true,
+          "highlighted_tweets": "13"
+        },
+        "user_seed_tweet_count": 8,
+        "premium_gifting_eligible": false,
+        "business_account": {},
+        "creator_subscriptions_count": 0
+      }
+    }
+  }
+}

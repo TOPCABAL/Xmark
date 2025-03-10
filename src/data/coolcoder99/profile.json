@@ -1,0 +1,66 @@
+{
+  "data": {
+    "user": {
+      "result": {
+        "__typename": "User",
+        "id": "VXNlcjoxODc4NDUxODE5NDg5MTM2NjQw",
+        "rest_id": "1878451819489136640",
+        "affiliates_highlighted_label": {},
+        "has_graduated_access": true,
+        "parody_commentary_fan_label": "None",
+        "is_blue_verified": false,
+        "profile_image_shape": "Circle",
+        "legacy": {
+          "following": false,
+          "can_dm": false,
+          "can_media_tag": true,
+          "created_at": "Sun Jan 12 14:40:08 +0000 2025",
+          "default_profile": true,
+          "default_profile_image": true,
+          "description": "",
+          "entities": {
+            "description": {
+              "urls": []
+            }
+          },
+          "fast_followers_count": 0,
+          "favourites_count": 2,
+          "followers_count": 0,
+          "friends_count": 7,
+          "has_custom_timelines": false,
+          "is_translator": false,
+          "listed_count": 0,
+          "location": "",
+          "media_count": 0,
+          "name": "coolcoder99",
+          "normal_followers_count": 0,
+          "pinned_tweet_ids_str": [],
+          "possibly_sensitive": false,
+          "profile_image_url_https": "https://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png",
+          "profile_interstitial_type": "",
+          "screen_name": "coolcoder99",
+          "statuses_count": 0,
+          "translator_type": "none",
+          "verified": false,
+          "want_retweets": false,
+          "withheld_in_countries": []
+        },
+        "tipjar_settings": {},
+        "legacy_extended_profile": {},
+        "is_profile_translatable": false,
+        "has_hidden_subscriptions_on_profile": false,
+        "verification_info": {
+          "is_identity_verified": false
+        },
+        "highlights_info": {
+          "can_highlight_tweets": false,
+          "highlighted_tweets": "0"
+        },
+        "user_seed_tweet_count": 0,
+        "premium_gifting_eligible": true,
+        "business_account": {},
+        "creator_subscriptions_count": 0
+      }
+    }
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "data": {
+    "user": {
+      "result": {
+        "__typename": "User",
+        "id": "VXNlcjo0ODUwMjY5OQ==",
+        "rest_id": "48502699",
+        "affiliates_highlighted_label": {},
+        "has_graduated_access": true,
+        "parody_commentary_fan_label": "None",
+        "is_blue_verified": false,
+        "profile_image_shape": "Circle",
+        "legacy": {
+          "protected": true,
+          "following": false,
+          "can_dm": false,
+          "can_media_tag": false,
+          "created_at": "Thu Jun 18 21:47:44 +0000 2009",
+          "default_profile": false,
+          "default_profile_image": false,
+          "description": "",
+          "entities": {
+            "description": {
+              "urls": []
+            }
+          },
+          "fast_followers_count": 0,
+          "favourites_count": 2,
+          "followers_count": 1,
+          "friends_count": 32,
+          "has_custom_timelines": false,
+          "is_translator": false,
+          "listed_count": 0,
+          "location": "California",
+          "media_count": 0,
+          "name": "Ed Tang",
+          "normal_followers_count": 1,
+          "pinned_tweet_ids_str": [],
+          "possibly_sensitive": false,
+          "profile_image_url_https": "https://pbs.twimg.com/profile_images/378800000126192183/9c92f0a14c6d7486f0f2e91180f4ecb1_normal.jpeg",
+          "profile_interstitial_type": "",
+          "screen_name": "techpanda",
+          "statuses_count": 4,
+          "translator_type": "none",
+          "verified": false,
+          "want_retweets": false,
+          "withheld_in_countries": []
+        },
+        "tipjar_settings": {},
+        "legacy_extended_profile": {},
+        "is_profile_translatable": false,
+        "has_hidden_subscriptions_on_profile": false,
+        "verification_info": {
+          "is_identity_verified": false
+        },
+        "highlights_info": {
+          "can_highlight_tweets": false,
+          "highlighted_tweets": "0"
+        },
+        "user_seed_tweet_count": 0,
+        "premium_gifting_eligible": true,
+        "business_account": {},
+        "creator_subscriptions_count": 0
+      }
+    }
+  }
+}

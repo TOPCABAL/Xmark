@@ -15,9 +15,9 @@
       }
     },
     {
-      "id": "23456789",
-      "name": "酷酷的编程猫",
-      "username": "coolcoder99",
+      "id": "Rocky258459",
+      "name": "Rocky",
+      "username": "Rocky258459",
       "profile_image_url": "https://randomuser.me/api/portraits/women/2.jpg",
       "verified": false,
       "description": "前端开发者，React & Vue 爱好者",
@@ -27,77 +27,7 @@
         "tweet_count": 2345,
         "listed_count": 67
       }
-    },
-    {
-      "id": "34567890",
-      "name": "科技熊猫",
-      "username": "techpanda",
-      "profile_image_url": "https://randomuser.me/api/portraits/men/3.jpg",
-      "verified": true,
-      "description": "AI研究员，关注人工智能和机器学习前沿",
-      "public_metrics": {
-        "followers_count": 7890,
-        "following_count": 234,
-        "tweet_count": 5678,
-        "listed_count": 345
-      }
-    },
-    {
-      "id": "45678901",
-      "name": "前端达人",
-      "username": "frontendmaster",
-      "profile_image_url": "https://randomuser.me/api/portraits/women/4.jpg",
-      "verified": false,
-      "description": "分享前端开发技巧和最佳实践",
-      "public_metrics": {
-        "followers_count": 4321,
-        "following_count": 123,
-        "tweet_count": 9876,
-        "listed_count": 234
-      }
-    },
-    {
-      "id": "56789012",
-      "name": "区块链专家",
-      "username": "blockchain_expert",
-      "profile_image_url": "https://randomuser.me/api/portraits/men/5.jpg",
-      "verified": true,
-      "description": "Web3开发者，关注区块链和加密货币",
-      "public_metrics": {
-        "followers_count": 8765,
-        "following_count": 456,
-        "tweet_count": 3456,
-        "listed_count": 234
-      }
-    },
-    {
-      "id": "67890123",
-      "name": "设计师小明",
-      "username": "designer_xiaoming",
-      "profile_image_url": "https://randomuser.me/api/portraits/men/6.jpg",
-      "verified": false,
-      "description": "UI/UX设计师，分享设计理念和灵感",
-      "public_metrics": {
-        "followers_count": 5432,
-        "following_count": 234,
-        "tweet_count": 6543,
-        "listed_count": 123
-      }
-    },
-    {
-      "id": "78901234",
-      "name": "产品经理大卫",
-      "username": "pm_david",
-      "profile_image_url": "https://randomuser.me/api/portraits/men/7.jpg",
-      "verified": true,
-      "description": "10年产品经验，分享产品管理心得",
-      "public_metrics": {
-        "followers_count": 9876,
-        "following_count": 567,
-        "tweet_count": 4321,
-        "listed_count": 345
-      }
-    }
+    }  
   ],
   "meta": {
     "result_count": 7,

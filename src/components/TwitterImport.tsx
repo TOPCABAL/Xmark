@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
-import { Modal, Input, Button, Upload, message, Tabs, Alert, Spin, Typography } from 'antd';
+import { Modal, Input, Button, Upload, message, Tabs, Alert, Spin, Typography, Form } from 'antd';
 import { UploadOutlined, CodeOutlined, InfoCircleOutlined, ExclamationCircleOutlined } from '@ant-design/icons';
-import { importTwitterFollowingFromJson, AccountProps } from '../services/twitterService';
+import { 
+  importTwitterFollowingFromJson, 
+  AccountProps, 
+  createTwitterUser,
+  extractTwitterUserData
+} from '../services/twitterService';
 
 const { TabPane } = Tabs;
 const { TextArea } = Input;
@@ -11,19 +16,26 @@ interface TwitterImportProps {
   visible: boolean;
   onCancel: () => void;
   onImport: (accounts: AccountProps[]) => void;
+  onImportSuccess?: (accounts: AccountProps[]) => void;
 }
 
-const TwitterImport: React.FC<TwitterImportProps> = ({ visible, onCancel, onImport }) => {
+const TwitterImport: React.FC<TwitterImportProps> = ({ visible, onCancel, onImport, onImportSuccess }) => {
   const [jsonText, setJsonText] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [parsedUsers, setParsedUsers] = useState<number | null>(null);
+  const [singleUsername, setSingleUsername] = useState('');
+  const [singleJsonText, setSingleJsonText] = useState('');
+  const [isProcessing, setIsProcessing] = useState(false);
 
   // 重置状态
   const resetState = () => {
     setError(null);
     setParsedUsers(null);
     setLoading(false);
+    setSingleUsername('');
+    setSingleJsonText('');
+    setIsProcessing(false);
   };
 
   // 处理导入错误
@@ -227,6 +239,69 @@ const TwitterImport: React.FC<TwitterImportProps> = ({ visible, onCancel, onImpo
     return null;
   };
 
+  // 更新创建单个用户的函数
+  const handleCreateSingleUser = async (username: string, jsonData: string) => {
+    try {
+      setIsProcessing(true);
+      
+      if (!username.trim()) {
+        message.error('请输入用户名');
+        setIsProcessing(false);
+        return;
+      }
+      
+      // 解析JSON数据并提取
+      try {
+        // 使用新的提取函数
+        const { userData, tweetsData } = extractTwitterUserData(jsonData);
+        
+        if (!userData && !tweetsData) {
+          message.error('无法识别的JSON数据格式');
+          setIsProcessing(false);
+          return;
+        }
+        
+        // 调用API创建用户
+        const result = await createTwitterUser(username, userData, tweetsData);
+        
+        if (result.success) {
+          message.success(`成功${userData ? '导入用户资料' : ''}${tweetsData ? '导入用户推文' : ''}`);
+          
+          // 如果HTML生成成功
+          if (result.htmlGenerated) {
+            message.success('HTML生成成功，可以在中间栏查看用户资料');
+            
+            // 可选：触发刷新用户列表
+            if (onImportSuccess) {
+              onImportSuccess([{
+                id: username,
+                username: username,
+                name: userData?.data?.user?.result?.legacy?.name || username,
+                avatar: userData?.data?.user?.result?.legacy?.profile_image_url_https || '',
+                following: true
+              }]);
+            }
+            
+            // 关闭导入窗口
+            onCancel();
+          }
+        } else {
+          message.error(`导入失败: ${result.message}`);
+        }
+      } catch (error) {
+        console.error('解析JSON失败:', error);
+        message.error(`JSON解析失败: ${error instanceof Error ? error.message : '未知错误'}`);
+        setIsProcessing(false);
+        return;
+      }
+    } catch (error) {
+      console.error('创建用户失败:', error);
+      message.error(`创建用户失败: ${error instanceof Error ? error.message : '未知错误'}`);
+    } finally {
+      setIsProcessing(false);
+    }
+  };
+
   return (
     <Modal
       title="导入Twitter关注列表"
@@ -327,6 +402,36 @@ const TwitterImport: React.FC<TwitterImportProps> = ({ visible, onCancel, onImpo
               <strong>注意:</strong> 导入处理耗时取决于数据复杂度和大小，请耐心等待。
             </p>
           </div>
+        </TabPane>
+        
+        <TabPane tab="导入单个用户" key="import-single">
+          <Form layout="vertical">
+            <Form.Item label="用户名 (不包含@符号)">
+              <Input 
+                placeholder="例如: dotyyds1234" 
+                value={singleUsername} 
+                onChange={e => setSingleUsername(e.target.value)}
+              />
+            </Form.Item>
+            <Form.Item label="JSON数据 (用户资料或推文)">
+              <Input.TextArea
+                placeholder="粘贴JSON数据..."
+                rows={10}
+                value={singleJsonText}
+                onChange={e => setSingleJsonText(e.target.value)}
+              />
+            </Form.Item>
+            <Form.Item>
+              <Button 
+                type="primary" 
+                onClick={() => handleCreateSingleUser(singleUsername, singleJsonText)}
+                loading={isProcessing}
+                disabled={!singleUsername || !singleJsonText}
+              >
+                导入数据
+              </Button>
+            </Form.Item>
+          </Form>
         </TabPane>
       </Tabs>
     </Modal>
