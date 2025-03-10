@@ -7,161 +7,312 @@
     <title>Onefly.eth (@Onefly_eth) | Twitter</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
+      /* 基本样式 */
+      :root {
+        --background: #f7f9fa;
+        --card-bg: #ffffff;
+        --text-color: #0f1419;
+        --secondary-text: #536471;
+        --border-color: #eff3f4;
+        --blue: #1DA1F2;
+        --blue-hover: #1a91da;
+      }
+      
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --background: #15202b;
+          --card-bg: #192734;
+          --text-color: #ffffff;
+          --secondary-text: #8899a6;
+          --border-color: #38444d;
+        }
+      }
+      
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
       }
+      
       body {
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        background-color: #f7f9fa;
-        color: #0f1419;
+        background-color: var(--background);
+        color: var(--text-color);
         line-height: 1.3;
       }
+      
+      a {
+        color: var(--blue);
+        text-decoration: none;
+      }
+      
+      a:hover {
+        text-decoration: underline;
+      }
+      
       .container {
         max-width: 600px;
         margin: 0 auto;
+        padding: 0;
       }
+      
+      .profile-card {
+        background-color: var(--card-bg);
+        border-radius: 16px;
+        overflow: hidden;
+        margin-bottom: 16px;
+        border: 1px solid var(--border-color);
+      }
+      
       .profile-header {
         position: relative;
       }
+      
       .profile-banner {
         width: 100%;
-        height: 200px;
-        background-color: #1DA1F2;
+        height: 150px;
+        background-color: var(--blue);
         background-size: cover;
         background-position: center;
       }
-      .profile-avatar {
-        width: 130px;
-        height: 130px;
-        border-radius: 50%;
-        border: 4px solid white;
+      
+      .profile-avatar-container {
         position: absolute;
-        left: 15px;
-        top: 130px;
+        bottom: -50px;
+        left: 16px;
       }
+      
+      .profile-avatar {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        border: 4px solid var(--card-bg);
+        object-fit: cover;
+      }
+      
       .profile-info {
-        margin-top: 70px;
-        padding: 15px;
+        padding: 60px 16px 16px;
       }
+      
+      .profile-name-container {
+        display: flex;
+        align-items: center;
+      }
+      
       .profile-name {
         font-size: 20px;
         font-weight: bold;
+        margin-right: 4px;
       }
+      
+      /* 强化蓝V标志的样式 - 使用简单明了的样式 */
+      .verified-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 18px;
+        height: 18px;
+        background-color: #1DA1F2;
+        border-radius: 50%;
+        margin-left: 4px;
+        color: white;
+        font-size: 12px;
+        font-weight: bold;
+        text-align: center;
+        line-height: 1;
+      }
+      
       .profile-username {
         font-size: 15px;
-        color: #536471;
+        color: var(--secondary-text);
         margin-bottom: 12px;
       }
+      
+      /* 其余样式保持不变 */
       .profile-bio {
-        margin-bottom: 12px;
+        margin-bottom: 15px;
         white-space: pre-line;
       }
+      
       .profile-meta {
         display: flex;
-        margin-bottom: 16px;
-        color: #536471;
+        flex-wrap: wrap;
+        color: var(--secondary-text);
+        margin-bottom: 15px;
+        font-size: 14px;
       }
-      .profile-meta div {
+      
+      .profile-meta-item {
+        display: flex;
+        align-items: center;
+        margin-right: 15px;
+        margin-bottom: 5px;
+      }
+      
+      .profile-meta-item i {
+        margin-right: 5px;
+        width: 16px;
+        text-align: center;
+      }
+      
+      .profile-stats {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 15px;
+      }
+      
+      .profile-stat {
         margin-right: 20px;
+        margin-bottom: 10px;
       }
-      .profile-meta a {
-        color: #0f1419;
-        text-decoration: none;
+      
+      .profile-stat-value {
+        font-weight: 700;
       }
-      .profile-meta a:hover {
-        text-decoration: underline;
+      
+      .profile-stat-label {
+        color: var(--secondary-text);
+        font-size: 14px;
       }
-      .profile-meta i {
-        width: 20px;
-        margin-right: 2px;
-        color: #536471;
+      
+      /* 推文部分 */
+      .tweets-title {
+        font-size: 20px;
+        font-weight: 700;
+        margin: 20px 0 15px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--border-color);
       }
-      .profile-links a {
-        color: #1DA1F2;
-        text-decoration: none;
-      }
-      .profile-links a:hover {
-        text-decoration: underline;
-      }
+      
       .tweet {
-        background-color: white;
-        border: 1px solid #eff3f4;
+        background-color: var(--card-bg);
         border-radius: 16px;
-        padding: 15px;
+        padding: 12px;
         margin-bottom: 12px;
+        border: 1px solid var(--border-color);
       }
+      
       .pinned-tweet {
-        border-left: 3px solid #1DA1F2;
+        border-left: 3px solid var(--blue);
       }
+      
       .pinned-label {
+        color: var(--secondary-text);
         font-size: 13px;
-        color: #536471;
         margin-bottom: 8px;
       }
+      
       .tweet-header {
         display: flex;
         margin-bottom: 10px;
       }
+      
       .tweet-avatar {
         width: 48px;
         height: 48px;
         border-radius: 50%;
         margin-right: 10px;
       }
+      
       .tweet-user-info {
-        display: flex;
-        flex-direction: column;
+        flex: 1;
       }
+      
       .tweet-name {
         font-weight: bold;
       }
-      .tweet-username, .tweet-date {
+      
+      .tweet-username {
+        color: var(--secondary-text);
         font-size: 14px;
-        color: #536471;
       }
+      
+      .tweet-date {
+        color: var(--secondary-text);
+        font-size: 14px;
+      }
+      
       .tweet-content {
         margin-bottom: 10px;
         white-space: pre-line;
+        word-wrap: break-word;
       }
+      
+      .tweet-media {
+        margin: 10px 0;
+        border-radius: 16px;
+        overflow: hidden;
+      }
+      
+      .tweet-media img, .tweet-media video {
+        max-width: 100%;
+        border-radius: 16px;
+        cursor: pointer;
+      }
+      
       .tweet-stats {
         display: flex;
-        color: #536471;
+        color: var(--secondary-text);
+        margin-top: 10px;
+      }
+      
+      .tweet-stats span {
+        display: flex;
+        align-items: center;
+        margin-right: 20px;
         font-size: 14px;
       }
-      .tweet-stats span {
-        margin-right: 20px;
-      }
-      .tweets-container {
-        padding: 15px;
+      
+      .tweet-stats i {
+        margin-right: 5px;
       }
     </style>
   </head>
   <body>
     <div class="container">
-      <div class="profile-header">
-        <div class="profile-banner" style="background-image: url('https://pbs.twimg.com/profile_banners/1392861982529753094/1728315542')"></div>
-        <img src="https://pbs.twimg.com/profile_images/1843314373873602560/UTch9-5m_normal.jpg" class="profile-avatar" alt="Onefly.eth">
-      </div>
-      <div class="profile-info">
-        <h1 class="profile-name">Onefly.eth</h1>
-        <div class="profile-username">@Onefly_eth</div>
-        <div class="profile-bio">CS Master | 保安集团 Founder | 社区主理人 @OnePollo_Alpha | meme交流群入口 : https://t.co/6EXpPzteQP
+      <div class="profile-card">
+        <div class="profile-header">
+          <div class="profile-banner" style="background-image: url('https://pbs.twimg.com/profile_banners/1392861982529753094/1728315542')"></div>
+          <div class="profile-avatar-container">
+            <img src="https://pbs.twimg.com/profile_images/1843314373873602560/UTch9-5m_normal.jpg" class="profile-avatar" alt="Onefly.eth">
+          </div>
+        </div>
+        <div class="profile-info">
+          <div class="profile-name-container">
+            <h1 class="profile-name">Onefly.eth</h1>
+            <span class="verified-badge" title="已验证账号">✓</span>
+          </div>
+          <div class="profile-username">@Onefly_eth</div>
+          <div class="profile-bio">CS Master | 保安集团 Founder | 社区主理人 @OnePollo_Alpha | meme交流群入口 : https://t.co/6EXpPzteQP
 一级Web3打土狗教程：https://t.co/B9DTfwCQom
 交易所新手注册教程：https://t.co/xEzHUE7m4w</div>
-        <div class="profile-meta">
-          <div><i class="fas fa-map-marker-alt"></i>Web3</div>
-          <div class="profile-links"><i class="fas fa-link"></i><a href="https://gmgn.ai/?ref=cLf0ZwzZ&chain=sol" target="_blank">https://gmgn.ai/?ref=cLf0ZwzZ&chain=sol</a></div>
-        </div>
-        <div class="profile-meta">
-          <div><a href="https://twitter.com/Onefly_eth/following"><b>1623</b> 正在关注</a></div>
-          <div><a href="https://twitter.com/Onefly_eth/followers"><b>2986</b> 关注者</a></div>
+          <div class="profile-meta">
+            <div class="profile-meta-item"><i class="fas fa-map-marker-alt"></i>Web3</div><div class="profile-meta-item"><i class="fas fa-link"></i><a href="https://gmgn.ai/?ref=cLf0ZwzZ&chain=sol" target="_blank" rel="noopener noreferrer">https://gmgn.ai/?ref=cLf0ZwzZ&chain=sol</a></div><div class="profile-meta-item"><i class="fas fa-calendar-alt"></i>2021年5月加入</div>
+          </div>
+          <div class="profile-stats">
+          <div class="profile-stat">
+            <span class="profile-stat-value">1623</span>
+            <span class="profile-stat-label"> 正在关注</span>
+          </div>
+          <div class="profile-stat">
+            <span class="profile-stat-value">2986</span>
+            <span class="profile-stat-label"> 关注者</span>
+          </div>
+          <div class="profile-stat">
+            <span class="profile-stat-value">2709</span>
+            <span class="profile-stat-label"> 推文</span>
+          </div>
+          <div class="profile-stat">
+            <span class="profile-stat-value">1508</span>
+            <span class="profile-stat-label"> 喜欢</span>
+          </div>
         </div>
       </div>
-      <div class="tweets-container">
+    </div>
+    
+    <h2 class="tweets-title">推文 (6)</h2>
         <div class="tweet pinned-tweet">
-          <div class="pinned-label">置顶推文</div>
+          <div class="pinned-label"><i class="fas fa-thumbtack"></i> 置顶推文</div>
           <div class="tweet-header">
             <img src="https://pbs.twimg.com/profile_images/1843314373873602560/UTch9-5m_normal.jpg" class="tweet-avatar" alt="Onefly.eth" />
             <div class="tweet-user-info">
@@ -170,16 +321,13 @@
               <span class="tweet-date">2024/12/20 13:03:26</span>
             </div>
           </div>
-          <div class="tweet-content">免费的微信交流群没位置了（500人已满）
-现在只有tg群了 因为tg群不限制人数 下面尝试运营tg群
-
-社区经验复盘 资料 群：https://t.co/e7sUC0aUZr
-土狗 交流 群：https://t.co/ua4OHEK8YM
-土狗 监控 群：https://t.co/hYh1Pt8ZM6</div>
+          <div class="tweet-content">免费的微信交流群没位置了（500人已满）<br>现在只有tg群了 因为tg群不限制人数 下面尝试运营tg群<br><br>社区经验复盘 资料 群：<a href="https://t.me/OnePollo_Alpha" target="_blank" rel="noopener noreferrer">t.me/OnePollo_Alpha</a><br>土狗 交流 群：<a href="https://t.me/op_sol" target="_blank" rel="noopener noreferrer">t.me/op_sol</a><br>土狗 监控 群：<a href="https://t.me/onefly_sol" target="_blank" rel="noopener noreferrer">t.me/onefly_sol</a></div>
+          
           <div class="tweet-stats">
-            <span class="tweet-replies"><i class="fa fa-comment"></i> 2</span>
-            <span class="tweet-retweets"><i class="fa fa-retweet"></i> 1</span>
-            <span class="tweet-likes"><i class="fa fa-heart"></i> 4</span>
+            <span class="tweet-stat"><i class="far fa-comment"></i> 2</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 1</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 4</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 0</span>
           </div>
         </div>
       
@@ -193,15 +341,13 @@
               <span class="tweet-date">2025/3/9 17:02:11</span>
             </div>
           </div>
-          <div class="tweet-content">1000X Security💂社区 X Infini 社区联名卡 重磅上线！
-
-为方便大家链上赚钱链下花，Infini携手保安集团推出联名卡！ 
-
-这张联名卡可绑定微信、支付宝，有效规避出金时遭遇黑钱的风险，同时为大家提供了一种无需出金即可线下消费的便捷方式！（实体卡也即将面世） https://t.co/LPIawY1H5c</div>
+          <div class="tweet-content">1000X Security💂社区 X Infini 社区联名卡 重磅上线！<br><br>为方便大家链上赚钱链下花，Infini携手保安集团推出联名卡！ <br><br>这张联名卡可绑定微信、支付宝，有效规避出金时遭遇黑钱的风险，同时为大家提供了一种无需出金即可线下消费的便捷方式！（实体卡也即将面世） https://t.co/LPIawY1H5c</div>
+          <div class="tweet-media"><img src="https://pbs.twimg.com/media/GlllCwPaMAAtTib.jpg" alt="推文图片" loading="lazy"></div>
           <div class="tweet-stats">
-            <span class="tweet-replies"><i class="fa fa-comment"></i> 0</span>
-            <span class="tweet-retweets"><i class="fa fa-retweet"></i> 1</span>
-            <span class="tweet-likes"><i class="fa fa-heart"></i> 2</span>
+            <span class="tweet-stat"><i class="far fa-comment"></i> 0</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 1</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 2</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 0</span>
           </div>
         </div>
       
@@ -215,16 +361,13 @@
               <span class="tweet-date">2025/3/6 23:10:12</span>
             </div>
           </div>
-          <div class="tweet-content">The founder of MANUS is Xiao Hong, who led the Monica team to release MANUS, claiming it to be the world's first general-purpose AI agent. 
-MANUS的创始人叫肖弘，他领导的Monica团队发布了MANUS，号称全球首款通用型AI智能体
-
-$XIAOHONG 6.3k
-
-6xYggHP2wKLPA1KCx4U6U61KDp8QuZUwpo4nyY4Mpump https://t.co/ZNvOPg0pCV</div>
+          <div class="tweet-content">The founder of MANUS is Xiao Hong, who led the Monica team to release MANUS, claiming it to be the world's first general-purpose AI agent. <br>MANUS的创始人叫肖弘，他领导的Monica团队发布了MANUS，号称全球首款通用型AI智能体<br><br>$XIAOHONG 6.3k<br><br>6xYggHP2wKLPA1KCx4U6U61KDp8QuZUwpo4nyY4Mpump https://t.co/ZNvOPg0pCV</div>
+          <div class="tweet-media"><img src="https://pbs.twimg.com/media/GlXdMAIagAAsP7s.png" alt="推文图片" loading="lazy"></div>
           <div class="tweet-stats">
-            <span class="tweet-replies"><i class="fa fa-comment"></i> 1</span>
-            <span class="tweet-retweets"><i class="fa fa-retweet"></i> 0</span>
-            <span class="tweet-likes"><i class="fa fa-heart"></i> 0</span>
+            <span class="tweet-stat"><i class="far fa-comment"></i> 1</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 0</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 0</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 0</span>
           </div>
         </div>
       
@@ -238,17 +381,13 @@ $XIAOHONG 6.3k
               <span class="tweet-date">2025/3/6 17:24:15</span>
             </div>
           </div>
-          <div class="tweet-content">日本长野茶臼山动物园现在在推特最火的小熊猫Mugi
-
-Mugi, the red panda currently the most popular on Twitter at Chausuyama Zoo in Nagano, Japan. $Mugi 
-
-C1LnGzggHbsuaTWTmZwZMAYq5YxZu8j36SY1K9s5pump
-
-https://t.co/o5nOIvOInR</div>
+          <div class="tweet-content">日本长野茶臼山动物园现在在推特最火的小熊猫Mugi<br><br>Mugi, the red panda currently the most popular on Twitter at Chausuyama Zoo in Nagano, Japan. $Mugi <br><br>C1LnGzggHbsuaTWTmZwZMAYq5YxZu8j36SY1K9s5pump<br><br><a href="https://gmgn.ai/sol/token/cLf0ZwzZ_C1LnGzggHbsuaTWTmZwZMAYq5YxZu8j36SY1K9s5pump?tab=activity" target="_blank" rel="noopener noreferrer">gmgn.ai/sol/token/cLf0…</a></div>
+          
           <div class="tweet-stats">
-            <span class="tweet-replies"><i class="fa fa-comment"></i> 1</span>
-            <span class="tweet-retweets"><i class="fa fa-retweet"></i> 0</span>
-            <span class="tweet-likes"><i class="fa fa-heart"></i> 0</span>
+            <span class="tweet-stat"><i class="far fa-comment"></i> 1</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 0</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 0</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 0</span>
           </div>
         </div>
       
@@ -262,16 +401,13 @@ https://t.co/o5nOIvOInR</div>
               <span class="tweet-date">2025/3/6 16:24:19</span>
             </div>
           </div>
-          <div class="tweet-content">之前蜜雪港股上市炒了一波 霸王茶姬美股上市也有机会
-$CHAGE 5.6k
-
-7QjMQzesgxu32P3dgD6yFJ7VMoTU1ZFAp8F3zG7vpump
-
-https://t.co/5nmiraMxgt https://t.co/UhX3T7zPcR</div>
+          <div class="tweet-content">之前蜜雪港股上市炒了一波 霸王茶姬美股上市也有机会<br>$CHAGE 5.6k<br><br>7QjMQzesgxu32P3dgD6yFJ7VMoTU1ZFAp8F3zG7vpump<br><br><a href="https://gmgn.ai/sol/token/cLf0ZwzZ_7QjMQzesgxu32P3dgD6yFJ7VMoTU1ZFAp8F3zG7vpump?tab=activity" target="_blank" rel="noopener noreferrer">gmgn.ai/sol/token/cLf0…</a> https://t.co/UhX3T7zPcR</div>
+          <div class="tweet-media"><img src="https://pbs.twimg.com/media/GlV_-e9aYAA2B04.jpg" alt="推文图片" loading="lazy"></div>
           <div class="tweet-stats">
-            <span class="tweet-replies"><i class="fa fa-comment"></i> 1</span>
-            <span class="tweet-retweets"><i class="fa fa-retweet"></i> 0</span>
-            <span class="tweet-likes"><i class="fa fa-heart"></i> 1</span>
+            <span class="tweet-stat"><i class="far fa-comment"></i> 1</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 0</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 1</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 0</span>
           </div>
         </div>
       
@@ -285,18 +421,25 @@ https://t.co/5nmiraMxgt https://t.co/UhX3T7zPcR</div>
               <span class="tweet-date">2025/3/6 14:54:56</span>
             </div>
           </div>
-          <div class="tweet-content">$MONICA 10k 叙事是 $manus 的母公司
-TBWL9unkiL5ekkau65yTZSKhCDK5AwaSHBjeb2ppump
-
-https://t.co/WzN1F24rD5 https://t.co/hWfmR5pGqZ</div>
+          <div class="tweet-content">$MONICA 10k 叙事是 $manus 的母公司<br>TBWL9unkiL5ekkau65yTZSKhCDK5AwaSHBjeb2ppump<br><br><a href="https://gmgn.ai/sol/token/cLf0ZwzZ_TBWL9unkiL5ekkau65yTZSKhCDK5AwaSHBjeb2ppump?tab=activity" target="_blank" rel="noopener noreferrer">gmgn.ai/sol/token/cLf0…</a> https://t.co/hWfmR5pGqZ</div>
+          <div class="tweet-media"><img src="https://pbs.twimg.com/media/GlVp8njXwAAiIcF.png" alt="推文图片" loading="lazy"></div>
           <div class="tweet-stats">
-            <span class="tweet-replies"><i class="fa fa-comment"></i> 1</span>
-            <span class="tweet-retweets"><i class="fa fa-retweet"></i> 0</span>
-            <span class="tweet-likes"><i class="fa fa-heart"></i> 5</span>
+            <span class="tweet-stat"><i class="far fa-comment"></i> 1</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 0</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 5</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 0</span>
           </div>
         </div>
-      </div>
-    </div>
+      
+    
+    <script>
+      // 图片点击放大查看
+      document.querySelectorAll('.tweet-media img').forEach(img => {
+        img.addEventListener('click', () => {
+          window.open(img.src, '_blank');
+        });
+      });
+    </script>
   </body>
   </html>
   

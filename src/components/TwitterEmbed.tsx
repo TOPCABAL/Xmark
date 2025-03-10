@@ -74,7 +74,7 @@ const TwitterEmbed: React.FC<TwitterEmbedProps> = ({ screenName = 'dotyyds1234' 
         iframeDoc.open();
         iframeDoc.write(htmlContent);
         
-        // 添加额外的样式，调整内容宽度
+        // 添加额外的样式，调整内容宽度和确保认证标志显示
         iframeDoc.write(`
           <style>
             body {
@@ -82,6 +82,51 @@ const TwitterEmbed: React.FC<TwitterEmbedProps> = ({ screenName = 'dotyyds1234' 
               margin: 0 auto !important;
               overflow-x: hidden !important;
               padding: 15px 20px !important;
+            }
+            
+            /* 确保所有内容可见 */
+            .profile-stats {
+              display: flex !important;
+              flex-wrap: wrap !important;
+              margin-top: 15px !important;
+              width: 100% !important;
+              justify-content: flex-start !important;
+            }
+            
+            .profile-stat {
+              margin-right: 20px !important;
+              margin-bottom: 10px !important;
+              white-space: nowrap !important;
+              min-width: 60px !important;
+            }
+            
+            /* 确保只在中央个人资料页面显示蓝V */
+            .verified-badge {
+              display: inline-flex !important;
+              margin-left: 4px !important;
+              vertical-align: middle !important;
+              width: 18px !important;
+              height: 18px !important;
+              background-color: #1DA1F2 !important;
+              border-radius: 50% !important;
+              align-items: center !important;
+              justify-content: center !important;
+              color: white !important;
+              font-size: 12px !important;
+              font-weight: bold !important;
+              line-height: 1 !important;
+            }
+            
+            /* 优化名字和认证标志容器 */
+            .profile-name-container {
+              display: flex !important;
+              align-items: center !important;
+              flex-wrap: nowrap !important;
+              margin-bottom: 4px !important;
+            }
+            
+            .profile-name {
+              margin-right: 4px !important;
             }
             
             /* 确保文本不溢出容器 */
@@ -96,9 +141,29 @@ const TwitterEmbed: React.FC<TwitterEmbedProps> = ({ screenName = 'dotyyds1234' 
               height: auto !important;
             }
             
+            /* 确保统计数据正确显示 */
+            .profile-stat-value {
+              font-weight: 700 !important;
+              font-size: 15px !important;
+            }
+            
+            .profile-stat-label {
+              color: #536471 !important;
+              font-size: 14px !important;
+            }
+            
             @media (max-width: 800px) {
               body {
                 max-width: 95% !important;
+              }
+              
+              .profile-stats {
+                justify-content: space-between !important;
+              }
+              
+              .profile-stat {
+                flex: 0 0 auto !important;
+                margin-right: 10px !important;
               }
             }
           </style>

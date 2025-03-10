@@ -341,7 +341,57 @@ function generateHTML(userData, tweetsData) {
   const tweetsCount = legacy.statuses_count || 0;
   const likesCount = legacy.favourites_count || 0;
   const createdAt = legacy.created_at ? new Date(legacy.created_at).toLocaleDateString('zh-CN', {year: 'numeric', month: 'long'}) : '';
-  const isVerified = legacy.verified || false;
+  
+  // 增强版认证状态检测
+  // 检查多种可能的认证状态位置
+  const isVerifiedLegacy = legacy.verified === true;
+  const isBlueVerified = user.is_blue_verified === true;
+  const hasVerifiedBadge = isVerifiedLegacy || isBlueVerified;
+  
+  // 验证标志HTML - 直接使用简单的HTML结构
+  let verifiedBadgeHtml = '';
+  if (hasVerifiedBadge) {
+    verifiedBadgeHtml = `
+      <span class="verified-badge" title="已验证账号">✓</span>
+    `;
+  }
+  
+  // 提取用户链接信息
+  let userLinks = [];
+  if (location) {
+    userLinks.push({
+      icon: 'map-marker-alt',
+      text: location
+    });
+  }
+  
+  if (url) {
+    userLinks.push({
+      icon: 'link',
+      text: url,
+      isLink: true,
+      href: url
+    });
+  }
+  
+  if (createdAt) {
+    userLinks.push({
+      icon: 'calendar-alt',
+      text: `${createdAt}加入`
+    });
+  }
+  
+  // 生成用户链接HTML
+  let userLinksHtml = '';
+  if (userLinks.length > 0) {
+    userLinksHtml = userLinks.map(link => {
+      const linkHtml = link.isLink 
+        ? `<a href="${link.href}" target="_blank" rel="noopener noreferrer">${link.text}</a>`
+        : link.text;
+      
+      return `<div class="profile-meta-item"><i class="fas fa-${link.icon}"></i>${linkHtml}</div>`;
+    }).join('');
+  }
   
   // 提取推文
   let tweetsHTML = '';
@@ -479,7 +529,7 @@ function generateHTML(userData, tweetsData) {
     tweetsHTML = '<div class="no-tweets"><i class="far fa-comment-alt"></i> 暂无推文</div>';
   }
   
-  // 生成完整HTML
+  // 最终HTML
   const html = `
   <!DOCTYPE html>
   <html lang="zh-CN">
@@ -487,19 +537,27 @@ function generateHTML(userData, tweetsData) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>${name} (@${screenName}) | Twitter</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
+      /* 基本样式 */
       :root {
-        --primary-color: #1DA1F2;
-        --text-color: #14171A;
-        --secondary-text: #657786;
-        --border-color: #E1E8ED;
-        --background: #F5F8FA;
-        --link-color: #1DA1F2;
-        --card-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        --background: #f7f9fa;
+        --card-bg: #ffffff;
+        --text-color: #0f1419;
+        --secondary-text: #536471;
+        --border-color: #eff3f4;
+        --blue: #1DA1F2;
+        --blue-hover: #1a91da;
+      }
+      
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --background: #15202b;
+          --card-bg: #192734;
+          --text-color: #ffffff;
+          --secondary-text: #8899a6;
+          --border-color: #38444d;
+        }
       }
       
       * {
@@ -509,18 +567,14 @@ function generateHTML(userData, tweetsData) {
       }
       
       body {
-        font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         background-color: var(--background);
         color: var(--text-color);
-        line-height: 1.4;
-        font-size: 15px;
-        max-width: 700px;
-        margin: 0 auto;
-        padding: 15px 20px;
+        line-height: 1.3;
       }
       
       a {
-        color: var(--link-color);
+        color: var(--blue);
         text-decoration: none;
       }
       
@@ -528,13 +582,18 @@ function generateHTML(userData, tweetsData) {
         text-decoration: underline;
       }
       
-      /* 用户资料卡片 */
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 0;
+      }
+      
       .profile-card {
-        background-color: white;
+        background-color: var(--card-bg);
         border-radius: 16px;
         overflow: hidden;
-        box-shadow: var(--card-shadow);
-        margin-bottom: 20px;
+        margin-bottom: 16px;
+        border: 1px solid var(--border-color);
       }
       
       .profile-header {
@@ -543,55 +602,56 @@ function generateHTML(userData, tweetsData) {
       
       .profile-banner {
         width: 100%;
-        height: 200px;
-        background-color: var(--primary-color);
+        height: 150px;
+        background-color: var(--blue);
         background-size: cover;
         background-position: center;
       }
       
       .profile-avatar-container {
         position: absolute;
-        bottom: -60px;
-        left: 20px;
-        padding: 4px;
-        background-color: white;
-        border-radius: 50%;
+        bottom: -50px;
+        left: 16px;
       }
       
       .profile-avatar {
-        width: 120px;
-        height: 120px;
+        width: 100px;
+        height: 100px;
         border-radius: 50%;
-        border: 4px solid white;
+        border: 4px solid var(--card-bg);
         object-fit: cover;
       }
       
       .profile-info {
-        padding: 70px 20px 20px;
+        padding: 60px 16px 16px;
       }
       
       .profile-name-container {
         display: flex;
         align-items: center;
-        margin-bottom: 4px;
       }
       
       .profile-name {
-        font-size: 22px;
-        font-weight: 700;
+        font-size: 20px;
+        font-weight: bold;
         margin-right: 4px;
       }
       
+      /* 强化蓝V标志的样式 - 使用简单明了的样式 */
       .verified-badge {
-        color: white;
-        background-color: var(--primary-color);
-        border-radius: 50%;
-        width: 20px;
-        height: 20px;
         display: inline-flex;
         align-items: center;
         justify-content: center;
+        width: 18px;
+        height: 18px;
+        background-color: #1DA1F2;
+        border-radius: 50%;
+        margin-left: 4px;
+        color: white;
         font-size: 12px;
+        font-weight: bold;
+        text-align: center;
+        line-height: 1;
       }
       
       .profile-username {
@@ -600,6 +660,7 @@ function generateHTML(userData, tweetsData) {
         margin-bottom: 12px;
       }
       
+      /* 其余样式保持不变 */
       .profile-bio {
         margin-bottom: 15px;
         white-space: pre-line;
@@ -656,26 +717,21 @@ function generateHTML(userData, tweetsData) {
       }
       
       .tweet {
-        background-color: white;
+        background-color: var(--card-bg);
         border-radius: 16px;
-        padding: 15px;
-        margin-bottom: 15px;
-        box-shadow: var(--card-shadow);
+        padding: 12px;
+        margin-bottom: 12px;
+        border: 1px solid var(--border-color);
       }
       
       .pinned-tweet {
-        border-left: 3px solid var(--primary-color);
+        border-left: 3px solid var(--blue);
       }
       
       .pinned-label {
-        font-size: 13px;
         color: var(--secondary-text);
+        font-size: 13px;
         margin-bottom: 8px;
-      }
-      
-      .pinned-label i {
-        transform: rotate(45deg);
-        margin-right: 5px;
       }
       
       .tweet-header {
@@ -688,118 +744,82 @@ function generateHTML(userData, tweetsData) {
         height: 48px;
         border-radius: 50%;
         margin-right: 10px;
-        object-fit: cover;
       }
       
       .tweet-user-info {
-        display: flex;
-        flex-direction: column;
+        flex: 1;
       }
       
       .tweet-name {
-        font-weight: 700;
+        font-weight: bold;
       }
       
-      .tweet-username, .tweet-date {
-        font-size: 14px;
+      .tweet-username {
         color: var(--secondary-text);
+        font-size: 14px;
+      }
+      
+      .tweet-date {
+        color: var(--secondary-text);
+        font-size: 14px;
       }
       
       .tweet-content {
-        margin-bottom: 12px;
+        margin-bottom: 10px;
+        white-space: pre-line;
         word-wrap: break-word;
-        white-space: pre-wrap;
       }
       
       .tweet-media {
         margin: 10px 0;
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        grid-gap: 8px;
         border-radius: 16px;
         overflow: hidden;
       }
       
       .tweet-media img, .tweet-media video {
-        width: 100%;
-        max-height: 400px;
-        object-fit: cover;
-        border-radius: 12px;
-      }
-      
-      .tweet-media img {
+        max-width: 100%;
+        border-radius: 16px;
         cursor: pointer;
-        transition: opacity 0.2s;
-      }
-      
-      .tweet-media img:hover {
-        opacity: 0.9;
       }
       
       .tweet-stats {
         display: flex;
-        margin-top: 12px;
         color: var(--secondary-text);
+        margin-top: 10px;
       }
       
-      .tweet-stat {
+      .tweet-stats span {
         display: flex;
         align-items: center;
         margin-right: 20px;
         font-size: 14px;
       }
       
-      .tweet-stat i {
+      .tweet-stats i {
         margin-right: 5px;
-      }
-      
-      .no-tweets {
-        text-align: center;
-        padding: 40px;
-        color: var(--secondary-text);
-        background-color: white;
-        border-radius: 16px;
-        box-shadow: var(--card-shadow);
-      }
-      
-      .no-tweets i {
-        font-size: 40px;
-        margin-bottom: 15px;
-        display: block;
-      }
-      
-      /* 响应式设计 */
-      @media (max-width: 800px) {
-        body {
-          max-width: 95%;
-          padding: 10px;
-        }
       }
     </style>
   </head>
   <body>
-    <div class="profile-card">
-      <div class="profile-header">
-        <div class="profile-banner" style="background-image: url('${bannerUrl}')"></div>
-        <div class="profile-avatar-container">
-          <img src="${profileImageUrl}" class="profile-avatar" alt="${name}">
+    <div class="container">
+      <div class="profile-card">
+        <div class="profile-header">
+          <div class="profile-banner" style="background-image: url('${bannerUrl}')"></div>
+          <div class="profile-avatar-container">
+            <img src="${profileImageUrl}" class="profile-avatar" alt="${name}">
+          </div>
         </div>
-      </div>
-      <div class="profile-info">
-        <div class="profile-name-container">
-          <h1 class="profile-name">${name}</h1>
-          ${isVerified ? '<div class="verified-badge"><i class="fas fa-check"></i></div>' : ''}
-        </div>
-        <div class="profile-username">@${screenName}</div>
-        <div class="profile-bio">${description}</div>
-        
-        <div class="profile-meta">
-          ${location ? `<div class="profile-meta-item"><i class="fas fa-map-marker-alt"></i>${location}</div>` : ''}
-          ${url ? `<div class="profile-meta-item"><i class="fas fa-link"></i><a href="${url}" target="_blank">${url}</a></div>` : ''}
-          ${createdAt ? `<div class="profile-meta-item"><i class="far fa-calendar-alt"></i>${createdAt}加入</div>` : ''}
-        </div>
-        
-        <div class="profile-stats">
+        <div class="profile-info">
+          <div class="profile-name-container">
+            <h1 class="profile-name">${name}</h1>
+            ${hasVerifiedBadge ? `<span class="verified-badge" title="已验证账号">✓</span>` : ''}
+          </div>
+          <div class="profile-username">@${screenName}</div>
+          <div class="profile-bio">${description}</div>
+          <div class="profile-meta">
+            ${userLinksHtml}
+          </div>
+          <div class="profile-stats">
           <div class="profile-stat">
             <span class="profile-stat-value">${friendsCount}</span>
             <span class="profile-stat-label"> 正在关注</span>
@@ -833,55 +853,6 @@ function generateHTML(userData, tweetsData) {
   </body>
   </html>
   `;
-  
-  // 在HTML的style标签内添加额外的样式
-  const styleEndPos = html.indexOf('</style>');
-  
-  if (styleEndPos !== -1) {
-    const bodyStyles = `
-      body {
-        font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        background-color: var(--background);
-        color: var(--text-color);
-        line-height: 1.4;
-        font-size: 15px;
-        max-width: 700px;
-        margin: 0 auto;
-        padding: 15px 20px;
-      }
-      
-      .profile-card {
-        margin-bottom: 20px;
-      }
-      
-      .profile-info {
-        padding: 70px 20px 20px;
-      }
-      
-      .profile-avatar {
-        width: 120px;
-        height: 120px;
-      }
-      
-      .profile-avatar-container {
-        bottom: -60px;
-      }
-      
-      .tweet {
-        padding: 15px;
-        margin-bottom: 15px;
-      }
-      
-      @media (max-width: 800px) {
-        body {
-          max-width: 95%;
-          padding: 10px;
-        }
-      }
-    `;
-    
-    html = html.slice(0, styleEndPos) + bodyStyles + html.slice(styleEndPos);
-  }
   
   return html;
 }
