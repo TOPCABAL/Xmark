@@ -12,7 +12,7 @@ interface AccountListProps {
 }
 
 // 分组类型
-type GroupFilter = 'all' | 'ungrouped' | 'grouped';
+type GroupFilter = 'all';
 
 const AccountList: React.FC<AccountListProps> = ({ 
   accounts, 
@@ -41,15 +41,7 @@ const AccountList: React.FC<AccountListProps> = ({
         account.username.toLowerCase().includes(searchTerm.toLowerCase()) ||
         (account.description && account.description.toLowerCase().includes(searchTerm.toLowerCase()));
       
-      // 分组过滤
-      let matchesGroup = true;
-      if (groupFilter === 'grouped') {
-        matchesGroup = !!account.category && account.category.trim() !== '';
-      } else if (groupFilter === 'ungrouped') {
-        matchesGroup = !account.category || account.category.trim() === '';
-      }
-      
-      return matchesSearch && matchesGroup;
+      return matchesSearch;
     });
     
     setFilteredAccounts(filtered);
@@ -58,7 +50,7 @@ const AccountList: React.FC<AccountListProps> = ({
     if (scrollContainerRef.current) {
       scrollContainerRef.current.scrollTop = 0;
     }
-  }, [searchTerm, groupFilter, localAccounts]);
+  }, [searchTerm, localAccounts]);
 
   // 获取原始账号的索引
   const getOriginalIndex = (account: AccountProps) => {
@@ -118,31 +110,6 @@ const AccountList: React.FC<AccountListProps> = ({
           allowClear
           className="rounded-full bg-gray-100 border-none hover:bg-gray-200 focus:bg-white"
         />
-        
-        {/* 分组筛选按钮组 */}
-        <div className="flex justify-between space-x-2">
-          <Button 
-            type={groupFilter === 'all' ? 'primary' : 'default'}
-            className="flex-1"
-            onClick={() => setGroupFilter('all')}
-          >
-            所有
-          </Button>
-          <Button 
-            type={groupFilter === 'ungrouped' ? 'primary' : 'default'}
-            className="flex-1"
-            onClick={() => setGroupFilter('ungrouped')}
-          >
-            未分组
-          </Button>
-          <Button 
-            type={groupFilter === 'grouped' ? 'primary' : 'default'}
-            className="flex-1"
-            onClick={() => setGroupFilter('grouped')}
-          >
-            已分组
-          </Button>
-        </div>
       </div>
       
       {/* 确保这个容器可以滚动 */}
