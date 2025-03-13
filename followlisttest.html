@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twitter API 测试页面</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #1da1f2;
+            text-align: center;
+        }
+        .panel {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .input-group {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        label {
+            width: 100px;
+            display: inline-block;
+        }
+        input, button {
+            padding: 8px;
+            margin-right: 10px;
+        }
+        button {
+            background: #1da1f2;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            padding: 8px 15px;
+        }
+        button:hover {
+            background: #1a91da;
+        }
+        pre {
+            background: #f5f5f5;
+            padding: 10px;
+            border-radius: 4px;
+            overflow: auto;
+            max-height: 400px;
+        }
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+        .success {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Twitter API 测试页面</h1>
+    
+    <div class="panel">
+        <h2>1. 测试服务器连接</h2>
+        <button id="testConnection">测试连接</button>
+        <div id="connectionResult"></div>
+    </div>
+    
+    <div class="panel">
+        <h2>2. 获取Twitter关注列表</h2>
+        <div class="input-group">
+            <label for="username">用户名:</label>
+            <input type="text" id="username" value="dotyyds1234">
+            <label for="pages">页数:</label>
+            <input type="number" id="pages" value="1" min="1" max="10">
+            <button id="fetchFollowing">获取关注列表</button>
+        </div>
+        <div id="followingResult"></div>
+    </div>
+    
+    <div class="panel">
+        <h2>3. 文件系统检查</h2>
+        <button id="checkFileSystem">检查文件系统</button>
+        <div id="fileSystemResult"></div>
+    </div>
+    
+    <div class="panel">
+        <h2>4. 直接测试脚本执行</h2>
+        <div class="input-group">
+            <label for="testUsername">用户名:</label>
+            <input type="text" id="testUsername" value="dotyyds1234">
+            <button id="testScript">测试脚本执行</button>
+        </div>
+        <div id="scriptResult"></div>
+    </div>
+
+    <script>
+        document.getElementById('testConnection').addEventListener('click', async () => {
+            const resultDiv = document.getElementById('connectionResult');
+            resultDiv.innerHTML = '正在测试连接...';
+            
+            try {
+                const response = await fetch('http://localhost:3001/api/status');
+                
+                if (!response.ok) {
+                    throw new Error(`服务器返回错误: ${response.status} ${response.statusText}`);
+                }
+                
+                const data = await response.json();
+                resultDiv.innerHTML = `
+                    <p class="success">✅ 连接成功!</p>
+                    <pre>${JSON.stringify(data, null, 2)}</pre>
+                `;
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <p class="error">❌ 连接失败: ${error.message}</p>
+                    <p>请确保服务器正在运行，并且监听3001端口。</p>
+                `;
+            }
+        });
+        
+        document.getElementById('fetchFollowing').addEventListener('click', async () => {
+            const username = document.getElementById('username').value.trim();
+            const pages = document.getElementById('pages').value;
+            const resultDiv = document.getElementById('followingResult');
+            
+            if (!username) {
+                resultDiv.innerHTML = '<p class="error">请输入用户名</p>';
+                return;
+            }
+            
+            resultDiv.innerHTML = `<p>正在获取${username}的关注列表 (${pages}页)...</p>`;
+            
+            try {
+                const url = `http://localhost:3001/api/twitter/following?username=${encodeURIComponent(username)}&pages=${pages}`;
+                console.log('请求URL:', url);
+                
+                const response = await fetch(url);
+                console.log('响应状态:', response.status);
+                
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    throw new Error(`服务器返回错误: ${response.status} ${response.statusText}\n${errorText}`);
+                }
+                
+                const data = await response.json();
+                console.log('获取到的数据:', data);
+                
+                resultDiv.innerHTML = `
+                    <p class="success">✅ 成功获取关注列表!</p>
+                    <p>共获取到 ${data.accounts?.length || 0} 个账号</p>
+                    <pre>${JSON.stringify(data, null, 2)}</pre>
+                `;
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <p class="error">❌ 获取关注列表失败: ${error.message}</p>
+                `;
+                console.error('获取关注列表错误:', error);
+            }
+        });
+        
+        document.getElementById('checkFileSystem').addEventListener('click', async () => {
+            const resultDiv = document.getElementById('fileSystemResult');
+            resultDiv.innerHTML = '正在检查文件系统...';
+            
+            try {
+                const response = await fetch('http://localhost:3001/api/filesystem-check');
+                
+                if (!response.ok) {
+                    throw new Error(`服务器返回错误: ${response.status} ${response.statusText}`);
+                }
+                
+                const data = await response.json();
+                resultDiv.innerHTML = `
+                    <p class="success">✅ 文件系统检查完成!</p>
+                    <pre>${JSON.stringify(data, null, 2)}</pre>
+                `;
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <p class="error">❌ 文件系统检查失败: ${error.message}</p>
+                `;
+            }
+        });
+        
+        document.getElementById('testScript').addEventListener('click', async () => {
+            const username = document.getElementById('testUsername').value.trim();
+            const resultDiv = document.getElementById('scriptResult');
+            
+            if (!username) {
+                resultDiv.innerHTML = '<p class="error">请输入用户名</p>';
+                return;
+            }
+            
+            resultDiv.innerHTML = `<p>正在测试脚本执行 (${username})...</p>`;
+            
+            try {
+                const response = await fetch(`http://localhost:3001/api/test-script?username=${encodeURIComponent(username)}&pages=1`);
+                
+                if (!response.ok) {
+                    throw new Error(`服务器返回错误: ${response.status} ${response.statusText}`);
+                }
+                
+                const data = await response.json();
+                resultDiv.innerHTML = `
+                    <p class="${data.success ? 'success' : 'error'}">✅ 脚本测试完成! ${data.success ? '成功' : '失败'}</p>
+                    <h3>执行日志:</h3>
+                    <pre>${data.logs?.join('\n') || '无日志'}</pre>
+                    ${data.error ? `<h3>错误:</h3><pre class="error">${data.error}</pre>` : ''}
+                    ${data.output ? `<h3>输出:</h3><pre>${JSON.stringify(data.output, null, 2)}</pre>` : ''}
+                `;
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <p class="error">❌ 脚本测试失败: ${error.message}</p>
+                `;
+            }
+        });
+    </script>
+</body>
+</html> 

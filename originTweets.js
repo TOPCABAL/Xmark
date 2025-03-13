@@ -4,7 +4,6 @@ import path from 'path';
 import { HttpsProxyAgent } from 'https-proxy-agent';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
-import zlib from 'zlib';
 
 // 获取当前文件的目录
 const __filename = fileURLToPath(import.meta.url);
@@ -22,19 +21,26 @@ const buildOptions = (userId) => ({
   headers: {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36',
     'Accept': '*/*',
-    'Accept-Encoding': 'br',
+    'Accept-Encoding': 'gzip, deflate, br, zstd',
+    'sec-ch-ua-platform': '"Windows"',
     'authorization': 'Bearer AAAAAAAAAAAAAAAAAAAAANRILgAAAAAAnNwIzUejRCOuH5E6I8xnZz4puTs%3D1Zv7ttfk8LF81IUq16cHjhLTvJu4FA33AGWWjCpTnA',
     'x-csrf-token': '31056c96fe8a0413bc9d0397f308b7adf8a1e11aee8966001d220f3c5ced5fbd71a79d982f1920075c878d72753fdac57b22bf2917b2f92b38a47c02c5819f3e645fd5e00684d97893a91c3360fa6532',
+    'sec-ch-ua': '"Not(A:Brand";v="99", "Google Chrome";v="133", "Chromium";v="133"',
+    'x-twitter-client-language': 'zh-cn',
+    'sec-ch-ua-mobile': '?0',
+    'x-twitter-active-user': 'yes',
+    'content-type': 'application/json',
+    'sec-fetch-site': 'same-origin',
+    'sec-fetch-mode': 'cors',
+    'sec-fetch-dest': 'empty',
     'Cookie': 'kdt=mQkD8KTMIJoI3XqBCEQYaQiwT6aF7XBeEDgxKj6u; night_mode=0; amp_669cbf=a71e99d4-fb09-4932-850b-60d990de15bf.YTcxZTk5ZDQtZmIwOS00OTMyLTg1MGItNjBkOTkwZGUxNWJm..1i705f1f9.1i705gbsp.s.2.u; auth_token=8389e38c3707d26e06bb94dd68e12629adc3f473; guest_id=v1%3A173892170788592691; ct0=31056c96fe8a0413bc9d0397f308b7adf8a1e11aee8966001d220f3c5ced5fbd71a79d982f1920075c878d72753fdac57b22bf2917b2f92b38a47c02c5819f3e645fd5e00684d97893a91c3360fa6532; guest_id_ads=v1%3A173892170788592691; guest_id_marketing=v1%3A173892170788592691; twid=u%3D1392861982529753094; first_ref=https%3A%2F%2Fx.com%2FEd_x0101%2Fstatus%2F1888506928260649063; amp_56bf9d=a71e99d4-fb09-4932-850b-60d990de15bf...1iktjrie9.1iktjriec.3g.nk.r4; _monitor_extras={"deviceId":"EJYN9SIBCsHOX2FF5sfwOt","eventId":32,"sequenceNumber":32}; personalization_id="v1_MwlB32Eg8Wz7h9rm3EVzHg=="; external_referer=8e8t2xd8A2w%3D|0|GlWr2u5wzZipnVja1ZbglPkPMjOgQE2KgmAMWWfTCXhp0%2FHSfkOhmd2TJyvExtBNwLZU6CoWvBe32OMU1olhowe8nuP9Vuo9T44u1MtEoy0%3D; lang=zh-cn; amp_69ec37=a71e99d4-fb09-4932-850b-60d990de15bf...1iltjp5cd.1iltmd8vf.j.2f.32'
   },
   // 添加HTTPS代理支持
   httpsAgent: agent,
   proxy: false, // 使用httpsAgent替代proxy配置
-  // 设置responseType为arraybuffer，以便手动处理压缩数据
-  responseType: 'arraybuffer',
-  // 关闭自动解压缩，我们将手动处理
-  decompress: false,
-  // 添加超时设置
+  // 改为默认的JSON响应类型，让axios自动处理解压缩
+  responseType: 'json',
+  // 超时设置
   timeout: 30000 // 30秒
 });
 
@@ -56,14 +62,8 @@ async function getUserTweets(userId, outputDir = null) {
     
     console.log(`收到响应: 状态码 ${response.status}, 内容类型: ${response.headers['content-type']}`);
     
-    // Twitter API响应通常使用brotli压缩，直接解压
-    const responseData = zlib.brotliDecompressSync(response.data);
-    
-    // 将Buffer转换为字符串
-    const jsonString = responseData.toString('utf8');
-    
-    // 解析JSON字符串为对象
-    const jsonData = JSON.parse(jsonString);
+    // 直接使用响应数据，不需要手动解压
+    const jsonData = response.data;
     
     // 保存响应数据到文件
     let filePath;

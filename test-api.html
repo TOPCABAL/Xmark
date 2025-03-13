@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API测试</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        pre {
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 4px;
+            overflow: auto;
+        }
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+        .success {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>API测试</h1>
+    
+    <h2>1. 服务器状态检查</h2>
+    <div>
+        <button id="testStatus">检查API状态</button>
+    </div>
+    <div id="statusResult"></div>
+    
+    <h2>2. 测试关注API</h2>
+    <div>
+        <input type="text" id="username" value="dotyyds1234" placeholder="用户名">
+        <button id="testFollowing">获取关注列表</button>
+    </div>
+    <div id="followingResult"></div>
+
+    <script>
+        // 测试状态API
+        document.getElementById('testStatus').addEventListener('click', async () => {
+            const resultDiv = document.getElementById('statusResult');
+            resultDiv.innerHTML = '<p>检查API状态中...</p>';
+            
+            try {
+                console.log('开始请求: http://localhost:3001/api/status');
+                const startTime = new Date().getTime();
+                
+                const response = await fetch('http://localhost:3001/api/status', {
+                    method: 'GET',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Cache-Control': 'no-cache'
+                    }
+                });
+                
+                const endTime = new Date().getTime();
+                const duration = endTime - startTime;
+                console.log(`响应状态: ${response.status}, 耗时: ${duration}ms`);
+                
+                if (!response.ok) {
+                    throw new Error(`API状态检查失败: HTTP ${response.status}`);
+                }
+                
+                const data = await response.json();
+                console.log('API状态响应:', data);
+                
+                resultDiv.innerHTML = `
+                    <p class="success">✅ API状态检查成功! (${duration}ms)</p>
+                    <pre>${JSON.stringify(data, null, 2)}</pre>
+                `;
+            } catch (error) {
+                console.error('API状态检查错误:', error);
+                resultDiv.innerHTML = `
+                    <p class="error">❌ API状态检查失败: ${error.message}</p>
+                    <p>错误详情:</p>
+                    <pre>${error.stack || '无堆栈信息'}</pre>
+                `;
+            }
+        });
+        
+        // 测试关注API
+        document.getElementById('testFollowing').addEventListener('click', async () => {
+            const username = document.getElementById('username').value.trim();
+            const resultDiv = document.getElementById('followingResult');
+            
+            if (!username) {
+                resultDiv.innerHTML = '<p class="error">请输入用户名</p>';
+                return;
+            }
+            
+            resultDiv.innerHTML = '<p>获取关注列表中...</p>';
+            
+            try {
+                const url = `http://localhost:3001/api/twitter/following?username=${encodeURIComponent(username)}&pages=1`;
+                console.log('开始请求:', url);
+                const startTime = new Date().getTime();
+                
+                const response = await fetch(url, {
+                    method: 'GET',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Cache-Control': 'no-cache'
+                    }
+                });
+                
+                const endTime = new Date().getTime();
+                const duration = endTime - startTime;
+                console.log(`响应状态: ${response.status}, 耗时: ${duration}ms`);
+                
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    throw new Error(`获取关注列表失败: HTTP ${response.status}\n${errorText}`);
+                }
+                
+                const data = await response.json();
+                console.log('关注列表响应:', data);
+                
+                resultDiv.innerHTML = `
+                    <p class="success">✅ 获取关注列表成功! (${duration}ms)</p>
+                    <p>共获取到 ${data.accounts?.length || 0} 个账号</p>
+                    <pre>${JSON.stringify(data, null, 2).substring(0, 500)}...</pre>
+                `;
+            } catch (error) {
+                console.error('获取关注列表错误:', error);
+                resultDiv.innerHTML = `
+                    <p class="error">❌ 获取关注列表失败: ${error.message}</p>
+                    <p>错误详情:</p>
+                    <pre>${error.stack || '无堆栈信息'}</pre>
+                `;
+            }
+        });
+    </script>
+</body>
+</html> 

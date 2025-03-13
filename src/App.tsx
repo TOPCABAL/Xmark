@@ -14,7 +14,7 @@ import { CookieConsent } from './components/CookieConsent';
 import AccountList from './components/AccountList';
 import TwitterImport from './components/TwitterImport';
 import ExportModal from './components/ExportModal';
-import { AccountProps, loadLocalFollowingList, mergeWithAnnotatedAccounts, fetchUserFollowing } from './services/twitterService';
+import { AccountProps, loadLocalFollowingList, mergeWithAnnotatedAccounts, fetchUserFollowing, testServerConnection } from './services/twitterService';
 import { getAnnotatedAccounts, saveAnnotatedAccount, AnnotatedAccount } from './services/localStorageService';
 import TwitterSelector from "./components/TwitterSelector";
 import TwitterEmbed from './components/TwitterEmbed';
@@ -205,18 +205,54 @@ function App() {
 
     try {
       setFetchingFollowing(true);
+      message.loading({ content: `正在获取 ${usernameInput} 的关注列表，将获取 ${pagesCount} 页数据...`, key: 'fetchFollowing', duration: 0 });
+      
+      console.log(`===== 开始获取关注列表 =====`);
+      console.log(`用户名: ${usernameInput}, 页数: ${pagesCount}`);
+      
+      // 先测试服务器连接
+      console.log(`测试服务器连接...`);
+      const testResult = await testServerConnection();
+      
+      if (!testResult.success) {
+        console.error(`服务器连接测试失败: ${testResult.message}`);
+        message.error({ 
+          content: `无法连接到服务器: ${testResult.message}`, 
+          key: 'fetchFollowing', 
+          duration: 5 
+        });
+        setFetchingFollowing(false);
+        return;
+      }
+      
+      console.log(`服务器连接测试成功，服务器时间: ${testResult.serverTime}`);
+      console.log(`开始获取关注列表数据...`);
+      
       // 调用API获取用户关注列表，传入页数参数
       const accounts = await fetchUserFollowing(usernameInput, pagesCount);
+      console.log(`成功获取关注列表，共 ${accounts.length} 个账号`);
       
       // 处理获取的关注列表
       handleImportData(accounts);
-      message.success(`成功导入 ${usernameInput} 的关注列表，共 ${accounts.length} 个账号`);
+      
+      message.success({ 
+        content: `成功导入 ${usernameInput} 的关注列表，共 ${accounts.length} 个账号`, 
+        key: 'fetchFollowing',
+        duration: 3 
+      });
+      
+      // 清空输入框
       setUsernameInput('');
     } catch (error) {
       console.error('获取关注列表失败:', error);
-      message.error(`获取关注列表失败: ${error instanceof Error ? error.message : '未知错误'}`);
+      message.error({ 
+        content: `获取关注列表失败: ${error instanceof Error ? error.message : '未知错误'}`, 
+        key: 'fetchFollowing', 
+        duration: 5 
+      });
     } finally {
       setFetchingFollowing(false);
+      console.log(`===== 结束获取关注列表 =====`);
     }
   };
 
@@ -271,7 +307,7 @@ function App() {
           {/* 搜索框单独一行 */}
           <div className="mb-1">
             <Input
-              placeholder="输入Twitter用户名"
+              placeholder="输入Twitter用户名以获取关注列表"
               value={usernameInput}
               onChange={(e) => setUsernameInput(e.target.value)}
               onPressEnter={handleFetchFollowing}
@@ -481,7 +517,7 @@ function App() {
               {/* 搜索框单独一行 */}
               <div className="mb-1">
                 <Input
-                  placeholder="输入Twitter用户名"
+                  placeholder="输入Twitter用户名以获取关注列表"
                   value={usernameInput}
                   onChange={(e) => setUsernameInput(e.target.value)}
                   onPressEnter={handleFetchFollowing}

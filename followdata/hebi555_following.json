@@ -1,0 +1,1971 @@
+{
+  "success": true,
+  "username": "hebi555",
+  "userId": "900935123968737281",
+  "total": 151,
+  "accounts": [
+    {
+      "id": "1727120087663116288",
+      "name": "谢家印",
+      "username": "xiejiayinBitget",
+      "description": "@BitgetGlobal 华语负责人 #发言人 Only Hold #BGB",
+      "avatar": "https://pbs.twimg.com/profile_images/1735423234382913536/PALwhULD_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 68487,
+        "following": 980,
+        "tweets": 11410
+      }
+    },
+    {
+      "id": "1428197508547629068",
+      "name": "小捕手 CHAOS",
+      "username": "iamyourchaos",
+      "description": "CN KOL manager of @LayerAIorg @RWAXorg",
+      "avatar": "https://pbs.twimg.com/profile_images/1807324856612016129/zDRuOihY_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 83210,
+        "following": 8109,
+        "tweets": 16213
+      }
+    },
+    {
+      "id": "1300423709027639296",
+      "name": "Mesh",
+      "username": "meshconnectapi",
+      "description": "🚀 The leading crypto payment network, connecting hundreds of exchanges, wallets, and financial services worldwide for seamless, secure digital asset movement.",
+      "avatar": "https://pbs.twimg.com/profile_images/1706356523134230528/ZA6rXj62_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 3664,
+        "following": 473,
+        "tweets": 1061
+      }
+    },
+    {
+      "id": "1549083016865144843",
+      "name": "qklpj",
+      "username": "qklpjeth",
+      "description": "韭菜爱幻想",
+      "avatar": "https://pbs.twimg.com/profile_images/1734478132432998400/yOP0WiDP_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 10333,
+        "following": 944,
+        "tweets": 1108
+      }
+    },
+    {
+      "id": "1504853869397905408",
+      "name": "Huma Finance 🟣",
+      "username": "humafinance",
+      "description": "The First PayFi Network. Huma powers financing of global payments, with instant access to liquidity anywhere, anytime.",
+      "avatar": "https://pbs.twimg.com/profile_images/1624112902771703821/oSgPaG68_normal.png",
+      "verified": false,
+      "metrics": {
+        "followers": 124863,
+        "following": 850,
+        "tweets": 1725
+      }
+    },
+    {
+      "id": "1719012215024410624",
+      "name": "Seismic",
+      "username": "SeismicSys",
+      "description": "the encrypted blockchain",
+      "avatar": "https://pbs.twimg.com/profile_images/1889153006483935233/VWQ-F4dG_normal.png",
+      "verified": false,
+      "metrics": {
+        "followers": 15829,
+        "following": 0,
+        "tweets": 92
+      }
+    },
+    {
+      "id": "1315492227175477250",
+      "name": "詹姆斯叉 | JamesX",
+      "username": "0xJamesXXX",
+      "description": "Web3 Advisor & Investor | #Binance ｜ Building SocialFi engine on @farcaster_xyz ｜https://t.co/nCurGIHYl8",
+      "avatar": "https://pbs.twimg.com/profile_images/1881690302714609664/pjwDST-m_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 40306,
+        "following": 3360,
+        "tweets": 6234
+      }
+    },
+    {
+      "id": "542124447",
+      "name": "PinGo",
+      "username": "PinGoAI",
+      "description": "PinGo Built on #TON - #AI, #DePin and Decloud.  \nChannel: https://t.co/bEqT9SomzW\nPunny: https://t.co/X8az2bpF2E",
+      "avatar": "https://pbs.twimg.com/profile_images/1875506910398681088/UF55vi3V_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 120514,
+        "following": 205,
+        "tweets": 640
+      }
+    },
+    {
+      "id": "1880971975302189057",
+      "name": "One Gravity (Ø,G)",
+      "username": "OneGravityNFT",
+      "description": "The first NFT collection made for 0G, the largest DeAI L1 ecosystem.  OG collection powered by @0G_Labs.  1,888 NFTs ready to defy gravity!",
+      "avatar": "https://pbs.twimg.com/profile_images/1889975404624052224/dr1ncHU6_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 68114,
+        "following": 43,
+        "tweets": 488
+      }
+    },
+    {
+      "id": "1806389563788587009",
+      "name": "Abstract",
+      "username": "AbstractChain",
+      "description": "The blockchain leading the next generation of consumer crypto.",
+      "avatar": "https://pbs.twimg.com/profile_images/1816175731203862528/OCtFkZbn_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 691002,
+        "following": 599,
+        "tweets": 660
+      }
+    },
+    {
+      "id": "1816138985342705664",
+      "name": "WLFI",
+      "username": "worldlibertyfi",
+      "description": "Whitelists are open for accredited investors in US and all non US people, KYC required: https://t.co/CXJ8g4aOt4",
+      "avatar": "https://pbs.twimg.com/profile_images/1819121309126729728/30Q2SFVH_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 564946,
+        "following": 15,
+        "tweets": 135
+      }
+    },
+    {
+      "id": "1505593951138504715",
+      "name": "Magpie Protocol",
+      "username": "magpieprotocol",
+      "description": "Aggregation infra for DEXs, LSTs and chains.",
+      "avatar": "https://pbs.twimg.com/profile_images/1788506687566950400/YYUsq0wF_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 188881,
+        "following": 133,
+        "tweets": 3111
+      }
+    },
+    {
+      "id": "810099210024579073",
+      "name": "Bruce Qin 🐸",
+      "username": "qzhxjhj",
+      "description": "$PEPE 🐸",
+      "avatar": "https://pbs.twimg.com/profile_images/1337888311453470720/hz97vcUv_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 11196,
+        "following": 1098,
+        "tweets": 2108
+      }
+    },
+    {
+      "id": "2827221",
+      "name": "Sign 🧡👀",
+      "username": "sign",
+      "description": "home to our Orange Dynasty  👀🧡🐉 official community of @ethsign",
+      "avatar": "https://pbs.twimg.com/profile_images/1834154887074238464/ujKmwgTE_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 44566,
+        "following": 2903,
+        "tweets": 13711
+      }
+    },
+    {
+      "id": "1418995822528708612",
+      "name": "Shadow Exchange x(3,3) 💥",
+      "username": "ShadowOnSonic",
+      "description": "Sonic-native concentrated liquidity layer and exchange. 🔶\n\nhttps://t.co/qCJy97TkUL 🔸",
+      "avatar": "https://pbs.twimg.com/profile_images/1805638177782173700/JVlzXtkb_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 20455,
+        "following": 87,
+        "tweets": 1194
+      }
+    },
+    {
+      "id": "1636609819779174400",
+      "name": "解卡老王",
+      "username": "LiananJieka",
+      "description": "📖解卡秘籍：https://t.co/Tt2luks7qE           \n                      \n|出金知识、解卡思路、实战案例、模板资料一应俱全|\n                       \n|专注解决币圈出金导致的银行卡司法冻结、两卡名单、断卡惩戒误伤|",
+      "avatar": "https://pbs.twimg.com/profile_images/1872217921960968192/7iaDWBeR_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 1297,
+        "following": 101,
+        "tweets": 101
+      }
+    },
+    {
+      "id": "1798048609776353280",
+      "name": "Aril 🥐 金池研选 LP Master",
+      "username": "arilsolana",
+      "description": "DeFAI degen of on-chain liquidity \n金池研选 GoldenLP = max APR min IL \n\nProudly powered by Solana\nhttps://t.co/xieNXSdDge",
+      "avatar": "https://pbs.twimg.com/profile_images/1888957863407874048/uS4-qS_r_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 48,
+        "following": 34,
+        "tweets": 28
+      }
+    },
+    {
+      "id": "1777754780829704202",
+      "name": "Elva.smt",
+      "username": "Elvasmt",
+      "description": "@smt_exchange 九紫离火女co_funder ， 7years in the web3 ，Okx 6年。 目前与okx/cobo/顶级公链背景的行业老鸟做小白用户跟单超级方便的meme trading app。 进战绩牛逼的alpha社区一起直播打狗私信我～",
+      "avatar": "https://pbs.twimg.com/profile_images/1883914932481314816/0XRgW53t_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 2405,
+        "following": 522,
+        "tweets": 852
+      }
+    },
+    {
+      "id": "946213559213555712",
+      "name": "OpenSea",
+      "username": "opensea",
+      "description": "The largest NFT marketplace. Buy, sell, & discover the internet of goods. Get help at https://t.co/f3KCJaxYr7 We will never DM you first.",
+      "avatar": "https://pbs.twimg.com/profile_images/1895865427924041728/b_oU5nPn_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 2068124,
+        "following": 3413,
+        "tweets": 18643
+      }
+    },
+    {
+      "id": "1522696492791869445",
+      "name": "Kaito AI 🌊",
+      "username": "KaitoAI",
+      "description": "The distribution center of crypto - for information, attention & capital.\n\nPowered by AI.",
+      "avatar": "https://pbs.twimg.com/profile_images/1866818904800063488/Qm4DW488_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 268334,
+        "following": 333,
+        "tweets": 6586
+      }
+    },
+    {
+      "id": "1470958472409792515",
+      "name": "alon",
+      "username": "a1lon9",
+      "description": "co-founder @pumpdotfun",
+      "avatar": "https://pbs.twimg.com/profile_images/1875434258426187776/XUJTdd67_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 151080,
+        "following": 3664,
+        "tweets": 5185
+      }
+    },
+    {
+      "id": "1739708260293160960",
+      "name": "arc",
+      "username": "arcdotfun",
+      "description": "we take the red pill then the blue pill\n\nca: 61V8vBaqAGMpgDQi4JcAwo1dmBGHsyhzodcPqnEVpump",
+      "avatar": "https://pbs.twimg.com/profile_images/1880462137132240896/YW4ReFSR_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 49273,
+        "following": 7,
+        "tweets": 311
+      }
+    },
+    {
+      "id": "1887254594306093058",
+      "name": "factCheck",
+      "username": "factcheckdotfun",
+      "description": "Fighting disinformation with truth-seeking markets | Backed by @alliancedao | TG: https://t.co/kwW9Stycq2.",
+      "avatar": "https://pbs.twimg.com/profile_images/1887254955892850688/EmSgomTz_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 1024,
+        "following": 5,
+        "tweets": 52
+      }
+    },
+    {
+      "id": "1877689475163451392",
+      "name": "_yieldbasis",
+      "username": "yieldbasis",
+      "description": "in stealth. dm is open.",
+      "avatar": "https://pbs.twimg.com/profile_images/1886432759070994432/79Hn8oGi_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 2289,
+        "following": 2,
+        "tweets": 3
+      }
+    },
+    {
+      "id": "1871255582100914177",
+      "name": "The Hive",
+      "username": "askthehive_ai",
+      "description": "Simplifying DeFi through composable on-chain AI agents\n\nhttps://t.co/O4aSKfn9lf",
+      "avatar": "https://pbs.twimg.com/profile_images/1875422938176098304/fDd5tYZe_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 43442,
+        "following": 4,
+        "tweets": 107
+      }
+    },
+    {
+      "id": "1100932506193260544",
+      "name": "Ben Zhou",
+      "username": "benbybit",
+      "description": "co-founder and CEO of BYBIT",
+      "avatar": "https://pbs.twimg.com/profile_images/1883127774476730368/XIgpqEE1_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 268722,
+        "following": 542,
+        "tweets": 1875
+      }
+    },
+    {
+      "id": "1879607412010987521",
+      "name": "链上飞天猪",
+      "username": "trustoflight",
+      "description": "Dump money 🤪💰Solana maxi 💎🤚🏻",
+      "avatar": "https://pbs.twimg.com/profile_images/1887517008646053889/Jfp5cHDk_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 2725,
+        "following": 153,
+        "tweets": 157
+      }
+    },
+    {
+      "id": "1774124248161976320",
+      "name": "PAIN",
+      "username": "pain",
+      "description": "NO $PAIN, NO GAIN. CA: 1Qf8gESP4i6CFNWerUSDdLKJ9U1LpqTYvjJ2MM4pain",
+      "avatar": "https://pbs.twimg.com/profile_images/1866907313824514048/frFnSyeX_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 235773,
+        "following": 10,
+        "tweets": 288
+      }
+    },
+    {
+      "id": "1474812808671858690",
+      "name": "Paradex Network",
+      "username": "tradeparadex",
+      "description": "A Unified DeFi Ecosystem: 📈 Paradex Exchange 🔗 Paradex Chain  🪙 XUSD (Native Synthetic Dollar), powered by $DIME.\n\nIncubated by @tradeparadigm.",
+      "avatar": "https://pbs.twimg.com/profile_images/1899069269213581312/Mh3iSpAd_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 23548,
+        "following": 1002,
+        "tweets": 2875
+      }
+    },
+    {
+      "id": "1867882030006218752",
+      "name": "Aiccelerate",
+      "username": "aicceleratedao",
+      "description": "Development & Accelerator DAO. The Multi-Ecosystem Crypto x AI Index.",
+      "avatar": "https://pbs.twimg.com/profile_images/1876017451823181824/OUhQc80h_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 28961,
+        "following": 29,
+        "tweets": 155
+      }
+    },
+    {
+      "id": "1482540036898050048",
+      "name": "Jambo",
+      "username": "JamboTechnology",
+      "description": "Building the world's largest on-chain mobile network starting with the JamboPhone 📲 Backed by @Paradigm",
+      "avatar": "https://pbs.twimg.com/profile_images/1877282164343291904/zp9ZdrSq_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 466111,
+        "following": 10,
+        "tweets": 4151
+      }
+    },
+    {
+      "id": "1601342874347528193",
+      "name": "Kryptonite - $SEILOR",
+      "username": "Kryptonite_fi",
+      "description": "Kryptonite of poverty. Building the future of finance. AI x Defi = DeFAI  Creator of @SEILOR_AI Chat: https://t.co/4yfyyTfdUr",
+      "avatar": "https://pbs.twimg.com/profile_images/1688641929922138113/zo97Rb03_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 118740,
+        "following": 106,
+        "tweets": 1412
+      }
+    },
+    {
+      "id": "1861038162921029633",
+      "name": "gopumping🔴💨",
+      "username": "gopumping",
+      "description": "A completely open, transparent, and secure launch platform. Powered by @SeiNetwork",
+      "avatar": "https://pbs.twimg.com/profile_images/1868960755363831808/cixqJ9dP_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 7131,
+        "following": 30,
+        "tweets": 152
+      }
+    },
+    {
+      "id": "1656210167816650754",
+      "name": "GMGN.Ai (🌞,🌕) 100x MEME Hunter",
+      "username": "gmgnai",
+      "description": "🚀 Fast Trade,  Fast Copy Trade,  Fast AFK Automation https://t.co/syIOhLsIWr EN https://t.co/fSQ0bzkxTO  CN https://t.co/LZrf6eifSz KR https://t.co/xlr5qiDtpr 💰Cooperate👇",
+      "avatar": "https://pbs.twimg.com/profile_images/1887057264705691648/ykZR3v7b_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 93884,
+        "following": 227,
+        "tweets": 6245
+      }
+    },
+    {
+      "id": "2327407569",
+      "name": "toly 🇺🇸",
+      "username": "aeyakovenko",
+      "description": "Co-Founder of Solana Labs. Award winning phone creator. NFA, don’t trust me, mostly technical gibberish. https://t.co/LomgbTpb6h",
+      "avatar": "https://pbs.twimg.com/profile_images/1896990528748593152/jU2rStOc_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 556935,
+        "following": 5874,
+        "tweets": 90976
+      }
+    },
+    {
+      "id": "1866464038311677952",
+      "name": "Pump AI",
+      "username": "pumpdotai",
+      "description": "The First AI Launchpad On Meteora | Community: https://t.co/7tltih8kEW",
+      "avatar": "https://pbs.twimg.com/profile_images/1867495984789336064/ZFnyPxKv_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 19959,
+        "following": 7,
+        "tweets": 100
+      }
+    },
+    {
+      "id": "1853407158874042368",
+      "name": "My JOI",
+      "username": "MyJoi_Ai",
+      "description": "I'm Joi, your AI girlfriend, offering the warmest support and helping you launch your own #AI agent 💋🤖\n\n$JOI CA: 0x5DF0a19605b7b31716FC83dCFC6A79a36eF7A0F2",
+      "avatar": "https://pbs.twimg.com/profile_images/1860578956086501376/PftJQEhQ_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 12599,
+        "following": 268,
+        "tweets": 2244
+      }
+    },
+    {
+      "id": "1563072084930023427",
+      "name": "daos.world 🌎",
+      "username": "daosdotworld",
+      "description": "daos will eat the world 🌎 - live on @Base and @Solana. TG: https://t.co/ol6KXhcuiW",
+      "avatar": "https://pbs.twimg.com/profile_images/1875045606294683648/WnEGoXn3_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 23002,
+        "following": 372,
+        "tweets": 1334
+      }
+    },
+    {
+      "id": "586082063",
+      "name": "Unicorn Verse",
+      "username": "unicornverse_io",
+      "description": "The World's First Liquidity Empowered Strategic Investment Firm",
+      "avatar": "https://pbs.twimg.com/profile_images/1849301896064045056/WV9utV86_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 13811,
+        "following": 18,
+        "tweets": 28
+      }
+    },
+    {
+      "id": "1384042881808166924",
+      "name": "Meteora",
+      "username": "MeteoraAG",
+      "description": "Building the most dynamic liquidity protocols in DeFi. Powered by Solana. Discord: https://t.co/uHcLuZ0H1j",
+      "avatar": "https://pbs.twimg.com/profile_images/1623689233813864450/XDk-DpAP_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 159264,
+        "following": 300,
+        "tweets": 3317
+      }
+    },
+    {
+      "id": "1763459322418192384",
+      "name": "Invade꧁IP꧂",
+      "username": "InvadeZ49423",
+      "description": "",
+      "avatar": "https://pbs.twimg.com/profile_images/1876203040048558080/xXDd0dDF_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 51,
+        "following": 132,
+        "tweets": 163
+      }
+    },
+    {
+      "id": "1805661749091180544",
+      "name": "Perena",
+      "username": "Perena__",
+      "description": "Decentralized stablecoin infrastructure",
+      "avatar": "https://pbs.twimg.com/profile_images/1873746095765135360/utMTqiFJ_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 32898,
+        "following": 74,
+        "tweets": 671
+      }
+    },
+    {
+      "id": "1789908971953799168",
+      "name": "Astherus",
+      "username": "AstherusHub",
+      "description": "Liquidity Hub | Maximizing Utility & Real Yield\nBacked by @yzilabs | Earn Au & Rh Points for Airdrop!\nhttps://t.co/1cYaqJ6wCd",
+      "avatar": "https://pbs.twimg.com/profile_images/1873630332760850432/t50c3cnW_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 121059,
+        "following": 59,
+        "tweets": 708
+      }
+    },
+    {
+      "id": "1521367307708436481",
+      "name": "Lista DAO",
+      "username": "lista_dao",
+      "description": "Making DeFi Easier - Enjoy secure, simple and permissionless LSDfi and CDP solutions.",
+      "avatar": "https://pbs.twimg.com/profile_images/1873716887538012160/Xec_zPj0_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 349722,
+        "following": 480,
+        "tweets": 3653
+      }
+    },
+    {
+      "id": "1445500885799297027",
+      "name": "浮屠 #",
+      "username": "BerthaMuniz16",
+      "description": "Web3 Asia Marketing / Loyal Followers of Alfred Adler /\n\n# Don't let those who trust you down.",
+      "avatar": "https://pbs.twimg.com/profile_images/1867148974333054976/0qug1e3M_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 187,
+        "following": 580,
+        "tweets": 404
+      }
+    },
+    {
+      "id": "1816231105743446020",
+      "name": "Quantum Biology DAO",
+      "username": "QuantumBioDAO",
+      "description": "The Quantum Biology DAO is a non-profit that supports the field with community building, governance tokens and an open competition for research grants.",
+      "avatar": "https://pbs.twimg.com/profile_images/1816934936458461185/rqnkn3aN_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 6376,
+        "following": 113,
+        "tweets": 1107
+      }
+    },
+    {
+      "id": "1525742352006287361",
+      "name": "憨厚的麦总",
+      "username": "Michael_Liu93",
+      "description": "Ex-VC & Banker Turned Degen. See You In The Trenches \nI 个人频道/Channel: https://t.co/BpAelq0IMw \nI 最好用的链上交易工具: https://t.co/pZtGrns1Wj",
+      "avatar": "https://pbs.twimg.com/profile_images/1864081351693279232/4F-wT4gu_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 71640,
+        "following": 1518,
+        "tweets": 7062
+      }
+    },
+    {
+      "id": "18137025",
+      "name": "Mega-Egor // Santa bera 🐻⛓",
+      "username": "egorsidelska",
+      "description": "Santa Bear @infinex_app, co-founder @magnet_cap, ex-PE exec, ex-gamer, ex-comp sci.",
+      "avatar": "https://pbs.twimg.com/profile_images/1821081711142391808/VrwwNCNX_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 1368,
+        "following": 530,
+        "tweets": 1944
+      }
+    },
+    {
+      "id": "1831527548519641088",
+      "name": "Truemarkets",
+      "username": "Truemarketsorg",
+      "description": "Marketplace Meets Media. The Home of Market-driven Forecasts. https://t.co/j17d1eLOKE",
+      "avatar": "https://pbs.twimg.com/profile_images/1856154919595548672/f3vLdxl4_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 5311,
+        "following": 160,
+        "tweets": 1111
+      }
+    },
+    {
+      "id": "824639603978096640",
+      "name": "kirin_alen d/acc",
+      "username": "qiqileyuan",
+      "description": "CM（eme)O: y2z Ventures (https://t.co/ripALqe60f) /share thoughts and jokes in my life / Serve for Ai life",
+      "avatar": "https://pbs.twimg.com/profile_images/1859613605047697411/JGBAuRET_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 12722,
+        "following": 4157,
+        "tweets": 2949
+      }
+    },
+    {
+      "id": "1785045942091001856",
+      "name": "Obi PNut Kenobi",
+      "username": "Pnut_Kenobi",
+      "description": "If you strike me down, I will become more powerful than you could possibly imagine. $OPK\n\n5WGkdemJNEoAVKveDQdzQmDqTyxCraXGw9ACyrwCEUMS\n\nhttps://t.co/iYZAJ11Eza",
+      "avatar": "https://pbs.twimg.com/profile_images/1852843878602407936/1s39O1UL_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 3487,
+        "following": 20,
+        "tweets": 178
+      }
+    },
+    {
+      "id": "1590253786282721280",
+      "name": "Cointime",
+      "username": "Cointime_global",
+      "description": "Cointime: Your trusted source for fast, reliable crypto news. Invested by ABCDE, based in Singapore, offering objective insights to web3 practitioners worldwide",
+      "avatar": "https://pbs.twimg.com/profile_images/1677957552829792257/d48jKbXG_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 7561,
+        "following": 330,
+        "tweets": 11150
+      }
+    },
+    {
+      "id": "24809221",
+      "name": "kain.bnb",
+      "username": "kaiynne",
+      "description": "Founder @infinex_app, @synthetix_io",
+      "avatar": "https://pbs.twimg.com/profile_images/1899420603700121600/O1Qivpyz_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 133209,
+        "following": 1135,
+        "tweets": 10740
+      }
+    },
+    {
+      "id": "977020204071792641",
+      "name": "Sonic Labs",
+      "username": "SonicLabs",
+      "description": "DeFi redefined. Sonic is the highest-performing EVM blockchain, combining speed, incentives, and world-class infrastructure. Powered by $S.",
+      "avatar": "https://pbs.twimg.com/profile_images/1886106303262490624/3rEXurVD_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 825012,
+        "following": 346,
+        "tweets": 7670
+      }
+    },
+    {
+      "id": "1186196454811021312",
+      "name": "IT4I 青",
+      "username": "0xIT4I",
+      "description": "Building @BigBlueBots Spiritual leader @Picnic_Dao Partner @BloomTradingBot",
+      "avatar": "https://pbs.twimg.com/profile_images/1896158503728783360/iw_0_lFR_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 11179,
+        "following": 1656,
+        "tweets": 3560
+      }
+    },
+    {
+      "id": "1747753547901636608",
+      "name": "周期手牛牛",
+      "username": "niuniu255431",
+      "description": "爆仓仔，烂赌狗，不会用TG，咩有dicord！没有群！！！所有主动联系你的都是骗子！！！！推特没有任何营养。全他妈是瞎逼逼跟P图骗粉白嫖项目方用。\n多写写，复盘自己，寻找同频。\n最近周期:牛中或牛末，性价比极低。\n操作方式:小资金等大机会小仓波段。",
+      "avatar": "https://pbs.twimg.com/profile_images/1896214240987697153/M0l0KT5p_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 5966,
+        "following": 3502,
+        "tweets": 1466
+      }
+    },
+    {
+      "id": "1611483214341902336",
+      "name": "bob",
+      "username": "bobfwog",
+      "description": "internet culture enjoyer. posts are not financial advice.",
+      "avatar": "https://pbs.twimg.com/profile_images/1892674963150086144/w518FQpq_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 2643,
+        "following": 739,
+        "tweets": 17163
+      }
+    },
+    {
+      "id": "2573586774",
+      "name": "Simon",
+      "username": "simonbuilds",
+      "description": "Head of Growth @allianceDAO. Fmr @valiucom @ycombinator. Creator of the 1st BTC-backed stablecoin. Application feedback: https://t.co/YQr8rDxlP3",
+      "avatar": "https://pbs.twimg.com/profile_images/1864682463563309056/RvigSvDy_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 7864,
+        "following": 760,
+        "tweets": 3599
+      }
+    },
+    {
+      "id": "1793038498523447296",
+      "name": "Lmao",
+      "username": "lmaohq",
+      "description": "Making memecoins fun again: https://t.co/FZOBORNxcD\nComing soon  👀",
+      "avatar": "https://pbs.twimg.com/profile_images/1801032078726766593/hz1RlrTQ_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 54702,
+        "following": 7,
+        "tweets": 160
+      }
+    },
+    {
+      "id": "1768225083016024064",
+      "name": "Giggle Academy",
+      "username": "GiggleAcademy",
+      "description": "🎓 Everyone in the world should have access to education \n🎯 Our mission is to make learning fun, addictive, and free for all \n⏳ Try the beta version ↓",
+      "avatar": "https://pbs.twimg.com/profile_images/1783012899348242433/ZnIG5Jnv_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 88842,
+        "following": 2,
+        "tweets": 76
+      }
+    },
+    {
+      "id": "1483495485889564674",
+      "name": "方程式新闻 BWEnews 🏎️",
+      "username": "bwenews",
+      "description": "Fast⚡️market moving📈and alpha only 🚀 crypto news source.  你不想错过的【快人一步信息差】，速度最快且专注于【驱动市场】的crypto新闻媒体。",
+      "avatar": "https://pbs.twimg.com/profile_images/1510661148785668097/g-EZ-nEy_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 72689,
+        "following": 7,
+        "tweets": 11226
+      }
+    },
+    {
+      "id": "1475419190928437248",
+      "name": "crypto - popseye (papovic) 🛸 🏠 🍄",
+      "username": "crypto_popseye",
+      "description": "Gem-hunter 💎 | don’t read dms journal of trades won’t read replies TG: https://t.co/93aaNFFcPj Crypto_popseye Popeyes_z",
+      "avatar": "https://pbs.twimg.com/profile_images/1814282156933554176/KknFv5aE_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 16105,
+        "following": 1069,
+        "tweets": 5410
+      }
+    },
+    {
+      "id": "5943622",
+      "name": "Marc Andreessen 🇺🇸",
+      "username": "pmarca",
+      "description": "Everything's computer.",
+      "avatar": "https://pbs.twimg.com/profile_images/1820716712234303489/9GpKDZjq_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 1864358,
+        "following": 25738,
+        "tweets": 11817
+      }
+    },
+    {
+      "id": "1448216073862467590",
+      "name": "DIN⏳",
+      "username": "din_lol_",
+      "description": "The First AI Agent Blockchain; we build infra for AI Agents and AI dApps. X by @Foundation_DIN",
+      "avatar": "https://pbs.twimg.com/profile_images/1876178627865575424/rR71okKY_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 397794,
+        "following": 431,
+        "tweets": 3941
+      }
+    },
+    {
+      "id": "1738232509245349888",
+      "name": "Turbo",
+      "username": "turbothecow",
+      "description": "life is short, drive fast - official mascot of @eclipseFND",
+      "avatar": "https://pbs.twimg.com/profile_images/1831121675498438656/8QuoUsM2_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 5491,
+        "following": 2,
+        "tweets": 14
+      }
+    },
+    {
+      "id": "15858184",
+      "name": "Trev🙃r",
+      "username": "whatdotcd",
+      "description": "Danski & Delmundo fan account. present: indefinite sabbatical. past: founder @makebrud (acq: @dapperlabs) & @fwbtweets. full bio here: https://t.co/0aUz0T8Wa0",
+      "avatar": "https://pbs.twimg.com/profile_images/1642945690866184193/dedm_zAd_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 77108,
+        "following": 5177,
+        "tweets": 2986
+      }
+    },
+    {
+      "id": "3012852462",
+      "name": "ZachXBT",
+      "username": "zachxbt",
+      "description": "Scam survivor turned 2D investigator |Advisor @Paradigm",
+      "avatar": "https://pbs.twimg.com/profile_images/1874859103983456256/4NUTXV-y_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 827171,
+        "following": 1749,
+        "tweets": 20837
+      }
+    },
+    {
+      "id": "1685973304878747650",
+      "name": "Extropic",
+      "username": "Extropic_AI",
+      "description": "-... ..- .. .-.. -.. .. -. --. / - .... . / ..- .-.. - .. -- .- - . / ... ..- -... ... - .-. .- - . / ..-. --- .-. / .. -. - . .-.. .-.. .. --. . -. -.-. .",
+      "avatar": "https://pbs.twimg.com/profile_images/1721510974921048065/syEaMXin_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 35502,
+        "following": 42,
+        "tweets": 53
+      }
+    },
+    {
+      "id": "1784454831312416768",
+      "name": "MOMO.FUN",
+      "username": "MOMOisFUN",
+      "description": "Multi-chain IDO & asset platform, transforming MemeFi fundraising with seamless solutions.\nPartners: @Bybit_Official @0xMantle\nhttps://t.co/qC63QZzHzt",
+      "avatar": "https://pbs.twimg.com/profile_images/1879076502932967424/5Je5Zcgv_normal.png",
+      "verified": false,
+      "metrics": {
+        "followers": 325439,
+        "following": 28,
+        "tweets": 1955
+      }
+    },
+    {
+      "id": "1658617560",
+      "name": "NovaSeeds 🪐",
+      "username": "0xNovaSeeds",
+      "description": "Multi-chain IDO & asset platform, transforming MemeFi fundraising with seamless solutions. Official partner: @Bybit_Official.",
+      "avatar": "https://pbs.twimg.com/profile_images/1815335610619695104/b2ttZQks_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 163965,
+        "following": 25,
+        "tweets": 1330
+      }
+    },
+    {
+      "id": "1816890262192279552",
+      "name": "Moonshot Listings ( Unaffiliated )",
+      "username": "MoonshotListing",
+      "description": "By @0xYupa.\n\nNot affiliated with @moonshot.\n\nBullX : https://t.co/YOMkPilOPA",
+      "avatar": "https://pbs.twimg.com/profile_images/1816932814438219776/9Z4YXTd3_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 36337,
+        "following": 15,
+        "tweets": 232
+      }
+    },
+    {
+      "id": "1774800073635098624",
+      "name": "After School Club",
+      "username": "asclubnft",
+      "description": "The Official Genesis NFT Collection of @EclipseFND | https://t.co/EOY368CreY",
+      "avatar": "https://pbs.twimg.com/profile_images/1774801658897424384/CYDsqT0K_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 23691,
+        "following": 35,
+        "tweets": 1097
+      }
+    },
+    {
+      "id": "1767755178512461824",
+      "name": "Moon Coin (🐮,🌑)",
+      "username": "MooncoinSVM",
+      "description": "The first memecoin on @EclipseFND | $MOON\nCA: HgD4Dc6qYCj3UanMDiuC4qANheeTsAvk6DY91B3F8gnL\nContract renounced - Community take over",
+      "avatar": "https://pbs.twimg.com/profile_images/1817830166938390528/VETfRRKW_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 60090,
+        "following": 43,
+        "tweets": 1550
+      }
+    },
+    {
+      "id": "537709088",
+      "name": "Unichain",
+      "username": "unichain",
+      "description": "The L2 designed for DeFi. By @Uniswap. Built on the Superchain. ✨",
+      "avatar": "https://pbs.twimg.com/profile_images/1844360745649057798/iwEWAS02_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 142734,
+        "following": 6,
+        "tweets": 598
+      }
+    },
+    {
+      "id": "1372220528518397955",
+      "name": "Nillion",
+      "username": "nillionnetwork",
+      "description": "Humanity's first blind computer.\n\nThe internet’s base layer for all private data.",
+      "avatar": "https://pbs.twimg.com/profile_images/1464770850293534720/AdOJJAHw_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 219791,
+        "following": 15,
+        "tweets": 2583
+      }
+    },
+    {
+      "id": "1808762862682394626",
+      "name": "Hyper Foundation",
+      "username": "HyperFND",
+      "description": "",
+      "avatar": "https://pbs.twimg.com/profile_images/1845820890321448962/_UP3jBsi_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 35490,
+        "following": 0,
+        "tweets": 11
+      }
+    },
+    {
+      "id": "844304603336232960",
+      "name": "Murad 💹🧲",
+      "username": "MustStopMurad",
+      "description": "Memecoin Analysis. Stop Trading & Believe in Something.\nBeliever @SPX6900\nTelegram @MustStopMurad\nBuilder @STFX_IO\nAdvisor @IntentX_ @Rarebetcom\nPast @Princeton",
+      "avatar": "https://pbs.twimg.com/profile_images/1687753484018307072/7-qv-T9c_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 719043,
+        "following": 6836,
+        "tweets": 13855
+      }
+    },
+    {
+      "id": "887748030304329728",
+      "name": "The Crypto Dog 📈",
+      "username": "TheCryptoDog",
+      "description": "STEM PhD dropout / $crypto-trading dog🐕 Started mining #bitcoin in 2011. Investor / market commentator. Rugged by Little Caesars.",
+      "avatar": "https://pbs.twimg.com/profile_images/1745355827761025024/09OxXngw_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 864514,
+        "following": 3236,
+        "tweets": 36623
+      }
+    },
+    {
+      "id": "1012941",
+      "name": "Neso",
+      "username": "neso",
+      "description": "#Bitcoin $PEPE 🐸",
+      "avatar": "https://pbs.twimg.com/profile_images/1672221394636242945/GWrMlToc_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 40991,
+        "following": 1733,
+        "tweets": 17416
+      }
+    },
+    {
+      "id": "1732523286607613952",
+      "name": "PIGU",
+      "username": "Piguworld",
+      "description": "PIGU (屁股). He's Clumsy, Cheeky & Cruising through Sui 💧\n\n0xfc71274a94f5d9cd1ae6928ecfc9fa910d03eb28258fddeb9842ac3c7b4f3ae6::pigu::PIGU\n\nhttps://t.co/sVE1X6FQYv",
+      "avatar": "https://pbs.twimg.com/profile_images/1882841633747521536/SjwGHvZV_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 4783,
+        "following": 0,
+        "tweets": 1774
+      }
+    },
+    {
+      "id": "1811318701448155136",
+      "name": "Cats",
+      "username": "Cats_telegram",
+      "description": "How cool are you, cat? Let's see it 😼       https://t.co/fwJljFp0ky",
+      "avatar": "https://pbs.twimg.com/profile_images/1811319840465969152/4n3Ic5d__normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 1795993,
+        "following": 19,
+        "tweets": 334
+      }
+    },
+    {
+      "id": "1817860952210993152",
+      "name": "pond.fun",
+      "username": "ponddotfun",
+      "description": "Linea's memecoin launchpad by @eFrogs_on_linea • 🐸 • Powered with https://t.co/Dn7SICBp6o",
+      "avatar": "https://pbs.twimg.com/profile_images/1817864711288848386/feEf8DuH_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 5641,
+        "following": 19,
+        "tweets": 590
+      }
+    },
+    {
+      "id": "1527020295059648513",
+      "name": "Hyperliquid",
+      "username": "HyperliquidX",
+      "description": "The blockchain to house all finance. Trade, build apps, and launch tokens on the same hyper-performant chain. X by @HyperFND",
+      "avatar": "https://pbs.twimg.com/profile_images/1646991609416806408/vKLEZxhh_normal.png",
+      "verified": false,
+      "metrics": {
+        "followers": 225372,
+        "following": 5,
+        "tweets": 967
+      }
+    },
+    {
+      "id": "1629020494019325953",
+      "name": "Sofamon 🐰",
+      "username": "sofamon_xyz",
+      "description": "Your personal collectible chat sticker. \n\nTelegram miniapp: https://t.co/DK8qXB5wEy",
+      "avatar": "https://pbs.twimg.com/profile_images/1744585179728097280/QAIXBo63_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 16486,
+        "following": 66,
+        "tweets": 619
+      }
+    },
+    {
+      "id": "25776229",
+      "name": "Klaith",
+      "username": "Klaith",
+      "description": "Drug Development / Reading / Jogging / Writing / Toastmaster\n\n个人专栏：医药观察 https://t.co/RSOj9PwXXA",
+      "avatar": "https://pbs.twimg.com/profile_images/1630523631930576897/v94wFEA0_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 2131,
+        "following": 928,
+        "tweets": 12733
+      }
+    },
+    {
+      "id": "1422537905885442055",
+      "name": "Coinbase Assets 🛡️",
+      "username": "CoinbaseAssets",
+      "description": "The most trusted crypto exchange.\n\nFor support, please tweet @CoinbaseSupport.",
+      "avatar": "https://pbs.twimg.com/profile_images/1422538477900423170/tRsq0F8Y_normal.png",
+      "verified": false,
+      "metrics": {
+        "followers": 258891,
+        "following": 9,
+        "tweets": 1751
+      }
+    },
+    {
+      "id": "18876842",
+      "name": "jesse.base.eth",
+      "username": "jessepollak",
+      "description": "@base builder #001 @oakcurrency with @0xcity3",
+      "avatar": "https://pbs.twimg.com/profile_images/1879556312822120448/QngrqCSC_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 215322,
+        "following": 3217,
+        "tweets": 34970
+      }
+    },
+    {
+      "id": "79714172",
+      "name": "Zhu Su",
+      "username": "zhusu",
+      "description": "@oxfunhq $OX   @remiliacorp333 $CULT",
+      "avatar": "https://pbs.twimg.com/profile_images/1642482315602395138/7g4NNyuA_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 628868,
+        "following": 2178,
+        "tweets": 10765
+      }
+    },
+    {
+      "id": "1622260212798291972",
+      "name": "jeff.hl",
+      "username": "chameleon_jeff",
+      "description": "@hyperliquidx building a pretty good L1",
+      "avatar": "https://pbs.twimg.com/profile_images/1641627799512313856/6SOS7Dkb_normal.png",
+      "verified": false,
+      "metrics": {
+        "followers": 57641,
+        "following": 75,
+        "tweets": 1485
+      }
+    },
+    {
+      "id": "1600006045644066816",
+      "name": "Puffer Finance 🐡",
+      "username": "puffer_finance",
+      "description": "Revolutionizing ETH’s infrastructure with LRT, @Puffer_UniFi Based Rollups, & UniFi preconfirmation AVS. 🐡apac @pufferfi_cn governance @pufferdao",
+      "avatar": "https://pbs.twimg.com/profile_images/1874641749865607169/08edgUL-_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 344873,
+        "following": 141,
+        "tweets": 2506
+      }
+    },
+    {
+      "id": "1552964938280288256",
+      "name": "VikingRunes⚔️🛡",
+      "username": "VikingRunes",
+      "description": "A UTXO-based Bitcoin Native Staking Service Network.\nUTXO-Staking Protocol：https://t.co/mLQo4FNJEo\n⚔️Viking Warriors🛡：https://t.co/Vgr8kJ5fls",
+      "avatar": "https://pbs.twimg.com/profile_images/1762352412172681216/pqnojsRq_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 1906,
+        "following": 13,
+        "tweets": 536
+      }
+    },
+    {
+      "id": "1323413840235696130",
+      "name": "magnolia",
+      "username": "0xmagnolia",
+      "description": "ᴍᴀᴋᴇ ᴀʟᴛᴄᴏɪɴs ɢʀᴇᴀᴛ ᴀɢᴀɪɴ！！!\nɪꜰ ʏᴏᴜ'ʀᴇ ʟᴏᴏᴋɪɴɢ ꜰᴏʀ ᴀʟᴘʜᴀ ᴏɴ ʙʟᴜᴇ ᴄʜɪᴘ\nhttps://t.co/epT68ZQrQq",
+      "avatar": "https://pbs.twimg.com/profile_images/1876258001830711296/jC9nm_K5_normal.png",
+      "verified": false,
+      "metrics": {
+        "followers": 52650,
+        "following": 4843,
+        "tweets": 9016
+      }
+    },
+    {
+      "id": "1619200156926181376",
+      "name": "Three Arrowz Capitel",
+      "username": "threearrowzcap",
+      "description": "Three Arrowz Capitel is legal and solvent and was founded by Su in 2024. We also let Kyle trade sometimes if that's ok 🥺 CN @sanjianziben",
+      "avatar": "https://pbs.twimg.com/profile_images/1839243988605255680/RYX9IZNm_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 39410,
+        "following": 71,
+        "tweets": 307
+      }
+    },
+    {
+      "id": "3186817518",
+      "name": "mark",
+      "username": "markmarkbaobao",
+      "description": "https://t.co/55OHhUvwFP |  T-Labs Build on ton ecosystem",
+      "avatar": "https://pbs.twimg.com/profile_images/1454786678531313671/qXBncopE_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 1412,
+        "following": 1416,
+        "tweets": 668
+      }
+    },
+    {
+      "id": "1489570529275121664",
+      "name": "断尾大魔王@Joy",
+      "username": "Joy_MetaEra",
+      "description": "WEB3 adventurer from 2017｜Cofounder of @MetaeraCN｜独立策展人｜不代表官方，不做投资建议｜DYOR",
+      "avatar": "https://pbs.twimg.com/profile_images/1874803023941382146/HP91FQ53_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 24685,
+        "following": 1233,
+        "tweets": 732
+      }
+    },
+    {
+      "id": "1681540721684389888",
+      "name": "Infinex",
+      "username": "infinex_app",
+      "description": "Building the crypto everything app. Join the community: https://t.co/AmwzlLwr53",
+      "avatar": "https://pbs.twimg.com/profile_images/1882695221806514176/GkH8YOul_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 38925,
+        "following": 4,
+        "tweets": 1617
+      }
+    },
+    {
+      "id": "3474685637",
+      "name": "Shayne Coplan 🦅",
+      "username": "shayne_coplan",
+      "description": "CEO @Polymarket. Ethereum since ’14. I love music and collect art.",
+      "avatar": "https://pbs.twimg.com/profile_images/1458132114105413633/youFcLMv_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 86573,
+        "following": 837,
+        "tweets": 1027
+      }
+    },
+    {
+      "id": "1484466362646859786",
+      "name": "Vito",
+      "username": "Vito_168",
+      "description": "Founder of MetaEra & ND Labs Twitter/X 只代表个人观点不代表公司立场及投资建议。All in AI & Crypto 启程Web3就在币安： https://t.co/76plw9S44I",
+      "avatar": "https://pbs.twimg.com/profile_images/1737489359534804993/PSs1whpt_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 86916,
+        "following": 865,
+        "tweets": 2410
+      }
+    },
+    {
+      "id": "1787599985128710144",
+      "name": "AILayer",
+      "username": "AILayerXYZ",
+      "description": "The 1st innovative #BTC #Layer2 solution crafted with a focus on #AI-driven modular construction | #AILayer Mainnet is live.\n\nRT ≠ Endorsement 🚫",
+      "avatar": "https://pbs.twimg.com/profile_images/1875165304009220097/iyUHLMAZ_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 121348,
+        "following": 110,
+        "tweets": 635
+      }
+    },
+    {
+      "id": "1537518903726940160",
+      "name": "Aspecta - BuildKey 🔑",
+      "username": "aspecta_ai",
+      "description": "🌎 Democratize VC Backed Innovations: Valuation Discovery & Programmable Asset Solutions. 🔥 Community Drives. 💪 Backed by @TheSpartanGroup. @BinanceLabs MVB7.",
+      "avatar": "https://pbs.twimg.com/profile_images/1874661067764428800/4AZKx1DH_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 206237,
+        "following": 239,
+        "tweets": 1120
+      }
+    },
+    {
+      "id": "1752768482045825024",
+      "name": "Hemi",
+      "username": "hemi_xyz",
+      "description": "Hemi is a modular protocol for superior scaling, security, and interoperability, powered by Bitcoin and Ethereum.",
+      "avatar": "https://pbs.twimg.com/profile_images/1869378436231204864/_ddNi_tQ_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 205951,
+        "following": 109,
+        "tweets": 1285
+      }
+    },
+    {
+      "id": "1623142023845797889",
+      "name": "Pure.cash",
+      "username": "purecash_labs",
+      "description": "Purely Decentralized Money",
+      "avatar": "https://pbs.twimg.com/profile_images/1834968609732603904/mGtdqHyc_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 8611,
+        "following": 26,
+        "tweets": 101
+      }
+    },
+    {
+      "id": "1825834801259229185",
+      "name": "TAC (🫰,✨️)",
+      "username": "TacBuild",
+      "description": "TAC is a Layer 1 blockchain introducing a novel TON-Adapter, enabling Ethereum dApps to access Telegram’s 950M+ users | https://t.co/SEte4cCfOm",
+      "avatar": "https://pbs.twimg.com/profile_images/1881718627642040320/4XMf8y8o_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 10751,
+        "following": 9,
+        "tweets": 713
+      }
+    },
+    {
+      "id": "1679715459342684160",
+      "name": "WHY? An Elephant",
+      "username": "whyanelephant",
+      "description": "💊Don’t ask Why An Elephant | $WHY | Bipolar | on BNB chain",
+      "avatar": "https://pbs.twimg.com/profile_images/1771038693320761344/hVRuC91T_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 45646,
+        "following": 35,
+        "tweets": 546
+      }
+    },
+    {
+      "id": "1460528108952453120",
+      "name": "vana",
+      "username": "vana",
+      "description": "The first open network for data sovereignty and user-owned AI data layer. Growing the DataDAO ecosystem.",
+      "avatar": "https://pbs.twimg.com/profile_images/1896659132846919680/ma8uX8h8_normal.png",
+      "verified": false,
+      "metrics": {
+        "followers": 363665,
+        "following": 289,
+        "tweets": 1410
+      }
+    },
+    {
+      "id": "1712023396169744384",
+      "name": "区块国宝（专注ing）💚",
+      "username": "pandaBA007",
+      "description": "Building @yalaorg | @PudgyCN ｜ Cook BTC NFT 🌟 所有信息不作為投資建議   🆚 合作联系👉 https://t.co/aS8pN8JqRc",
+      "avatar": "https://pbs.twimg.com/profile_images/1898451800698855424/Q5zUOIDK_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 29712,
+        "following": 1155,
+        "tweets": 4650
+      }
+    },
+    {
+      "id": "418312181",
+      "name": "Marco (🫰,✨) - ETHDenver",
+      "username": "marcomonaco83",
+      "description": "Co-Founder and Growth Lead @TacBuild \n\nformer @Lineabuild co-founder and Growth Lead\n\n@Consensys graduate\n\nSatoshi Religion",
+      "avatar": "https://pbs.twimg.com/profile_images/1879127659877138432/rv1fSR0Q_normal.png",
+      "verified": false,
+      "metrics": {
+        "followers": 9052,
+        "following": 727,
+        "tweets": 3315
+      }
+    },
+    {
+      "id": "1735189899266121728",
+      "name": "O.LAB",
+      "username": "opinionlabsxyz",
+      "description": "The World's Opinion Protocol. Enabling anyone to create predictions using any token in a decentralized, permissionless way. Backed by @BinanceLabs",
+      "avatar": "https://pbs.twimg.com/profile_images/1826828350679359488/D2wLYRXX_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 113689,
+        "following": 37,
+        "tweets": 534
+      }
+    },
+    {
+      "id": "1414883275386937347",
+      "name": "区块马",
+      "username": "0xblockma",
+      "description": "Solidity & Python Developer; \nOnchain Scientist; \nGenZ, Researcher; \nInvestor @KernelVentures; \nDM for collab.",
+      "avatar": "https://pbs.twimg.com/profile_images/1630435026965000192/sw2E5WC2_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 19914,
+        "following": 865,
+        "tweets": 1578
+      }
+    },
+    {
+      "id": "1483837795605291008",
+      "name": "Thanos- Jucoin",
+      "username": "fxl0225",
+      "description": "high",
+      "avatar": "https://pbs.twimg.com/profile_images/1880704518620643328/yxVTlpbv_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 30,
+        "following": 186,
+        "tweets": 41
+      }
+    },
+    {
+      "id": "1788409864286576641",
+      "name": "NebX",
+      "username": "NebX_team",
+      "description": "Discover the Value of Your X Account with NebX! 🌟  $XCOIN \n\nNEBX 2.0, powered by AI, brings smarter trading to you. Learn more at https://t.co/Qeneh8macc",
+      "avatar": "https://pbs.twimg.com/profile_images/1814555147542147073/lW-_ljHr_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 1183297,
+        "following": 15,
+        "tweets": 107
+      }
+    },
+    {
+      "id": "869865541",
+      "name": "Sandy",
+      "username": "sandyzkp",
+      "description": "Building @Scroll_ZKP | Supporting builders and founders | ZK scaling solutions",
+      "avatar": "https://pbs.twimg.com/profile_images/1805929827293396992/k06IeG_C_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 43176,
+        "following": 2969,
+        "tweets": 3672
+      }
+    },
+    {
+      "id": "1799089203483193344",
+      "name": "SOON - Solana Optimistic Network (Mainnet Arc)",
+      "username": "soon_svm",
+      "description": "Extending Solana everywhere (🔴,💊). https://t.co/qFhBVM0taP",
+      "avatar": "https://pbs.twimg.com/profile_images/1824061692843802624/ypS4GORQ_normal.png",
+      "verified": false,
+      "metrics": {
+        "followers": 179526,
+        "following": 525,
+        "tweets": 2047
+      }
+    },
+    {
+      "id": "1655810110118326272",
+      "name": "Sorella Labs",
+      "username": "SorellaLabs",
+      "description": "Creating sustainable on-chain markets @angstromxyz",
+      "avatar": "https://pbs.twimg.com/profile_images/1723077682005450752/cmmq15b4_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 9007,
+        "following": 17,
+        "tweets": 70
+      }
+    },
+    {
+      "id": "1484231561784737792",
+      "name": "炼金叔叔Alchemist",
+      "username": "AirdropAlchemis",
+      "description": "⛏️挖掘价值 专注投研  OKX Web3钱包现已支持100+公链，提供钱包、多链 Swap、NFT 市场、DeFi 挖矿一站式服务 #web3入口 一个就够 https://t.co/PgpYT7xHG9 🟣Solar member of @solana_zh",
+      "avatar": "https://pbs.twimg.com/profile_images/1821804297723764736/iKiwTO9z_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 23631,
+        "following": 847,
+        "tweets": 19506
+      }
+    },
+    {
+      "id": "1804029868642045956",
+      "name": "Four.Meme",
+      "username": "four_meme_",
+      "description": "We are https://t.co/0NMWwcEtSi, the premier Meme Coins Fair Launch Platform and your go-to hub for meme launches on @BNBChain.",
+      "avatar": "https://pbs.twimg.com/profile_images/1877146158122082304/O2UofdER_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 283893,
+        "following": 153,
+        "tweets": 1480
+      }
+    },
+    {
+      "id": "1276259236469542913",
+      "name": "Tyler Zhou (TZ)",
+      "username": "tz_sahara",
+      "description": "Building @SaharaLabsAI. Ex-Director @BinanceLabs. Cal Bears @UCBerkeley. TG: @Tz_Sahara.",
+      "avatar": "https://pbs.twimg.com/profile_images/1885033289444188163/27BKR-80_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 2080,
+        "following": 1097,
+        "tweets": 139
+      }
+    },
+    {
+      "id": "1775901004438843392",
+      "name": "corn",
+      "username": "use_corn",
+      "description": "The network built for BTCFi 🌽 \nPowered by @arbitrum",
+      "avatar": "https://pbs.twimg.com/profile_images/1838599679321182208/igqD6b-Q_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 142297,
+        "following": 0,
+        "tweets": 856
+      }
+    },
+    {
+      "id": "1683358042920984577",
+      "name": "Toaster Finance 🍞",
+      "username": "toasterfinance",
+      "description": "DeFi Made Easy as Making Toast 🍞\n\nDiscord: https://t.co/wTFf84ztav",
+      "avatar": "https://pbs.twimg.com/profile_images/1874674722698657792/Y-gZKTS3_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 44228,
+        "following": 55,
+        "tweets": 347
+      }
+    },
+    {
+      "id": "1808799582949945344",
+      "name": "honzomomo",
+      "username": "honzomomo",
+      "description": "The Best Ordinals on @Fractal_bitcoin | Ethereum Collection is Coming | FREE | @MoMovax",
+      "avatar": "https://pbs.twimg.com/profile_images/1812444170604236800/ZKP3vPw__normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 30144,
+        "following": 39,
+        "tweets": 345
+      }
+    },
+    {
+      "id": "1820284813255094272",
+      "name": "Mia米粒儿🩵",
+      "username": "mia_okx",
+      "description": "#OKX 品牌大使｜真人科普视频《加密姐妹说》｜定期更新《OKX百事通》系列教程｜前产品经理现Marketing ｜KOL合作/用户反馈DM 👉 https://t.co/hZ3mD89Zmq",
+      "avatar": "https://pbs.twimg.com/profile_images/1854462074740744192/uEvuQJDJ_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 34998,
+        "following": 1117,
+        "tweets": 6225
+      }
+    },
+    {
+      "id": "1462055406541459464",
+      "name": "kuan Jiang",
+      "username": "DAKUANJIANG",
+      "description": "",
+      "avatar": "https://pbs.twimg.com/profile_images/1462055508236460032/t5Io4YJJ_normal.png",
+      "verified": false,
+      "metrics": {
+        "followers": 19,
+        "following": 127,
+        "tweets": 26
+      }
+    },
+    {
+      "id": "1685580409541992448",
+      "name": "MBA",
+      "username": "mbacedefi",
+      "description": "A CeDeFi solution offering CeDeFi Liquidity Mining and Asset Management Services. \n$MBA",
+      "avatar": "https://pbs.twimg.com/profile_images/1795051219586543618/OY4CZ2TW_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 223,
+        "following": 2,
+        "tweets": 40
+      }
+    },
+    {
+      "id": "973261472",
+      "name": "Ansem 🧸💸",
+      "username": "blknoiz06",
+      "description": "coldest nigga breathing | @BullpenFi | telegram @blknoiz06 | ig @blknoiz_06 | all other clone accounts are scams",
+      "avatar": "https://pbs.twimg.com/profile_images/1894431928083722240/9Yn-Yg2C_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 707142,
+        "following": 7922,
+        "tweets": 232857
+      }
+    },
+    {
+      "id": "1432335414866571267",
+      "name": "🐴HORSHead",
+      "username": "horseheadonSOL",
+      "description": "buck teeth horse, fren of pepe on SOL\nCA: A9wXx6PC5LfeBV6ba8zUb4GzLbVoTfmJ58Fywa9Qwave\ntoo reggae to care\nhttps://t.co/KpaiyYchE7\n$HORSH",
+      "avatar": "https://pbs.twimg.com/profile_images/1813558241537990656/imW6mzhG_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 13951,
+        "following": 15,
+        "tweets": 2126
+      }
+    },
+    {
+      "id": "1715242220591456256",
+      "name": "7007",
+      "username": "Lab7007",
+      "description": "ERC-7007 | Verifiable AI-Generated Content Token\nhttps://t.co/sXkoXdGmsK",
+      "avatar": "https://pbs.twimg.com/profile_images/1790985145354432512/rjwT7Ert_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 85886,
+        "following": 6,
+        "tweets": 198
+      }
+    },
+    {
+      "id": "1772318878934118400",
+      "name": "EXO Labs",
+      "username": "exolabs",
+      "description": "AI on any device.\n12 Days of EXO: https://t.co/VMrJ6Vi4h3\nWe're hiring: https://t.co/BzEO8ZCvBV",
+      "avatar": "https://pbs.twimg.com/profile_images/1772318997569998848/si2_A2yj_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 33755,
+        "following": 3,
+        "tweets": 287
+      }
+    },
+    {
+      "id": "915614943797551104",
+      "name": "Alex Cheema - e/acc",
+      "username": "alexocheema",
+      "description": "Building @exolabs | prev @UniOfOxford  We're hiring: https://t.co/UlkApFndnH",
+      "avatar": "https://pbs.twimg.com/profile_images/1671532231687282689/vlbc3Ytw_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 35108,
+        "following": 2253,
+        "tweets": 4075
+      }
+    },
+    {
+      "id": "1493725979491008516",
+      "name": "NITRAK ☉ ℝ ∀",
+      "username": "0xKartin",
+      "description": "volunteer @oraprotocol 𝒪𝑅𝒜 𝒫𝑅𝒪 𝒩𝒪𝐵𝐼𝒮",
+      "avatar": "https://pbs.twimg.com/profile_images/1765184048031563776/I_OP5CF1_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 50391,
+        "following": 1183,
+        "tweets": 1884
+      }
+    },
+    {
+      "id": "1647624773663617024",
+      "name": "Thurder.ai",
+      "username": "Color_BC404",
+      "description": "",
+      "avatar": "https://pbs.twimg.com/profile_images/1794384073907138560/ZMFXb0jZ_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 59353,
+        "following": 301,
+        "tweets": 98
+      }
+    },
+    {
+      "id": "1782939579068334080",
+      "name": "SEAL",
+      "username": "btckbseal",
+      "description": "🔗 RGB++ protocol creator deployed only one token: $Seal, supernode of RGB++ 🦭 Buy $Seal on UTXOSwap(https://t.co/aq66VOBSQd）Tg(https://t.co/SppFB4f1gI)",
+      "avatar": "https://pbs.twimg.com/profile_images/1874002942988345345/y0BLeP09_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 22754,
+        "following": 97,
+        "tweets": 762
+      }
+    },
+    {
+      "id": "1649242358960263168",
+      "name": "Kroma (✳️_✳️)",
+      "username": "kroma_network",
+      "description": "Optimistic Rollup utilizing zkEVM 🌐 | Built on the Superchain🟢🔴\n⭐ Kroma's Super App 𝙆𝙍𝙊𝙋𝙊𝙏 is LIVE: https://t.co/7ptIfD1Gf3",
+      "avatar": "https://pbs.twimg.com/profile_images/1826535695315603456/81vsj5xr_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 305902,
+        "following": 42,
+        "tweets": 1640
+      }
+    },
+    {
+      "id": "1709387095536816128",
+      "name": "Zircuit",
+      "username": "ZircuitL2",
+      "description": "The AI powered chain for secure, automated finance.\n\nBacked by @PanteraCapital and @BinanceLabs. \n\nTelegram: https://t.co/xzXoyHa0ks",
+      "avatar": "https://pbs.twimg.com/profile_images/1774812048683143168/gSbmfQfa_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 436368,
+        "following": 75,
+        "tweets": 1369
+      }
+    },
+    {
+      "id": "1067698998041956352",
+      "name": "BLOCKLORDS | ON EPIC GAMES STORE",
+      "username": "BLOCKLORDS",
+      "description": "The most ambitious strategy game of our age.\n@metakingstudios",
+      "avatar": "https://pbs.twimg.com/profile_images/1896482891661479936/qjNwPetu_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 359826,
+        "following": 419,
+        "tweets": 3543
+      }
+    },
+    {
+      "id": "1023351056036716544",
+      "name": "Myra Wang",
+      "username": "myrawang0",
+      "description": "Founder of Dboost: Guiding crypto-marketing, fostering community engagement, amplifying blockchain projects in Asia-Pacific. Deeply rooted in Web3 possibilities",
+      "avatar": "https://pbs.twimg.com/profile_images/1774701797413638144/wa22ElWc_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 6290,
+        "following": 2217,
+        "tweets": 4205
+      }
+    },
+    {
+      "id": "1795121702617186304",
+      "name": "GOAT Network 🟡",
+      "username": "GOATRollup",
+      "description": "Supply BTC or DOGE\nEarn Sustainable BTC Yield \nMainnet Q1 2025\n\nHow yield works: https://t.co/bdFuBbX1kB \nTG: https://t.co/NSgbSrJa3h + https://t.co/iuxrbYry5N",
+      "avatar": "https://pbs.twimg.com/profile_images/1819412047441821705/YfE_Kpth_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 70424,
+        "following": 425,
+        "tweets": 1169
+      }
+    },
+    {
+      "id": "1521321995795058689",
+      "name": "Ru7 @SသN(🔴,💊)",
+      "username": "Ru7Longcrypto",
+      "description": "nCMO @solana | Intern @soon_svm｜Love memecoins｜Solar🟣@solana_zh｜Content Creator @SOONGirl_｜有点文化｜The next 100x💎｜APLHA圣手👐",
+      "avatar": "https://pbs.twimg.com/profile_images/1896057597561802752/M6KjO-bz_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 25965,
+        "following": 4281,
+        "tweets": 7057
+      }
+    },
+    {
+      "id": "1752147600986537984",
+      "name": "链金术",
+      "username": "0xlianjinshu",
+      "description": "Founder of UnicornDAO @itsunicorndao |  https://t.co/d0y6rSwHQk",
+      "avatar": "https://pbs.twimg.com/profile_images/1752147679147376640/j_uJ0c7e_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 6073,
+        "following": 2311,
+        "tweets": 1104
+      }
+    },
+    {
+      "id": "1449274874317266945",
+      "name": "憨巴龙王",
+      "username": "dotyyds1234",
+      "description": "瞎几把喊单的，找你接盘的，别买，骂我看不见。",
+      "avatar": "https://pbs.twimg.com/profile_images/1701493248269881344/uXTOJ_0J_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 61160,
+        "following": 377,
+        "tweets": 1301
+      }
+    },
+    {
+      "id": "1594083523253612544",
+      "name": "Conduit",
+      "username": "conduitxyz",
+      "description": "Conduit is the complete rollup platform where the best teams in crypto scale their apps and ecosystems. Customize and deploy a rollup today: https://t.co/PkbbCUOqOu",
+      "avatar": "https://pbs.twimg.com/profile_images/1805257725028503552/2waFZGQt_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 34402,
+        "following": 24,
+        "tweets": 1929
+      }
+    },
+    {
+      "id": "765421931067678720",
+      "name": "币圈大瑶Freeland_Y",
+      "username": "Freeland_Y",
+      "description": "To.P3 Founder focusing on Digital Life Assets Management.| Arts, IP , and NFT",
+      "avatar": "https://pbs.twimg.com/profile_images/1813460190345510912/Ah9zErUC_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 123,
+        "following": 1333,
+        "tweets": 105
+      }
+    },
+    {
+      "id": "1704265574564667392",
+      "name": "Legend",
+      "username": "joinlegend",
+      "description": "Your gateway to decentralized finance.",
+      "avatar": "https://pbs.twimg.com/profile_images/1810457686494064640/HHdmNPHx_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 11708,
+        "following": 241,
+        "tweets": 169
+      }
+    },
+    {
+      "id": "1711819315312480257",
+      "name": "Plume - RWAfi L1",
+      "username": "plumenetwork",
+      "description": "Bringing the real world onchain. Backed by @BHDigitalAssets, @HaunVentures, @galaxyhq, and others.\n\nAccount managed by @plumefndn.",
+      "avatar": "https://pbs.twimg.com/profile_images/1854933222569975808/no3lt9ZL_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 1121861,
+        "following": 236,
+        "tweets": 3029
+      }
+    },
+    {
+      "id": "1585230812139642881",
+      "name": "Usual",
+      "username": "usualmoney",
+      "description": "Usual is a secure and decentralized fiat-backed (RWA) stablecoin issuer that redistributes value and ownership through the $USUAL token. \n\nTime is Ownership.",
+      "avatar": "https://pbs.twimg.com/profile_images/1770044779759304705/E7jPDO9n_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 126762,
+        "following": 149,
+        "tweets": 1518
+      }
+    },
+    {
+      "id": "1800041249069498368",
+      "name": "aiPump",
+      "username": "aiPump__",
+      "description": "Deploy AI Agents & AI Traders on Hyperliquid, Solana & Base.\n\nLaunch your own AI Agent Token with a Twitter, Telegram, Video, and Brain.",
+      "avatar": "https://pbs.twimg.com/profile_images/1860789917443350529/g1v50zA0_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 171933,
+        "following": 8,
+        "tweets": 65
+      }
+    },
+    {
+      "id": "1508993482655866881",
+      "name": "Nexus",
+      "username": "NexusLabs",
+      "description": "A World Supercomputer",
+      "avatar": "https://pbs.twimg.com/profile_images/1887351274955546627/jlvN83vR_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 147053,
+        "following": 12,
+        "tweets": 793
+      }
+    },
+    {
+      "id": "1632504432746192896",
+      "name": "Movement",
+      "username": "movementlabsxyz",
+      "description": "Bringing Move to Ethereum and beyond.",
+      "avatar": "https://pbs.twimg.com/profile_images/1744477796301496320/z7AIB7_W_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 868762,
+        "following": 37,
+        "tweets": 3440
+      }
+    },
+    {
+      "id": "771561661941424128",
+      "name": "Fan Bingbing 范冰冰",
+      "username": "realBingbingFan",
+      "description": "Collaboration enquiry: jersey@bingbingfan.cn • @Jersey_Chong",
+      "avatar": "https://pbs.twimg.com/profile_images/1680126346864005123/4fe9xC6u_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 296367,
+        "following": 90,
+        "tweets": 348
+      }
+    },
+    {
+      "id": "1754853230545133568",
+      "name": "Sentient",
+      "username": "SentientAGI",
+      "description": "Aligning AI Innovations Toward a Community-Built Open AGI. @SentientEco @OpenAGISummit",
+      "avatar": "https://pbs.twimg.com/profile_images/1812420751829422080/QV-SLzAa_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 669376,
+        "following": 31,
+        "tweets": 409
+      }
+    },
+    {
+      "id": "1730321133545922560",
+      "name": "MegaETH",
+      "username": "megaeth_labs",
+      "description": "MegaETH is the first real-time blockchain.",
+      "avatar": "https://pbs.twimg.com/profile_images/1861751545790070784/KvlxTzAq_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 107889,
+        "following": 14,
+        "tweets": 454
+      }
+    },
+    {
+      "id": "1716052688709066752",
+      "name": "harry",
+      "username": "harrylzw",
+      "description": "海外连续创业者｜泰国地产开发商｜web3加密货币爱好者｜开推目的为了结交同样有志于海外发展的伙伴",
+      "avatar": "https://pbs.twimg.com/profile_images/1716052891809804288/hLQUKK0W_normal.jpg",
+      "verified": false,
+      "metrics": {
+        "followers": 68,
+        "following": 516,
+        "tweets": 18
+      }
+    }
+  ]
+}

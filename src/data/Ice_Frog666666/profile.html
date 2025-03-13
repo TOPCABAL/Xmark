@@ -1,0 +1,703 @@
+
+  <!DOCTYPE html>
+  <html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>冰蛙 (@Ice_Frog666666) | Twitter</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+      /* 基本样式 */
+      :root {
+        --background: #f7f9fa;
+        --card-bg: #ffffff;
+        --text-color: #0f1419;
+        --secondary-text: #536471;
+        --border-color: #eff3f4;
+        --blue: #1DA1F2;
+        --blue-hover: #1a91da;
+      }
+      
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --background: #15202b;
+          --card-bg: #192734;
+          --text-color: #ffffff;
+          --secondary-text: #8899a6;
+          --border-color: #38444d;
+        }
+      }
+      
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        background-color: var(--background);
+        color: var(--text-color);
+        line-height: 1.3;
+      }
+      
+      a {
+        color: var(--blue);
+        text-decoration: none;
+      }
+      
+      a:hover {
+        text-decoration: underline;
+      }
+      
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 0;
+      }
+      
+      .profile-card {
+        background-color: var(--card-bg);
+        border-radius: 16px;
+        overflow: hidden;
+        margin-bottom: 16px;
+        border: 1px solid var(--border-color);
+      }
+      
+      .profile-header {
+        position: relative;
+      }
+      
+      .profile-banner {
+        width: 100%;
+        height: 150px;
+        background-color: var(--blue);
+        background-size: cover;
+        background-position: center;
+      }
+      
+      .profile-avatar-container {
+        position: absolute;
+        bottom: -50px;
+        left: 16px;
+      }
+      
+      .profile-avatar {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        border: 4px solid var(--card-bg);
+        object-fit: cover;
+      }
+      
+      .profile-info {
+        padding: 60px 16px 16px;
+      }
+      
+      .profile-name-container {
+        display: flex;
+        align-items: center;
+      }
+      
+      .profile-name {
+        font-size: 20px;
+        font-weight: bold;
+        margin-right: 4px;
+      }
+      
+      /* 强化蓝V标志的样式 - 使用简单明了的样式 */
+      .verified-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 18px;
+        height: 18px;
+        background-color: #1DA1F2;
+        border-radius: 50%;
+        margin-left: 4px;
+        color: white;
+        font-size: 12px;
+        font-weight: bold;
+        text-align: center;
+        line-height: 1;
+      }
+      
+      .profile-username {
+        font-size: 15px;
+        color: var(--secondary-text);
+        margin-bottom: 12px;
+      }
+      
+      /* 其余样式保持不变 */
+      .profile-bio {
+        margin-bottom: 15px;
+        white-space: pre-line;
+      }
+      
+      .profile-meta {
+        display: flex;
+        flex-wrap: wrap;
+        color: var(--secondary-text);
+        margin-bottom: 15px;
+        font-size: 14px;
+      }
+      
+      .profile-meta-item {
+        display: flex;
+        align-items: center;
+        margin-right: 15px;
+        margin-bottom: 5px;
+      }
+      
+      .profile-meta-item i {
+        margin-right: 5px;
+        width: 16px;
+        text-align: center;
+      }
+      
+      .profile-stats {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 15px;
+      }
+      
+      .profile-stat {
+        margin-right: 20px;
+        margin-bottom: 10px;
+      }
+      
+      .profile-stat-value {
+        font-weight: 700;
+      }
+      
+      .profile-stat-label {
+        color: var(--secondary-text);
+        font-size: 14px;
+      }
+      
+      /* 推文部分 */
+      .tweets-title {
+        font-size: 20px;
+        font-weight: 700;
+        margin: 20px 0 15px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--border-color);
+      }
+      
+      .tweet {
+        background-color: var(--card-bg);
+        border-radius: 16px;
+        padding: 12px;
+        margin-bottom: 12px;
+        border: 1px solid var(--border-color);
+      }
+      
+      .pinned-tweet {
+        border-left: 3px solid var(--blue);
+      }
+      
+      .pinned-label {
+        color: var(--secondary-text);
+        font-size: 13px;
+        margin-bottom: 8px;
+      }
+      
+      .tweet-header {
+        display: flex;
+        margin-bottom: 10px;
+      }
+      
+      .tweet-avatar {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+      
+      .tweet-user-info {
+        flex: 1;
+      }
+      
+      .tweet-name {
+        font-weight: bold;
+      }
+      
+      .tweet-username {
+        color: var(--secondary-text);
+        font-size: 14px;
+      }
+      
+      .tweet-date {
+        color: var(--secondary-text);
+        font-size: 14px;
+      }
+      
+      .tweet-content {
+        margin-bottom: 10px;
+        white-space: pre-line;
+        word-wrap: break-word;
+      }
+      
+      .tweet-media {
+        margin: 10px 0;
+        border-radius: 16px;
+        overflow: hidden;
+      }
+      
+      .tweet-media img, .tweet-media video {
+        max-width: 100%;
+        border-radius: 16px;
+        cursor: pointer;
+      }
+      
+      .tweet-stats {
+        display: flex;
+        color: var(--secondary-text);
+        margin-top: 10px;
+      }
+      
+      .tweet-stats span {
+        display: flex;
+        align-items: center;
+        margin-right: 20px;
+        font-size: 14px;
+      }
+      
+      .tweet-stats i {
+        margin-right: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="profile-card">
+        <div class="profile-header">
+          <div class="profile-banner" style="background-image: url('https://pbs.twimg.com/profile_banners/1004020535641059328/1675246566')"></div>
+          <div class="profile-avatar-container">
+            <img src="https://pbs.twimg.com/profile_images/1546704581815463937/fn14Lcd-_normal.jpg" class="profile-avatar" alt="冰蛙">
+          </div>
+        </div>
+        <div class="profile-info">
+          <div class="profile-name-container">
+            <h1 class="profile-name">冰蛙</h1>
+            <span class="verified-badge" title="已验证账号">✓</span>
+          </div>
+          <div class="profile-username">@Ice_Frog666666</div>
+          <div class="profile-bio">| 被空投耽误的GT&F4赛车手 | 投研社区：https://t.co/Wj5x4lDhuU | https://t.co/vVeMLLxQHa</div>
+          <div class="profile-meta">
+            <div class="profile-meta-item"><i class="fas fa-map-marker-alt"></i>新加坡</div><div class="profile-meta-item"><i class="fas fa-calendar-alt"></i>2018年6月加入</div>
+          </div>
+          <div class="profile-stats">
+          <div class="profile-stat">
+            <span class="profile-stat-value">2032</span>
+            <span class="profile-stat-label"> 正在关注</span>
+          </div>
+          <div class="profile-stat">
+            <span class="profile-stat-value">92509</span>
+            <span class="profile-stat-label"> 关注者</span>
+          </div>
+          <div class="profile-stat">
+            <span class="profile-stat-value">5411</span>
+            <span class="profile-stat-label"> 推文</span>
+          </div>
+          <div class="profile-stat">
+            <span class="profile-stat-value">3015</span>
+            <span class="profile-stat-label"> 喜欢</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <h2 class="tweets-title">推文 (19)</h2>
+        <div class="tweet pinned-tweet">
+          <div class="pinned-label"><i class="fas fa-thumbtack"></i> 置顶推文</div>
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1546704581815463937/fn14Lcd-_normal.jpg" class="tweet-avatar" alt="冰蛙" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">冰蛙</span>
+              <span class="tweet-username">@Ice_Frog666666</span>
+              <span class="tweet-date">2023/2/17 23:01:39</span>
+            </div>
+          </div>
+          <div class="tweet-content">记永赚俱乐部第一次线下聚会合影留念！ https://t.co/ISODptiirg</div>
+          <div class="tweet-media"><img src="https://pbs.twimg.com/media/FpLWB5FaIAAzZ0J.jpg" alt="推文图片" loading="lazy"></div>
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 266</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 590</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 418</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 4</span>
+          </div>
+        </div>
+      
+        <div class="tweet ">
+          
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1546704581815463937/fn14Lcd-_normal.jpg" class="tweet-avatar" alt="冰蛙" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">冰蛙</span>
+              <span class="tweet-username">@Ice_Frog666666</span>
+              <span class="tweet-date">2025/3/13 12:27:52</span>
+            </div>
+          </div>
+          <div class="tweet-content">这是前两天写给Nillion项目方的信 原文：<br><br>《致Nillion项目团队的一封信》<br><br>尊敬的Nillion团队：</div>
+          
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 38</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 33</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 143</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 3</span>
+          </div>
+        </div>
+      
+        <div class="tweet ">
+          
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1546704581815463937/fn14Lcd-_normal.jpg" class="tweet-avatar" alt="冰蛙" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">冰蛙</span>
+              <span class="tweet-username">@Ice_Frog666666</span>
+              <span class="tweet-date">2025/3/13 11:07:43</span>
+            </div>
+          </div>
+          <div class="tweet-content">《Nillion空投：我拼尽全力却像个小丑，未来在哪里？》<br><br>3月8日晚，多个朋友发来信息说出大事了，整个Nillion 社区内弥漫着失望与愤怒的情绪，提前泄露的空投数据以及方案显示，许多早期支持者被无情排除在外，我第一时间去确认情况，并在得知项目方即将官宣这份方案时，心中充满了不解。 https://t.co/DfJgje6NqC</div>
+          <div class="tweet-media"><img src="https://pbs.twimg.com/media/Gl469KBbQAA7_Pj.png" alt="推文图片" loading="lazy"><img src="https://pbs.twimg.com/media/Gl45HpuWYAE8ia2.png" alt="推文图片" loading="lazy"></div>
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 164</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 113</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 470</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 36</span>
+          </div>
+        </div>
+      
+        <div class="tweet ">
+          
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1546704581815463937/fn14Lcd-_normal.jpg" class="tweet-avatar" alt="冰蛙" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">冰蛙</span>
+              <span class="tweet-username">@Ice_Frog666666</span>
+              <span class="tweet-date">2025/3/12 12:58:34</span>
+            </div>
+          </div>
+          <div class="tweet-content">RT <a href="https://twitter.com/haze0x" target="_blank" rel="noopener noreferrer">@haze0x</a>: 感谢大家对GMGN的关心。<br><br>本来是不准备回应的，因为确实精力在产品上，还有4月份我们的HK活动上。要做的东西比较多。对于产品，每天接收到很多用户的反馈，感觉进步的空间还有非常非常多。…</div>
+          
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 0</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 48</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 0</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 0</span>
+          </div>
+        </div>
+      
+        <div class="tweet ">
+          
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1546704581815463937/fn14Lcd-_normal.jpg" class="tweet-avatar" alt="冰蛙" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">冰蛙</span>
+              <span class="tweet-username">@Ice_Frog666666</span>
+              <span class="tweet-date">2025/3/11 19:53:32</span>
+            </div>
+          </div>
+          <div class="tweet-content"><a href="http://x.com/i/article/1897126846996865027" target="_blank" rel="noopener noreferrer">x.com/i/article/1897…</a></div>
+          
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 27</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 42</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 137</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 3</span>
+          </div>
+        </div>
+      
+        <div class="tweet ">
+          
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1546704581815463937/fn14Lcd-_normal.jpg" class="tweet-avatar" alt="冰蛙" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">冰蛙</span>
+              <span class="tweet-username">@Ice_Frog666666</span>
+              <span class="tweet-date">2025/3/11 16:20:39</span>
+            </div>
+          </div>
+          <div class="tweet-content">RT <a href="https://twitter.com/Ice_Frog666666" target="_blank" rel="noopener noreferrer">@Ice_Frog666666</a>: 《再问Berachain：避重就轻，转移话题，为何生态项目Enso对关键问题保持沉默？》<br><br>再连续三发的追问下，Enso回复了，Berachain依旧稳如老狗的一言不发，挺牛逼的，堪称区块链届的兵马俑，主打一个已读，然后躺尸。然而，Ens…</div>
+          
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 0</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 10</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 0</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 0</span>
+          </div>
+        </div>
+      
+        <div class="tweet ">
+          
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1546704581815463937/fn14Lcd-_normal.jpg" class="tweet-avatar" alt="冰蛙" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">冰蛙</span>
+              <span class="tweet-username">@Ice_Frog666666</span>
+              <span class="tweet-date">2025/3/11 11:51:55</span>
+            </div>
+          </div>
+          <div class="tweet-content">Caldera：连接百万应用链，定义多链生态新格局<br><br>据 Dune Analytics 最新链上数据，Caldera 生态已承载超过 30% 的以太坊 L2 流量，正在重新定义多链生态的未来格局。<br><br>--------<br><br>一、核心技术架构<br><br>Caldera 的核心技术架构部分由 rollup 引擎和 metalayer 组成。<br><br>rollup 引擎：一键构建高性能定制链 https://t.co/dZbepNV2PW</div>
+          <div class="tweet-media"><img src="https://pbs.twimg.com/media/Gluvp8VXsAAFrhw.png" alt="推文图片" loading="lazy"><img src="https://pbs.twimg.com/media/GluwySfXoAA7psX.jpg" alt="推文图片" loading="lazy"></div>
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 16</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 5</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 26</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 0</span>
+          </div>
+        </div>
+      
+        <div class="tweet ">
+          
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1546704581815463937/fn14Lcd-_normal.jpg" class="tweet-avatar" alt="冰蛙" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">冰蛙</span>
+              <span class="tweet-username">@Ice_Frog666666</span>
+              <span class="tweet-date">2025/3/10 21:27:31</span>
+            </div>
+          </div>
+          <div class="tweet-content">《再问Berachain：避重就轻，转移话题，为何生态项目Enso对关键问题保持沉默？》<br><br>再连续三发的追问下，Enso回复了，Berachain依旧稳如老狗的一言不发，挺牛逼的，堪称区块链届的兵马俑，主打一个已读，然后躺尸。然而，Enso</div>
+          
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 36</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 10</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 93</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 3</span>
+          </div>
+        </div>
+      
+        <div class="tweet ">
+          
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1546704581815463937/fn14Lcd-_normal.jpg" class="tweet-avatar" alt="冰蛙" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">冰蛙</span>
+              <span class="tweet-username">@Ice_Frog666666</span>
+              <span class="tweet-date">2025/3/10 19:35:40</span>
+            </div>
+          </div>
+          <div class="tweet-content">《Babylon上线之际，我个人对babylon价值的深度解析》<br><br>上次巴比龙联创 <a href="https://twitter.com/baby_fisherman" target="_blank" rel="noopener noreferrer">@baby_fisherman</a>  说我上篇研报对babylon的描述不够准确，然后我又花了点时间对巴比龙进行了一番深度研究。<br><br>以下我将讲述Babylon项目的独特价值到底在哪里？其对比特币乃至比特币生态究竟意味着什么？比特币生态是不是伪命题？ https://t.co/b6xH7UZf9N</div>
+          <div class="tweet-media"><img src="https://pbs.twimg.com/media/GlrScfObsAABLke.png" alt="推文图片" loading="lazy"><video controls><source src="https://video.twimg.com/ext_tw_video/1899061429757779968/pu/pl/foGCWf2jx5lhD0kZ.m3u8?tag=14&v=cfc" type="video/mp4"></video></div>
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 38</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 10</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 75</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 6</span>
+          </div>
+        </div>
+      
+        <div class="tweet ">
+          
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1546704581815463937/fn14Lcd-_normal.jpg" class="tweet-avatar" alt="冰蛙" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">冰蛙</span>
+              <span class="tweet-username">@Ice_Frog666666</span>
+              <span class="tweet-date">2025/3/10 18:42:43</span>
+            </div>
+          </div>
+          <div class="tweet-content">5天前的问题装看不见，今天发的文章也不回复，<br><br>那是不是可以认定：这根本不是 RFA ，而是赤裸裸的老鼠仓了？ <a href="https://twitter.com/berachain" target="_blank" rel="noopener noreferrer">@berachain</a>  <a href="https://twitter.com/connor_enso" target="_blank" rel="noopener noreferrer">@connor_enso</a></div>
+          
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 48</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 6</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 72</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 1</span>
+          </div>
+        </div>
+      
+        <div class="tweet ">
+          
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1546704581815463937/fn14Lcd-_normal.jpg" class="tweet-avatar" alt="冰蛙" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">冰蛙</span>
+              <span class="tweet-username">@Ice_Frog666666</span>
+              <span class="tweet-date">2025/3/10 12:52:22</span>
+            </div>
+          </div>
+          <div class="tweet-content">RT <a href="https://twitter.com/Ice_Frog666666" target="_blank" rel="noopener noreferrer">@Ice_Frog666666</a>: 我还在整理熊链老鼠仓的数据，因为数据太庞大、整理和分析都要花不少时间，先给大家展示下其中一个地址：0xbdd634C93482E55361DF328023758Eaf9B3aFc28 <br><br>该地址在熊链的两个测试网络均没有任何的TX，且没有…</div>
+          
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 0</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 42</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 0</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 0</span>
+          </div>
+        </div>
+      
+        <div class="tweet ">
+          
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1546704581815463937/fn14Lcd-_normal.jpg" class="tweet-avatar" alt="冰蛙" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">冰蛙</span>
+              <span class="tweet-username">@Ice_Frog666666</span>
+              <span class="tweet-date">2025/3/7 18:55:16</span>
+            </div>
+          </div>
+          <div class="tweet-content">昨天是暂停上线作恶的Redstone项目方，今天是封掉 $GPS 做恶的做市商账户。<br><br>币安的这些举动如同我此前讲的，只有这个行业的规则制定者率先开始自我纠正，让作恶的无所遁形，那么市场就有希望，让这一切成为开始，而不是结束！</div>
+          
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 115</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 11</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 154</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 1</span>
+          </div>
+        </div>
+      
+        <div class="tweet ">
+          
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1546704581815463937/fn14Lcd-_normal.jpg" class="tweet-avatar" alt="冰蛙" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">冰蛙</span>
+              <span class="tweet-username">@Ice_Frog666666</span>
+              <span class="tweet-date">2025/3/7 18:20:56</span>
+            </div>
+          </div>
+          <div class="tweet-content">RT <a href="https://twitter.com/Ice_Frog666666" target="_blank" rel="noopener noreferrer">@Ice_Frog666666</a>: <a href="http://x.com/i/article/1843578574240133121" target="_blank" rel="noopener noreferrer">x.com/i/article/1843…</a></div>
+          
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 0</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 194</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 0</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 0</span>
+          </div>
+        </div>
+      
+        <div class="tweet ">
+          
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1546704581815463937/fn14Lcd-_normal.jpg" class="tweet-avatar" alt="冰蛙" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">冰蛙</span>
+              <span class="tweet-username">@Ice_Frog666666</span>
+              <span class="tweet-date">2025/3/7 11:05:46</span>
+            </div>
+          </div>
+          <div class="tweet-content">《Web3不需要完美受害者，技术成功不等于社区治理的成功》<br><br>——以下为我对restone中文社区负责人 <a href="https://twitter.com/0xStephenR" target="_blank" rel="noopener noreferrer">@0xStephenR</a> 发文的回应，也是我的心声。<br><br>所有的言论不是为了批评而批评，所有的言辞激烈无非是希望这个行业更公平、更透明和更有信任。 https://t.co/9C2pFS8IxX</div>
+          <div class="tweet-media"><img src="https://pbs.twimg.com/media/GlZ_xg1bwAQcoNX.png" alt="推文图片" loading="lazy"><img src="https://pbs.twimg.com/media/GlZ_24tbwAQd2_r.png" alt="推文图片" loading="lazy"><img src="https://pbs.twimg.com/media/GlaAZ6ybQAAYt_7.png" alt="推文图片" loading="lazy"></div>
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 103</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 20</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 197</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 9</span>
+          </div>
+        </div>
+      
+        <div class="tweet ">
+          
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1546704581815463937/fn14Lcd-_normal.jpg" class="tweet-avatar" alt="冰蛙" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">冰蛙</span>
+              <span class="tweet-username">@Ice_Frog666666</span>
+              <span class="tweet-date">2025/3/7 08:16:51</span>
+            </div>
+          </div>
+          <div class="tweet-content">RT <a href="https://twitter.com/heyibinance" target="_blank" rel="noopener noreferrer">@heyibinance</a>: <a href="https://twitter.com/Ice_Frog666666" target="_blank" rel="noopener noreferrer">@Ice_Frog666666</a> 有时候，社区表现的过于平易近人。<br><br>让项目方失去了对社区应有的恐惧，敬畏，尊重。</div>
+          
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 0</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 57</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 0</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 0</span>
+          </div>
+        </div>
+      
+        <div class="tweet ">
+          
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1546704581815463937/fn14Lcd-_normal.jpg" class="tweet-avatar" alt="冰蛙" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">冰蛙</span>
+              <span class="tweet-username">@Ice_Frog666666</span>
+              <span class="tweet-date">2025/3/6 23:55:38</span>
+            </div>
+          </div>
+          <div class="tweet-content">《我被币安打脸了：从暂停键到重启键，革命没有成功，但希望已经点燃！》<br><br>币安又上了Redstone，在抗争的道路上，在资本面前，我承认我不够成熟，妈的，打脸太快了，让事情一下子变得有些滑稽，一下子竟然小丑是我。</div>
+          
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 220</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 19</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 375</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 16</span>
+          </div>
+        </div>
+      
+        <div class="tweet ">
+          
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1546704581815463937/fn14Lcd-_normal.jpg" class="tweet-avatar" alt="冰蛙" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">冰蛙</span>
+              <span class="tweet-username">@Ice_Frog666666</span>
+              <span class="tweet-date">2025/3/6 23:03:40</span>
+            </div>
+          </div>
+          <div class="tweet-content">《币安的暂停键已成炬火：这是社区的胜利，是正义对恶的胜利！》<br><br>屠龙少年犹在，正义终将凯旋！<br><br>当币安由于社区山呼海啸的声浪而暂停Redstone的交易时，这一刻，我握紧了双拳，心潮彭拜。<br><br>有人问我为什么要维权，甚至不惜言辞激烈的抨击币安，答案不在我这里，</div>
+          
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 203</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 13</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 237</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 12</span>
+          </div>
+        </div>
+      
+        <div class="tweet ">
+          
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1546704581815463937/fn14Lcd-_normal.jpg" class="tweet-avatar" alt="冰蛙" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">冰蛙</span>
+              <span class="tweet-username">@Ice_Frog666666</span>
+              <span class="tweet-date">2025/3/6 20:51:22</span>
+            </div>
+          </div>
+          <div class="tweet-content">卧槽！！！！ https://t.co/t1po0ztdm0</div>
+          <div class="tweet-media"><img src="https://pbs.twimg.com/media/GlW9ZV7aQAAa7xW.jpg" alt="推文图片" loading="lazy"></div>
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 278</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 19</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 323</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 31</span>
+          </div>
+        </div>
+      
+        <div class="tweet ">
+          
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1546704581815463937/fn14Lcd-_normal.jpg" class="tweet-avatar" alt="冰蛙" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">冰蛙</span>
+              <span class="tweet-username">@Ice_Frog666666</span>
+              <span class="tweet-date">2025/3/6 19:56:05</span>
+            </div>
+          </div>
+          <div class="tweet-content">目前没有任何回应，以后也更不会有人来回应，等热度消散，慢慢就石沉大海了......<br><br>韭菜还是那些韭菜，镰刀还是那些镰刀，该逍遥法外的继续逍遥法外，该奏乐的继续接着奏乐接着舞......<br><br>垃圾项目的层出不穷，是市场原子化博弈的困境，并非是单一群体制造的，根源上是技术、人性和制度的合谋。</div>
+          
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 138</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 32</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 237</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 2</span>
+          </div>
+        </div>
+      
+    
+    <script>
+      // 图片点击放大查看
+      document.querySelectorAll('.tweet-media img').forEach(img => {
+        img.addEventListener('click', () => {
+          window.open(img.src, '_blank');
+        });
+      });
+    </script>
+  </body>
+  </html>
+  

@@ -1,0 +1,643 @@
+
+  <!DOCTYPE html>
+  <html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>旧亿 (@cryptojiuyi) | Twitter</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+      /* 基本样式 */
+      :root {
+        --background: #f7f9fa;
+        --card-bg: #ffffff;
+        --text-color: #0f1419;
+        --secondary-text: #536471;
+        --border-color: #eff3f4;
+        --blue: #1DA1F2;
+        --blue-hover: #1a91da;
+      }
+      
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --background: #15202b;
+          --card-bg: #192734;
+          --text-color: #ffffff;
+          --secondary-text: #8899a6;
+          --border-color: #38444d;
+        }
+      }
+      
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        background-color: var(--background);
+        color: var(--text-color);
+        line-height: 1.3;
+      }
+      
+      a {
+        color: var(--blue);
+        text-decoration: none;
+      }
+      
+      a:hover {
+        text-decoration: underline;
+      }
+      
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 0;
+      }
+      
+      .profile-card {
+        background-color: var(--card-bg);
+        border-radius: 16px;
+        overflow: hidden;
+        margin-bottom: 16px;
+        border: 1px solid var(--border-color);
+      }
+      
+      .profile-header {
+        position: relative;
+      }
+      
+      .profile-banner {
+        width: 100%;
+        height: 150px;
+        background-color: var(--blue);
+        background-size: cover;
+        background-position: center;
+      }
+      
+      .profile-avatar-container {
+        position: absolute;
+        bottom: -50px;
+        left: 16px;
+      }
+      
+      .profile-avatar {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        border: 4px solid var(--card-bg);
+        object-fit: cover;
+      }
+      
+      .profile-info {
+        padding: 60px 16px 16px;
+      }
+      
+      .profile-name-container {
+        display: flex;
+        align-items: center;
+      }
+      
+      .profile-name {
+        font-size: 20px;
+        font-weight: bold;
+        margin-right: 4px;
+      }
+      
+      /* 强化蓝V标志的样式 - 使用简单明了的样式 */
+      .verified-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 18px;
+        height: 18px;
+        background-color: #1DA1F2;
+        border-radius: 50%;
+        margin-left: 4px;
+        color: white;
+        font-size: 12px;
+        font-weight: bold;
+        text-align: center;
+        line-height: 1;
+      }
+      
+      .profile-username {
+        font-size: 15px;
+        color: var(--secondary-text);
+        margin-bottom: 12px;
+      }
+      
+      /* 其余样式保持不变 */
+      .profile-bio {
+        margin-bottom: 15px;
+        white-space: pre-line;
+      }
+      
+      .profile-meta {
+        display: flex;
+        flex-wrap: wrap;
+        color: var(--secondary-text);
+        margin-bottom: 15px;
+        font-size: 14px;
+      }
+      
+      .profile-meta-item {
+        display: flex;
+        align-items: center;
+        margin-right: 15px;
+        margin-bottom: 5px;
+      }
+      
+      .profile-meta-item i {
+        margin-right: 5px;
+        width: 16px;
+        text-align: center;
+      }
+      
+      .profile-stats {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 15px;
+      }
+      
+      .profile-stat {
+        margin-right: 20px;
+        margin-bottom: 10px;
+      }
+      
+      .profile-stat-value {
+        font-weight: 700;
+      }
+      
+      .profile-stat-label {
+        color: var(--secondary-text);
+        font-size: 14px;
+      }
+      
+      /* 推文部分 */
+      .tweets-title {
+        font-size: 20px;
+        font-weight: 700;
+        margin: 20px 0 15px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--border-color);
+      }
+      
+      .tweet {
+        background-color: var(--card-bg);
+        border-radius: 16px;
+        padding: 12px;
+        margin-bottom: 12px;
+        border: 1px solid var(--border-color);
+      }
+      
+      .pinned-tweet {
+        border-left: 3px solid var(--blue);
+      }
+      
+      .pinned-label {
+        color: var(--secondary-text);
+        font-size: 13px;
+        margin-bottom: 8px;
+      }
+      
+      .tweet-header {
+        display: flex;
+        margin-bottom: 10px;
+      }
+      
+      .tweet-avatar {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+      
+      .tweet-user-info {
+        flex: 1;
+      }
+      
+      .tweet-name {
+        font-weight: bold;
+      }
+      
+      .tweet-username {
+        color: var(--secondary-text);
+        font-size: 14px;
+      }
+      
+      .tweet-date {
+        color: var(--secondary-text);
+        font-size: 14px;
+      }
+      
+      .tweet-content {
+        margin-bottom: 10px;
+        white-space: pre-line;
+        word-wrap: break-word;
+      }
+      
+      .tweet-media {
+        margin: 10px 0;
+        border-radius: 16px;
+        overflow: hidden;
+      }
+      
+      .tweet-media img, .tweet-media video {
+        max-width: 100%;
+        border-radius: 16px;
+        cursor: pointer;
+      }
+      
+      .tweet-stats {
+        display: flex;
+        color: var(--secondary-text);
+        margin-top: 10px;
+      }
+      
+      .tweet-stats span {
+        display: flex;
+        align-items: center;
+        margin-right: 20px;
+        font-size: 14px;
+      }
+      
+      .tweet-stats i {
+        margin-right: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="profile-card">
+        <div class="profile-header">
+          <div class="profile-banner" style="background-image: url('https://pbs.twimg.com/profile_banners/1413148701443330053/1693386600')"></div>
+          <div class="profile-avatar-container">
+            <img src="https://pbs.twimg.com/profile_images/1679445036990349313/dXA2TXxV_normal.jpg" class="profile-avatar" alt="旧亿">
+          </div>
+        </div>
+        <div class="profile-info">
+          <div class="profile-name-container">
+            <h1 class="profile-name">旧亿</h1>
+            <span class="verified-badge" title="已验证账号">✓</span>
+          </div>
+          <div class="profile-username">@cryptojiuyi</div>
+          <div class="profile-bio">屌丝 | 早期💎发掘  | 一周内买了三个金狗， $mfer $keycat 分分钟卖飞了两个A8.5 💴 ， $meow 20分钟只挣了个小A8，虽然卖飞大头但牛市就是这样捡钱的嘛！ | 2022🐻市战绩：10w块3个月一级土狗上A8 | 牛市机会真的不缺，争取这轮牛市结束，大家一起A9顶峰相见👊</div>
+          <div class="profile-meta">
+            <div class="profile-meta-item"><i class="fas fa-link"></i><a href="https://t.me/jiuyicall" target="_blank" rel="noopener noreferrer">https://t.me/jiuyicall</a></div><div class="profile-meta-item"><i class="fas fa-calendar-alt"></i>2021年7月加入</div>
+          </div>
+          <div class="profile-stats">
+          <div class="profile-stat">
+            <span class="profile-stat-value">2890</span>
+            <span class="profile-stat-label"> 正在关注</span>
+          </div>
+          <div class="profile-stat">
+            <span class="profile-stat-value">22463</span>
+            <span class="profile-stat-label"> 关注者</span>
+          </div>
+          <div class="profile-stat">
+            <span class="profile-stat-value">3099</span>
+            <span class="profile-stat-label"> 推文</span>
+          </div>
+          <div class="profile-stat">
+            <span class="profile-stat-value">2709</span>
+            <span class="profile-stat-label"> 喜欢</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <h2 class="tweets-title">推文 (16)</h2>
+        <div class="tweet pinned-tweet">
+          <div class="pinned-label"><i class="fas fa-thumbtack"></i> 置顶推文</div>
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1679445036990349313/dXA2TXxV_normal.jpg" class="tweet-avatar" alt="旧亿" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">旧亿</span>
+              <span class="tweet-username">@cryptojiuyi</span>
+              <span class="tweet-date">2024/4/3 23:25:36</span>
+            </div>
+          </div>
+          <div class="tweet-content">屌丝逆袭记：一周内三次可成千万富豪的神话<br><br>刚刚 $MOEW 小买5e挣了不到500E，在这里感谢一下 <a href="https://twitter.com/BitgetWallet" target="_blank" rel="noopener noreferrer">@BitgetWallet</a> ，没卖在最高点但是也满足了，跟上的应该也都挣麻了，Tg我也发了。<a href="https://t.me/jiuyicall" target="_blank" rel="noopener noreferrer">t.me/jiuyicall</a><br><br>今天新钱包买了4e $moew ：<br>0x74CC705dB12DBa505C9aB493bf326Fc01b8F42E9<br>买 $mfer 和 $keycat https://t.co/hON3ukzj3X</div>
+          <div class="tweet-media"><img src="https://pbs.twimg.com/media/GKPyJcWbwAAbiiD.png" alt="推文图片" loading="lazy"><img src="https://pbs.twimg.com/media/GKP0SDVbYAALbd0.png" alt="推文图片" loading="lazy"><img src="https://pbs.twimg.com/media/GKP-rpKaoAA30rU.png" alt="推文图片" loading="lazy"><img src="https://pbs.twimg.com/media/GKP-sffbkAAgzrV.jpg" alt="推文图片" loading="lazy"></div>
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 239</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 42</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 314</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 15</span>
+          </div>
+        </div>
+      
+        <div class="tweet ">
+          
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1679445036990349313/dXA2TXxV_normal.jpg" class="tweet-avatar" alt="旧亿" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">旧亿</span>
+              <span class="tweet-username">@cryptojiuyi</span>
+              <span class="tweet-date">2025/3/8 23:22:07</span>
+            </div>
+          </div>
+          <div class="tweet-content">艹原来我骨子里是个纯纯的舔狗，真是尼玛小丑🤡<br>不是行情不好都流行爹系男友嘛？最近在 <a href="https://twitter.com/CryptoHtdi" target="_blank" rel="noopener noreferrer">@CryptoHtdi</a> https://t.co/pYIbn5IuXg</div>
+          <div class="tweet-media"><img src="https://pbs.twimg.com/media/GlhzAGxbYAE59IG.jpg" alt="推文图片" loading="lazy"><img src="https://pbs.twimg.com/media/GlhzBtpakAAqCAQ.jpg" alt="推文图片" loading="lazy"><img src="https://pbs.twimg.com/media/GlhzEjXa0AA51j4.jpg" alt="推文图片" loading="lazy"><img src="https://pbs.twimg.com/media/GlhzF-KaEAAZF7O.jpg" alt="推文图片" loading="lazy"></div>
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 284</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 17</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 285</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 14</span>
+          </div>
+        </div>
+      
+        <div class="tweet ">
+          
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1679445036990349313/dXA2TXxV_normal.jpg" class="tweet-avatar" alt="旧亿" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">旧亿</span>
+              <span class="tweet-username">@cryptojiuyi</span>
+              <span class="tweet-date">2025/2/23 00:32:56</span>
+            </div>
+          </div>
+          <div class="tweet-content">恭喜大表哥 <a href="https://twitter.com/cz_binance" target="_blank" rel="noopener noreferrer">@cz_binance</a> 耗时27分钟购买TST成功 https://t.co/rG1THKpo48</div>
+          <div class="tweet-media"><img src="https://pbs.twimg.com/media/GkZ9DBKWAAAU2lR.jpg" alt="推文图片" loading="lazy"></div>
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 15</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 0</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 21</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 0</span>
+          </div>
+        </div>
+      
+        <div class="tweet ">
+          
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1679445036990349313/dXA2TXxV_normal.jpg" class="tweet-avatar" alt="旧亿" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">旧亿</span>
+              <span class="tweet-username">@cryptojiuyi</span>
+              <span class="tweet-date">2025/2/21 00:19:25</span>
+            </div>
+          </div>
+          <div class="tweet-content">针对刚刚 <a href="https://twitter.com/kaisi420" target="_blank" rel="noopener noreferrer">@kaisi420</a> 的推文，我只评论了第1点，喜欢跟各种大佬合影发推彰显自己的人，我觉得这类很多都挺low逼的，没啥实力博眼球流量再割韭菜，我并没有指嗯哼 <a href="https://twitter.com/EnHeng456" target="_blank" rel="noopener noreferrer">@EnHeng456</a> ，也不了解他。本来不想参与纷争的，那就发表一下自己对第2点的看法吧。 https://t.co/B0yz8MVW3v</div>
+          <div class="tweet-media"><img src="https://pbs.twimg.com/media/GkPlq-AXIAIRtuS.jpg" alt="推文图片" loading="lazy"><img src="https://pbs.twimg.com/media/GkPmqV_acAENEJL.jpg" alt="推文图片" loading="lazy"><img src="https://pbs.twimg.com/media/GkPlq9ibkAApCaX.jpg" alt="推文图片" loading="lazy"><img src="https://pbs.twimg.com/media/GkPmqV7aMAAl7rP.jpg" alt="推文图片" loading="lazy"></div>
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 46</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 1</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 77</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 0</span>
+          </div>
+        </div>
+      
+        <div class="tweet ">
+          
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1679445036990349313/dXA2TXxV_normal.jpg" class="tweet-avatar" alt="旧亿" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">旧亿</span>
+              <span class="tweet-username">@cryptojiuyi</span>
+              <span class="tweet-date">2025/2/18 01:41:14</span>
+            </div>
+          </div>
+          <div class="tweet-content">我吹水其实就是短期fomo情绪的最高点，你懂？胜率我估算了下，大概90%以后当指标用吧！</div>
+          
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 13</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 0</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 27</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 0</span>
+          </div>
+        </div>
+      
+        <div class="tweet ">
+          
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1679445036990349313/dXA2TXxV_normal.jpg" class="tweet-avatar" alt="旧亿" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">旧亿</span>
+              <span class="tweet-username">@cryptojiuyi</span>
+              <span class="tweet-date">2025/2/18 00:30:49</span>
+            </div>
+          </div>
+          <div class="tweet-content">抄底 $libra 有点舒服，先看1U<br><br>milei米莱刚刚又转推了 $libra 的购买教程，从支持删推到再支持？说明一件事情，怕下台，币价涨回来对他是有好处的，不涨过来呼声很大有下台的风险(早上Hayden Davis的采访提到了，米莱继续支持的概率很大)<br>本来是准备抄2000s的，0.3几u陆续在抄底，突然拉起来0.4u https://t.co/VII8hpqmzD</div>
+          <div class="tweet-media"><img src="https://pbs.twimg.com/media/GkAMnb5awAAnfNn.jpg" alt="推文图片" loading="lazy"><img src="https://pbs.twimg.com/media/GkAMnbwaAAALf3J.jpg" alt="推文图片" loading="lazy"><img src="https://pbs.twimg.com/media/GkAMnb6bMAA0GWW.jpg" alt="推文图片" loading="lazy"><img src="https://pbs.twimg.com/media/GkAMnbvbMAAlyQS.jpg" alt="推文图片" loading="lazy"></div>
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 45</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 10</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 52</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 4</span>
+          </div>
+        </div>
+      
+        <div class="tweet ">
+          
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1679445036990349313/dXA2TXxV_normal.jpg" class="tweet-avatar" alt="旧亿" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">旧亿</span>
+              <span class="tweet-username">@cryptojiuyi</span>
+              <span class="tweet-date">2025/2/16 08:53:50</span>
+            </div>
+          </div>
+          <div class="tweet-content">跑了已经，说什么48小时回购画饼我是不赌也没意义，凌晨抄底有点追高的意味抄底位置不好，不然也舒服一下，等下一个机会。</div>
+          
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 7</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 0</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 15</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 1</span>
+          </div>
+        </div>
+      
+        <div class="tweet ">
+          
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1679445036990349313/dXA2TXxV_normal.jpg" class="tweet-avatar" alt="旧亿" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">旧亿</span>
+              <span class="tweet-username">@cryptojiuyi</span>
+              <span class="tweet-date">2025/2/16 04:46:12</span>
+            </div>
+          </div>
+          <div class="tweet-content">麻痹抄进去了，死了算了，赚1亿美金多少加一点像gm，一点不操作纯嘴嗨，怕是真有钱赚没命花！主要热度和注意力还在，不对我就跑。<br><a href="https://x.com/KIPprotocol/status/1890844030235561984" target="_blank" rel="noopener noreferrer">x.com/KIPprotocol/st…</a></div>
+          
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 13</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 0</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 6</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 2</span>
+          </div>
+        </div>
+      
+        <div class="tweet ">
+          
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1679445036990349313/dXA2TXxV_normal.jpg" class="tweet-avatar" alt="旧亿" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">旧亿</span>
+              <span class="tweet-username">@cryptojiuyi</span>
+              <span class="tweet-date">2025/2/15 10:28:38</span>
+            </div>
+          </div>
+          <div class="tweet-content">复盘下 $libra 吧，赚了几十wu虽然不多，但是看大家都是亏的我得反思下如果我是睡着了，被叫起来的会不会抄底亏钱🤣 https://t.co/rs0FyvmaTs</div>
+          <div class="tweet-media"><img src="https://pbs.twimg.com/media/Gjy4ZE7acAE53l9.jpg" alt="推文图片" loading="lazy"><img src="https://pbs.twimg.com/media/Gjy4ZF4asAAjJPo.jpg" alt="推文图片" loading="lazy"><img src="https://pbs.twimg.com/media/Gjy4ZE5acAALNEf.jpg" alt="推文图片" loading="lazy"></div>
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 63</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 16</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 112</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 1</span>
+          </div>
+        </div>
+      
+        <div class="tweet ">
+          
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1679445036990349313/dXA2TXxV_normal.jpg" class="tweet-avatar" alt="旧亿" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">旧亿</span>
+              <span class="tweet-username">@cryptojiuyi</span>
+              <span class="tweet-date">2025/2/15 07:58:42</span>
+            </div>
+          </div>
+          <div class="tweet-content">$LIBRA 真尼玛畜生盘，脸都不要了老鼠仓这么出货。4u到0.8u跌幅80%发推就这个位置。幸好刚刚2.6u通知跑了知行合一，难受一会fomo到4u了，这会好点了🥲<br>市场又被大吸血了，虽然赚了点但还是破产国沃fuck <a href="https://twitter.com/JMilei" target="_blank" rel="noopener noreferrer">@JMilei</a> https://t.co/4BSKK70Zf2</div>
+          <div class="tweet-media"><img src="https://pbs.twimg.com/media/GjyVjicbYAAJzR9.jpg" alt="推文图片" loading="lazy"><img src="https://pbs.twimg.com/media/GjyV9SQacAAlxhr.jpg" alt="推文图片" loading="lazy"></div>
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 21</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 0</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 31</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 0</span>
+          </div>
+        </div>
+      
+        <div class="tweet ">
+          
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1679445036990349313/dXA2TXxV_normal.jpg" class="tweet-avatar" alt="旧亿" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">旧亿</span>
+              <span class="tweet-username">@cryptojiuyi</span>
+              <span class="tweet-date">2025/1/20 15:42:05</span>
+            </div>
+          </div>
+          <div class="tweet-content">$SBR 比特币战略储备终于到来，让我们相信meme的力量。<br>SOL上的SBR比eth上的早12分钟创建，first is first，并且eth是一条被市场放弃的链，购买eth的会被市场逐渐抛弃，热钱只在sol上，相信Sol上 $SBR 奇迹的发生,拿住的也应该都赚到了，我是之前归零都没卖！<br><br><a href="https://x.com/cryptojiuyi/status/1858351068612300900" target="_blank" rel="noopener noreferrer">x.com/cryptojiuyi/st…</a> https://t.co/MFoWEAUFHd</div>
+          <div class="tweet-media"><img src="https://pbs.twimg.com/media/GhuGVI-bAAEtXo_.jpg" alt="推文图片" loading="lazy"><img src="https://pbs.twimg.com/media/GhuGVrMb0AAaXzQ.jpg" alt="推文图片" loading="lazy"></div>
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 6</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 1</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 15</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 0</span>
+          </div>
+        </div>
+      
+        <div class="tweet ">
+          
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1679445036990349313/dXA2TXxV_normal.jpg" class="tweet-avatar" alt="旧亿" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">旧亿</span>
+              <span class="tweet-username">@cryptojiuyi</span>
+              <span class="tweet-date">2025/1/20 03:36:17</span>
+            </div>
+          </div>
+          <div class="tweet-content">Sol上的 $trump 踏空的资金，能去的地方只有龙二 $fight ，基本面和叙述十分完美，在sol上找不到第二个跟特朗普相关能让我有性欲的，而且特朗普上任包喊的，包括海报也都是fight。<br>当然这些trump获利资金们也在陆续建仓，随手买个1%也只需要花他们的一丁点利润！<br><a href="https://x.com/SpiderCrypto0x/status/1881055947344457940" target="_blank" rel="noopener noreferrer">x.com/SpiderCrypto0x…</a></div>
+          
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 5</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 3</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 13</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 0</span>
+          </div>
+        </div>
+      
+        <div class="tweet ">
+          
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1679445036990349313/dXA2TXxV_normal.jpg" class="tweet-avatar" alt="旧亿" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">旧亿</span>
+              <span class="tweet-username">@cryptojiuyi</span>
+              <span class="tweet-date">2025/1/1 19:58:30</span>
+            </div>
+          </div>
+          <div class="tweet-content">如果你错过了 $kekius ，老马的下一个机会只在 <a href="https://twitter.com/hashtag/dogecast" target="_blank" rel="noopener noreferrer"><a href="https://twitter.com/hashtag/dogecast" target="_blank" rel="noopener noreferrer">#dogecast</a></a><br>老马昨天改名字 $Kekius 一天直接速通4亿美金，老马造富效应！！！接下来的确定性的老马叙事 <a href="https://twitter.com/hashtag/dogecast" target="_blank" rel="noopener noreferrer"><a href="https://twitter.com/hashtag/dogecast" target="_blank" rel="noopener noreferrer">#dogecast</a></a> 马上到来，目前只有4m只其1%的市值，严重低估。<br>老马会一直提及</div>
+          
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 14</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 5</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 21</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 1</span>
+          </div>
+        </div>
+      
+        <div class="tweet ">
+          
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1679445036990349313/dXA2TXxV_normal.jpg" class="tweet-avatar" alt="旧亿" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">旧亿</span>
+              <span class="tweet-username">@cryptojiuyi</span>
+              <span class="tweet-date">2024/12/16 08:01:40</span>
+            </div>
+          </div>
+          <div class="tweet-content">买了点 <a href="https://twitter.com/hashtag/dogecast" target="_blank" rel="noopener noreferrer">#dogecast</a> ,马斯克和Vivek将在特朗普上任后，每周一次在dogecast上以直播形式分享DOGE对提升美国政府效率的进度。<br>高位回调90%K线目前还挺稳的，老马发推=情绪+注意力，老马目前还没发过dogecast的推，预计后面开始会持续发推，社区推特很活跃，等风来。<br><br>埋伏标的3m，不追高： https://t.co/zLeBWx0sTK</div>
+          <div class="tweet-media"><img src="https://pbs.twimg.com/media/Ge4ODufawAAYpQ8.jpg" alt="推文图片" loading="lazy"><img src="https://pbs.twimg.com/media/Ge4ODuhbUAAhCyq.jpg" alt="推文图片" loading="lazy"></div>
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 8</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 6</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 23</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 3</span>
+          </div>
+        </div>
+      
+        <div class="tweet ">
+          
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1679445036990349313/dXA2TXxV_normal.jpg" class="tweet-avatar" alt="旧亿" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">旧亿</span>
+              <span class="tweet-username">@cryptojiuyi</span>
+              <span class="tweet-date">2024/11/22 03:30:26</span>
+            </div>
+          </div>
+          <div class="tweet-content">RT <a href="https://twitter.com/tier10k" target="_blank" rel="noopener noreferrer">@tier10k</a>: *TRUMP'S 'CRYPTO ADVISORY COUNCIL' EXPECTED TO SETUP PROMISED BITCOIN RESERVE: REUTERS<br><br>Source: DB | Coins: BTC</div>
+          
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 0</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 828</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 0</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 0</span>
+          </div>
+        </div>
+      
+        <div class="tweet ">
+          
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1679445036990349313/dXA2TXxV_normal.jpg" class="tweet-avatar" alt="旧亿" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">旧亿</span>
+              <span class="tweet-username">@cryptojiuyi</span>
+              <span class="tweet-date">2024/11/18 11:26:35</span>
+            </div>
+          </div>
+          <div class="tweet-content">Strategic Bitcoin Reserve ( $SBR ）战略BTC储备是特朗普选举时,承诺上台后要实行加密货币新政,按照特朗普对加密的态度,以及参议院和众议院已全由共和党掌握,而且美国资本都在入局BTC,推动的阻力不大。其实都不需要通过，特/马提一嘴就可以飞。<br><br>让我觉得马上推出的原因是 <a href="https://twitter.com/sbr" target="_blank" rel="noopener noreferrer">@sbr</a> https://t.co/rM38Sv6Kpn</div>
+          <div class="tweet-media"><img src="https://pbs.twimg.com/media/Gcov5nPbIAAw6cb.jpg" alt="推文图片" loading="lazy"><img src="https://pbs.twimg.com/media/Gcov68CbMAAqeu2.jpg" alt="推文图片" loading="lazy"><img src="https://pbs.twimg.com/media/Gcov7zmbcAA9plU.jpg" alt="推文图片" loading="lazy"><img src="https://pbs.twimg.com/media/GcowAReacAATlJH.jpg" alt="推文图片" loading="lazy"></div>
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 9</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 8</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 32</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 2</span>
+          </div>
+        </div>
+      
+    
+    <script>
+      // 图片点击放大查看
+      document.querySelectorAll('.tweet-media img').forEach(img => {
+        img.addEventListener('click', () => {
+          window.open(img.src, '_blank');
+        });
+      });
+    </script>
+  </body>
+  </html>
+  

@@ -1,0 +1,726 @@
+
+  <!DOCTYPE html>
+  <html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>徐冲浪 (@cyrilxuq) | Twitter</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+      /* 基本样式 */
+      :root {
+        --background: #f7f9fa;
+        --card-bg: #ffffff;
+        --text-color: #0f1419;
+        --secondary-text: #536471;
+        --border-color: #eff3f4;
+        --blue: #1DA1F2;
+        --blue-hover: #1a91da;
+      }
+      
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --background: #15202b;
+          --card-bg: #192734;
+          --text-color: #ffffff;
+          --secondary-text: #8899a6;
+          --border-color: #38444d;
+        }
+      }
+      
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        background-color: var(--background);
+        color: var(--text-color);
+        line-height: 1.3;
+      }
+      
+      a {
+        color: var(--blue);
+        text-decoration: none;
+      }
+      
+      a:hover {
+        text-decoration: underline;
+      }
+      
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 0;
+      }
+      
+      .profile-card {
+        background-color: var(--card-bg);
+        border-radius: 16px;
+        overflow: hidden;
+        margin-bottom: 16px;
+        border: 1px solid var(--border-color);
+      }
+      
+      .profile-header {
+        position: relative;
+      }
+      
+      .profile-banner {
+        width: 100%;
+        height: 150px;
+        background-color: var(--blue);
+        background-size: cover;
+        background-position: center;
+      }
+      
+      .profile-avatar-container {
+        position: absolute;
+        bottom: -50px;
+        left: 16px;
+      }
+      
+      .profile-avatar {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        border: 4px solid var(--card-bg);
+        object-fit: cover;
+      }
+      
+      .profile-info {
+        padding: 60px 16px 16px;
+      }
+      
+      .profile-name-container {
+        display: flex;
+        align-items: center;
+      }
+      
+      .profile-name {
+        font-size: 20px;
+        font-weight: bold;
+        margin-right: 4px;
+      }
+      
+      /* 强化蓝V标志的样式 - 使用简单明了的样式 */
+      .verified-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 18px;
+        height: 18px;
+        background-color: #1DA1F2;
+        border-radius: 50%;
+        margin-left: 4px;
+        color: white;
+        font-size: 12px;
+        font-weight: bold;
+        text-align: center;
+        line-height: 1;
+      }
+      
+      .profile-username {
+        font-size: 15px;
+        color: var(--secondary-text);
+        margin-bottom: 12px;
+      }
+      
+      /* 其余样式保持不变 */
+      .profile-bio {
+        margin-bottom: 15px;
+        white-space: pre-line;
+      }
+      
+      .profile-meta {
+        display: flex;
+        flex-wrap: wrap;
+        color: var(--secondary-text);
+        margin-bottom: 15px;
+        font-size: 14px;
+      }
+      
+      .profile-meta-item {
+        display: flex;
+        align-items: center;
+        margin-right: 15px;
+        margin-bottom: 5px;
+      }
+      
+      .profile-meta-item i {
+        margin-right: 5px;
+        width: 16px;
+        text-align: center;
+      }
+      
+      .profile-stats {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 15px;
+      }
+      
+      .profile-stat {
+        margin-right: 20px;
+        margin-bottom: 10px;
+      }
+      
+      .profile-stat-value {
+        font-weight: 700;
+      }
+      
+      .profile-stat-label {
+        color: var(--secondary-text);
+        font-size: 14px;
+      }
+      
+      /* 推文部分 */
+      .tweets-title {
+        font-size: 20px;
+        font-weight: 700;
+        margin: 20px 0 15px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--border-color);
+      }
+      
+      .tweet {
+        background-color: var(--card-bg);
+        border-radius: 16px;
+        padding: 12px;
+        margin-bottom: 12px;
+        border: 1px solid var(--border-color);
+      }
+      
+      .pinned-tweet {
+        border-left: 3px solid var(--blue);
+      }
+      
+      .pinned-label {
+        color: var(--secondary-text);
+        font-size: 13px;
+        margin-bottom: 8px;
+      }
+      
+      .tweet-header {
+        display: flex;
+        margin-bottom: 10px;
+      }
+      
+      .tweet-avatar {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+      
+      .tweet-user-info {
+        flex: 1;
+      }
+      
+      .tweet-name {
+        font-weight: bold;
+      }
+      
+      .tweet-username {
+        color: var(--secondary-text);
+        font-size: 14px;
+      }
+      
+      .tweet-date {
+        color: var(--secondary-text);
+        font-size: 14px;
+      }
+      
+      .tweet-content {
+        margin-bottom: 10px;
+        white-space: pre-line;
+        word-wrap: break-word;
+      }
+      
+      .tweet-media {
+        margin: 10px 0;
+        border-radius: 16px;
+        overflow: hidden;
+      }
+      
+      .tweet-media img, .tweet-media video {
+        max-width: 100%;
+        border-radius: 16px;
+        cursor: pointer;
+      }
+      
+      .tweet-stats {
+        display: flex;
+        color: var(--secondary-text);
+        margin-top: 10px;
+      }
+      
+      .tweet-stats span {
+        display: flex;
+        align-items: center;
+        margin-right: 20px;
+        font-size: 14px;
+      }
+      
+      .tweet-stats i {
+        margin-right: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="profile-card">
+        <div class="profile-header">
+          <div class="profile-banner" style="background-image: url('https://pbs.twimg.com/profile_banners/1500486837839998976/1740683696')"></div>
+          <div class="profile-avatar-container">
+            <img src="https://pbs.twimg.com/profile_images/1886700221528465412/TsBfxhch_normal.jpg" class="profile-avatar" alt="徐冲浪">
+          </div>
+        </div>
+        <div class="profile-info">
+          <div class="profile-name-container">
+            <h1 class="profile-name">徐冲浪</h1>
+            <span class="verified-badge" title="已验证账号">✓</span>
+          </div>
+          <div class="profile-username">@cyrilxuq</div>
+          <div class="profile-bio">Youtube频道（https://t.co/TQSWom3YbH）
+小隐寺·住持（https://t.co/HOBzGZiJEU）
+链上（https://t.co/SOYXG7ei6b）
+近3亿用户的选择，加密货币就在币安（https://t.co/bTKfCX8mKw）</div>
+          <div class="profile-meta">
+            <div class="profile-meta-item"><i class="fas fa-map-marker-alt"></i>东京</div><div class="profile-meta-item"><i class="fas fa-link"></i><a href="https://xiaoyinsi.com" target="_blank" rel="noopener noreferrer">https://xiaoyinsi.com</a></div><div class="profile-meta-item"><i class="fas fa-calendar-alt"></i>2022年3月加入</div>
+          </div>
+          <div class="profile-stats">
+          <div class="profile-stat">
+            <span class="profile-stat-value">1621</span>
+            <span class="profile-stat-label"> 正在关注</span>
+          </div>
+          <div class="profile-stat">
+            <span class="profile-stat-value">110094</span>
+            <span class="profile-stat-label"> 关注者</span>
+          </div>
+          <div class="profile-stat">
+            <span class="profile-stat-value">7746</span>
+            <span class="profile-stat-label"> 推文</span>
+          </div>
+          <div class="profile-stat">
+            <span class="profile-stat-value">2421</span>
+            <span class="profile-stat-label"> 喜欢</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <h2 class="tweets-title">推文 (20)</h2>
+        <div class="tweet pinned-tweet">
+          <div class="pinned-label"><i class="fas fa-thumbtack"></i> 置顶推文</div>
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1886700221528465412/TsBfxhch_normal.jpg" class="tweet-avatar" alt="徐冲浪" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">徐冲浪</span>
+              <span class="tweet-username">@cyrilxuq</span>
+              <span class="tweet-date">2025/3/6 19:50:46</span>
+            </div>
+          </div>
+          <div class="tweet-content">第一版右声道没有声音，再来一遍。<br><br>算是入门级的东西，加密货币101吧，把常规的赚钱方法聊了一遍。<br><br><a href="https://youtu.be/pupybeAntQg?si=vnng8KchqxwnkBNk" target="_blank" rel="noopener noreferrer">youtu.be/pupybeAntQg?si…</a> https://t.co/Avb2mWRLvJ</div>
+          <div class="tweet-media"><img src="https://pbs.twimg.com/media/GlWvh3_akAApHKv.jpg" alt="推文图片" loading="lazy"></div>
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 9</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 11</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 85</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 2</span>
+          </div>
+        </div>
+      
+        <div class="tweet ">
+          
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1886700221528465412/TsBfxhch_normal.jpg" class="tweet-avatar" alt="徐冲浪" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">徐冲浪</span>
+              <span class="tweet-username">@cyrilxuq</span>
+              <span class="tweet-date">2025/3/12 23:20:36</span>
+            </div>
+          </div>
+          <div class="tweet-content">加密货币能活到现在，最大的两个原因：<br><br>1、制造了赌场模式，即高回报比的造富效应<br>2、采用了围点打援的策略，一直在向监管机构争取苟活的机会。 https://t.co/NiNkNANdEo</div>
+          <div class="tweet-media"><img src="https://pbs.twimg.com/media/Gl2YYWaaoAATstY.jpg" alt="推文图片" loading="lazy"></div>
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 18</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 3</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 98</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 3</span>
+          </div>
+        </div>
+      
+        <div class="tweet ">
+          
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1886700221528465412/TsBfxhch_normal.jpg" class="tweet-avatar" alt="徐冲浪" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">徐冲浪</span>
+              <span class="tweet-username">@cyrilxuq</span>
+              <span class="tweet-date">2025/3/12 23:04:14</span>
+            </div>
+          </div>
+          <div class="tweet-content">啊，对对对，币安这么赚钱的交易所，怎么可能会卖股份呢？你会卖掉下蛋的鸡么？<br><br>同行怎么解释？嘲笑我最大声的怎么解释？<br><br>我说过了，到节点了，拥抱web2的节点。<br><br>最近看了peter thiel的一些东西，我觉得这个人是个顶级商业认知的天才。 https://t.co/a8MvqCtGfM</div>
+          <div class="tweet-media"><img src="https://pbs.twimg.com/media/Gl2UoLjWsAAVyUq.jpg" alt="推文图片" loading="lazy"></div>
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 31</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 7</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 88</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 1</span>
+          </div>
+        </div>
+      
+        <div class="tweet ">
+          
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1886700221528465412/TsBfxhch_normal.jpg" class="tweet-avatar" alt="徐冲浪" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">徐冲浪</span>
+              <span class="tweet-username">@cyrilxuq</span>
+              <span class="tweet-date">2025/3/12 22:57:03</span>
+            </div>
+          </div>
+          <div class="tweet-content">我说卖了，信我了吧？<br><br>跟价格没关系，而是到了转折点。</div>
+          
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 8</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 0</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 14</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 0</span>
+          </div>
+        </div>
+      
+        <div class="tweet ">
+          
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1886700221528465412/TsBfxhch_normal.jpg" class="tweet-avatar" alt="徐冲浪" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">徐冲浪</span>
+              <span class="tweet-username">@cyrilxuq</span>
+              <span class="tweet-date">2025/3/12 22:56:08</span>
+            </div>
+          </div>
+          <div class="tweet-content">无所谓的，你看多少币圈的人当时黑我就知道了，还有一些我觉得不错的人各种嘲笑我，但是我不care的，本来就是他们从我这里获得的免费的重要信息，这只能证明他们的眼光有问题罢了，从这个新闻就能看出来，这就是他们下坡路的开始。</div>
+          
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 5</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 0</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 27</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 0</span>
+          </div>
+        </div>
+      
+        <div class="tweet ">
+          
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1886700221528465412/TsBfxhch_normal.jpg" class="tweet-avatar" alt="徐冲浪" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">徐冲浪</span>
+              <span class="tweet-username">@cyrilxuq</span>
+              <span class="tweet-date">2025/3/12 21:01:38</span>
+            </div>
+          </div>
+          <div class="tweet-content">世界上只有3种公司，usa llc，hk ltd和其他</div>
+          
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 3</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 0</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 21</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 0</span>
+          </div>
+        </div>
+      
+        <div class="tweet ">
+          
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1886700221528465412/TsBfxhch_normal.jpg" class="tweet-avatar" alt="徐冲浪" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">徐冲浪</span>
+              <span class="tweet-username">@cyrilxuq</span>
+              <span class="tweet-date">2025/3/12 20:15:49</span>
+            </div>
+          </div>
+          <div class="tweet-content">hyper这波把dex梦又给大家戳破了，cex的清算机制还是暂且可以相信的，上次我就看哪个二级合约高手点艹了bn的清算机制，应该是X总吧。<br><br>虽然cex也不怎么样，但起码比dex要强，hyper再嘴硬没有漏洞，这种减保证金超过本金的玩法本质上还是漏洞。</div>
+          
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 8</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 0</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 45</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 0</span>
+          </div>
+        </div>
+      
+        <div class="tweet ">
+          
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1886700221528465412/TsBfxhch_normal.jpg" class="tweet-avatar" alt="徐冲浪" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">徐冲浪</span>
+              <span class="tweet-username">@cyrilxuq</span>
+              <span class="tweet-date">2025/3/12 02:57:01</span>
+            </div>
+          </div>
+          <div class="tweet-content">两个目标完成了，该用期权的，选的工具不好</div>
+          
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 5</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 0</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 11</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 0</span>
+          </div>
+        </div>
+      
+        <div class="tweet ">
+          
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1886700221528465412/TsBfxhch_normal.jpg" class="tweet-avatar" alt="徐冲浪" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">徐冲浪</span>
+              <span class="tweet-username">@cyrilxuq</span>
+              <span class="tweet-date">2025/3/11 23:18:59</span>
+            </div>
+          </div>
+          <div class="tweet-content">看完manus之后，我的感受就是别操弄流量，尤其产品本身没有绝对性优势的时候。玩流量会被反噬，做增长/pr的这部分是要背责任的，要拦着老板不能这样搞的。</div>
+          
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 10</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 1</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 43</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 1</span>
+          </div>
+        </div>
+      
+        <div class="tweet ">
+          
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1886700221528465412/TsBfxhch_normal.jpg" class="tweet-avatar" alt="徐冲浪" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">徐冲浪</span>
+              <span class="tweet-username">@cyrilxuq</span>
+              <span class="tweet-date">2025/3/11 21:43:58</span>
+            </div>
+          </div>
+          <div class="tweet-content">夏令时之后，美股又到了猜大小的时刻，冬令时其实是比夏令时好做的，因为数据全在盘前出来了，夏令时会有很多操蛋的数据发布在开盘之后，所以难度更大。</div>
+          
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 3</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 2</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 25</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 0</span>
+          </div>
+        </div>
+      
+        <div class="tweet ">
+          
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1886700221528465412/TsBfxhch_normal.jpg" class="tweet-avatar" alt="徐冲浪" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">徐冲浪</span>
+              <span class="tweet-username">@cyrilxuq</span>
+              <span class="tweet-date">2025/3/11 10:53:50</span>
+            </div>
+          </div>
+          <div class="tweet-content">btc再跌6开头了，看不懂，我倾向于76000这个位置是短期底部，反弹到80000或者83000，然后震荡，能不能下去我也不知道，但是做空性价比已经变低了，我宁可做多博流动性角度的反弹，已经不是我能驾驭的位置了，继续做内容了。美股最近日内好做，做日内去喽。</div>
+          
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 12</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 1</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 44</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 1</span>
+          </div>
+        </div>
+      
+        <div class="tweet ">
+          
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1886700221528465412/TsBfxhch_normal.jpg" class="tweet-avatar" alt="徐冲浪" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">徐冲浪</span>
+              <span class="tweet-username">@cyrilxuq</span>
+              <span class="tweet-date">2025/3/10 22:41:10</span>
+            </div>
+          </div>
+          <div class="tweet-content">第一章：沉淀 <br>第二章：狗狗币1美金<br>第三章：519毁了我的币圈梦<br>第四章：非同质化代币是未来<br>第五章：NFT狗都不玩<br>第六章：铭文——最公平的筹码分配<br>第七章：一夜之间 流动性神秘失踪<br>第八章：交互做任务 区块链努力就能获得空投<br>第九章：那场查女巫毁了我的撸毛梦</div>
+          
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 7</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 4</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 60</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 0</span>
+          </div>
+        </div>
+      
+        <div class="tweet ">
+          
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1886700221528465412/TsBfxhch_normal.jpg" class="tweet-avatar" alt="徐冲浪" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">徐冲浪</span>
+              <span class="tweet-username">@cyrilxuq</span>
+              <span class="tweet-date">2025/3/10 22:29:49</span>
+            </div>
+          </div>
+          <div class="tweet-content">全都死了，就我活着 2.0版本 <br><br>请看png https://t.co/pAMUn2pZF6</div>
+          <div class="tweet-media"><img src="https://pbs.twimg.com/media/Glr6SQBbMAAE3bD.png" alt="推文图片" loading="lazy"></div>
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 2</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 0</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 15</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 0</span>
+          </div>
+        </div>
+      
+        <div class="tweet ">
+          
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1886700221528465412/TsBfxhch_normal.jpg" class="tweet-avatar" alt="徐冲浪" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">徐冲浪</span>
+              <span class="tweet-username">@cyrilxuq</span>
+              <span class="tweet-date">2025/3/10 19:33:29</span>
+            </div>
+          </div>
+          <div class="tweet-content">补充一下，有没有就单纯跨境支付的？<br><br>不要电商类特有的，今天还有朋友推荐了shopify，发现这个是完全用于卖货的，有没有非卖货的，只是接通visa master之类的，能自由使用在各种场景，仅仅是跨境收款用的。</div>
+          
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 7</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 0</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 6</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 0</span>
+          </div>
+        </div>
+      
+        <div class="tweet ">
+          
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1886700221528465412/TsBfxhch_normal.jpg" class="tweet-avatar" alt="徐冲浪" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">徐冲浪</span>
+              <span class="tweet-username">@cyrilxuq</span>
+              <span class="tweet-date">2025/3/10 13:48:15</span>
+            </div>
+          </div>
+          <div class="tweet-content">问一下，跨境电商除了stripe这种人尽皆知的，有没有什么小一点但是也很稳定的支付提供商，类似latipay之类的？<br><br>多来几个跑通过或者实际正在使用的品牌，支持信用卡付款即可。</div>
+          
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 15</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 3</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 40</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 1</span>
+          </div>
+        </div>
+      
+        <div class="tweet ">
+          
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1886700221528465412/TsBfxhch_normal.jpg" class="tweet-avatar" alt="徐冲浪" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">徐冲浪</span>
+              <span class="tweet-username">@cyrilxuq</span>
+              <span class="tweet-date">2025/3/9 20:30:09</span>
+            </div>
+          </div>
+          <div class="tweet-content">btc看着又要7开头了，怎么办？</div>
+          
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 59</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 2</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 84</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 1</span>
+          </div>
+        </div>
+      
+        <div class="tweet ">
+          
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1886700221528465412/TsBfxhch_normal.jpg" class="tweet-avatar" alt="徐冲浪" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">徐冲浪</span>
+              <span class="tweet-username">@cyrilxuq</span>
+              <span class="tweet-date">2025/3/8 19:44:38</span>
+            </div>
+          </div>
+          <div class="tweet-content">周末了，别看撕逼了，听听音乐吧<br><br><a href="https://www.youtube.com/watch?app=desktop&v=8nyxKGDa2oU&t=0s" target="_blank" rel="noopener noreferrer">youtube.com/watch?app=desk…</a></div>
+          
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 6</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 1</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 5</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 0</span>
+          </div>
+        </div>
+      
+        <div class="tweet ">
+          
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1886700221528465412/TsBfxhch_normal.jpg" class="tweet-avatar" alt="徐冲浪" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">徐冲浪</span>
+              <span class="tweet-username">@cyrilxuq</span>
+              <span class="tweet-date">2025/3/7 23:21:13</span>
+            </div>
+          </div>
+          <div class="tweet-content">我没有说谎~我何必说谎~你懂我的我对你从来就不会假装~<br><br>恭喜各位老板们了 https://t.co/045VrjREOu</div>
+          <div class="tweet-media"><img src="https://pbs.twimg.com/media/GlcowbWaoAAsAgu.png" alt="推文图片" loading="lazy"></div>
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 4</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 0</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 11</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 0</span>
+          </div>
+        </div>
+      
+        <div class="tweet ">
+          
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1886700221528465412/TsBfxhch_normal.jpg" class="tweet-avatar" alt="徐冲浪" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">徐冲浪</span>
+              <span class="tweet-username">@cyrilxuq</span>
+              <span class="tweet-date">2025/3/7 17:55:33</span>
+            </div>
+          </div>
+          <div class="tweet-content">最近顺的有点儿可怕 https://t.co/KV8kklce54</div>
+          <div class="tweet-media"><img src="https://pbs.twimg.com/media/Glbew71bYAAYiCg.jpg" alt="推文图片" loading="lazy"></div>
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 3</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 0</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 11</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 0</span>
+          </div>
+        </div>
+      
+        <div class="tweet ">
+          
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1886700221528465412/TsBfxhch_normal.jpg" class="tweet-avatar" alt="徐冲浪" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">徐冲浪</span>
+              <span class="tweet-username">@cyrilxuq</span>
+              <span class="tweet-date">2025/3/6 20:55:40</span>
+            </div>
+          </div>
+          <div class="tweet-content">加密就像ex，离开最高价之后就很难回来了</div>
+          
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 6</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 1</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 17</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 0</span>
+          </div>
+        </div>
+      
+    
+    <script>
+      // 图片点击放大查看
+      document.querySelectorAll('.tweet-media img').forEach(img => {
+        img.addEventListener('click', () => {
+          window.open(img.src, '_blank');
+        });
+      });
+    </script>
+  </body>
+  </html>
+  

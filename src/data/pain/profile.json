@@ -1,0 +1,100 @@
+{
+  "data": {
+    "user": {
+      "result": {
+        "__typename": "User",
+        "id": "VXNlcjoxNzc0MTI0MjQ4MTYxOTc2MzIw",
+        "rest_id": "1774124248161976320",
+        "affiliates_highlighted_label": {},
+        "has_graduated_access": true,
+        "parody_commentary_fan_label": "None",
+        "is_blue_verified": false,
+        "profile_image_shape": "Square",
+        "legacy": {
+          "following": false,
+          "can_dm": false,
+          "can_media_tag": true,
+          "created_at": "Sat Mar 30 17:19:33 +0000 2024",
+          "default_profile": true,
+          "default_profile_image": false,
+          "description": "NO $PAIN, NO GAIN. CA: 1Qf8gESP4i6CFNWerUSDdLKJ9U1LpqTYvjJ2MM4pain",
+          "entities": {
+            "description": {
+              "urls": []
+            },
+            "url": {
+              "urls": [
+                {
+                  "display_url": "paintoken.com",
+                  "expanded_url": "https://paintoken.com/",
+                  "url": "https://t.co/0pdhhvAVnB",
+                  "indices": [
+                    0,
+                    23
+                  ]
+                }
+              ]
+            }
+          },
+          "fast_followers_count": 0,
+          "favourites_count": 13,
+          "followers_count": 235790,
+          "friends_count": 10,
+          "has_custom_timelines": false,
+          "is_translator": false,
+          "listed_count": 175,
+          "location": "HIDE THE PAIN HAROLD",
+          "media_count": 70,
+          "name": "PAIN",
+          "normal_followers_count": 235790,
+          "pinned_tweet_ids_str": [
+            "1883953260413018260"
+          ],
+          "possibly_sensitive": false,
+          "profile_banner_url": "https://pbs.twimg.com/profile_banners/1774124248161976320/1733983277",
+          "profile_image_url_https": "https://pbs.twimg.com/profile_images/1866907313824514048/frFnSyeX_normal.jpg",
+          "profile_interstitial_type": "",
+          "screen_name": "pain",
+          "statuses_count": 287,
+          "translator_type": "none",
+          "url": "https://t.co/0pdhhvAVnB",
+          "verified": false,
+          "verified_type": "Business",
+          "want_retweets": false,
+          "withheld_in_countries": []
+        },
+        "tipjar_settings": {},
+        "legacy_extended_profile": {},
+        "is_profile_translatable": false,
+        "has_hidden_subscriptions_on_profile": false,
+        "verification_info": {
+          "is_identity_verified": false,
+          "reason": {
+            "description": {
+              "text": "这个账号通过了认证，因为它是 X 上的一家正式组织。了解更多",
+              "entities": [
+                {
+                  "from_index": 26,
+                  "to_index": 30,
+                  "ref": {
+                    "url": "https://help.twitter.com/en/rules-and-policies/profile-labels",
+                    "url_type": "ExternalUrl"
+                  }
+                }
+              ]
+            },
+            "verified_since_msec": "1732401546755"
+          }
+        },
+        "highlights_info": {
+          "can_highlight_tweets": true,
+          "highlighted_tweets": "5"
+        },
+        "user_seed_tweet_count": 0,
+        "premium_gifting_eligible": false,
+        "business_account": {},
+        "creator_subscriptions_count": 0
+      }
+    }
+  }
+}

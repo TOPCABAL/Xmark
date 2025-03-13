@@ -746,4 +746,158 @@ export function extractTwitterUserData(jsonData: any) {
     console.error('提取Twitter数据失败:', error);
     throw error;
   }
+}
+
+/**
+ * 测试与服务器的连接
+ * @returns Promise<{success: boolean, message: string, serverTime?: string}>
+ */
+export async function testServerConnection(): Promise<{success: boolean, message: string, serverTime?: string}> {
+  console.log(`开始测试服务器连接...`);
+  
+  try {
+    // 添加随机参数避免缓存
+    const randomParam = Math.random().toString(36).substring(7);
+    // 使用正确的服务器状态端点
+    const testUrl = `http://localhost:3001/api/status?r=${randomParam}`;
+    console.log(`测试连接URL: ${testUrl}`);
+    
+    // 设置5秒超时
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 5000);
+    
+    // 发送测试请求
+    const response = await fetch(testUrl, {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Cache-Control': 'no-cache'
+      },
+      mode: 'cors', // 显式设置CORS模式
+      credentials: 'omit', // 不发送凭据
+      signal: controller.signal
+    }).finally(() => clearTimeout(timeoutId));
+    
+    console.log(`服务器连接测试响应状态: ${response.status}`);
+    
+    if (response.ok) {
+      const data = await response.json();
+      console.log(`服务器连接测试成功:`, data);
+      return {
+        success: true,
+        message: '服务器连接成功',
+        serverTime: data.timestamp || new Date().toISOString()
+      };
+    } else {
+      const errorText = await response.text();
+      console.error(`服务器连接测试失败: HTTP ${response.status}, 响应内容:`, errorText);
+      return {
+        success: false,
+        message: `服务器连接失败: HTTP ${response.status}, ${errorText ? errorText.substring(0, 100) : response.statusText}`
+      };
+    }
+  } catch (error) {
+    // 判断是否是超时错误
+    if (error instanceof DOMException && error.name === 'AbortError') {
+      console.error(`服务器连接测试超时`);
+      return {
+        success: false,
+        message: '服务器连接超时，请检查服务器是否运行'
+      };
+    }
+    
+    console.error(`服务器连接测试出错:`, error);
+    return {
+      success: false,
+      message: `服务器连接测试出错: ${error instanceof Error ? error.message : '未知错误'}`
+    };
+  }
+}
+
+// 从后端API获取指定用户的关注列表
+export async function fetchUserFollowing(username: string, pages: number = 3): Promise<AccountProps[]> {
+  try {
+    console.log(`开始获取用户${username}的关注列表，页数：${pages}`);
+    
+    // 添加请求超时
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 60000); // 60秒超时
+    
+    // 构建请求URL - 使用固定的后端服务器URL
+    const baseUrl = 'http://localhost:3001'; // 使用服务器的端口
+    const apiEndpoint = `/api/twitter/following`;
+    const requestUrl = `${baseUrl}${apiEndpoint}?username=${encodeURIComponent(username.trim())}&pages=${pages}`;
+    
+    console.log(`请求完整URL: ${requestUrl}`);
+    console.log(`请求参数: username=${username}, pages=${pages}`);
+    
+    const response = await fetch(requestUrl, {
+      signal: controller.signal,
+      headers: {
+        'Accept': 'application/json',
+        'Cache-Control': 'no-cache'
+      },
+      mode: 'cors', // 显式设置CORS模式
+      credentials: 'omit', // 不发送凭据
+    }).finally(() => clearTimeout(timeoutId));
+    
+    // 记录响应状态
+    console.log(`获取关注列表响应状态: ${response.status} ${response.statusText}`);
+    
+    if (!response.ok) {
+      // 尝试读取错误响应
+      let errorBody;
+      try {
+        errorBody = await response.text();
+        console.error(`API请求失败: HTTP ${response.status}, 响应内容:`, errorBody);
+      } catch (e) {
+        console.error(`API请求失败: HTTP ${response.status}, 无法读取响应内容`);
+      }
+      
+      throw new Error(`API请求失败: HTTP ${response.status}, ${errorBody ? '非JSON响应' : response.statusText}`);
+    }
+    
+    // 获取JSON响应
+    const data = await response.json();
+    
+    // 验证数据结构
+    if (data.accounts && Array.isArray(data.accounts)) {
+      console.log(`成功获取关注列表: ${data.accounts.length} 个账号`);
+      
+      // 将请求返回的数据转换为前端需要的格式
+      const accounts: AccountProps[] = data.accounts.map((account: any) => ({
+        id: account.id || account.rest_id || account.userId || `user-${Math.random().toString(36).substring(2, 10)}`,
+        name: account.name || account.legacy?.name || account.result?.legacy?.name || 'Unknown User',
+        username: account.username || account.legacy?.screen_name || account.result?.legacy?.screen_name || '@unknown',
+        avatar: account.profile_image_url_https || account.profile_image_url || account.result?.legacy?.profile_image_url_https || account.result?.legacy?.profile_image_url || '',
+        verified: account.verified || account.legacy?.verified || account.result?.legacy?.verified || false,
+        following: true,
+        category: account.category || account.legacy?.category || account.result?.legacy?.category || '',
+        description: account.description || account.legacy?.description || account.result?.legacy?.description || '',
+        metrics: account.public_metrics || account.legacy?.public_metrics || account.result?.legacy?.public_metrics || {
+          followers_count: account.followers_count || account.legacy?.followers_count || account.result?.legacy?.followers_count || 0,
+          following_count: account.following_count || account.legacy?.friends_count || account.result?.legacy?.friends_count || 0,
+          tweets: account.tweet_count || account.legacy?.statuses_count || account.result?.legacy?.statuses_count || 0
+        },
+        isAnnotated: false,
+        annotatedAt: 0,
+        notes: ''
+      }));
+      
+      return accounts;
+    }
+    
+    // 如果没有accounts属性或不是数组，则抛出错误
+    console.error('API返回的数据缺少accounts数组:', data);
+    throw new Error('API返回的数据格式不正确，无法解析关注列表');
+
+  } catch (error) {
+    console.error('获取关注列表失败:', error instanceof Error ? error.message : '未知错误');
+    // 重新抛出错误，保留原始错误消息
+    if (error instanceof Error) {
+      throw error;
+    } else {
+      throw new Error(`获取关注列表失败: ${error}`);
+    }
+  }
 } 

@@ -24,14 +24,18 @@ const execAsync = promisify(exec);
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+// 启用CORS - 允许所有来源访问
+app.use(cors({
+  origin: '*', // 允许所有来源访问
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'HEAD', 'PATCH'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'Accept', 'Origin', 'X-Requested-With', 'Cache-Control', 'X-CSRF-Token'],
+  exposedHeaders: ['Content-Length', 'Content-Type'],
+  credentials: true,
+  maxAge: 86400 // 预检请求结果缓存1天
+}));
+
 // 中间件
 app.use(express.json());
-app.use(cors({
-  origin: '*', // 开发环境允许所有来源访问
-  methods: ['GET', 'POST'],
-  credentials: true,
-  allowedHeaders: ['Content-Type', 'Authorization']
-}));
 
 // 确保数据目录存在
 const dataDir = path.join(__dirname, 'data');
@@ -963,12 +967,42 @@ app.get('/api/twitter-users', async (req, res) => {
   }
 });
 
-// API状态检查端点
+// 添加API状态端点 - 提供服务器状态信息
 app.get('/api/status', (req, res) => {
+  console.log('[状态检查] 收到API状态检查请求');
+  console.log('[状态检查] 请求头:', JSON.stringify(req.headers, null, 2));
   res.json({
-    status: 'ok',
-    message: 'Twitter API服务运行中',
-    time: new Date().toISOString()
+    status: 'running',
+    timestamp: new Date().toISOString(),
+    version: process.version,
+    serverInfo: {
+      startTime: new Date().toISOString(),
+      environment: process.env.NODE_ENV || 'development',
+      workingDirectory: process.cwd()
+    }
+  });
+});
+
+// 调试端点 - 显示请求详情
+app.get('/api/debug', (req, res) => {
+  // 记录请求头和查询参数等信息
+  const requestInfo = {
+    headers: req.headers,
+    query: req.query,
+    params: req.params,
+    path: req.path,
+    method: req.method,
+    ip: req.ip,
+    serverTime: new Date().toISOString()
+  };
+  
+  console.log('调试端点请求信息:', JSON.stringify(requestInfo, null, 2));
+  
+  // 返回详细的请求信息以便调试
+  res.json({
+    success: true,
+    requestInfo,
+    message: '调试信息'
   });
 });
 
@@ -1049,6 +1083,420 @@ app.post('/api/twitter-profile/create', async (req, res) => {
       error: error.message
     });
   }
+});
+
+// 添加简单的测试端点
+app.get('/api/test-connection', (req, res) => {
+  console.log('收到测试连接请求');
+  console.log('请求头:', JSON.stringify(req.headers, null, 2));
+  console.log('请求参数:', req.query);
+  
+  // 返回服务器当前时间和请求信息
+  res.json({
+    success: true,
+    message: '连接测试成功',
+    serverTime: new Date().toISOString(),
+    requestInfo: {
+      headers: req.headers,
+      query: req.query,
+      ip: req.ip
+    }
+  });
+});
+
+// 处理获取Twitter关注列表的请求 (如果还不存在)
+app.get('/api/twitter/following', async (req, res) => {
+  console.log('====== 获取Twitter关注列表请求 ======');
+  console.log('请求参数:', req.query);
+  console.log('用户名:', req.query.username);
+  console.log('页数:', req.query.pages || '默认');
+  
+  const username = req.query.username;
+  const pages = parseInt(req.query.pages) || 3;
+  
+  if (!username) {
+    console.log('错误: 缺少username参数');
+    return res.status(400).json({
+      success: false,
+      message: '缺少必需的username参数'
+    });
+  }
+  
+  console.log(`开始处理用户 ${username} 的关注列表，页数: ${pages}`);
+  
+  try {
+    // 检查followdata目录是否存在，如果不存在则创建
+    const followDataDir = path.join(__dirname, '..', 'followdata');
+    console.log(`[检查目录] 关注数据目录: ${followDataDir}`);
+    
+    if (!fs.existsSync(followDataDir)) {
+      console.log(`[创建目录] 创建followdata目录: ${followDataDir}`);
+      fs.mkdirSync(followDataDir, { recursive: true });
+    }
+    
+    // 检查是否已有此用户的本地数据
+    const followingFilePath = path.join(followDataDir, `${username}_following.json`);
+    console.log(`[检查文件] 关注列表文件路径: ${followingFilePath}`);
+    
+    if (fs.existsSync(followingFilePath)) {
+      try {
+        // 检查文件修改时间，如果是最近30分钟内的数据，直接使用
+        const stats = fs.statSync(followingFilePath);
+        const fileModifiedTime = new Date(stats.mtime);
+        const fileAgeInMinutes = (new Date().getTime() - fileModifiedTime.getTime()) / (1000 * 60);
+        const fileSizeInKB = stats.size / 1024;
+        
+        console.log(`[本地文件] 找到关注列表文件`);
+        console.log(`[本地文件] 文件大小: ${fileSizeInKB.toFixed(2)} KB`);
+        console.log(`[本地文件] 最后修改时间: ${fileModifiedTime.toISOString()}`);
+        console.log(`[本地文件] 文件年龄: ${fileAgeInMinutes.toFixed(2)} 分钟`);
+        
+        // 读取文件内容
+        const fileContent = fs.readFileSync(followingFilePath, 'utf-8');
+        console.log(`[本地文件] 成功读取文件内容`);
+        
+        try {
+          // 解析JSON
+          const followingData = JSON.parse(fileContent);
+          console.log(`[本地文件] 成功解析JSON数据`);
+          
+          // 验证数据结构
+          if (followingData.accounts && Array.isArray(followingData.accounts)) {
+            console.log(`[本地文件] 数据有效，包含 ${followingData.accounts.length} 个账号`);
+            
+            // 添加元数据
+            followingData.fromLocalFile = true;
+            followingData.fileAge = fileAgeInMinutes;
+            followingData.fileModifiedTime = fileModifiedTime.toISOString();
+            
+            return res.json(followingData);
+          } else {
+            console.log(`[本地文件] 解析的JSON数据缺少accounts数组，可能格式不正确`);
+          }
+        } catch (parseError) {
+          console.error(`[本地文件] JSON解析失败:`, parseError);
+        }
+      } catch (fileError) {
+        console.error(`[本地文件] 读取文件失败:`, fileError);
+      }
+    } else {
+      console.log(`[本地文件] 未找到用户 ${username} 的关注列表文件`);
+    }
+    
+    // 如果没有有效的本地文件，调用脚本获取数据
+    console.log(`[脚本执行] 准备执行脚本获取关注列表...`);
+    
+    // 构建脚本路径
+    const scriptPath = path.join(__dirname, '..', 'scripts', 'getFollowing.js');
+    console.log(`[脚本执行] 脚本路径: ${scriptPath}`);
+    
+    if (!fs.existsSync(scriptPath)) {
+      console.error(`[脚本执行] 错误: 未找到脚本文件: ${scriptPath}`);
+      return res.status(500).json({
+        success: false,
+        message: `获取关注列表失败: 脚本文件不存在`
+      });
+    }
+    
+    // 执行脚本获取数据
+    console.log(`[脚本执行] 开始执行脚本: node ${scriptPath} ${username} --pages=${pages}`);
+    
+    const scriptCommand = `node "${scriptPath}" "${username}" --pages=${pages}`;
+    console.log(`[脚本执行] 完整命令: ${scriptCommand}`);
+    
+    exec(scriptCommand, (error, stdout, stderr) => {
+      console.log(`[脚本执行后] 脚本执行完成`);
+      
+      if (error) {
+        console.error(`[脚本执行后] 脚本执行失败:`, error);
+        console.error(`[脚本执行后] 错误输出:`, stderr);
+        
+        // 检查followdata目录内容，用于调试
+        try {
+          console.log(`[目录内容] 检查followdata目录内容:`);
+          const dirFiles = fs.readdirSync(followDataDir);
+          console.log(`[目录内容] followdata目录文件: ${dirFiles.join(', ')}`);
+        } catch (e) {
+          console.error(`[目录内容] 无法读取目录内容:`, e);
+        }
+        
+        return res.status(500).json({
+          success: false,
+          message: `获取关注列表失败: 脚本执行错误: ${error.message}`,
+          scriptOutput: stdout,
+          scriptError: stderr
+        });
+      }
+      
+      console.log(`[脚本执行后] 脚本标准输出:`, stdout);
+      
+      if (stderr) {
+        console.warn(`[脚本执行后] 脚本标准错误:`, stderr);
+      }
+      
+      // 检查脚本是否生成了文件
+      console.log(`[脚本执行后] 检查是否生成了关注列表文件`);
+      
+      if (fs.existsSync(followingFilePath)) {
+        try {
+          // 读取生成的文件
+          const fileContent = fs.readFileSync(followingFilePath, 'utf-8');
+          console.log(`[脚本执行后] 成功读取生成的文件`);
+          
+          try {
+            // 解析JSON
+            const followingData = JSON.parse(fileContent);
+            console.log(`[脚本执行后] 成功解析生成的JSON数据`);
+            
+            // 验证数据结构
+            if (followingData.accounts && Array.isArray(followingData.accounts)) {
+              console.log(`[脚本执行后] 数据有效，包含 ${followingData.accounts.length} 个账号`);
+              
+              // 添加元数据
+              followingData.fromLocalFile = false;
+              followingData.generatedAt = new Date().toISOString();
+              followingData.scriptOutput = stdout;
+              
+              return res.json(followingData);
+            } else {
+              console.error(`[脚本执行后] 解析的JSON数据缺少accounts数组`);
+              return res.status(500).json({
+                success: false,
+                message: '获取关注列表失败: 生成的数据格式不正确',
+                scriptOutput: stdout
+              });
+            }
+          } catch (parseError) {
+            console.error(`[脚本执行后] JSON解析失败:`, parseError);
+            return res.status(500).json({
+              success: false,
+              message: `获取关注列表失败: 无法解析生成的JSON: ${parseError.message}`,
+              fileContent: fileContent.substring(0, 200) + '...' // 只发送部分内容用于调试
+            });
+          }
+        } catch (fileError) {
+          console.error(`[脚本执行后] 读取生成的文件失败:`, fileError);
+          return res.status(500).json({
+            success: false,
+            message: `获取关注列表失败: 无法读取生成的文件: ${fileError.message}`
+          });
+        }
+      } else {
+        console.error(`[脚本执行后] 脚本未能生成关注列表文件`);
+        return res.status(500).json({
+          success: false,
+          message: '获取关注列表失败: 脚本执行后未找到关注列表文件',
+          scriptOutput: stdout
+        });
+      }
+    });
+  } catch (error) {
+    console.error(`[全局错误] 处理关注列表请求时出错:`, error);
+    res.status(500).json({
+      success: false,
+      message: `获取关注列表失败: ${error.message}`
+    });
+  }
+});
+
+// API端点：检查文件系统状态
+app.get('/api/filesystem-check', (req, res) => {
+  try {
+    // 检查脚本文件
+    const scriptPath = path.join(__dirname, '..', 'scripts', 'getFollowing.js');
+    const scriptExists = fs.existsSync(scriptPath);
+    
+    // 尝试读取脚本文件头部内容
+    let scriptContent = '';
+    if (scriptExists) {
+      try {
+        scriptContent = fs.readFileSync(scriptPath, 'utf8').substring(0, 500) + '...';
+      } catch (err) {
+        scriptContent = `读取失败: ${err.message}`;
+      }
+    }
+    
+    // 检查输出目录
+    const outputDir = path.join(__dirname, '..', 'followdata');
+    const outputDirExists = fs.existsSync(outputDir);
+    
+    // 如果输出目录存在，列出其中的文件
+    let outputFiles = [];
+    if (outputDirExists) {
+      try {
+        outputFiles = fs.readdirSync(outputDir);
+      } catch (err) {
+        outputFiles = [`读取目录失败: ${err.message}`];
+      }
+    }
+    
+    // 返回文件系统状态
+    res.json({
+      success: true,
+      scriptInfo: {
+        path: scriptPath,
+        exists: scriptExists,
+        preview: scriptContent
+      },
+      outputDir: {
+        path: outputDir,
+        exists: outputDirExists,
+        files: outputFiles
+      },
+      serverInfo: {
+        nodeVersion: process.version,
+        platform: process.platform,
+        cwd: process.cwd(),
+        dirname: __dirname
+      }
+    });
+  } catch (error) {
+    console.error('检查文件系统状态失败:', error);
+    res.status(500).json({
+      success: false,
+      error: `检查文件系统状态失败: ${error.message}`
+    });
+  }
+});
+
+// 强化脚本执行方法 - 用于直接从浏览器测试脚本执行
+app.get('/api/test-script', async (req, res) => {
+  res.setHeader('Content-Type', 'application/json');
+  const results = {
+    logs: [],
+    success: false,
+    error: null,
+    output: null
+  };
+  
+  try {
+    const { username = 'dotyyds1234', pages = 1 } = req.query;
+    
+    results.logs.push(`测试脚本执行: username=${username}, pages=${pages}`);
+    
+    // 检查脚本文件
+    const scriptPath = path.join(__dirname, '..', 'scripts', 'getFollowing.js');
+    if (!fs.existsSync(scriptPath)) {
+      results.logs.push(`脚本文件不存在: ${scriptPath}`);
+      results.error = `脚本文件不存在: ${scriptPath}`;
+      return res.status(404).json(results);
+    }
+    
+    results.logs.push(`脚本文件存在: ${scriptPath}`);
+    
+    // 确保输出目录存在
+    const outputDir = path.join(__dirname, '..', 'followdata');
+    if (!fs.existsSync(outputDir)) {
+      fs.mkdirSync(outputDir, { recursive: true });
+      results.logs.push(`创建输出目录: ${outputDir}`);
+    } else {
+      results.logs.push(`输出目录已存在: ${outputDir}`);
+    }
+    
+    // 使用execFile执行脚本
+    results.logs.push(`开始执行脚本...`);
+    
+    try {
+      // 使用Promise包装子进程执行
+      const { stdout, stderr } = await new Promise((resolve, reject) => {
+        const child = exec(`node "${scriptPath}" "${username}" ${pages}`, {
+          timeout: 60000 // 60秒超时
+        }, (error, stdout, stderr) => {
+          if (error) {
+            reject({ error, stdout, stderr });
+          } else {
+            resolve({ stdout, stderr });
+          }
+        });
+        
+        // 收集实时输出
+        child.stdout.on('data', (data) => {
+          results.logs.push(`脚本输出: ${data}`);
+          console.log(`[脚本输出] ${data}`);
+        });
+        
+        child.stderr.on('data', (data) => {
+          results.logs.push(`脚本错误: ${data}`);
+          console.error(`[脚本错误] ${data}`);
+        });
+      });
+      
+      results.logs.push(`脚本执行完成`);
+      results.logs.push(`stdout: ${stdout.substring(0, 200)}...`);
+      
+      if (stderr) {
+        results.logs.push(`stderr: ${stderr}`);
+      }
+      
+      // 检查输出文件
+      const jsonPath = path.join(outputDir, `${username}_following.json`);
+      results.logs.push(`检查输出文件: ${jsonPath}`);
+      
+      if (!fs.existsSync(jsonPath)) {
+        results.logs.push(`输出文件不存在: ${jsonPath}`);
+        results.error = `输出文件不存在: ${jsonPath}`;
+        return res.json(results);
+      }
+      
+      results.logs.push(`输出文件存在，准备读取`);
+      
+      // 读取输出文件
+      const fileContent = fs.readFileSync(jsonPath, 'utf8');
+      results.logs.push(`成功读取文件，内容长度: ${fileContent.length}`);
+      
+      // 解析JSON
+      results.logs.push(`尝试解析JSON...`);
+      const jsonData = JSON.parse(fileContent);
+      results.logs.push(`成功解析JSON`);
+      
+      // 返回结果
+      results.success = true;
+      results.output = jsonData;
+      return res.json(results);
+      
+    } catch (execError) {
+      results.logs.push(`脚本执行错误: ${execError.error ? execError.error.message : execError.message || '未知错误'}`);
+      
+      if (execError.stdout) {
+        results.logs.push(`标准输出: ${execError.stdout}`);
+      }
+      
+      if (execError.stderr) {
+        results.logs.push(`错误输出: ${execError.stderr}`);
+      }
+      
+      results.error = `脚本执行错误: ${execError.error ? execError.error.message : execError.message || '未知错误'}`;
+      return res.status(500).json(results);
+    }
+    
+  } catch (error) {
+    results.logs.push(`测试脚本执行失败: ${error.message}`);
+    results.error = `测试脚本执行失败: ${error.message}`;
+    return res.status(500).json(results);
+  }
+});
+
+// 全局错误处理中间件（必须放在所有路由之后）
+app.use((err, req, res, next) => {
+  console.error('全局错误处理:', err);
+  
+  // 确保设置正确的MIME类型
+  res.setHeader('Content-Type', 'application/json');
+  
+  // 返回JSON格式的错误响应
+  return res.status(500).json({
+    success: false,
+    error: err.message || '服务器内部错误'
+  });
+});
+
+// 404处理 - 将所有未匹配的路由转为JSON响应而不是HTML
+app.use((req, res) => {
+  res.setHeader('Content-Type', 'application/json');
+  res.status(404).json({
+    success: false,
+    error: `找不到路径: ${req.originalUrl}`
+  });
 });
 
 // 启动服务器
