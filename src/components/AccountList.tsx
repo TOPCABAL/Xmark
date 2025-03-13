@@ -98,8 +98,8 @@ const AccountList: React.FC<AccountListProps> = ({
 
   return (
     <div className="flex flex-col h-full border-r border-gray-200" style={{ height: '100vh', maxHeight: '100vh' }}>
-      <div className="sticky top-0 bg-white z-10 p-4 pb-2 space-y-3 border-b border-gray-100">
-        <h2 className="text-xl font-bold">关注列表</h2>
+      <div className="sticky top-0 bg-white z-10 p-3 pb-2 space-y-2 border-b border-gray-100">
+        <h2 className="text-xl font-bold mt-0 mb-2">关注列表</h2>
         
         {/* 搜索输入框 */}
         <Input

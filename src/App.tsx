@@ -1,21 +1,20 @@
 import { useState, useEffect, useMemo } from 'react';
-import { Layout, Row, Col, Input, Button, Typography, Divider, Tag, message, Spin, Tabs } from 'antd';
+import { Layout, Row, Col, Input, Button, Typography, Divider, Tag, message, Spin, Tabs, InputNumber } from 'antd';
 import { 
   PlusOutlined, 
   UploadOutlined, 
   SaveOutlined, 
   DatabaseOutlined, 
   TagOutlined,
-  CloudSyncOutlined,
   ExportOutlined,
-  TwitterOutlined
+  TwitterOutlined,
+  SearchOutlined 
 } from '@ant-design/icons';
 import { CookieConsent } from './components/CookieConsent';
 import AccountList from './components/AccountList';
 import TwitterImport from './components/TwitterImport';
 import ExportModal from './components/ExportModal';
-import GoogleDriveSync from './components/GoogleDriveSync';
-import { AccountProps, loadLocalFollowingList, mergeWithAnnotatedAccounts } from './services/twitterService';
+import { AccountProps, loadLocalFollowingList, mergeWithAnnotatedAccounts, fetchUserFollowing } from './services/twitterService';
 import { getAnnotatedAccounts, saveAnnotatedAccount, AnnotatedAccount } from './services/localStorageService';
 import TwitterSelector from "./components/TwitterSelector";
 import TwitterEmbed from './components/TwitterEmbed';
@@ -42,7 +41,9 @@ function App() {
   const [activeTab, setActiveTab] = useState<string>("all"); // 活动标签：all, annotated, pending
   const [twitterLoading, setTwitterLoading] = useState(false);
   const [exportModalVisible, setExportModalVisible] = useState(false);
-  const [googleDriveSyncVisible, setGoogleDriveSyncVisible] = useState(false);
+  const [usernameInput, setUsernameInput] = useState('');
+  const [fetchingFollowing, setFetchingFollowing] = useState(false);
+  const [pagesCount, setPagesCount] = useState(3); // 页数设置，默认3页
   
   // 当前选中的Twitter用户名
   const [currentScreenName, setCurrentScreenName] = useState<string>('');
@@ -195,6 +196,30 @@ function App() {
     return () => clearTimeout(timer);
   }, [currentIndex]);
 
+  // 处理获取用户关注列表
+  const handleFetchFollowing = async () => {
+    if (!usernameInput.trim()) {
+      message.error('请输入有效的用户名');
+      return;
+    }
+
+    try {
+      setFetchingFollowing(true);
+      // 调用API获取用户关注列表，传入页数参数
+      const accounts = await fetchUserFollowing(usernameInput, pagesCount);
+      
+      // 处理获取的关注列表
+      handleImportData(accounts);
+      message.success(`成功导入 ${usernameInput} 的关注列表，共 ${accounts.length} 个账号`);
+      setUsernameInput('');
+    } catch (error) {
+      console.error('获取关注列表失败:', error);
+      message.error(`获取关注列表失败: ${error instanceof Error ? error.message : '未知错误'}`);
+    } finally {
+      setFetchingFollowing(false);
+    }
+  };
+
   // 如果没有数据或正在加载，显示加载中状态
   if (loading) {
     return (
@@ -209,13 +234,95 @@ function App() {
     return (
       <div className="flex flex-col items-center justify-center h-screen">
         <p className="mb-4 text-lg">未找到账号数据</p>
-        <Button 
-          type="primary" 
-          icon={<UploadOutlined />}
-          onClick={() => setImportModalVisible(true)}
-        >
-          导入Twitter数据
-        </Button>
+        <div className="w-full max-w-xl px-4">
+          {/* 导入导出按钮行 - 使用inline-block强制显示在一行 */}
+          <div className="mb-2" style={{ display: 'flex', alignItems: 'center', whiteSpace: 'nowrap' }}>
+            <Button 
+              type="primary" 
+              icon={<UploadOutlined />} 
+              size="small"
+              onClick={() => setImportModalVisible(true)}
+              style={{ marginRight: '8px' }}
+            >
+              导入数据
+            </Button>
+            <Button 
+              type="primary" 
+              icon={<ExportOutlined />} 
+              size="small"
+              onClick={() => setExportModalVisible(true)}
+              style={{ marginRight: '8px' }}
+            >
+              导出数据
+            </Button>
+            
+            <span style={{ fontSize: '12px', marginRight: '4px' }}>确认页数:</span>
+            <InputNumber 
+              min={1} 
+              max={10} 
+              value={pagesCount}
+              onChange={(value) => setPagesCount(value as number)} 
+              size="small"
+              style={{ width: '50px', margin: '0 4px' }} 
+            />
+            <span style={{ fontSize: '12px', color: '#888', whiteSpace: 'nowrap' }}>约 {pagesCount * 50} 账号</span>
+          </div>
+          
+          {/* 搜索框单独一行 */}
+          <div className="mb-1">
+            <Input
+              placeholder="输入Twitter用户名"
+              value={usernameInput}
+              onChange={(e) => setUsernameInput(e.target.value)}
+              onPressEnter={handleFetchFollowing}
+              suffix={
+                <Button
+                  type="link"
+                  size="small"
+                  icon={<SearchOutlined />}
+                  loading={fetchingFollowing}
+                  onClick={handleFetchFollowing}
+                />
+              }
+            />
+          </div>
+          
+          {/* 标签页导航 */}
+          <Tabs 
+            activeKey={activeTab} 
+            onChange={setActiveTab}
+            size="small"
+            className="w-full"
+          >
+            <TabPane
+              tab={
+                <span>
+                  <DatabaseOutlined />
+                  全部
+                </span>
+              }
+              key="all"
+            />
+            <TabPane
+              tab={
+                <span>
+                  <TagOutlined />
+                  已标注 ({annotatedAccounts.length})
+                </span>
+              }
+              key="annotated"
+            />
+            <TabPane
+              tab={
+                <span>
+                  <DatabaseOutlined />
+                  待标注 ({pendingAccountsCount})
+                </span>
+              }
+              key="pending"
+            />
+          </Tabs>
+        </div>
         <TwitterImport 
           visible={importModalVisible}
           onCancel={() => setImportModalVisible(false)}
@@ -327,7 +434,7 @@ function App() {
   };
 
   // 分组选项
-  const categoryOptions = ["技术学习", "编程", "AI讨论", "投资", "娱乐", "其他"];
+  const categoryOptions = ["项目方", "Alpha选手", "p小将", "社区主", "Coin", "二级选手"];
 
   return (
     <Layout style={{ minHeight: '100vh' }}>
@@ -337,12 +444,65 @@ function App() {
         {/* 左侧侧边栏 - 账号列表 */}
         <div style={{ width: '510px', borderRight: '1px solid #f0f0f0', overflowY: 'auto', height: '100%' }}>
           <div className="flex flex-col h-full">
-            <div className="p-2 flex items-center justify-between border-b border-gray-200">
+            <div className="p-2 border-b border-gray-200">
+              {/* 导入导出按钮行 - 使用inline-block强制显示在一行 */}
+              <div className="mb-2" style={{ display: 'flex', alignItems: 'center', whiteSpace: 'nowrap' }}>
+                <Button 
+                  type="primary" 
+                  icon={<UploadOutlined />} 
+                  size="small"
+                  onClick={() => setImportModalVisible(true)}
+                  style={{ marginRight: '8px' }}
+                >
+                  导入数据
+                </Button>
+                <Button 
+                  type="primary" 
+                  icon={<ExportOutlined />} 
+                  size="small"
+                  onClick={() => setExportModalVisible(true)}
+                  style={{ marginRight: '8px' }}
+                >
+                  导出数据
+                </Button>
+                
+                <span style={{ fontSize: '12px', marginRight: '4px' }}>确认页数:</span>
+                <InputNumber 
+                  min={1} 
+                  max={10} 
+                  value={pagesCount}
+                  onChange={(value) => setPagesCount(value as number)} 
+                  size="small"
+                  style={{ width: '50px', margin: '0 4px' }} 
+                />
+                <span style={{ fontSize: '12px', color: '#888', whiteSpace: 'nowrap' }}>约 {pagesCount * 50} 账号</span>
+              </div>
+              
+              {/* 搜索框单独一行 */}
+              <div className="mb-1">
+                <Input
+                  placeholder="输入Twitter用户名"
+                  value={usernameInput}
+                  onChange={(e) => setUsernameInput(e.target.value)}
+                  onPressEnter={handleFetchFollowing}
+                  suffix={
+                    <Button
+                      type="link"
+                      size="small"
+                      icon={<SearchOutlined />}
+                      loading={fetchingFollowing}
+                      onClick={handleFetchFollowing}
+                    />
+                  }
+                />
+              </div>
+              
+              {/* 标签页导航 */}
               <Tabs 
                 activeKey={activeTab} 
                 onChange={setActiveTab}
                 size="small"
-                className="flex-1"
+                className="w-full"
               >
                 <TabPane
                   tab={
@@ -372,32 +532,6 @@ function App() {
                   key="pending"
                 />
               </Tabs>
-              <div className="flex space-x-2">
-                <Button 
-                  type="primary" 
-                  icon={<UploadOutlined />} 
-                  size="small"
-                  onClick={() => setImportModalVisible(true)}
-                >
-                  导入数据
-                </Button>
-                <Button 
-                  type="primary" 
-                  icon={<ExportOutlined />} 
-                  size="small"
-                  onClick={() => setExportModalVisible(true)}
-                >
-                  导出数据
-                </Button>
-                <Button 
-                  type="primary" 
-                  icon={<CloudSyncOutlined />} 
-                  size="small"
-                  onClick={() => setGoogleDriveSyncVisible(true)}
-                >
-                  谷歌云盘同步
-                </Button>
-              </div>
             </div>
             <div className="flex-1 overflow-hidden">
               <AccountList 
@@ -526,36 +660,6 @@ function App() {
         visible={exportModalVisible}
         onCancel={() => setExportModalVisible(false)}
         accounts={displayAccounts}
-      />
-      
-      {/* Google Drive同步对话框 */}
-      <GoogleDriveSync 
-        visible={googleDriveSyncVisible}
-        onCancel={() => setGoogleDriveSyncVisible(false)}
-        accounts={displayAccounts}
-        onImport={handleImportData}
-        onMerge={(importedAccounts) => {
-          // 合并数据
-          const existingIds = new Set(displayAccounts.map(acc => acc.id));
-          const newAccounts = importedAccounts.filter(acc => !existingIds.has(acc.id));
-          
-          if (newAccounts.length > 0) {
-            const updated = [...displayAccounts, ...newAccounts];
-            setDisplayAccounts(updated);
-            
-            // 更新API账号数据
-            const updatedApi = [...apiAccounts, ...newAccounts.filter(acc => !acc.isAnnotated)];
-            setApiAccounts(updatedApi);
-            
-            // 更新标注账号数据
-            const updatedAnnotated = [...annotatedAccounts, ...newAccounts.filter(acc => acc.isAnnotated)];
-            setAnnotatedAccounts(updatedAnnotated as AnnotatedAccount[]);
-            
-            message.success(`已添加 ${newAccounts.length} 个新账号`);
-          } else {
-            message.info('没有新的账号被添加，可能全部已存在');
-          }
-        }}
       />
     </Layout>
   );

@@ -22,7 +22,7 @@ const TwitterSelector: React.FC<TwitterSelectorProps> = ({ initialUsername = 'do
   const handleFetchUserData = async () => {
     // 处理空输入
     if (!inputValue.trim()) {
-      message.error('请输入Twitter用户名');
+      message.error('请输入Twitter用户名以获取关注列表');
       return;
     }
 
@@ -59,7 +59,7 @@ const TwitterSelector: React.FC<TwitterSelectorProps> = ({ initialUsername = 'do
   const handleDevModeFetch = () => {
     // 处理空输入
     if (!inputValue.trim()) {
-      message.error('请输入Twitter用户名');
+      message.error('请输入Twitter用户名以获取关注列表');
       return;
     }
 
