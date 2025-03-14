@@ -159,7 +159,8 @@ export async function getAccounts(options = {}) {
     isAnnotated = null,
     searchTerm = null,
     sortBy = 'import_date',
-    sortOrder = 'DESC'
+    sortOrder = 'DESC',
+    imported_from = null
   } = options;
   
   // 构建查询条件
@@ -175,6 +176,11 @@ export async function getAccounts(options = {}) {
     conditions.push('annotated_at IS NOT NULL');
   } else if (isAnnotated === false) {
     conditions.push('annotated_at IS NULL');
+  }
+  
+  if (imported_from) {
+    conditions.push('imported_from = ?');
+    params.push(imported_from);
   }
   
   if (searchTerm) {

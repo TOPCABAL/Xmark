@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Twitter账号数据库管理系统</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <style>
+    body {
+      font-family: 'Microsoft YaHei', Arial, sans-serif;
+      background-color: #f8f9fa;
+      padding-bottom: 50px;
+    }
+    .header {
+      background-color: #1da1f2;
+      color: white;
+      padding: 20px 0;
+      margin-bottom: 30px;
+    }
+    .card {
+      margin-bottom: 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .card-header {
+      font-weight: bold;
+      background-color: #f0f7ff;
+    }
+    .stat-card {
+      text-align: center;
+      padding: 15px;
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    .stat-card h2 {
+      font-size: 2rem;
+      font-weight: bold;
+      margin: 10px 0;
+      color: #1da1f2;
+    }
+    .stat-card p {
+      color: #6c757d;
+      margin-bottom: 0;
+    }
+    .table-container {
+      overflow-x: auto;
+    }
+    .form-label {
+      font-weight: 500;
+    }
+    .alert-results {
+      max-height: 300px;
+      overflow-y: auto;
+    }
+    .badge-category {
+      font-size: 85%;
+      padding: 5px 8px;
+      margin: 2px;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <!-- 页面头部 -->
+  <div class="header">
+    <div class="container">
+      <h1><i class="bi bi-database"></i> Twitter账号数据库管理系统</h1>
+      <p class="lead">用于管理SQLite数据库中的Twitter账号数据</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- 数据库统计 -->
+    <div class="row mb-4">
+      <div class="col-md-3">
+        <div class="stat-card">
+          <p>总账号数</p>
+          <h2 id="totalAccounts">-</h2>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="stat-card">
+          <p>已标注账号</p>
+          <h2 id="annotatedAccounts">-</h2>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="stat-card">
+          <p>未标注账号</p>
+          <h2 id="unannotatedAccounts">-</h2>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="stat-card">
+          <p>分类总数</p>
+          <h2 id="totalCategories">-</h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <!-- 左侧面板 - 管理功能 -->
+      <div class="col-md-4 mb-4">
+        <div class="accordion" id="adminAccordion">
+          <!-- 数据库管理 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                数据库基本管理
+              </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#adminAccordion">
+              <div class="accordion-body">
+                <button id="refreshStats" class="btn btn-outline-primary mb-3 w-100">刷新数据统计</button>
+                <button id="backupDatabase" class="btn btn-outline-success mb-3 w-100">备份数据库</button>
+                <div class="alert alert-info small">
+                  备份会在服务器上创建数据库的副本，防止误操作导致数据丢失。
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 关注列表管理 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                关注列表管理
+              </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#adminAccordion">
+              <div class="accordion-body">
+                <div class="mb-3">
+                  <label for="importSourceSelect" class="form-label">已导入的关注列表源</label>
+                  <select id="importSourceSelect" class="form-select mb-2">
+                    <option value="">加载中...</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <button id="viewSourceAccounts" class="btn btn-outline-primary mb-2 w-100">查看此源账号</button>
+                  <button id="deleteSourceAccounts" class="btn btn-outline-danger w-100">删除此源账号</button>
+                </div>
+                <div class="alert alert-warning small">
+                  删除关注列表将移除从该来源导入的所有Twitter账号数据，此操作不可撤销。
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 批量数据管理 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingThree">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                批量数据管理
+              </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#adminAccordion">
+              <div class="accordion-body">
+                <div class="mb-3">
+                  <button id="deleteUnannotated" class="btn btn-outline-danger mb-3 w-100">删除所有未标注数据</button>
+                  <div class="alert alert-warning small">
+                    删除所有未标注数据将移除数据库中所有未添加标注的账号，此操作不可撤销。
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <button id="cleanDuplicates" class="btn btn-outline-warning mb-3 w-100">清理重复数据</button>
+                  <div class="alert alert-info small">
+                    系统将检测并合并可能重复的账号数据。
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 分类管理 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingFour">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                分类管理
+              </button>
+            </h2>
+            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#adminAccordion">
+              <div class="accordion-body">
+                <div class="mb-3">
+                  <label class="form-label">分类操作</label>
+                  <div class="input-group mb-3">
+                    <select id="categorySelect" class="form-select">
+                      <option value="">加载中...</option>
+                    </select>
+                    <button id="viewCategoryAccounts" class="btn btn-outline-primary">查看</button>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">重命名分类</label>
+                  <div class="input-group mb-3">
+                    <select id="categoryRenameSource" class="form-select">
+                      <option value="">选择分类</option>
+                    </select>
+                  </div>
+                  <div class="input-group mb-3">
+                    <input type="text" id="categoryRenameTarget" class="form-control" placeholder="新分类名称">
+                    <button id="renameCategory" class="btn btn-outline-warning">重命名</button>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">合并分类</label>
+                  <div class="input-group mb-3">
+                    <select id="categoryMergeSource" class="form-select">
+                      <option value="">选择源分类</option>
+                    </select>
+                  </div>
+                  <div class="input-group mb-3">
+                    <select id="categoryMergeTarget" class="form-select">
+                      <option value="">选择目标分类</option>
+                    </select>
+                    <button id="mergeCategories" class="btn btn-outline-warning">合并</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 右侧面板 - 数据表格和结果显示 -->
+      <div class="col-md-8">
+        <!-- 数据查询 -->
+        <div class="card mb-4">
+          <div class="card-header">
+            数据查询
+          </div>
+          <div class="card-body">
+            <div class="row mb-3">
+              <div class="col-md-4">
+                <label for="queryCategory" class="form-label">分类筛选</label>
+                <select id="queryCategory" class="form-select">
+                  <option value="">全部分类</option>
+                </select>
+              </div>
+              <div class="col-md-4">
+                <label for="queryAnnotated" class="form-label">标注状态</label>
+                <select id="queryAnnotated" class="form-select">
+                  <option value="">全部</option>
+                  <option value="true">已标注</option>
+                  <option value="false">未标注</option>
+                </select>
+              </div>
+              <div class="col-md-4">
+                <label for="querySource" class="form-label">导入来源</label>
+                <select id="querySource" class="form-select">
+                  <option value="">全部来源</option>
+                </select>
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label for="querySearch" class="form-label">搜索关键词</label>
+                <input type="text" id="querySearch" class="form-control" placeholder="用户名、名称或备注...">
+              </div>
+              <div class="col-md-3">
+                <label for="queryLimit" class="form-label">每页数量</label>
+                <input type="number" id="queryLimit" class="form-control" value="50" min="10" max="500">
+              </div>
+              <div class="col-md-3">
+                <label for="queryOffset" class="form-label">起始位置</label>
+                <input type="number" id="queryOffset" class="form-control" value="0" min="0">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <button id="runQuery" class="btn btn-primary">执行查询</button>
+                <button id="exportQueryResults" class="btn btn-outline-success ms-2">导出查询结果</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 操作结果 -->
+        <div class="card">
+          <div class="card-header d-flex justify-content-between align-items-center">
+            <span>操作结果</span>
+            <span id="resultCounter" class="badge bg-primary">0条记录</span>
+          </div>
+          <div class="card-body p-0">
+            <div id="resultsContainer" class="alert-results">
+              <div class="alert alert-info m-3">
+                请使用左侧功能执行操作，结果将显示在此处。
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 确认对话框 -->
+  <div class="modal fade" id="confirmModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="confirmTitle">确认操作</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="confirmMessage">
+          您确定要执行此操作吗？
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+          <button type="button" class="btn btn-danger" id="confirmButton">确认</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // API基础URL
+    const API_BASE_URL = 'http://localhost:3001';
+    
+    // DOM元素
+    const elements = {
+      // 统计区域
+      totalAccounts: document.getElementById('totalAccounts'),
+      annotatedAccounts: document.getElementById('annotatedAccounts'),
+      unannotatedAccounts: document.getElementById('unannotatedAccounts'),
+      totalCategories: document.getElementById('totalCategories'),
+      
+      // 关注列表管理
+      importSourceSelect: document.getElementById('importSourceSelect'),
+      viewSourceAccounts: document.getElementById('viewSourceAccounts'),
+      deleteSourceAccounts: document.getElementById('deleteSourceAccounts'),
+      
+      // 批量管理
+      deleteUnannotated: document.getElementById('deleteUnannotated'),
+      cleanDuplicates: document.getElementById('cleanDuplicates'),
+      
+      // 分类管理
+      categorySelect: document.getElementById('categorySelect'),
+      viewCategoryAccounts: document.getElementById('viewCategoryAccounts'),
+      categoryRenameSource: document.getElementById('categoryRenameSource'),
+      categoryRenameTarget: document.getElementById('categoryRenameTarget'),
+      renameCategory: document.getElementById('renameCategory'),
+      categoryMergeSource: document.getElementById('categoryMergeSource'),
+      categoryMergeTarget: document.getElementById('categoryMergeTarget'),
+      mergeCategories: document.getElementById('mergeCategories'),
+      
+      // 查询功能
+      queryCategory: document.getElementById('queryCategory'),
+      queryAnnotated: document.getElementById('queryAnnotated'),
+      querySource: document.getElementById('querySource'),
+      querySearch: document.getElementById('querySearch'),
+      queryLimit: document.getElementById('queryLimit'),
+      queryOffset: document.getElementById('queryOffset'),
+      runQuery: document.getElementById('runQuery'),
+      exportQueryResults: document.getElementById('exportQueryResults'),
+      
+      // 结果显示
+      resultsContainer: document.getElementById('resultsContainer'),
+      resultCounter: document.getElementById('resultCounter'),
+      
+      // 基本功能
+      refreshStats: document.getElementById('refreshStats'),
+      backupDatabase: document.getElementById('backupDatabase'),
+      
+      // 确认对话框
+      confirmModal: new bootstrap.Modal(document.getElementById('confirmModal')),
+      confirmTitle: document.getElementById('confirmTitle'),
+      confirmMessage: document.getElementById('confirmMessage'),
+      confirmButton: document.getElementById('confirmButton')
+    };
+    
+    // 初始化
+    document.addEventListener('DOMContentLoaded', () => {
+      loadStats();
+      loadImportSources();
+      loadCategories();
+      
+      // 按钮事件处理
+      elements.refreshStats.addEventListener('click', loadStats);
+      elements.backupDatabase.addEventListener('click', backupDatabase);
+      
+      elements.viewSourceAccounts.addEventListener('click', viewSourceAccounts);
+      elements.deleteSourceAccounts.addEventListener('click', () => showConfirmDialog(
+        '删除关注列表',
+        `确定要删除从 ${elements.importSourceSelect.value} 导入的所有账号吗？此操作不可撤销！`,
+        deleteSourceAccounts
+      ));
+      
+      elements.deleteUnannotated.addEventListener('click', () => showConfirmDialog(
+        '删除未标注数据',
+        '确定要删除所有未标注的账号数据吗？此操作不可撤销！',
+        deleteUnannotatedAccounts
+      ));
+      
+      elements.cleanDuplicates.addEventListener('click', cleanDuplicateAccounts);
+      
+      elements.viewCategoryAccounts.addEventListener('click', viewCategoryAccounts);
+      elements.renameCategory.addEventListener('click', renameCategory);
+      elements.mergeCategories.addEventListener('click', () => showConfirmDialog(
+        '合并分类',
+        `确定要将分类"${elements.categoryMergeSource.value}"合并到"${elements.categoryMergeTarget.value}"吗？`,
+        mergeCategories
+      ));
+      
+      elements.runQuery.addEventListener('click', runQuery);
+      elements.exportQueryResults.addEventListener('click', exportQueryResults);
+    });
+    
+    // API调用函数
+    async function callApi(endpoint, options = {}) {
+      try {
+        showLoading();
+        
+        const url = `${API_BASE_URL}${endpoint}`;
+        console.log(`API调用: ${url}`);
+        
+        const response = await fetch(url, {
+          ...options,
+          headers: {
+            'Content-Type': 'application/json',
+            ...options.headers
+          }
+        });
+        
+        if (!response.ok) {
+          const errorText = await response.text();
+          throw new Error(`API请求失败 (${response.status}): ${errorText}`);
+        }
+        
+        const data = await response.json();
+        return data;
+      } catch (error) {
+        showError(`API请求错误: ${error.message}`);
+        throw error;
+      } finally {
+        hideLoading();
+      }
+    }
+    
+    // 加载统计信息
+    async function loadStats() {
+      try {
+        const data = await callApi('/api/stats');
+        if (data.success) {
+          elements.totalAccounts.textContent = data.totalAccounts || 0;
+          elements.annotatedAccounts.textContent = data.annotatedAccounts || 0;
+          elements.unannotatedAccounts.textContent = (data.totalAccounts - data.annotatedAccounts) || 0;
+          elements.totalCategories.textContent = data.totalCategories || 0;
+          
+          showSuccess('统计数据已更新');
+        } else {
+          showError('获取统计数据失败');
+        }
+      } catch (error) {
+        console.error('加载统计失败:', error);
+      }
+    }
+    
+    // 加载导入来源
+    async function loadImportSources() {
+      try {
+        const data = await callApi('/api/sources');
+        if (data.success && Array.isArray(data.sources)) {
+          populateSelect(elements.importSourceSelect, data.sources.map(s => ({
+            value: s.source_username,
+            text: `${s.source_username} (${s.count}个账号)`
+          })));
+          
+          populateSelect(elements.querySource, [
+            { value: '', text: '全部来源' },
+            ...data.sources.map(s => ({
+              value: s.source_username,
+              text: `${s.source_username} (${s.count}个账号)`
+            }))
+          ]);
+        } else {
+          showError('获取导入来源失败');
+        }
+      } catch (error) {
+        console.error('加载导入来源失败:', error);
+      }
+    }
+    
+    // 加载分类列表
+    async function loadCategories() {
+      try {
+        const data = await callApi('/api/categories');
+        if (data.success && Array.isArray(data.categories)) {
+          const categories = data.categories.map(c => ({
+            value: c.name,
+            text: `${c.name} (${c.count}个账号)`
+          }));
+          
+          populateSelect(elements.categorySelect, categories);
+          populateSelect(elements.categoryRenameSource, categories);
+          populateSelect(elements.categoryMergeSource, categories);
+          populateSelect(elements.categoryMergeTarget, categories);
+          
+          populateSelect(elements.queryCategory, [
+            { value: '', text: '全部分类' },
+            ...categories
+          ]);
+        } else {
+          showError('获取分类列表失败');
+        }
+      } catch (error) {
+        console.error('加载分类失败:', error);
+      }
+    }
+    
+    // 填充下拉选择框
+    function populateSelect(selectElement, options) {
+      if (!selectElement) return;
+      
+      selectElement.innerHTML = '';
+      
+      if (options.length === 0) {
+        const option = document.createElement('option');
+        option.value = '';
+        option.textContent = '无数据';
+        selectElement.appendChild(option);
+        return;
+      }
+      
+      options.forEach(opt => {
+        const option = document.createElement('option');
+        option.value = opt.value;
+        option.textContent = opt.text;
+        selectElement.appendChild(option);
+      });
+    }
+    
+    // 显示确认对话框
+    function showConfirmDialog(title, message, confirmCallback) {
+      elements.confirmTitle.textContent = title;
+      elements.confirmMessage.textContent = message;
+      
+      // 清除之前的事件监听器
+      const newConfirmButton = elements.confirmButton.cloneNode(true);
+      elements.confirmButton.parentNode.replaceChild(newConfirmButton, elements.confirmButton);
+      elements.confirmButton = newConfirmButton;
+      
+      // 添加新的事件监听器
+      elements.confirmButton.addEventListener('click', () => {
+        elements.confirmModal.hide();
+        confirmCallback();
+      });
+      
+      elements.confirmModal.show();
+    }
+    
+    // 查看指定来源的账号
+    async function viewSourceAccounts() {
+      const source = elements.importSourceSelect.value;
+      if (!source) {
+        showError('请选择导入来源');
+        return;
+      }
+      
+      try {
+        const data = await callApi(`/api/accounts?imported_from=${encodeURIComponent(source)}&limit=100`);
+        if (data.success && Array.isArray(data.accounts)) {
+          displayAccountsTable(data.accounts, `${source} 导入的账号`);
+        } else {
+          showError(`获取 ${source} 的账号列表失败`);
+        }
+      } catch (error) {
+        console.error('查看来源账号失败:', error);
+      }
+    }
+    
+    // 删除指定来源的账号
+    async function deleteSourceAccounts() {
+      const source = elements.importSourceSelect.value;
+      if (!source) {
+        showError('请选择导入来源');
+        return;
+      }
+      
+      try {
+        const data = await callApi(`/api/sources/${encodeURIComponent(source)}/delete`, {
+          method: 'POST'
+        });
+        
+        if (data.success) {
+          showSuccess(`已删除 ${data.count} 个从 ${source} 导入的账号`);
+          loadStats();
+          loadImportSources();
+        } else {
+          showError(`删除 ${source} 的账号失败: ${data.message}`);
+        }
+      } catch (error) {
+        console.error('删除来源账号失败:', error);
+      }
+    }
+    
+    // 删除所有未标注账号
+    async function deleteUnannotatedAccounts() {
+      try {
+        const data = await callApi('/api/accounts/unannotated/delete', {
+          method: 'POST'
+        });
+        
+        if (data.success) {
+          showSuccess(`已删除 ${data.count} 个未标注账号`);
+          loadStats();
+        } else {
+          showError(`删除未标注账号失败: ${data.message}`);
+        }
+      } catch (error) {
+        console.error('删除未标注账号失败:', error);
+      }
+    }
+    
+    // 清理重复账号
+    async function cleanDuplicateAccounts() {
+      try {
+        const data = await callApi('/api/accounts/duplicates/clean', {
+          method: 'POST'
+        });
+        
+        if (data.success) {
+          showSuccess(`已清理 ${data.count} 个重复账号`);
+          loadStats();
+        } else {
+          showError(`清理重复账号失败: ${data.message}`);
+        }
+      } catch (error) {
+        console.error('清理重复账号失败:', error);
+      }
+    }
+    
+    // 查看分类账号
+    async function viewCategoryAccounts() {
+      const category = elements.categorySelect.value;
+      if (!category) {
+        showError('请选择分类');
+        return;
+      }
+      
+      try {
+        const data = await callApi(`/api/accounts?category=${encodeURIComponent(category)}&limit=100`);
+        if (data.success && Array.isArray(data.accounts)) {
+          displayAccountsTable(data.accounts, `分类 "${category}" 的账号`);
+        } else {
+          showError(`获取分类 "${category}" 的账号列表失败`);
+        }
+      } catch (error) {
+        console.error('查看分类账号失败:', error);
+      }
+    }
+    
+    // 重命名分类
+    async function renameCategory() {
+      const sourceCategory = elements.categoryRenameSource.value;
+      const targetCategory = elements.categoryRenameTarget.value;
+      
+      if (!sourceCategory) {
+        showError('请选择要重命名的分类');
+        return;
+      }
+      
+      if (!targetCategory) {
+        showError('请输入新的分类名称');
+        return;
+      }
+      
+      try {
+        const data = await callApi('/api/categories/rename', {
+          method: 'POST',
+          body: JSON.stringify({
+            sourceCategory,
+            targetCategory
+          })
+        });
+        
+        if (data.success) {
+          showSuccess(`已将分类 "${sourceCategory}" 重命名为 "${targetCategory}"，更新了 ${data.count} 个账号`);
+          loadStats();
+          loadCategories();
+        } else {
+          showError(`重命名分类失败: ${data.message}`);
+        }
+      } catch (error) {
+        console.error('重命名分类失败:', error);
+      }
+    }
+    
+    // 合并分类
+    async function mergeCategories() {
+      const sourceCategory = elements.categoryMergeSource.value;
+      const targetCategory = elements.categoryMergeTarget.value;
+      
+      if (!sourceCategory || !targetCategory) {
+        showError('请选择源分类和目标分类');
+        return;
+      }
+      
+      if (sourceCategory === targetCategory) {
+        showError('源分类和目标分类不能相同');
+        return;
+      }
+      
+      try {
+        const data = await callApi('/api/categories/merge', {
+          method: 'POST',
+          body: JSON.stringify({
+            sourceCategory,
+            targetCategory
+          })
+        });
+        
+        if (data.success) {
+          showSuccess(`已将分类 "${sourceCategory}" 合并到 "${targetCategory}"，更新了 ${data.count} 个账号`);
+          loadStats();
+          loadCategories();
+        } else {
+          showError(`合并分类失败: ${data.message}`);
+        }
+      } catch (error) {
+        console.error('合并分类失败:', error);
+      }
+    }
+    
+    // 执行数据查询
+    async function runQuery() {
+      const params = new URLSearchParams();
+      
+      const category = elements.queryCategory.value;
+      const annotated = elements.queryAnnotated.value;
+      const source = elements.querySource.value;
+      const search = elements.querySearch.value;
+      const limit = elements.queryLimit.value;
+      const offset = elements.queryOffset.value;
+      
+      if (category) params.append('category', category);
+      if (annotated) params.append('isAnnotated', annotated);
+      if (source) params.append('imported_from', source);
+      if (search) params.append('search', search);
+      if (limit) params.append('limit', limit);
+      if (offset) params.append('offset', offset);
+      
+      try {
+        const data = await callApi(`/api/accounts?${params.toString()}`);
+        if (data.success && Array.isArray(data.accounts)) {
+          displayAccountsTable(data.accounts, '查询结果');
+        } else {
+          showError('查询账号列表失败');
+        }
+      } catch (error) {
+        console.error('执行查询失败:', error);
+      }
+    }
+    
+    // 导出查询结果
+    async function exportQueryResults() {
+      const params = new URLSearchParams();
+      
+      const category = elements.queryCategory.value;
+      const annotated = elements.queryAnnotated.value;
+      const source = elements.querySource.value;
+      const search = elements.querySearch.value;
+      
+      params.append('format', 'json'); // 默认导出JSON格式
+      
+      if (category) params.append('category', category);
+      if (annotated) params.append('isAnnotated', annotated);
+      if (source) params.append('imported_from', source);
+      if (search) params.append('search', search);
+      
+      try {
+        const data = await callApi(`/api/export?${params.toString()}`);
+        if (data.success) {
+          // 创建下载链接
+          const downloadLink = document.createElement('a');
+          downloadLink.href = `${API_BASE_URL}${data.downloadUrl}`;
+          downloadLink.target = '_blank';
+          downloadLink.click();
+          
+          showSuccess(`已导出 ${data.count} 个账号数据到 ${data.filename}`);
+        } else {
+          showError('导出数据失败');
+        }
+      } catch (error) {
+        console.error('导出查询结果失败:', error);
+      }
+    }
+    
+    // 备份数据库
+    async function backupDatabase() {
+      try {
+        const data = await callApi('/api/database/backup', {
+          method: 'POST'
+        });
+        
+        if (data.success) {
+          showSuccess(`数据库备份成功: ${data.filename}`);
+        } else {
+          showError(`数据库备份失败: ${data.message}`);
+        }
+      } catch (error) {
+        console.error('数据库备份失败:', error);
+      }
+    }
+    
+    // 显示账号表格
+    function displayAccountsTable(accounts, title) {
+      if (!accounts || accounts.length === 0) {
+        elements.resultsContainer.innerHTML = `
+          <div class="alert alert-warning m-3">
+            ${title || '查询'} 未找到匹配的账号
+          </div>
+        `;
+        elements.resultCounter.textContent = '0条记录';
+        return;
+      }
+      
+      elements.resultCounter.textContent = `${accounts.length}条记录`;
+      
+      let tableHtml = `
+        <div class="table-container">
+          <table class="table table-striped table-hover">
+            <thead>
+              <tr>
+                <th>用户名</th>
+                <th>名称</th>
+                <th>分类</th>
+                <th>粉丝数</th>
+                <th>标注时间</th>
+                <th>导入来源</th>
+              </tr>
+            </thead>
+            <tbody>
+      `;
+      
+      accounts.forEach(account => {
+        const username = account.username.replace(/^@/, '');
+        const annotatedDate = account.annotated_at 
+          ? new Date(account.annotated_at).toLocaleString() 
+          : '-';
+        
+        tableHtml += `
+          <tr>
+            <td>
+              <a href="https://x.com/${username}" target="_blank">@${username}</a>
+            </td>
+            <td>${account.name || '-'}</td>
+            <td>${account.category ? `<span class="badge bg-info badge-category">${account.category}</span>` : '-'}</td>
+            <td>${account.followers_count || 0}</td>
+            <td>${annotatedDate}</td>
+            <td>${account.imported_from || '-'}</td>
+          </tr>
+        `;
+      });
+      
+      tableHtml += `
+            </tbody>
+          </table>
+        </div>
+      `;
+      
+      elements.resultsContainer.innerHTML = tableHtml;
+    }
+    
+    // 显示成功信息
+    function showSuccess(message) {
+      elements.resultsContainer.innerHTML = `
+        <div class="alert alert-success m-3">
+          ${message}
+        </div>
+      `;
+    }
+    
+    // 显示错误信息
+    function showError(message) {
+      elements.resultsContainer.innerHTML = `
+        <div class="alert alert-danger m-3">
+          ${message}
+        </div>
+      `;
+    }
+    
+    // 显示加载状态
+    function showLoading() {
+      elements.resultsContainer.innerHTML = `
+        <div class="alert alert-info m-3 text-center">
+          <div class="spinner-border spinner-border-sm me-2" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+          正在处理请求...
+        </div>
+      `;
+    }
+    
+    // 隐藏加载状态
+    function hideLoading() {
+      // 不做任何事情，结果会被其他函数更新
+    }
+  </script>
+</body>
+</html> 

@@ -1653,6 +1653,385 @@ app.get('/api/export', async (req, res) => {
   }
 });
 
+// 数据库管理API路由
+// 获取导入来源列表
+app.get('/api/sources', async (req, res) => {
+  try {
+    console.log('[数据库] 获取导入来源列表');
+    const db = await getDatabase();
+    
+    // 查询所有不同的imported_from值和对应的账号数量
+    const sources = await db.all(`
+      SELECT 
+        imported_from AS source_username, 
+        COUNT(*) AS count 
+      FROM 
+        twitter_accounts 
+      WHERE 
+        imported_from IS NOT NULL AND imported_from != ''
+      GROUP BY 
+        imported_from 
+      ORDER BY 
+        count DESC
+    `);
+    
+    res.json({ success: true, sources });
+  } catch (error) {
+    console.error('[数据库] 获取导入来源列表失败:', error);
+    res.status(500).json({ success: false, message: `获取导入来源列表失败: ${error.message}` });
+  }
+});
+
+// 删除指定来源的账号
+app.post('/api/sources/:source/delete', async (req, res) => {
+  try {
+    const source = req.params.source;
+    console.log(`[数据库] 删除来源 ${source} 的账号`);
+    
+    const db = await getDatabase();
+    
+    // 先获取要删除的账号数量
+    const countResult = await db.get(`
+      SELECT COUNT(*) AS count 
+      FROM twitter_accounts 
+      WHERE imported_from = ?
+    `, [source]);
+    
+    // 执行删除
+    const result = await db.run(`
+      DELETE FROM twitter_accounts 
+      WHERE imported_from = ?
+    `, [source]);
+    
+    // 更新分类表中的计数
+    await db.run(`
+      UPDATE categories 
+      SET count = (
+        SELECT COUNT(*) 
+        FROM twitter_accounts 
+        WHERE category = categories.name
+      )
+    `);
+    
+    res.json({ 
+      success: true, 
+      count: countResult.count,
+      message: `已删除 ${countResult.count} 个从 ${source} 导入的账号` 
+    });
+  } catch (error) {
+    console.error(`[数据库] 删除来源账号失败:`, error);
+    res.status(500).json({ success: false, message: `删除来源账号失败: ${error.message}` });
+  }
+});
+
+// 删除所有未标注账号
+app.post('/api/accounts/unannotated/delete', async (req, res) => {
+  try {
+    console.log('[数据库] 删除所有未标注账号');
+    
+    const db = await getDatabase();
+    
+    // 先获取要删除的账号数量
+    const countResult = await db.get(`
+      SELECT COUNT(*) AS count 
+      FROM twitter_accounts 
+      WHERE annotated_at IS NULL
+    `);
+    
+    // 执行删除
+    const result = await db.run(`
+      DELETE FROM twitter_accounts 
+      WHERE annotated_at IS NULL
+    `);
+    
+    res.json({ 
+      success: true, 
+      count: countResult.count,
+      message: `已删除 ${countResult.count} 个未标注账号` 
+    });
+  } catch (error) {
+    console.error('[数据库] 删除未标注账号失败:', error);
+    res.status(500).json({ success: false, message: `删除未标注账号失败: ${error.message}` });
+  }
+});
+
+// 清理重复账号
+app.post('/api/accounts/duplicates/clean', async (req, res) => {
+  try {
+    console.log('[数据库] 清理重复账号');
+    
+    const db = await getDatabase();
+    let cleanedCount = 0;
+    
+    // 查找重复的username（不考虑大小写）
+    const duplicates = await db.all(`
+      SELECT LOWER(username) AS lowercase_username, COUNT(*) AS count
+      FROM twitter_accounts
+      GROUP BY LOWER(username)
+      HAVING COUNT(*) > 1
+    `);
+    
+    if (duplicates.length === 0) {
+      return res.json({ 
+        success: true, 
+        count: 0,
+        message: '未发现重复账号' 
+      });
+    }
+    
+    // 开始事务
+    await db.exec('BEGIN TRANSACTION');
+    
+    try {
+      // 处理每组重复
+      for (const dup of duplicates) {
+        const lowercaseUsername = dup.lowercase_username;
+        
+        // 获取这个用户名的所有账号，按annotated_at排序（已标注的优先保留）
+        const accounts = await db.all(`
+          SELECT * FROM twitter_accounts
+          WHERE LOWER(username) = ?
+          ORDER BY 
+            CASE WHEN annotated_at IS NOT NULL THEN 0 ELSE 1 END,
+            CASE WHEN import_date IS NOT NULL THEN import_date ELSE '1970-01-01' END DESC
+        `, [lowercaseUsername]);
+        
+        if (accounts.length <= 1) continue;
+        
+        // 保留第一个账号（已标注或最新导入的）
+        const keep = accounts[0];
+        const toDelete = accounts.slice(1);
+        
+        // 更新要删除的账号数量
+        cleanedCount += toDelete.length;
+        
+        // 删除重复账号
+        for (const del of toDelete) {
+          await db.run(`
+            DELETE FROM twitter_accounts
+            WHERE username = ?
+          `, [del.username]);
+        }
+      }
+      
+      // 提交事务
+      await db.exec('COMMIT');
+      
+      // 更新分类表中的计数
+      await db.run(`
+        UPDATE categories 
+        SET count = (
+          SELECT COUNT(*) 
+          FROM twitter_accounts 
+          WHERE category = categories.name
+        )
+      `);
+      
+      res.json({ 
+        success: true, 
+        count: cleanedCount,
+        message: `已清理 ${cleanedCount} 个重复账号` 
+      });
+    } catch (error) {
+      // 回滚事务
+      await db.exec('ROLLBACK');
+      throw error;
+    }
+  } catch (error) {
+    console.error('[数据库] 清理重复账号失败:', error);
+    res.status(500).json({ success: false, message: `清理重复账号失败: ${error.message}` });
+  }
+});
+
+// 重命名分类
+app.post('/api/categories/rename', async (req, res) => {
+  try {
+    const { sourceCategory, targetCategory } = req.body;
+    
+    if (!sourceCategory || !targetCategory) {
+      return res.status(400).json({ 
+        success: false, 
+        message: '请提供源分类和目标分类名称' 
+      });
+    }
+    
+    console.log(`[数据库] 重命名分类 ${sourceCategory} → ${targetCategory}`);
+    
+    const db = await getDatabase();
+    
+    // 开始事务
+    await db.exec('BEGIN TRANSACTION');
+    
+    try {
+      // 获取要更新的账号数量
+      const countResult = await db.get(`
+        SELECT COUNT(*) AS count 
+        FROM twitter_accounts 
+        WHERE category = ?
+      `, [sourceCategory]);
+      
+      // 更新账号的分类
+      await db.run(`
+        UPDATE twitter_accounts 
+        SET category = ?
+        WHERE category = ?
+      `, [targetCategory, sourceCategory]);
+      
+      // 删除旧分类
+      await db.run(`
+        DELETE FROM categories
+        WHERE name = ?
+      `, [sourceCategory]);
+      
+      // 更新或插入新分类
+      const existingCategory = await db.get(`
+        SELECT * FROM categories
+        WHERE name = ?
+      `, [targetCategory]);
+      
+      if (existingCategory) {
+        await db.run(`
+          UPDATE categories 
+          SET count = (
+            SELECT COUNT(*) 
+            FROM twitter_accounts 
+            WHERE category = ?
+          )
+          WHERE name = ?
+        `, [targetCategory, targetCategory]);
+      } else {
+        await db.run(`
+          INSERT INTO categories (name, count, created_at)
+          VALUES (?, (
+            SELECT COUNT(*) 
+            FROM twitter_accounts 
+            WHERE category = ?
+          ), datetime('now'))
+        `, [targetCategory, targetCategory]);
+      }
+      
+      // 提交事务
+      await db.exec('COMMIT');
+      
+      res.json({ 
+        success: true, 
+        count: countResult.count,
+        message: `已将分类 "${sourceCategory}" 重命名为 "${targetCategory}"` 
+      });
+    } catch (error) {
+      // 回滚事务
+      await db.exec('ROLLBACK');
+      throw error;
+    }
+  } catch (error) {
+    console.error('[数据库] 重命名分类失败:', error);
+    res.status(500).json({ success: false, message: `重命名分类失败: ${error.message}` });
+  }
+});
+
+// 合并分类
+app.post('/api/categories/merge', async (req, res) => {
+  try {
+    const { sourceCategory, targetCategory } = req.body;
+    
+    if (!sourceCategory || !targetCategory) {
+      return res.status(400).json({ 
+        success: false, 
+        message: '请提供源分类和目标分类名称' 
+      });
+    }
+    
+    if (sourceCategory === targetCategory) {
+      return res.status(400).json({ 
+        success: false, 
+        message: '源分类和目标分类不能相同' 
+      });
+    }
+    
+    console.log(`[数据库] 合并分类 ${sourceCategory} → ${targetCategory}`);
+    
+    const db = await getDatabase();
+    
+    // 开始事务
+    await db.exec('BEGIN TRANSACTION');
+    
+    try {
+      // 获取要更新的账号数量
+      const countResult = await db.get(`
+        SELECT COUNT(*) AS count 
+        FROM twitter_accounts 
+        WHERE category = ?
+      `, [sourceCategory]);
+      
+      // 更新账号的分类
+      await db.run(`
+        UPDATE twitter_accounts 
+        SET category = ?
+        WHERE category = ?
+      `, [targetCategory, sourceCategory]);
+      
+      // 删除源分类
+      await db.run(`
+        DELETE FROM categories
+        WHERE name = ?
+      `, [sourceCategory]);
+      
+      // 更新目标分类计数
+      await db.run(`
+        UPDATE categories 
+        SET count = (
+          SELECT COUNT(*) 
+          FROM twitter_accounts 
+          WHERE category = ?
+        )
+        WHERE name = ?
+      `, [targetCategory, targetCategory]);
+      
+      // 提交事务
+      await db.exec('COMMIT');
+      
+      res.json({ 
+        success: true, 
+        count: countResult.count,
+        message: `已将分类 "${sourceCategory}" 合并到 "${targetCategory}"` 
+      });
+    } catch (error) {
+      // 回滚事务
+      await db.exec('ROLLBACK');
+      throw error;
+    }
+  } catch (error) {
+    console.error('[数据库] 合并分类失败:', error);
+    res.status(500).json({ success: false, message: `合并分类失败: ${error.message}` });
+  }
+});
+
+// 备份数据库
+app.post('/api/database/backup', async (req, res) => {
+  try {
+    console.log('[数据库] 备份数据库');
+    
+    const db = await getDatabase();
+    
+    // 生成备份文件名（带时间戳）
+    const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+    const backupFilename = `xmark_backup_${timestamp}.db`;
+    const backupPath = path.join(__dirname, '..', 'data', backupFilename);
+    
+    // 备份数据库
+    await db.exec(`VACUUM INTO '${backupPath}'`);
+    
+    res.json({ 
+      success: true, 
+      filename: backupFilename,
+      message: `数据库备份成功: ${backupFilename}` 
+    });
+  } catch (error) {
+    console.error('[数据库] 备份数据库失败:', error);
+    res.status(500).json({ success: false, message: `备份数据库失败: ${error.message}` });
+  }
+});
+
 // 全局错误处理中间件
 app.use((err, req, res, next) => {
   console.error('全局错误处理:', err);
@@ -1682,4 +2061,27 @@ app.listen(PORT, () => {
   console.log(`API测试端点: http://localhost:${PORT}/api/status`);
   console.log(`关注列表API: http://localhost:${PORT}/api/twitter/following?username=dotyyds1234`);
   console.log(`账号列表API: http://localhost:${PORT}/api/accounts`);
+});
+
+// 新增API：获取数据库统计信息
+app.get('/api/stats', async (req, res) => {
+  try {
+    console.log('[数据库] 收到获取统计信息请求');
+    
+    // 从数据库获取统计信息
+    const stats = await getStats();
+    
+    console.log(`[数据库] 成功获取统计信息: 总账号 ${stats.totalAccounts}，已标注 ${stats.annotatedAccounts}，分类 ${stats.totalCategories}`);
+    
+    res.json({
+      success: true,
+      ...stats
+    });
+  } catch (error) {
+    console.error('[数据库] 获取统计信息失败:', error);
+    res.status(500).json({
+      success: false,
+      message: `获取统计信息失败: ${error.message}`
+    });
+  }
 }); 
