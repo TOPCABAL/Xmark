@@ -1,0 +1,109 @@
+{
+  "data": {
+    "user": {
+      "result": {
+        "__typename": "User",
+        "id": "VXNlcjoxODIwMjg0ODEzMjU1MDk0Mjcy",
+        "rest_id": "1820284813255094272",
+        "affiliates_highlighted_label": {},
+        "has_graduated_access": true,
+        "parody_commentary_fan_label": "None",
+        "is_blue_verified": true,
+        "profile_image_shape": "Circle",
+        "legacy": {
+          "following": true,
+          "can_dm": true,
+          "can_media_tag": false,
+          "created_at": "Mon Aug 05 02:27:13 +0000 2024",
+          "default_profile": true,
+          "default_profile_image": false,
+          "description": "#OKX 品牌大使｜真人科普视频《加密姐妹说》｜定期更新《OKX百事通》系列教程｜前产品经理现Marketing ｜KOL合作/用户反馈DM 👉 https://t.co/hZ3mD89Zmq",
+          "entities": {
+            "description": {
+              "urls": [
+                {
+                  "display_url": "t.me/mia_web3",
+                  "expanded_url": "https://t.me/mia_web3",
+                  "url": "https://t.co/hZ3mD89Zmq",
+                  "indices": [
+                    73,
+                    96
+                  ]
+                }
+              ]
+            },
+            "url": {
+              "urls": [
+                {
+                  "display_url": "okx.com",
+                  "expanded_url": "http://okx.com",
+                  "url": "https://t.co/dqXkN5KC0l",
+                  "indices": [
+                    0,
+                    23
+                  ]
+                }
+              ]
+            }
+          },
+          "fast_followers_count": 0,
+          "favourites_count": 12644,
+          "followers_count": 35041,
+          "friends_count": 1116,
+          "has_custom_timelines": false,
+          "is_translator": false,
+          "listed_count": 142,
+          "location": "",
+          "media_count": 409,
+          "name": "Mia米粒儿🩵",
+          "normal_followers_count": 35041,
+          "pinned_tweet_ids_str": [
+            "1895778302939553915"
+          ],
+          "possibly_sensitive": false,
+          "profile_banner_url": "https://pbs.twimg.com/profile_banners/1820284813255094272/1730097212",
+          "profile_image_url_https": "https://pbs.twimg.com/profile_images/1854462074740744192/uEvuQJDJ_normal.jpg",
+          "profile_interstitial_type": "",
+          "screen_name": "mia_okx",
+          "statuses_count": 6272,
+          "translator_type": "none",
+          "url": "https://t.co/dqXkN5KC0l",
+          "verified": false,
+          "want_retweets": true,
+          "withheld_in_countries": []
+        },
+        "tipjar_settings": {},
+        "legacy_extended_profile": {},
+        "is_profile_translatable": false,
+        "has_hidden_subscriptions_on_profile": false,
+        "verification_info": {
+          "is_identity_verified": false,
+          "reason": {
+            "description": {
+              "text": "这个账号已通过认证。了解更多",
+              "entities": [
+                {
+                  "from_index": 10,
+                  "to_index": 14,
+                  "ref": {
+                    "url": "https://help.twitter.com/managing-your-account/about-twitter-verified-accounts",
+                    "url_type": "ExternalUrl"
+                  }
+                }
+              ]
+            },
+            "verified_since_msec": "1730974500215"
+          }
+        },
+        "highlights_info": {
+          "can_highlight_tweets": true,
+          "highlighted_tweets": "26"
+        },
+        "user_seed_tweet_count": 16,
+        "premium_gifting_eligible": false,
+        "business_account": {},
+        "creator_subscriptions_count": 0
+      }
+    }
+  }
+}

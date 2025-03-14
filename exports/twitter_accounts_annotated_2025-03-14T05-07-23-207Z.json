@@ -1,0 +1,45 @@
+{
+  "accounts": [
+    {
+      "username": "mia_okx",
+      "twitter_id": "1820284813255094272",
+      "name": "Mia米粒儿🩵",
+      "description": "#OKX 品牌大使｜真人科普视频《加密姐妹说》｜定期更新《OKX百事通》系列教程｜前产品经理现Marketing ｜KOL合作/用户反馈DM 👉 https://t.co/hZ3mD89Zmq",
+      "avatar_url": "https://pbs.twimg.com/profile_images/1854462074740744192/uEvuQJDJ_normal.jpg",
+      "verified": 0,
+      "category": "DB",
+      "notes": "OKX交易所DB 米粒儿",
+      "followers_count": 35038,
+      "following_count": 1116,
+      "tweet_count": 6271,
+      "imported_from": "onefly_eth",
+      "import_date": "2025-03-14T04:38:37.844Z",
+      "annotated_at": "2025-03-14T05:07:07.707Z",
+      "last_updated": "2025-03-14T05:07:07.707Z"
+    },
+    {
+      "username": "GAI_meme",
+      "twitter_id": "1899727894735421440",
+      "name": "GAI",
+      "description": "The First Launchpad for Gaming AI Agents on @Base. Let AI craft custom games tailored to your expectations.\n\nTestnet now live: https://t.co/MsMYGoentC",
+      "avatar_url": "https://pbs.twimg.com/profile_images/1899784709770739712/I4J8amUN_normal.jpg",
+      "verified": 0,
+      "category": "alpha项目",
+      "notes": "有内盘",
+      "followers_count": 5021,
+      "following_count": 17,
+      "tweet_count": 25,
+      "imported_from": "onefly_eth",
+      "import_date": "2025-03-14T04:38:37.806Z",
+      "annotated_at": "2025-03-14T04:39:07.836Z",
+      "last_updated": "2025-03-14T04:43:50.534Z"
+    }
+  ],
+  "meta": {
+    "exportDate": "2025-03-14T05:07:23.208Z",
+    "count": 2,
+    "filters": {
+      "isAnnotated": true
+    }
+  }
+}

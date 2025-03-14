@@ -18,6 +18,8 @@ import { AccountProps, loadLocalFollowingList, mergeWithAnnotatedAccounts, fetch
 import { getAnnotatedAccounts, saveAnnotatedAccount, AnnotatedAccount } from './services/localStorageService';
 import TwitterSelector from "./components/TwitterSelector";
 import TwitterEmbed from './components/TwitterEmbed';
+// 导入数据库服务
+import { fetchAccountsFromDB, fetchCategoriesFromDB, saveAnnotationToDB, exportDataFromDB, fetchDBStats, AccountFilterOptions } from './services/dbService';
 
 const { TextArea } = Input;
 const { Title } = Typography;
@@ -89,28 +91,46 @@ function App() {
     }).length;
   }, [apiAccounts, annotatedAccounts]);
 
-  // 组件挂载时加载数据
+  // 初始化数据
   useEffect(() => {
     const loadAllData = async () => {
       try {
         setLoading(true);
         
-        // 1. 加载本地已标注数据
-        const localAnnotated = getAnnotatedAccounts();
-        setAnnotatedAccounts(localAnnotated);
+        // 1. 测试服务器连接
+        const serverStatus = await testServerConnection();
+        if (!serverStatus.success) {
+          message.error(`无法连接到服务器: ${serverStatus.message}`);
+          setLoading(false);
+          return;
+        }
         
-        // 2. 加载API数据
-        const apiData = await loadLocalFollowingList();
-        setApiAccounts(apiData);
+        // 2. 从数据库加载账号数据
+        const accountsFromDB = await fetchAccountsFromDB({
+          limit: 1000, // 设置较大的限制，获取更多数据
+          sortBy: 'import_date', 
+          sortOrder: 'DESC'
+        });
         
-        // 3. 合并数据
-        const mergedData = mergeWithAnnotatedAccounts(apiData, localAnnotated);
-        setDisplayAccounts(mergedData);
+        // 设置获取的数据
+        setApiAccounts(accountsFromDB);
+        setDisplayAccounts(accountsFromDB);
         
-        message.success(`成功加载 ${apiData.length} 个关注账号，其中 ${localAnnotated.length} 个已标注`);
+        // 提取已标注的账号
+        const annotatedFromDB = accountsFromDB.filter(account => account.isAnnotated) as unknown as AnnotatedAccount[];
+        setAnnotatedAccounts(annotatedFromDB);
+        
+        // 3. 加载统计数据
+        try {
+          const stats = await fetchDBStats();
+          message.success(`成功加载 ${stats.totalAccounts} 个账号，其中 ${stats.annotatedAccounts} 个已标注，共 ${stats.totalCategories} 个分类`);
+        } catch (error) {
+          console.warn('获取统计数据失败', error);
+          message.success(`成功加载 ${accountsFromDB.length} 个账号`);
+        }
       } catch (error) {
         console.error('加载数据失败:', error);
-        message.error('加载数据失败，请检查数据格式');
+        message.error('加载数据失败，请确保后端服务已启动');
       } finally {
         setLoading(false);
       }
@@ -371,43 +391,58 @@ function App() {
   const currentAccount = displayAccounts[currentIndex];
 
   // 处理标注当前账号
-  const handleAnnotateCurrentAccount = () => {
+  const handleAnnotateCurrentAccount = async () => {
     if (!currentAccount) return;
     
-    // 创建标注数据
-    const annotatedAccount = saveAnnotatedAccount(
-      currentAccount, 
-      notes
-    );
-    
-    // 更新本地状态
-    setAnnotatedAccounts(prevAnnotated => {
-      const index = prevAnnotated.findIndex(a => a.id === annotatedAccount.id);
-      if (index >= 0) {
-        // 更新现有账号
-        const updated = [...prevAnnotated];
-        updated[index] = annotatedAccount;
-        return updated;
-      } else {
-        // 添加新账号
-        return [...prevAnnotated, annotatedAccount];
-      }
-    });
-    
-    // 更新当前显示的账号列表
-    setDisplayAccounts(prevDisplay => {
-      const updated = [...prevDisplay];
-      updated[currentIndex] = {
-        ...updated[currentIndex],
+    try {
+      // 使用数据库API保存标注
+      await saveAnnotationToDB(
+        currentAccount.username,
+        category,
+        notes
+      );
+      
+      // 更新本地状态
+      const annotatedAccount = {
+        ...currentAccount,
         category,
         notes,
         isAnnotated: true,
         annotatedAt: Date.now()
-      };
-      return updated;
-    });
-    
-    message.success(`已标注账号: ${currentAccount.name}`);
+      } as AnnotatedAccount;
+      
+      // 更新已标注账号列表
+      setAnnotatedAccounts(prevAnnotated => {
+        const index = prevAnnotated.findIndex(a => a.id === annotatedAccount.id);
+        if (index >= 0) {
+          // 更新现有账号
+          const updated = [...prevAnnotated];
+          updated[index] = annotatedAccount;
+          return updated;
+        } else {
+          // 添加新账号
+          return [...prevAnnotated, annotatedAccount];
+        }
+      });
+      
+      // 更新当前显示的账号列表
+      setDisplayAccounts(prevDisplay => {
+        const updated = [...prevDisplay];
+        updated[currentIndex] = {
+          ...updated[currentIndex],
+          category,
+          notes,
+          isAnnotated: true,
+          annotatedAt: Date.now()
+        };
+        return updated;
+      });
+      
+      message.success(`已标注账号: ${currentAccount.name}`);
+    } catch (error) {
+      console.error('保存标注失败:', error);
+      message.error(`标注保存失败: ${error instanceof Error ? error.message : '未知错误'}`);
+    }
   };
 
   const handleNext = () => {

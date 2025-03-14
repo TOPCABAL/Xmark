@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
-import { Modal, Radio, Input, Button, Space, message, Typography } from 'antd';
+import React, { useState, useEffect } from 'react';
+import { Modal, Radio, Input, Button, Space, message, Typography, Select, Spin } from 'antd';
 import { DownloadOutlined, FileExcelOutlined, CodeOutlined } from '@ant-design/icons';
 import { AccountProps } from '../services/twitterService';
 import { exportAndDownload } from '../services/exportService';
+import { exportDataFromDB, fetchCategoriesFromDB } from '../services/dbService';
 
 const { Text } = Typography;
+const { Option } = Select;
 
 interface ExportModalProps {
   visible: boolean;
@@ -14,42 +16,62 @@ interface ExportModalProps {
 
 const ExportModal: React.FC<ExportModalProps> = ({ visible, onCancel, accounts }) => {
   const [exportFormat, setExportFormat] = useState<'json' | 'csv'>('json');
-  const [fileName, setFileName] = useState('');
   const [exportScope, setExportScope] = useState<'all' | 'annotated'>('all');
+  const [selectedCategory, setSelectedCategory] = useState<string>('');
+  const [categories, setCategories] = useState<{name: string, count: number}[]>([]);
+  const [loading, setLoading] = useState(false);
+  
+  // 加载分类列表
+  useEffect(() => {
+    if (visible) {
+      loadCategories();
+    }
+  }, [visible]);
+  
+  const loadCategories = async () => {
+    try {
+      setLoading(true);
+      const fetchedCategories = await fetchCategoriesFromDB();
+      setCategories(fetchedCategories);
+    } catch (error) {
+      console.error('获取分类列表失败:', error);
+      message.error('获取分类列表失败');
+    } finally {
+      setLoading(false);
+    }
+  };
   
   // 处理导出操作
-  const handleExport = () => {
-    if (accounts.length === 0) {
-      message.warning('没有可导出的账号数据');
-      return;
-    }
-    
-    // 根据导出范围过滤账号
-    let dataToExport = accounts;
-    if (exportScope === 'annotated') {
-      dataToExport = accounts.filter(account => account.isAnnotated);
-      if (dataToExport.length === 0) {
-        message.warning('没有已标注的账号数据');
-        return;
-      }
-    }
-    
-    // 生成文件名（如果用户没有提供）
-    const defaultFileName = fileName.trim() || 
-      `twitter_${exportScope === 'all' ? 'all' : 'annotated'}_${new Date().toISOString().slice(0, 10)}`;
-    
+  const handleExport = async () => {
     try {
-      // 导出并下载文件
-      exportAndDownload(dataToExport, exportFormat, `${defaultFileName}.${exportFormat}`);
+      setLoading(true);
       
-      // 显示成功提示
-      message.success(`成功导出 ${dataToExport.length} 个账号数据`);
+      // 使用数据库API导出数据
+      const result = await exportDataFromDB(
+        exportFormat, 
+        {
+          category: selectedCategory || undefined,
+          isAnnotated: exportScope === 'annotated' ? true : undefined
+        }
+      );
       
-      // 关闭对话框
-      onCancel();
+      if (result.success) {
+        // 创建下载链接
+        const downloadLink = document.createElement('a');
+        downloadLink.href = `http://localhost:3001${result.downloadUrl}`;
+        downloadLink.target = '_blank';
+        downloadLink.click();
+        
+        message.success(`成功导出 ${result.count} 个账号数据`);
+        onCancel(); // 关闭对话框
+      } else {
+        message.error('导出失败');
+      }
     } catch (error) {
-      console.error("导出失败:", error);
-      message.error('导出失败，请稍后重试');
+      console.error('导出数据失败:', error);
+      message.error(`导出失败: ${error instanceof Error ? error.message : '未知错误'}`);
+    } finally {
+      setLoading(false);
     }
   };
   
@@ -59,78 +81,81 @@ const ExportModal: React.FC<ExportModalProps> = ({ visible, onCancel, accounts }
   
   return (
     <Modal
-      title="导出标注数据"
-      open={visible}
+      title="导出Twitter账号数据"
+      visible={visible}
       onCancel={onCancel}
       footer={null}
       width={500}
     >
-      <div className="space-y-6">
-        {/* 导出统计 */}
-        <div className="bg-gray-50 p-3 rounded">
-          <div>总账号数: <Text strong>{totalAccounts}</Text> 个</div>
-          <div>已标注账号: <Text strong>{annotatedAccounts}</Text> 个</div>
-        </div>
-        
-        {/* 导出范围 */}
-        <div>
-          <div className="mb-1 font-semibold">导出范围:</div>
-          <Radio.Group 
-            value={exportScope} 
-            onChange={e => setExportScope(e.target.value)}
-          >
-            <Space direction="vertical">
-              <Radio value="all">全部账号 ({totalAccounts}个)</Radio>
-              <Radio value="annotated">仅已标注账号 ({annotatedAccounts}个)</Radio>
-            </Space>
-          </Radio.Group>
-        </div>
-        
-        {/* 文件格式 */}
-        <div>
-          <div className="mb-1 font-semibold">文件格式:</div>
+      <Spin spinning={loading}>
+        {/* 导出格式选择 */}
+        <div className="mb-4">
+          <Text strong>导出格式：</Text>
           <Radio.Group 
             value={exportFormat} 
             onChange={e => setExportFormat(e.target.value)}
-            buttonStyle="solid"
+            className="ml-2"
           >
             <Radio.Button value="json">
-              <CodeOutlined /> JSON格式
+              <CodeOutlined /> JSON
             </Radio.Button>
             <Radio.Button value="csv">
-              <FileExcelOutlined /> CSV格式
+              <FileExcelOutlined /> CSV
             </Radio.Button>
           </Radio.Group>
         </div>
         
-        {/* 文件名 */}
-        <div>
-          <div className="mb-1 font-semibold">文件名:</div>
-          <Input
-            placeholder={`twitter_${exportScope === 'all' ? 'all' : 'annotated'}_${new Date().toISOString().slice(0, 10)}`}
-            value={fileName}
-            onChange={e => setFileName(e.target.value)}
-            suffix={`.${exportFormat}`}
-          />
-          <div className="text-xs text-gray-500 mt-1">
-            如不填写，将使用默认文件名
+        {/* 导出范围选择 */}
+        <div className="mb-4">
+          <Text strong>导出范围：</Text>
+          <Radio.Group 
+            value={exportScope} 
+            onChange={e => setExportScope(e.target.value)}
+            className="ml-2"
+          >
+            <Radio.Button value="all">全部账号</Radio.Button>
+            <Radio.Button value="annotated">已标注账号</Radio.Button>
+          </Radio.Group>
+        </div>
+        
+        {/* 分类筛选 */}
+        <div className="mb-4">
+          <Text strong>分类筛选：</Text>
+          <div className="mt-2">
+            <Select
+              placeholder="选择分类筛选(可选)"
+              style={{ width: '100%' }}
+              allowClear
+              value={selectedCategory}
+              onChange={(value) => setSelectedCategory(value)}
+            >
+              {categories.map(category => (
+                <Option key={category.name} value={category.name}>
+                  {category.name} ({category.count})
+                </Option>
+              ))}
+            </Select>
+            <div className="text-xs text-gray-500 mt-1">
+              不选择分类则导出全部数据
+            </div>
           </div>
         </div>
         
-        {/* 操作按钮 */}
-        <div className="flex justify-end pt-2">
-          <Button onClick={onCancel} className="mr-2">
-            取消
-          </Button>
-          <Button 
-            type="primary" 
-            icon={<DownloadOutlined />} 
-            onClick={handleExport}
-          >
-            导出数据
-          </Button>
+        {/* 底部按钮 */}
+        <div className="mt-6 flex justify-end">
+          <Space>
+            <Button onClick={onCancel}>取消</Button>
+            <Button 
+              type="primary" 
+              icon={<DownloadOutlined />} 
+              onClick={handleExport}
+              loading={loading}
+            >
+              导出数据
+            </Button>
+          </Space>
         </div>
-      </div>
+      </Spin>
     </Modal>
   );
 };

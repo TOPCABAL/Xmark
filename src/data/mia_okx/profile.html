@@ -1,0 +1,743 @@
+
+  <!DOCTYPE html>
+  <html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mia米粒儿🩵 (@mia_okx) | Twitter</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+      /* 基本样式 */
+      :root {
+        --background: #f7f9fa;
+        --card-bg: #ffffff;
+        --text-color: #0f1419;
+        --secondary-text: #536471;
+        --border-color: #eff3f4;
+        --blue: #1DA1F2;
+        --blue-hover: #1a91da;
+      }
+      
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --background: #15202b;
+          --card-bg: #192734;
+          --text-color: #ffffff;
+          --secondary-text: #8899a6;
+          --border-color: #38444d;
+        }
+      }
+      
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        background-color: var(--background);
+        color: var(--text-color);
+        line-height: 1.3;
+      }
+      
+      a {
+        color: var(--blue);
+        text-decoration: none;
+      }
+      
+      a:hover {
+        text-decoration: underline;
+      }
+      
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 0;
+      }
+      
+      .profile-card {
+        background-color: var(--card-bg);
+        border-radius: 16px;
+        overflow: hidden;
+        margin-bottom: 16px;
+        border: 1px solid var(--border-color);
+      }
+      
+      .profile-header {
+        position: relative;
+      }
+      
+      .profile-banner {
+        width: 100%;
+        height: 150px;
+        background-color: var(--blue);
+        background-size: cover;
+        background-position: center;
+      }
+      
+      .profile-avatar-container {
+        position: absolute;
+        bottom: -50px;
+        left: 16px;
+      }
+      
+      .profile-avatar {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        border: 4px solid var(--card-bg);
+        object-fit: cover;
+      }
+      
+      .profile-info {
+        padding: 60px 16px 16px;
+      }
+      
+      .profile-name-container {
+        display: flex;
+        align-items: center;
+      }
+      
+      .profile-name {
+        font-size: 20px;
+        font-weight: bold;
+        margin-right: 4px;
+      }
+      
+      /* 强化蓝V标志的样式 - 使用简单明了的样式 */
+      .verified-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 18px;
+        height: 18px;
+        background-color: #1DA1F2;
+        border-radius: 50%;
+        margin-left: 4px;
+        color: white;
+        font-size: 12px;
+        font-weight: bold;
+        text-align: center;
+        line-height: 1;
+      }
+      
+      .profile-username {
+        font-size: 15px;
+        color: var(--secondary-text);
+        margin-bottom: 12px;
+      }
+      
+      /* 其余样式保持不变 */
+      .profile-bio {
+        margin-bottom: 15px;
+        white-space: pre-line;
+      }
+      
+      .profile-meta {
+        display: flex;
+        flex-wrap: wrap;
+        color: var(--secondary-text);
+        margin-bottom: 15px;
+        font-size: 14px;
+      }
+      
+      .profile-meta-item {
+        display: flex;
+        align-items: center;
+        margin-right: 15px;
+        margin-bottom: 5px;
+      }
+      
+      .profile-meta-item i {
+        margin-right: 5px;
+        width: 16px;
+        text-align: center;
+      }
+      
+      .profile-stats {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 15px;
+      }
+      
+      .profile-stat {
+        margin-right: 20px;
+        margin-bottom: 10px;
+      }
+      
+      .profile-stat-value {
+        font-weight: 700;
+      }
+      
+      .profile-stat-label {
+        color: var(--secondary-text);
+        font-size: 14px;
+      }
+      
+      /* 推文部分 */
+      .tweets-title {
+        font-size: 20px;
+        font-weight: 700;
+        margin: 20px 0 15px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--border-color);
+      }
+      
+      .tweet {
+        background-color: var(--card-bg);
+        border-radius: 16px;
+        padding: 12px;
+        margin-bottom: 12px;
+        border: 1px solid var(--border-color);
+      }
+      
+      .pinned-tweet {
+        border-left: 3px solid var(--blue);
+      }
+      
+      .pinned-label {
+        color: var(--secondary-text);
+        font-size: 13px;
+        margin-bottom: 8px;
+      }
+      
+      .tweet-header {
+        display: flex;
+        margin-bottom: 10px;
+      }
+      
+      .tweet-avatar {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+      
+      .tweet-user-info {
+        flex: 1;
+      }
+      
+      .tweet-name {
+        font-weight: bold;
+      }
+      
+      .tweet-username {
+        color: var(--secondary-text);
+        font-size: 14px;
+      }
+      
+      .tweet-date {
+        color: var(--secondary-text);
+        font-size: 14px;
+      }
+      
+      .tweet-content {
+        margin-bottom: 10px;
+        white-space: pre-line;
+        word-wrap: break-word;
+      }
+      
+      .tweet-media {
+        margin: 10px 0;
+        border-radius: 16px;
+        overflow: hidden;
+      }
+      
+      .tweet-media img, .tweet-media video {
+        max-width: 100%;
+        border-radius: 16px;
+        cursor: pointer;
+      }
+      
+      .tweet-stats {
+        display: flex;
+        color: var(--secondary-text);
+        margin-top: 10px;
+      }
+      
+      .tweet-stats span {
+        display: flex;
+        align-items: center;
+        margin-right: 20px;
+        font-size: 14px;
+      }
+      
+      .tweet-stats i {
+        margin-right: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="profile-card">
+        <div class="profile-header">
+          <div class="profile-banner" style="background-image: url('https://pbs.twimg.com/profile_banners/1820284813255094272/1730097212')"></div>
+          <div class="profile-avatar-container">
+            <img src="https://pbs.twimg.com/profile_images/1854462074740744192/uEvuQJDJ_normal.jpg" class="profile-avatar" alt="Mia米粒儿🩵">
+          </div>
+        </div>
+        <div class="profile-info">
+          <div class="profile-name-container">
+            <h1 class="profile-name">Mia米粒儿🩵</h1>
+            <span class="verified-badge" title="已验证账号">✓</span>
+          </div>
+          <div class="profile-username">@mia_okx</div>
+          <div class="profile-bio">#OKX 品牌大使｜真人科普视频《加密姐妹说》｜定期更新《OKX百事通》系列教程｜前产品经理现Marketing ｜KOL合作/用户反馈DM 👉 https://t.co/hZ3mD89Zmq</div>
+          <div class="profile-meta">
+            <div class="profile-meta-item"><i class="fas fa-link"></i><a href="http://okx.com" target="_blank" rel="noopener noreferrer">http://okx.com</a></div><div class="profile-meta-item"><i class="fas fa-calendar-alt"></i>2024年8月加入</div>
+          </div>
+          <div class="profile-stats">
+          <div class="profile-stat">
+            <span class="profile-stat-value">1116</span>
+            <span class="profile-stat-label"> 正在关注</span>
+          </div>
+          <div class="profile-stat">
+            <span class="profile-stat-value">35041</span>
+            <span class="profile-stat-label"> 关注者</span>
+          </div>
+          <div class="profile-stat">
+            <span class="profile-stat-value">6272</span>
+            <span class="profile-stat-label"> 推文</span>
+          </div>
+          <div class="profile-stat">
+            <span class="profile-stat-value">12644</span>
+            <span class="profile-stat-label"> 喜欢</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <h2 class="tweets-title">推文 (21)</h2>
+        <div class="tweet pinned-tweet">
+          <div class="pinned-label"><i class="fas fa-thumbtack"></i> 置顶推文</div>
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1854462074740744192/uEvuQJDJ_normal.jpg" class="tweet-avatar" alt="Mia米粒儿🩵" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">Mia米粒儿🩵</span>
+              <span class="tweet-username">@mia_okx</span>
+              <span class="tweet-date">2025/3/1 18:09:03</span>
+            </div>
+          </div>
+          <div class="tweet-content">“Not your key, not your money. Self custody is the future.”<br><br>自托管不是无意义的“舍近求远”，而是用技术夺回控制权——你的币，你的规则，你的未来。<br><br>本期《 <a href="https://twitter.com/hashtag/OKX" target="_blank" rel="noopener noreferrer">#OKX</a>  加密姐妹说》用真实案例，解析 OKX Web3钱包如何用百万次风险拦截，成为自托管界「六边形战士」？ https://t.co/NV1PcGZNAy</div>
+          <div class="tweet-media"><video controls><source src="https://video.twimg.com/amplify_video/1895778115122839552/pl/qqMoAd8NL1VM4EUf.m3u8?tag=16" type="video/mp4"></video></div>
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 32</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 17</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 91</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 3</span>
+          </div>
+        </div>
+      
+        <div class="tweet ">
+          
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1854462074740744192/uEvuQJDJ_normal.jpg" class="tweet-avatar" alt="Mia米粒儿🩵" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">Mia米粒儿🩵</span>
+              <span class="tweet-username">@mia_okx</span>
+              <span class="tweet-date">2025/3/13 23:09:23</span>
+            </div>
+          </div>
+          <div class="tweet-content">我不知道币圈KOL收入，因为能力不同赚的相差几十倍<br><br>我只知道我一开始在币圈的本金都从进圈就开始做账号，一点一点pow出来的<br><br>所以不管我在web3赚还是亏，我都不骄不躁，因为我的钱都在银行卡里<br><br>做KOL和撸毛都是正ev的事情<br>而做KOL除了能0成本赚钱，还因为要输出所以——</div>
+          
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 73</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 4</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 147</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 2</span>
+          </div>
+        </div>
+      
+        <div class="tweet ">
+          
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1854462074740744192/uEvuQJDJ_normal.jpg" class="tweet-avatar" alt="Mia米粒儿🩵" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">Mia米粒儿🩵</span>
+              <span class="tweet-username">@mia_okx</span>
+              <span class="tweet-date">2025/3/13 21:41:16</span>
+            </div>
+          </div>
+          <div class="tweet-content">滑点、mev、优先费等等的概念老生常谈<br>但在真实案例中大家的理解又不尽相同<br><br>波动大让degen拥有更多翻身的机会，但同时稍不留神也会造成不必要的损失——比如被盗、被夹<br><br>这篇文章4条简单要点带大家一起轻松防夹<br>学会至少省100sol！</div>
+          
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 13</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 3</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 24</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 0</span>
+          </div>
+        </div>
+      
+        <div class="tweet ">
+          
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1854462074740744192/uEvuQJDJ_normal.jpg" class="tweet-avatar" alt="Mia米粒儿🩵" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">Mia米粒儿🩵</span>
+              <span class="tweet-username">@mia_okx</span>
+              <span class="tweet-date">2025/3/13 19:59:36</span>
+            </div>
+          </div>
+          <div class="tweet-content">RT <a href="https://twitter.com/okxchinese" target="_blank" rel="noopener noreferrer">@okxchinese</a>: <a href="https://x.com/i/spaces/1vAGRDjjqpgxl" target="_blank" rel="noopener noreferrer">x.com/i/spaces/1vAGR…</a></div>
+          
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 0</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 7</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 0</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 0</span>
+          </div>
+        </div>
+      
+        <div class="tweet ">
+          
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1854462074740744192/uEvuQJDJ_normal.jpg" class="tweet-avatar" alt="Mia米粒儿🩵" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">Mia米粒儿🩵</span>
+              <span class="tweet-username">@mia_okx</span>
+              <span class="tweet-date">2025/3/13 17:07:48</span>
+            </div>
+          </div>
+          <div class="tweet-content">在OKX，安全不仅是口号，更是实实在在的保障</div>
+          
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 14</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 3</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 27</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 0</span>
+          </div>
+        </div>
+      
+        <div class="tweet ">
+          
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1854462074740744192/uEvuQJDJ_normal.jpg" class="tweet-avatar" alt="Mia米粒儿🩵" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">Mia米粒儿🩵</span>
+              <span class="tweet-username">@mia_okx</span>
+              <span class="tweet-date">2025/3/13 15:11:19</span>
+            </div>
+          </div>
+          <div class="tweet-content">走正道 行大义 方为商道之根基 <a href="https://twitter.com/hashtag/OKX" target="_blank" rel="noopener noreferrer">#OKX</a> https://t.co/rzFludGuzs</div>
+          <div class="tweet-media"><img src="https://pbs.twimg.com/media/Gl5ys_DbYAEOeCm.jpg" alt="推文图片" loading="lazy"></div>
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 125</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 8</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 260</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 2</span>
+          </div>
+        </div>
+      
+        <div class="tweet ">
+          
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1854462074740744192/uEvuQJDJ_normal.jpg" class="tweet-avatar" alt="Mia米粒儿🩵" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">Mia米粒儿🩵</span>
+              <span class="tweet-username">@mia_okx</span>
+              <span class="tweet-date">2025/3/12 20:49:58</span>
+            </div>
+          </div>
+          <div class="tweet-content">RT <a href="https://twitter.com/okxchinese" target="_blank" rel="noopener noreferrer">@okxchinese</a>: <a href="https://twitter.com/hashtag/OKX" target="_blank" rel="noopener noreferrer">#OKX</a> 钱包部分资产在前端显示不全，目前工程师团队已在紧急排查，并将尽快修复。请放心，您的链上资产安全不会受到任何影响。<br><br>对于给您带来的不便，我们深感抱歉🙇‍♀️感谢您的理解与支持！如有任何疑问，可随时联系官方客服。 https://t.co…</div>
+          
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 0</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 12</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 0</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 0</span>
+          </div>
+        </div>
+      
+        <div class="tweet ">
+          
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1854462074740744192/uEvuQJDJ_normal.jpg" class="tweet-avatar" alt="Mia米粒儿🩵" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">Mia米粒儿🩵</span>
+              <span class="tweet-username">@mia_okx</span>
+              <span class="tweet-date">2025/3/12 19:23:35</span>
+            </div>
+          </div>
+          <div class="tweet-content">罐姐这个梗从 <a href="https://twitter.com/cryptocishanjia" target="_blank" rel="noopener noreferrer">@cryptocishanjia</a> 开始说我头像照片像个背着煤气罐的农民工开始叫<br><br>小白白紧接着乐此不疲的给我做视频做图片梗图<br><br>到现在还经常有人加我微信的时候被我头像吓一跳🤣 https://t.co/b8Tp8X0y9m</div>
+          <div class="tweet-media"><img src="https://pbs.twimg.com/media/Gl1i2wsW4AA2NKr.jpg" alt="推文图片" loading="lazy"></div>
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 71</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 3</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 76</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 0</span>
+          </div>
+        </div>
+      
+        <div class="tweet ">
+          
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1854462074740744192/uEvuQJDJ_normal.jpg" class="tweet-avatar" alt="Mia米粒儿🩵" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">Mia米粒儿🩵</span>
+              <span class="tweet-username">@mia_okx</span>
+              <span class="tweet-date">2025/3/12 15:42:51</span>
+            </div>
+          </div>
+          <div class="tweet-content">明晚八点，来听听投资了上百个vc币的rui神，是如何破防又是如何财富自由的🤣</div>
+          
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 10</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 2</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 17</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 0</span>
+          </div>
+        </div>
+      
+        <div class="tweet ">
+          
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1854462074740744192/uEvuQJDJ_normal.jpg" class="tweet-avatar" alt="Mia米粒儿🩵" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">Mia米粒儿🩵</span>
+              <span class="tweet-username">@mia_okx</span>
+              <span class="tweet-date">2025/3/12 00:01:24</span>
+            </div>
+          </div>
+          <div class="tweet-content">RT <a href="https://twitter.com/star_okx" target="_blank" rel="noopener noreferrer">@star_okx</a>: OKX Web3 wallet is a pure self custody software, as everybody knows. OKX DEX is a DEX aggregator and provides people with the…</div>
+          
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 0</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 59</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 0</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 0</span>
+          </div>
+        </div>
+      
+        <div class="tweet ">
+          
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1854462074740744192/uEvuQJDJ_normal.jpg" class="tweet-avatar" alt="Mia米粒儿🩵" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">Mia米粒儿🩵</span>
+              <span class="tweet-username">@mia_okx</span>
+              <span class="tweet-date">2025/3/11 17:53:15</span>
+            </div>
+          </div>
+          <div class="tweet-content">这辈子的人生照片都是在OKX拍的 https://t.co/D51icIXKeh</div>
+          <div class="tweet-media"><video controls><source src="https://video.twimg.com/amplify_video/1899398110104649728/pl/q5sdHNnnKbrLEs6f.m3u8?tag=16" type="video/mp4"></video></div>
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 121</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 13</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 260</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 0</span>
+          </div>
+        </div>
+      
+        <div class="tweet ">
+          
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1854462074740744192/uEvuQJDJ_normal.jpg" class="tweet-avatar" alt="Mia米粒儿🩵" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">Mia米粒儿🩵</span>
+              <span class="tweet-username">@mia_okx</span>
+              <span class="tweet-date">2025/3/11 17:05:06</span>
+            </div>
+          </div>
+          <div class="tweet-content">来啊 送劳力士</div>
+          
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 13</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 3</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 27</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 0</span>
+          </div>
+        </div>
+      
+        <div class="tweet ">
+          
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1854462074740744192/uEvuQJDJ_normal.jpg" class="tweet-avatar" alt="Mia米粒儿🩵" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">Mia米粒儿🩵</span>
+              <span class="tweet-username">@mia_okx</span>
+              <span class="tweet-date">2025/3/11 13:20:10</span>
+            </div>
+          </div>
+          <div class="tweet-content">最近这一阵子一刷推特全是女大、大佬还有向上社交这些主题<br><br>想起自己还是女大的时候、以及后来刚进web3的时候也经历过对大佬、权威说的话我全信的盲目崇拜阶段<br><br>但当时我知道自己几斤几两，没办法给人家提供同等的价值，就先和自己同龄人一起玩和学习</div>
+          
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 59</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 6</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 182</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 3</span>
+          </div>
+        </div>
+      
+        <div class="tweet ">
+          
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1854462074740744192/uEvuQJDJ_normal.jpg" class="tweet-avatar" alt="Mia米粒儿🩵" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">Mia米粒儿🩵</span>
+              <span class="tweet-username">@mia_okx</span>
+              <span class="tweet-date">2025/3/11 11:52:42</span>
+            </div>
+          </div>
+          <div class="tweet-content">okx dex池汉三人组又新增一枚 Norman🤣<br><br>狗庄的操作被你们研究的透透的<br>真不知道下次行情来了你们会赚成什么样！</div>
+          
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 7</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 1</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 23</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 0</span>
+          </div>
+        </div>
+      
+        <div class="tweet ">
+          
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1854462074740744192/uEvuQJDJ_normal.jpg" class="tweet-avatar" alt="Mia米粒儿🩵" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">Mia米粒儿🩵</span>
+              <span class="tweet-username">@mia_okx</span>
+              <span class="tweet-date">2025/3/11 09:46:27</span>
+            </div>
+          </div>
+          <div class="tweet-content">哭着醒来的一天<br>看到九姐做的咖啡和早餐<br>日子也不算那么糟糕了🥹 https://t.co/eut8xWqJt4</div>
+          <div class="tweet-media"><img src="https://pbs.twimg.com/media/GluVLCBasAAUfDi.jpg" alt="推文图片" loading="lazy"></div>
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 24</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 5</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 85</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 1</span>
+          </div>
+        </div>
+      
+        <div class="tweet ">
+          
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1854462074740744192/uEvuQJDJ_normal.jpg" class="tweet-avatar" alt="Mia米粒儿🩵" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">Mia米粒儿🩵</span>
+              <span class="tweet-username">@mia_okx</span>
+              <span class="tweet-date">2025/3/10 22:41:21</span>
+            </div>
+          </div>
+          <div class="tweet-content">不是<br>行情不好的时候 p小将们学习的东西都达到这种程度了吗</div>
+          
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 6</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 1</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 17</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 0</span>
+          </div>
+        </div>
+      
+        <div class="tweet ">
+          
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1854462074740744192/uEvuQJDJ_normal.jpg" class="tweet-avatar" alt="Mia米粒儿🩵" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">Mia米粒儿🩵</span>
+              <span class="tweet-username">@mia_okx</span>
+              <span class="tweet-date">2025/3/10 20:37:18</span>
+            </div>
+          </div>
+          <div class="tweet-content">RT <a href="https://twitter.com/superdope_BOBO" target="_blank" rel="noopener noreferrer">@superdope_BOBO</a>: Web3估值还能这么玩？SOTP加总法带你上meme车<br><br>之前和大家在连麦打狗PVP时，常常会提到一种买入逻辑：… https://t.co/mKDBUXtZE3</div>
+          <div class="tweet-media"><img src="https://pbs.twimg.com/media/GlrK9bbbwAAc1Pq.png" alt="推文图片" loading="lazy"><img src="https://pbs.twimg.com/media/GlrK9baacAARW8D.png" alt="推文图片" loading="lazy"><img src="https://pbs.twimg.com/media/GlrKqq4bUAAWFtO.jpg" alt="推文图片" loading="lazy"><img src="https://pbs.twimg.com/media/GlrK6BvaUAAXz6M.png" alt="推文图片" loading="lazy"></div>
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 0</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 8</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 0</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 0</span>
+          </div>
+        </div>
+      
+        <div class="tweet ">
+          
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1854462074740744192/uEvuQJDJ_normal.jpg" class="tweet-avatar" alt="Mia米粒儿🩵" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">Mia米粒儿🩵</span>
+              <span class="tweet-username">@mia_okx</span>
+              <span class="tweet-date">2025/3/10 17:09:39</span>
+            </div>
+          </div>
+          <div class="tweet-content">太有节目了<br>春晚没你我不看🤣</div>
+          
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 14</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 1</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 21</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 0</span>
+          </div>
+        </div>
+      
+        <div class="tweet ">
+          
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1854462074740744192/uEvuQJDJ_normal.jpg" class="tweet-avatar" alt="Mia米粒儿🩵" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">Mia米粒儿🩵</span>
+              <span class="tweet-username">@mia_okx</span>
+              <span class="tweet-date">2025/3/10 12:55:18</span>
+            </div>
+          </div>
+          <div class="tweet-content">这行情到底是谁在赚钱啊😭😭<br>哦原来是熬鹰呀～<br>那我先跟为敬了🥰</div>
+          
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 12</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 1</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 31</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 0</span>
+          </div>
+        </div>
+      
+        <div class="tweet ">
+          
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1854462074740744192/uEvuQJDJ_normal.jpg" class="tweet-avatar" alt="Mia米粒儿🩵" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">Mia米粒儿🩵</span>
+              <span class="tweet-username">@mia_okx</span>
+              <span class="tweet-date">2025/3/10 11:45:08</span>
+            </div>
+          </div>
+          <div class="tweet-content">跟着子布老师学习链上分析<br>当pro版本p小将，跑在市场浇给前～<br><a href="https://twitter.com/0x_KevinZ" target="_blank" rel="noopener noreferrer">@0x_KevinZ</a> <a href="https://twitter.com/0xCryptoWing" target="_blank" rel="noopener noreferrer">@0xCryptoWing</a>  <a href="https://twitter.com/0x_zibu" target="_blank" rel="noopener noreferrer">@0x_zibu</a> 被三大池汉认证·看资金池最好用的OKX DEX<br><br>你值得拥有💙</div>
+          
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 9</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 3</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 29</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 0</span>
+          </div>
+        </div>
+      
+        <div class="tweet ">
+          
+          <div class="tweet-header">
+            <img src="https://pbs.twimg.com/profile_images/1854462074740744192/uEvuQJDJ_normal.jpg" class="tweet-avatar" alt="Mia米粒儿🩵" />
+            <div class="tweet-user-info">
+              <span class="tweet-name">Mia米粒儿🩵</span>
+              <span class="tweet-username">@mia_okx</span>
+              <span class="tweet-date">2025/3/9 22:34:38</span>
+            </div>
+          </div>
+          <div class="tweet-content">RT <a href="https://twitter.com/0xathenalee" target="_blank" rel="noopener noreferrer">@0xathenalee</a>: 【链上安全系列】 归零死法第一课<br><br>最近了解了下日本的crypto landscape，今天下午还去浸泡了解了下本地社群，发现有很多新人对这个行业还不太了解。<br><br>想赚钱要先知道如何亏钱，避开这些坑已经提高了50%的胜率。虽然链上是拥抱去中心化，…</div>
+          
+          <div class="tweet-stats">
+            <span class="tweet-stat"><i class="far fa-comment"></i> 0</span>
+            <span class="tweet-stat"><i class="fas fa-retweet"></i> 1</span>
+            <span class="tweet-stat"><i class="far fa-heart"></i> 0</span>
+            <span class="tweet-stat"><i class="far fa-bookmark"></i> 0</span>
+          </div>
+        </div>
+      
+    
+    <script>
+      // 图片点击放大查看
+      document.querySelectorAll('.tweet-media img').forEach(img => {
+        img.addEventListener('click', () => {
+          window.open(img.src, '_blank');
+        });
+      });
+    </script>
+  </body>
+  </html>
+  
