@@ -1,0 +1,28 @@
+{
+  "accounts": [
+    {
+      "username": "GAI_meme",
+      "twitter_id": "1899727894735421440",
+      "name": "GAI",
+      "description": "The First Launchpad for Gaming AI Agents on @Base. Let AI craft custom games tailored to your expectations.\n\nTestnet now live: https://t.co/MsMYGoentC",
+      "avatar_url": "https://pbs.twimg.com/profile_images/1899784709770739712/I4J8amUN_normal.jpg",
+      "verified": 0,
+      "category": "alpha项目",
+      "notes": "有内盘",
+      "followers_count": 5021,
+      "following_count": 17,
+      "tweet_count": 25,
+      "imported_from": "onefly_eth",
+      "import_date": "2025-03-14T04:38:37.806Z",
+      "annotated_at": "2025-03-14T04:39:07.836Z",
+      "last_updated": "2025-03-14T04:43:50.534Z"
+    }
+  ],
+  "meta": {
+    "exportDate": "2025-03-14T04:54:41.859Z",
+    "count": 1,
+    "filters": {
+      "isAnnotated": true
+    }
+  }
+}

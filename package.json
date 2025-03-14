@@ -13,14 +13,22 @@
     "install-api-deps": "npm install express cors"
   },
   "dependencies": {
+    "@chakra-ui/icons": "^2.2.4",
+    "@chakra-ui/react": "^3.13.0",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
     "antd": "^5.24.3",
     "axios": "^1.8.2",
+    "better-sqlite3": "^11.9.0",
     "cors": "^2.8.5",
     "express": "^4.21.2",
+    "framer-motion": "^12.5.0",
     "https-proxy-agent": "^7.0.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "socks-proxy-agent": "^8.0.5",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^5.1.7",
     "uuid": "^11.1.0"
   },
   "devDependencies": {

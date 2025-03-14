@@ -7,6 +7,11 @@ import { fileURLToPath } from 'url';
 import { promises as fsPromises } from 'fs';
 import cors from 'cors';
 
+// 导入数据库服务
+import { getDatabase, initDatabase } from '../sql/database.js';
+import { saveAccount, bulkSaveAccounts, getAccounts, saveAnnotation, getCategories, getStats } from '../sql/accountService.js';
+import { exportToCsv, exportToJson } from '../sql/exportService.js';
+
 // 调试信息
 console.log('--------------------------------');
 console.log('Twitter API服务器启动中...');
@@ -37,12 +42,23 @@ app.use(cors({
 // 中间件
 app.use(express.json());
 
+// 静态文件服务
+app.use(express.static(path.join(__dirname, '..'))); // 提供根目录下的静态文件
+app.use('/exports', express.static(path.join(__dirname, '..', 'exports'))); // 提供导出文件
+
 // 确保数据目录存在
 const dataDir = path.join(__dirname, 'data');
 if (!fs.existsSync(dataDir)) {
   fs.mkdirSync(dataDir, { recursive: true });
   console.log(`已创建数据目录: ${dataDir}`);
 }
+
+// 在服务器启动时初始化数据库
+initDatabase().then(() => {
+  console.log('数据库初始化成功');
+}).catch(err => {
+  console.error('数据库初始化失败:', err);
+});
 
 // 迁移现有的JSON文件到新的目录结构
 async function migrateExistingFiles() {
@@ -1169,6 +1185,18 @@ app.get('/api/twitter/following', async (req, res) => {
             followingData.fileAge = fileAgeInMinutes;
             followingData.fileModifiedTime = fileModifiedTime.toISOString();
             
+            // 将关注列表保存到数据库
+            try {
+              console.log(`[数据库] 开始保存关注列表到数据库`);
+              const saveResult = await bulkSaveAccounts(followingData.accounts, username);
+              console.log(`[数据库] 保存结果: 新增 ${saveResult.inserted}, 更新 ${saveResult.updated}, 失败 ${saveResult.failed}`);
+              
+              // 添加数据库保存结果
+              followingData.databaseSaveResult = saveResult;
+            } catch (dbError) {
+              console.error(`[数据库] 保存到数据库失败:`, dbError);
+            }
+            
             return res.json(followingData);
           } else {
             console.log(`[本地文件] 解析的JSON数据缺少accounts数组，可能格式不正确`);
@@ -1204,7 +1232,7 @@ app.get('/api/twitter/following', async (req, res) => {
     const scriptCommand = `node "${scriptPath}" "${username}" --pages=${pages}`;
     console.log(`[脚本执行] 完整命令: ${scriptCommand}`);
     
-    exec(scriptCommand, (error, stdout, stderr) => {
+    exec(scriptCommand, async (error, stdout, stderr) => {
       console.log(`[脚本执行后] 脚本执行完成`);
       
       if (error) {
@@ -1256,6 +1284,18 @@ app.get('/api/twitter/following', async (req, res) => {
               followingData.fromLocalFile = false;
               followingData.generatedAt = new Date().toISOString();
               followingData.scriptOutput = stdout;
+              
+              // 将关注列表保存到数据库
+              try {
+                console.log(`[数据库] 开始保存关注列表到数据库`);
+                const saveResult = await bulkSaveAccounts(followingData.accounts, username);
+                console.log(`[数据库] 保存结果: 新增 ${saveResult.inserted}, 更新 ${saveResult.updated}, 失败 ${saveResult.failed}`);
+                
+                // 添加数据库保存结果
+                followingData.databaseSaveResult = saveResult;
+              } catch (dbError) {
+                console.error(`[数据库] 保存到数据库失败:`, dbError);
+              }
               
               return res.json(followingData);
             } else {
@@ -1476,7 +1516,144 @@ app.get('/api/test-script', async (req, res) => {
   }
 });
 
-// 全局错误处理中间件（必须放在所有路由之后）
+// 新增API：获取账号列表（从数据库）
+app.get('/api/accounts', async (req, res) => {
+  try {
+    console.log('[数据库] 收到获取账号列表请求');
+    console.log('[数据库] 请求参数:', req.query);
+    
+    const options = {
+      limit: parseInt(req.query.limit) || 100,
+      offset: parseInt(req.query.offset) || 0,
+      category: req.query.category,
+      isAnnotated: req.query.isAnnotated === 'true' ? true : 
+                  req.query.isAnnotated === 'false' ? false : null,
+      searchTerm: req.query.search,
+      sortBy: req.query.sortBy || 'import_date',
+      sortOrder: req.query.sortOrder || 'DESC'
+    };
+    
+    // 从数据库获取账号列表
+    const accounts = await getAccounts(options);
+    
+    // 获取总数和统计信息
+    const stats = await getStats();
+    
+    console.log(`[数据库] 成功获取 ${accounts.length} 个账号`);
+    
+    res.json({
+      success: true,
+      accounts,
+      total: stats.totalAccounts,
+      annotated: stats.annotatedAccounts,
+      stats
+    });
+  } catch (error) {
+    console.error('[数据库] 获取账号列表失败:', error);
+    res.status(500).json({
+      success: false,
+      message: `获取账号列表失败: ${error.message}`
+    });
+  }
+});
+
+// 新增API：保存账号标注
+app.post('/api/annotation', async (req, res) => {
+  try {
+    console.log('[数据库] 收到保存标注请求');
+    console.log('[数据库] 请求参数:', req.body);
+    
+    const { username, category, notes } = req.body;
+    
+    if (!username) {
+      return res.status(400).json({
+        success: false,
+        message: '缺少必需的username参数'
+      });
+    }
+    
+    // 保存标注到数据库
+    const result = await saveAnnotation(username, category, notes);
+    
+    console.log(`[数据库] 成功保存标注: ${JSON.stringify(result)}`);
+    
+    res.json({
+      success: true,
+      ...result
+    });
+  } catch (error) {
+    console.error('[数据库] 保存标注失败:', error);
+    res.status(500).json({
+      success: false,
+      message: `保存标注失败: ${error.message}`
+    });
+  }
+});
+
+// 新增API：获取分类列表
+app.get('/api/categories', async (req, res) => {
+  try {
+    console.log('[数据库] 收到获取分类列表请求');
+    
+    // 从数据库获取分类列表
+    const categories = await getCategories();
+    
+    console.log(`[数据库] 成功获取 ${categories.length} 个分类`);
+    
+    res.json({
+      success: true,
+      categories
+    });
+  } catch (error) {
+    console.error('[数据库] 获取分类列表失败:', error);
+    res.status(500).json({
+      success: false,
+      message: `获取分类列表失败: ${error.message}`
+    });
+  }
+});
+
+// 新增API：导出数据
+app.get('/api/export', async (req, res) => {
+  try {
+    console.log('[数据库] 收到导出数据请求');
+    console.log('[数据库] 请求参数:', req.query);
+    
+    const { format, category, isAnnotated } = req.query;
+    
+    const options = {
+      category,
+      isAnnotated: isAnnotated === 'true' ? true : 
+                  isAnnotated === 'false' ? false : null
+    };
+    
+    let result;
+    
+    // 根据格式选择导出方法
+    if (format === 'csv') {
+      result = await exportToCsv(options);
+    } else {
+      result = await exportToJson(options);
+    }
+    
+    console.log(`[数据库] 成功导出 ${result.count} 个账号到 ${result.filename}`);
+    
+    // 返回文件下载URL
+    res.json({
+      success: true,
+      ...result,
+      downloadUrl: `/exports/${result.filename}`
+    });
+  } catch (error) {
+    console.error('[数据库] 导出数据失败:', error);
+    res.status(500).json({
+      success: false,
+      message: `导出数据失败: ${error.message}`
+    });
+  }
+});
+
+// 全局错误处理中间件
 app.use((err, req, res, next) => {
   console.error('全局错误处理:', err);
   
@@ -1490,7 +1667,7 @@ app.use((err, req, res, next) => {
   });
 });
 
-// 404处理 - 将所有未匹配的路由转为JSON响应而不是HTML
+// 404处理
 app.use((req, res) => {
   res.setHeader('Content-Type', 'application/json');
   res.status(404).json({
@@ -1503,5 +1680,6 @@ app.use((req, res) => {
 app.listen(PORT, () => {
   console.log(`Twitter API服务器已启动: http://localhost:${PORT}`);
   console.log(`API测试端点: http://localhost:${PORT}/api/status`);
-  console.log(`用户资料API: http://localhost:${PORT}/api/twitter-profile/dotyyds1234`);
+  console.log(`关注列表API: http://localhost:${PORT}/api/twitter/following?username=dotyyds1234`);
+  console.log(`账号列表API: http://localhost:${PORT}/api/accounts`);
 }); 
