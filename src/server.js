@@ -2032,6 +2032,29 @@ app.post('/api/database/backup', async (req, res) => {
   }
 });
 
+// 新增API：获取数据库统计信息
+app.get('/api/stats', async (req, res) => {
+  try {
+    console.log('[数据库] 收到获取统计信息请求');
+    
+    // 从数据库获取统计信息
+    const stats = await getStats();
+    
+    console.log(`[数据库] 成功获取统计信息: 总账号 ${stats.totalAccounts}，已标注 ${stats.annotatedAccounts}，分类 ${stats.totalCategories}`);
+    
+    res.json({
+      success: true,
+      ...stats
+    });
+  } catch (error) {
+    console.error('[数据库] 获取统计信息失败:', error);
+    res.status(500).json({
+      success: false,
+      message: `获取统计信息失败: ${error.message}`
+    });
+  }
+});
+
 // 全局错误处理中间件
 app.use((err, req, res, next) => {
   console.error('全局错误处理:', err);
@@ -2061,27 +2084,4 @@ app.listen(PORT, () => {
   console.log(`API测试端点: http://localhost:${PORT}/api/status`);
   console.log(`关注列表API: http://localhost:${PORT}/api/twitter/following?username=dotyyds1234`);
   console.log(`账号列表API: http://localhost:${PORT}/api/accounts`);
-});
-
-// 新增API：获取数据库统计信息
-app.get('/api/stats', async (req, res) => {
-  try {
-    console.log('[数据库] 收到获取统计信息请求');
-    
-    // 从数据库获取统计信息
-    const stats = await getStats();
-    
-    console.log(`[数据库] 成功获取统计信息: 总账号 ${stats.totalAccounts}，已标注 ${stats.annotatedAccounts}，分类 ${stats.totalCategories}`);
-    
-    res.json({
-      success: true,
-      ...stats
-    });
-  } catch (error) {
-    console.error('[数据库] 获取统计信息失败:', error);
-    res.status(500).json({
-      success: false,
-      message: `获取统计信息失败: ${error.message}`
-    });
-  }
 }); 
