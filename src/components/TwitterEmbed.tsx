@@ -1,6 +1,10 @@
 import React, { useEffect, useState, useRef } from 'react';
 import './TwitterEmbed.css';
 import axios from 'axios';
+import { Spin, Button } from 'antd';
+import { UsergroupAddOutlined } from '@ant-design/icons';
+import MutualFollowersList from './MutualFollowersList';
+import { fetchMutualFollowers } from '../services/twitterService';
 
 interface TwitterEmbedProps {
   screenName?: string; // 可选的Twitter用户名参数
@@ -15,6 +19,13 @@ const TwitterEmbed: React.FC<TwitterEmbedProps> = ({ screenName = 'dotyyds1234' 
   const [error, setError] = useState<string | null>(null);
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  
+  // 共同关注状态
+  const [mutualCount, setMutualCount] = useState<number>(0);
+  const [loadingMutual, setLoadingMutual] = useState<boolean>(false);
+  const [mutualPopupVisible, setMutualPopupVisible] = useState<boolean>(false);
+  const [popupPosition, setPopupPosition] = useState<{ top: number; left: number }>({ top: 0, left: 0 });
+  const buttonRef = useRef<HTMLDivElement>(null);
 
   // 调整iframe高度以填充容器
   const adjustHeight = () => {
@@ -29,6 +40,28 @@ const TwitterEmbed: React.FC<TwitterEmbedProps> = ({ screenName = 'dotyyds1234' 
     window.addEventListener('resize', adjustHeight);
     return () => window.removeEventListener('resize', adjustHeight);
   }, []);
+  
+  // 获取共同关注者数量
+  useEffect(() => {
+    const getMutualFollowersCount = async () => {
+      if (!screenName) return;
+      
+      try {
+        setLoadingMutual(true);
+        const result = await fetchMutualFollowers(screenName);
+        if (result && result.data && result.data.accounts) {
+          setMutualCount(result.data.total || result.data.accounts.length);
+        }
+      } catch (error) {
+        console.error("获取共同关注数据失败:", error);
+        setMutualCount(0);
+      } finally {
+        setLoadingMutual(false);
+      }
+    };
+    
+    getMutualFollowersCount();
+  }, [screenName]);
 
   useEffect(() => {
     const fetchTwitterProfile = async () => {
@@ -61,7 +94,7 @@ const TwitterEmbed: React.FC<TwitterEmbedProps> = ({ screenName = 'dotyyds1234' 
     if (screenName) {
       fetchTwitterProfile();
     }
-  }, [screenName]); // 当screenName变化时重新加载
+  }, [screenName]);
 
   // 当HTML内容加载后
   useEffect(() => {
@@ -188,9 +221,44 @@ const TwitterEmbed: React.FC<TwitterEmbedProps> = ({ screenName = 'dotyyds1234' 
       }
     }
   }, [htmlContent]);
+  
+  // 处理打开共同关注浮窗
+  const handleOpenMutualPopup = () => {
+    if (buttonRef.current) {
+      const rect = buttonRef.current.getBoundingClientRect();
+      setPopupPosition({
+        top: rect.bottom + 5,
+        left: rect.left
+      });
+      setMutualPopupVisible(true);
+    }
+  };
 
   return (
     <div ref={containerRef} className="twitter-embed-container">
+      {/* 共同关注按钮 */}
+      {!loading && !error && screenName && (
+        <div 
+          ref={buttonRef}
+          className="mutual-followers-button"
+          style={{
+            position: 'absolute',
+            top: '10px',
+            right: '20px',
+            zIndex: 100
+          }}
+        >
+          <Button
+            type="primary"
+            icon={<UsergroupAddOutlined />}
+            loading={loadingMutual}
+            onClick={handleOpenMutualPopup}
+          >
+            {loadingMutual ? '加载中' : `${mutualCount} 共同关注`}
+          </Button>
+        </div>
+      )}
+      
       {loading ? (
         <div className="loading-spinner-container">
           <div className="loading-spinner"></div>
@@ -216,6 +284,14 @@ const TwitterEmbed: React.FC<TwitterEmbedProps> = ({ screenName = 'dotyyds1234' 
           scrolling="yes"
         />
       )}
+      
+      {/* 共同关注浮窗 */}
+      <MutualFollowersList
+        username={screenName}
+        visible={mutualPopupVisible}
+        onClose={() => setMutualPopupVisible(false)}
+        position={popupPosition}
+      />
     </div>
   );
 };

@@ -8,7 +8,7 @@ import {
   TagOutlined,
   ExportOutlined,
   TwitterOutlined,
-  SearchOutlined 
+  SearchOutlined
 } from '@ant-design/icons';
 import { CookieConsent } from './components/CookieConsent';
 import AccountList from './components/AccountList';
@@ -513,7 +513,7 @@ function App() {
       
       <Layout.Content style={{ padding: '0', display: 'flex', height: 'calc(100vh - 64px)', overflow: 'hidden' }}>
         {/* 左侧侧边栏 - 账号列表 */}
-        <div style={{ width: '510px', borderRight: '1px solid #f0f0f0', overflowY: 'auto', height: '100%' }}>
+        <div style={{ width: '30%', borderRight: '1px solid #f0f0f0', overflowY: 'auto', height: '100%' }}>
           <div className="flex flex-col h-full">
             <div className="p-2 border-b border-gray-200">
               {/* 导入导出按钮行 - 使用inline-block强制显示在一行 */}
@@ -604,6 +604,7 @@ function App() {
                 />
               </Tabs>
             </div>
+            
             <div className="flex-1 overflow-hidden">
               <AccountList 
                 accounts={displayAccounts} 
@@ -616,13 +617,14 @@ function App() {
         </div>
         
         {/* 中间内容区 - 推特页面 */}
-        <div style={{ flex: 1, minWidth: '400px', overflowY: 'hidden', height: '100%', position: 'relative', borderLeft: 'none', borderRight: 'none' }}>
+        <div style={{ width: '40%', overflowY: 'hidden', height: '100%', position: 'relative', borderLeft: 'none', borderRight: 'none' }}>
           {twitterLoading ? (
             <div style={{ padding: '20px', textAlign: 'center' }}>
               <Spin />
               <p style={{ marginTop: '10px' }}>加载Twitter页面中...</p>
             </div>
           ) : currentScreenName ? (
+            // 显示Twitter用户资料页，包含共同关注者功能
             <TwitterEmbed screenName={currentScreenName} />
           ) : (
             <div style={{ padding: '40px', textAlign: 'center', color: '#999' }}>
@@ -634,7 +636,7 @@ function App() {
         </div>
         
         {/* 右侧侧边栏 - 标注区域 */}
-        <div style={{ width: '560px', padding: '15px', borderLeft: '1px solid #f0f0f0', height: '100%', overflowY: 'auto' }}>
+        <div style={{ width: '30%', padding: '15px', borderLeft: '1px solid #f0f0f0', height: '100%', overflowY: 'auto' }}>
           <div className="p-4">
             <div className="flex justify-between items-center mb-4">
               <Title level={3} className="m-0">分组 & 备注</Title>
@@ -703,7 +705,7 @@ function App() {
               </div>
             </div>
             
-            {currentAccount.isAnnotated && (
+            {currentAccount && currentAccount.isAnnotated && (
               <div className="mt-4 p-3 bg-gray-50 rounded">
                 <p className="text-gray-500 text-sm">
                   此账号已标注 · 

@@ -900,4 +900,46 @@ export async function fetchUserFollowing(username: string, pages: number = 3): P
       throw new Error(`获取关注列表失败: ${error}`);
     }
   }
+}
+
+/**
+ * 获取用户的共同关注者列表
+ * @param username 用户名
+ * @param refresh 是否强制刷新数据
+ * @returns 共同关注者数据
+ */
+export async function fetchMutualFollowers(username: string, refresh = false): Promise<{
+  success: boolean;
+  username: string;
+  data: {
+    success: boolean;
+    userId: string;
+    total: number;
+    accounts: AccountProps[];
+    timestamp: string;
+  }
+}> {
+  try {
+    console.log(`获取用户 ${username} 的共同关注者数据, refresh=${refresh}`);
+    const url = `http://localhost:3001/api/same-followers/${encodeURIComponent(username)}${refresh ? '?refresh=true' : ''}`;
+    
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Cache-Control': 'no-cache'
+      }
+    });
+    
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(`获取共同关注者失败: HTTP ${response.status}\n${errorText}`);
+    }
+    
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('获取共同关注者失败:', error);
+    throw error;
+  }
 } 
