@@ -26,6 +26,7 @@ const TwitterEmbed: React.FC<TwitterEmbedProps> = ({ screenName = 'dotyyds1234' 
   const [mutualPopupVisible, setMutualPopupVisible] = useState<boolean>(false);
   const [popupPosition, setPopupPosition] = useState<{ top: number; left: number }>({ top: 0, left: 0 });
   const buttonRef = useRef<HTMLDivElement>(null);
+  const buttonContainerRef = useRef<HTMLDivElement>(null);
 
   // 调整iframe高度以填充容器
   const adjustHeight = () => {
@@ -62,6 +63,24 @@ const TwitterEmbed: React.FC<TwitterEmbedProps> = ({ screenName = 'dotyyds1234' 
     
     getMutualFollowersCount();
   }, [screenName]);
+  
+  // 处理切换共同关注浮窗
+  const handleToggleMutualPopup = () => {
+    if (buttonContainerRef.current) {
+      if (mutualPopupVisible) {
+        // 如果已经显示，则关闭
+        setMutualPopupVisible(false);
+      } else {
+        // 如果未显示，则打开并设置位置
+        const rect = buttonContainerRef.current.getBoundingClientRect();
+        setPopupPosition({
+          top: rect.bottom + 5,
+          left: rect.left
+        });
+        setMutualPopupVisible(true);
+      }
+    }
+  };
 
   useEffect(() => {
     const fetchTwitterProfile = async () => {
@@ -221,30 +240,18 @@ const TwitterEmbed: React.FC<TwitterEmbedProps> = ({ screenName = 'dotyyds1234' 
       }
     }
   }, [htmlContent]);
-  
-  // 处理打开共同关注浮窗
-  const handleOpenMutualPopup = () => {
-    if (buttonRef.current) {
-      const rect = buttonRef.current.getBoundingClientRect();
-      setPopupPosition({
-        top: rect.bottom + 5,
-        left: rect.left
-      });
-      setMutualPopupVisible(true);
-    }
-  };
 
   return (
     <div ref={containerRef} className="twitter-embed-container">
       {/* 共同关注按钮 */}
-      {!loading && !error && screenName && (
+      {!loading && !error && screenName && mutualCount > 0 && (
         <div 
-          ref={buttonRef}
+          ref={buttonContainerRef}
           className="mutual-followers-button"
           style={{
             position: 'absolute',
             top: '10px',
-            right: '20px',
+            left: '10px',
             zIndex: 100
           }}
         >
@@ -252,17 +259,16 @@ const TwitterEmbed: React.FC<TwitterEmbedProps> = ({ screenName = 'dotyyds1234' 
             type="primary"
             icon={<UsergroupAddOutlined />}
             loading={loadingMutual}
-            onClick={handleOpenMutualPopup}
+            onClick={handleToggleMutualPopup}
           >
             {loadingMutual ? '加载中' : `${mutualCount} 共同关注`}
           </Button>
         </div>
       )}
-      
+
       {loading ? (
-        <div className="loading-spinner-container">
-          <div className="loading-spinner"></div>
-          <p>加载 {screenName} 的数据中...</p>
+        <div className="loading-container">
+          <Spin tip="加载中..." size="large" />
         </div>
       ) : error ? (
         <div className="error-container">
@@ -286,12 +292,14 @@ const TwitterEmbed: React.FC<TwitterEmbedProps> = ({ screenName = 'dotyyds1234' 
       )}
       
       {/* 共同关注浮窗 */}
-      <MutualFollowersList
-        username={screenName}
-        visible={mutualPopupVisible}
-        onClose={() => setMutualPopupVisible(false)}
-        position={popupPosition}
-      />
+      {mutualPopupVisible && screenName && (
+        <MutualFollowersList
+          username={screenName}
+          visible={mutualPopupVisible}
+          onClose={() => setMutualPopupVisible(false)}
+          position={popupPosition}
+        />
+      )}
     </div>
   );
 };
