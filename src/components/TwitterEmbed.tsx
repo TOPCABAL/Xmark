@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useRef } from 'react';
 import './TwitterEmbed.css';
 import axios from 'axios';
-import { Spin, Button } from 'antd';
-import { UsergroupAddOutlined } from '@ant-design/icons';
+import { Spin, Button, message } from 'antd';
+import { UsergroupAddOutlined, UserDeleteOutlined } from '@ant-design/icons';
 import MutualFollowersList from './MutualFollowersList';
 import { fetchMutualFollowers } from '../services/twitterService';
 
@@ -26,6 +26,7 @@ const TwitterEmbed: React.FC<TwitterEmbedProps> = ({ screenName = 'dotyyds1234' 
   const [mutualPopupVisible, setMutualPopupVisible] = useState<boolean>(false);
   const [popupPosition, setPopupPosition] = useState<{ top: number; left: number }>({ top: 0, left: 0 });
   const buttonContainerRef = useRef<HTMLDivElement>(null);
+  const [unfollowing, setUnfollowing] = useState<boolean>(false);
 
   // 调整iframe高度以填充容器
   const adjustHeight = () => {
@@ -268,29 +269,77 @@ const TwitterEmbed: React.FC<TwitterEmbedProps> = ({ screenName = 'dotyyds1234' 
     }
   }, [htmlContent]);
 
+  // 处理取消关注
+  const handleUnfollow = async () => {
+    try {
+      setUnfollowing(true);
+      console.log(`[取消关注] 开始取消关注用户: ${screenName}`);
+      
+      // 直接使用用户名调用API
+      const response = await axios.post(`${API_BASE_URL}/api/unfollow`, { username: screenName });
+      
+      if (response.data.success) {
+        message.success('成功取消关注');
+        console.log('[取消关注] 成功:', response.data);
+      } else {
+        throw new Error(response.data.message || '取消关注失败');
+      }
+    } catch (error: unknown) {
+      console.error('[取消关注] 失败:', error);
+      message.error(`取消关注失败: ${error instanceof Error ? error.message : '未知错误'}`);
+    } finally {
+      setUnfollowing(false);
+    }
+  };
+
   return (
     <div ref={containerRef} className="twitter-embed-container">
-      {/* 共同关注按钮 */}
-      {!loading && !error && screenName && mutualCount > 0 && (
-        <div 
-          ref={buttonContainerRef}
-          className="mutual-followers-button-container"
-          style={{
-            position: 'absolute',
-            top: '10px',
-            left: '10px',
-            zIndex: 100
-          }}
-        >
-          <Button
-            type="primary"
-            icon={<UsergroupAddOutlined />}
-            loading={loadingMutual}
-            onClick={handleToggleMutualPopup}
-            className={mutualPopupVisible ? 'mutual-button-active' : ''}
+      {/* 共同关注按钮和取消关注按钮 */}
+      {!loading && !error && screenName && (
+        <div className="profile-actions">
+          {mutualCount > 0 && (
+            <div 
+              ref={buttonContainerRef}
+              className="mutual-followers-button-container"
+              style={{
+                position: 'absolute',
+                top: '10px',
+                left: '10px',
+                zIndex: 100
+              }}
+            >
+              <Button
+                type="primary"
+                icon={<UsergroupAddOutlined />}
+                loading={loadingMutual}
+                onClick={handleToggleMutualPopup}
+                className={mutualPopupVisible ? 'mutual-button-active' : ''}
+              >
+                {loadingMutual ? '加载中' : `${mutualCount} 共同关注`}
+              </Button>
+            </div>
+          )}
+          
+          {/* 取消关注按钮 */}
+          <div 
+            className="unfollow-button-container"
+            style={{
+              position: 'absolute',
+              top: '10px',
+              right: '10px',
+              zIndex: 100
+            }}
           >
-            {loadingMutual ? '加载中' : `${mutualCount} 共同关注`}
-          </Button>
+            <Button
+              danger
+              type="primary"
+              icon={<UserDeleteOutlined />}
+              loading={unfollowing}
+              onClick={handleUnfollow}
+            >
+              取消关注
+            </Button>
+          </div>
         </div>
       )}
 

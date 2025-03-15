@@ -2132,6 +2132,60 @@ app.get('/api/same-followers/:username', async (req, res) => {
   }
 });
 
+// 添加取消关注API端点
+app.post('/api/unfollow', async (req, res) => {
+  try {
+    const { userId, username } = req.body;
+    
+    if (!userId && !username) {
+      return res.status(400).json({
+        success: false,
+        message: '缺少必需的参数：需要提供userId或username'
+      });
+    }
+
+    let scriptArgs = userId ? userId : username;
+    let scriptParam = username ? '--username' : '';
+    
+    console.log(`[取消关注] 开始取消关注${username ? '用户名: ' + username : 'ID: ' + userId}`);
+    
+    // 执行unFollow.js脚本
+    const scriptPath = path.join(__dirname, '..', 'scripts', 'unFollow.js');
+    
+    if (!fs.existsSync(scriptPath)) {
+      throw new Error(`取消关注脚本不存在: ${scriptPath}`);
+    }
+
+    // 构建命令 - 如果有username，则添加--username参数
+    const command = username 
+      ? `node --experimental-modules "${scriptPath}" "${scriptArgs}" --username` 
+      : `node --experimental-modules "${scriptPath}" "${scriptArgs}"`;
+      
+    console.log(`[取消关注] 执行命令: ${command}`);
+    
+    const { stdout, stderr } = await execAsync(command);
+    
+    if (stderr && !stderr.includes('ExperimentalWarning')) {
+      console.error(`[取消关注] 脚本执行出错:`, stderr);
+      throw new Error(stderr);
+    }
+
+    console.log(`[取消关注] 脚本执行成功:`, stdout);
+    
+    res.json({
+      success: true,
+      message: `成功取消关注${username ? '用户名: ' + username : 'ID: ' + userId}`,
+      details: stdout
+    });
+  } catch (error) {
+    console.error(`[取消关注] 处理失败:`, error);
+    res.status(500).json({
+      success: false,
+      message: `取消关注失败: ${error.message}`
+    });
+  }
+});
+
 // 以下内容需放在末尾
 // 404处理
 app.use((req, res) => {

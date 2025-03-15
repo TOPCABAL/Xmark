@@ -219,4 +219,35 @@ iframe.twitter-iframe {
   background-color: #096dd9 !important;
   border-color: #096dd9 !important;
   box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.3) !important;
+}
+
+.profile-actions {
+  position: relative;
+  width: 100%;
+  z-index: 100;
+}
+
+.unfollow-button-container {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 100;
+}
+
+.unfollow-button-container .ant-btn {
+  border-radius: 20px;
+  font-weight: 500;
+}
+
+/* 暗色模式适配 */
+@media (prefers-color-scheme: dark) {
+  .unfollow-button-container .ant-btn {
+    background-color: #f5222d;
+    border-color: #f5222d;
+  }
+  
+  .unfollow-button-container .ant-btn:hover {
+    background-color: #ff4d4f;
+    border-color: #ff4d4f;
+  }
 } 
