@@ -25,7 +25,6 @@ const TwitterEmbed: React.FC<TwitterEmbedProps> = ({ screenName = 'dotyyds1234' 
   const [loadingMutual, setLoadingMutual] = useState<boolean>(false);
   const [mutualPopupVisible, setMutualPopupVisible] = useState<boolean>(false);
   const [popupPosition, setPopupPosition] = useState<{ top: number; left: number }>({ top: 0, left: 0 });
-  const buttonRef = useRef<HTMLDivElement>(null);
   const buttonContainerRef = useRef<HTMLDivElement>(null);
 
   // 调整iframe高度以填充容器
@@ -66,12 +65,16 @@ const TwitterEmbed: React.FC<TwitterEmbedProps> = ({ screenName = 'dotyyds1234' 
   
   // 处理切换共同关注浮窗
   const handleToggleMutualPopup = () => {
-    if (buttonContainerRef.current) {
-      if (mutualPopupVisible) {
-        // 如果已经显示，则关闭
-        setMutualPopupVisible(false);
-      } else {
-        // 如果未显示，则打开并设置位置
+    console.log("按钮被点击，当前浮窗状态:", mutualPopupVisible);
+    
+    // 如果浮窗已经显示，则关闭
+    if (mutualPopupVisible) {
+      console.log("正在关闭浮窗");
+      setMutualPopupVisible(false);
+    } else {
+      // 如果浮窗未显示，则打开并设置位置
+      console.log("正在打开浮窗");
+      if (buttonContainerRef.current) {
         const rect = buttonContainerRef.current.getBoundingClientRect();
         setPopupPosition({
           top: rect.bottom + 5,
@@ -81,6 +84,30 @@ const TwitterEmbed: React.FC<TwitterEmbedProps> = ({ screenName = 'dotyyds1234' 
       }
     }
   };
+  
+  // 点击外部区域关闭浮窗 - 简化这部分逻辑，避免冲突
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      // 检查点击是否在浮窗和按钮外部
+      if (
+        mutualPopupVisible && 
+        buttonContainerRef.current && 
+        !buttonContainerRef.current.contains(event.target as Node)
+      ) {
+        // 这里不检查是否点击在浮窗内，让浮窗组件自己处理这个逻辑
+        console.log("点击在按钮外部，关闭浮窗");
+        setMutualPopupVisible(false);
+      }
+    };
+
+    if (mutualPopupVisible) {
+      document.addEventListener('click', handleClickOutside);
+    }
+    
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [mutualPopupVisible]);
 
   useEffect(() => {
     const fetchTwitterProfile = async () => {
@@ -247,7 +274,7 @@ const TwitterEmbed: React.FC<TwitterEmbedProps> = ({ screenName = 'dotyyds1234' 
       {!loading && !error && screenName && mutualCount > 0 && (
         <div 
           ref={buttonContainerRef}
-          className="mutual-followers-button"
+          className="mutual-followers-button-container"
           style={{
             position: 'absolute',
             top: '10px',
@@ -260,6 +287,7 @@ const TwitterEmbed: React.FC<TwitterEmbedProps> = ({ screenName = 'dotyyds1234' 
             icon={<UsergroupAddOutlined />}
             loading={loadingMutual}
             onClick={handleToggleMutualPopup}
+            className={mutualPopupVisible ? 'mutual-button-active' : ''}
           >
             {loadingMutual ? '加载中' : `${mutualCount} 共同关注`}
           </Button>
@@ -291,12 +319,15 @@ const TwitterEmbed: React.FC<TwitterEmbedProps> = ({ screenName = 'dotyyds1234' 
         />
       )}
       
-      {/* 共同关注浮窗 */}
+      {/* 共同关注浮窗 - 简化浮窗的条件渲染逻辑 */}
       {mutualPopupVisible && screenName && (
         <MutualFollowersList
           username={screenName}
-          visible={mutualPopupVisible}
-          onClose={() => setMutualPopupVisible(false)}
+          visible={true} // 改为固定值，因为我们已经在外层条件控制了渲染
+          onClose={() => {
+            console.log("浮窗组件请求关闭");
+            setMutualPopupVisible(false);
+          }}
           position={popupPosition}
         />
       )}

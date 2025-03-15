@@ -212,4 +212,11 @@ iframe.twitter-iframe {
     background-color: #264863;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
   }
+}
+
+/* 添加共同关注按钮活跃状态样式 */
+.mutual-button-active {
+  background-color: #096dd9 !important;
+  border-color: #096dd9 !important;
+  box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.3) !important;
 } 

@@ -49,21 +49,10 @@ const MutualFollowersList: React.FC<MutualFollowersListProps> = ({
     }
   }, [position, visible]);
 
-  // 点击外部关闭浮窗
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (popupRef.current && !popupRef.current.contains(event.target as Node)) {
-        onClose();
-      }
-    };
-
-    if (visible) {
-      document.addEventListener('mousedown', handleClickOutside);
-    }
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [visible, onClose]);
+  // 处理浮窗内部点击，阻止冒泡
+  const handlePopupClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+  };
 
   // 加载共同关注者数据
   useEffect(() => {
@@ -90,6 +79,8 @@ const MutualFollowersList: React.FC<MutualFollowersListProps> = ({
   return (
     <div
       ref={popupRef}
+      className="mutual-followers-popup"
+      onClick={handlePopupClick}
       style={{
         position: 'fixed', // 改为fixed定位，避免滚动影响
         zIndex: 1000,
