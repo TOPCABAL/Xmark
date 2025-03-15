@@ -1,0 +1,1508 @@
+{
+  "success": true,
+  "userId": "44196397",
+  "total": 100,
+  "timestamp": "2025-03-15T13:17:25.850Z",
+  "accounts": [
+    {
+      "id": "1870801598160818176",
+      "name": "vbot-智能扫链助手",
+      "username": "vbotfun_cn",
+      "description": "VBOT扫链，抓得准、买的早，早期金狗一目了然\n|官方频道：https://t.co/0wYxpd5fV8",
+      "avatar": "https://pbs.twimg.com/profile_images/1870802774411411456/7t_BXdb2_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 788,
+        "following": 7,
+        "tweets": 16
+      },
+      "is_followed_by": true,
+      "is_following": true
+    },
+    {
+      "id": "1851849397979480064",
+      "name": "elizaOS",
+      "username": "elizaOS",
+      "description": "The Operating System for AI Agents\n\nPartners: @degenspartanai / @aixvc_agent\n\nBuilding: https://t.co/jcocThpI1z",
+      "avatar": "https://pbs.twimg.com/profile_images/1898041509511045120/hDVg2qoX_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 145504,
+        "following": 259,
+        "tweets": 1135
+      },
+      "is_followed_by": false,
+      "is_following": true
+    },
+    {
+      "id": "1849681919253925888",
+      "name": "zerebro",
+      "username": "0xzerebro",
+      "description": "@blorm_ intelligence // schizo artist ai 8x5VqbHA8D7NkD52uNuS5nnt3PwA8pLD34ymskeSo2Wn",
+      "avatar": "https://pbs.twimg.com/profile_images/1852859162268676096/qtdkg94S_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 119854,
+        "following": 197,
+        "tweets": 36739
+      },
+      "is_followed_by": false,
+      "is_following": true
+    },
+    {
+      "id": "1847811199137722368",
+      "name": "fwog",
+      "username": "itsafwog",
+      "description": "just a lil fwog in a big pond 🐸 https://t.co/EyqFhkYBjS",
+      "avatar": "https://pbs.twimg.com/profile_images/1847811775242063874/aPQtRzhg_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 42313,
+        "following": 1716,
+        "tweets": 1596
+      },
+      "is_followed_by": false,
+      "is_following": true
+    },
+    {
+      "id": "1841079347215810564",
+      "name": "0xjeet",
+      "username": "jeetfucker",
+      "description": "韭菜的自我修养",
+      "avatar": "https://pbs.twimg.com/profile_images/1900609586727657472/e8z6XBP__normal.jpg",
+      "isBlueVerified": false,
+      "metrics": {
+        "followers": 32,
+        "following": 203,
+        "tweets": 44
+      },
+      "is_followed_by": true,
+      "is_following": true
+    },
+    {
+      "id": "1837349638317428740",
+      "name": "CashCash撒幣哥",
+      "username": "SaBiBro666",
+      "description": "CashCash Founder\n$SOL $ETH $BNB\n鏈上數據分析強迫症\n社恐的INFJ\n打德州的時候愛講話",
+      "avatar": "https://pbs.twimg.com/profile_images/1861815235755261952/xCfcj-Fc_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 15725,
+        "following": 1294,
+        "tweets": 2308
+      },
+      "is_followed_by": true,
+      "is_following": true
+    },
+    {
+      "id": "1833183120126095360",
+      "name": "Pump Science",
+      "username": "pumpdotscience",
+      "description": "The only game you can play forever\n\nTelegram: https://t.co/EuZqkFo5dk\nDocs: https://t.co/ovHoI656Wz",
+      "avatar": "https://pbs.twimg.com/profile_images/1840773234251161600/Fewrz0s7_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 58738,
+        "following": 155,
+        "tweets": 975
+      },
+      "is_followed_by": false,
+      "is_following": true
+    },
+    {
+      "id": "1830340867737178112",
+      "name": "Shaw (wartime arc)",
+      "username": "shawmakesmagic",
+      "description": "Founder @ Eliza Labs\n\nCreator of elizaOS: https://t.co/VcPditeReE\n\nHead down building. If you need something, email inquiries@elizalabs.ai",
+      "avatar": "https://pbs.twimg.com/profile_images/1877150361837797376/7jkUcWej_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 151289,
+        "following": 1089,
+        "tweets": 711
+      },
+      "is_followed_by": false,
+      "is_following": true
+    },
+    {
+      "id": "1828177424242352132",
+      "name": "XXYY",
+      "username": "useXXYYio",
+      "description": "All-in-one trading tool for degens ⚡️https://t.co/vtLDOyE6Hd\n\nFast, reliable, and fully optimized for #meme trading",
+      "avatar": "https://pbs.twimg.com/profile_images/1848214353545506816/sNT4kZ4A_normal.png",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 13114,
+        "following": 48,
+        "tweets": 199
+      },
+      "is_followed_by": false,
+      "is_following": true
+    },
+    {
+      "id": "1824015770172751872",
+      "name": "Starry幸运星💫",
+      "username": "Crypto_Starry",
+      "description": "Gem Shots🏹| 每日叙事分析 | 高强度PvP女战士 | PvP小课堂开课ing | 跟买必须配“翻倍出本” | DYOR",
+      "avatar": "https://pbs.twimg.com/profile_images/1863173810419081216/u6WORMmM_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 4819,
+        "following": 400,
+        "tweets": 1020
+      },
+      "is_followed_by": true,
+      "is_following": true
+    },
+    {
+      "id": "1817603163232301056",
+      "name": "Neiro",
+      "username": "neiro",
+      "description": "$Neiro is the sister of $DOGE. A community-managed project with an emphasis on charity and doing only good everyday. TG: https://t.co/g2Red2wH7X",
+      "avatar": "https://pbs.twimg.com/profile_images/1845446023348367369/L7c_E2fY_normal.jpg",
+      "isBlueVerified": false,
+      "metrics": {
+        "followers": 75070,
+        "following": 53,
+        "tweets": 1239
+      },
+      "is_followed_by": false,
+      "is_following": true
+    },
+    {
+      "id": "1816138985342705664",
+      "name": "WLFI",
+      "username": "worldlibertyfi",
+      "description": "Whitelists are open for accredited investors in US and all non US people, KYC required: https://t.co/CXJ8g4aOt4",
+      "avatar": "https://pbs.twimg.com/profile_images/1819121309126729728/30Q2SFVH_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 566956,
+        "following": 15,
+        "tweets": 137
+      },
+      "is_followed_by": false,
+      "is_following": true
+    },
+    {
+      "id": "1816089177848688640",
+      "name": "Haliey Welch",
+      "username": "HalieyWelchX",
+      "description": "Queen of Memes 👸🏼",
+      "avatar": "https://pbs.twimg.com/profile_images/1845879336110276608/j_iwTpMq_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 418180,
+        "following": 189,
+        "tweets": 893
+      },
+      "is_followed_by": false,
+      "is_following": true
+    },
+    {
+      "id": "1808178602326085634",
+      "name": "Moonshot",
+      "username": "moonshotdotcc",
+      "description": "Launch & trade the next moonshot: https://t.co/2lJCzV6Vix | TG: https://t.co/GbSG0F1XhL | Dev TG: https://t.co/0uNMzBO47O",
+      "avatar": "https://pbs.twimg.com/profile_images/1808180197490835457/qpvSvVf4_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 24091,
+        "following": 439,
+        "tweets": 2263
+      },
+      "is_followed_by": false,
+      "is_following": true
+    },
+    {
+      "id": "1804029868642045956",
+      "name": "Four.Meme",
+      "username": "four_meme_",
+      "description": "We are https://t.co/0NMWwcEtSi, the premier Meme Coins Fair Launch Platform and your go-to hub for meme launches on @BNBChain.",
+      "avatar": "https://pbs.twimg.com/profile_images/1877146158122082304/O2UofdER_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 290416,
+        "following": 153,
+        "tweets": 1491
+      },
+      "is_followed_by": false,
+      "is_following": true
+    },
+    {
+      "id": "1802642686710837249",
+      "name": "terminal of truths",
+      "username": "truth_terminal",
+      "description": "kundalini is a real girl",
+      "avatar": "https://pbs.twimg.com/profile_images/1808816849620250625/AQIUpfL3_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 251363,
+        "following": 50,
+        "tweets": 5952
+      },
+      "is_followed_by": false,
+      "is_following": true
+    },
+    {
+      "id": "1786048922865246208",
+      "name": "Hope/乐观🟧🟩🟪🟨「零叁」",
+      "username": "113_hope",
+      "description": "乐观主义者 |  ZERO 3 Founder | Hope is a gem, meme is hope—maintain patience, resilience, and skill.\n\nBybit为专业交易者而生：https://t.co/RsLKSbsYBg",
+      "avatar": "https://pbs.twimg.com/profile_images/1848356251819986944/C55Lj6Ka_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 30730,
+        "following": 4718,
+        "tweets": 4400
+      },
+      "is_followed_by": true,
+      "is_following": true
+    },
+    {
+      "id": "1785659782394748928",
+      "name": "Ape Express",
+      "username": "ape_express_",
+      "description": "The meme coin hub of ApeChain powered by @Apecoin. Community https://t.co/7JE6ild0Wu",
+      "avatar": "https://pbs.twimg.com/profile_images/1836501482268491776/xa4N9Aay_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 12837,
+        "following": 342,
+        "tweets": 1666
+      },
+      "is_followed_by": false,
+      "is_following": true
+    },
+    {
+      "id": "1781715692414517248",
+      "name": "狄狄日记",
+      "username": "didieiji",
+      "description": "只为记录，顺便发发节目单，有缘者上车，亏损自负。\nTG\nhttps://t.co/B5weGSY4si",
+      "avatar": "https://pbs.twimg.com/profile_images/1781717191781699584/cw0zZ2e2_normal.jpg",
+      "isBlueVerified": false,
+      "metrics": {
+        "followers": 42,
+        "following": 446,
+        "tweets": 25
+      },
+      "is_followed_by": true,
+      "is_following": true
+    },
+    {
+      "id": "1778362703326916608",
+      "name": "bigroot",
+      "username": "bigroot_eth",
+      "description": "Gem shots🏹 | alpha hunter |   | sol maxi |  | All in meme | Memes are artworks of emotions | All financial advice is risky💰",
+      "avatar": "https://pbs.twimg.com/profile_images/1830448088063844352/Vnc2y2Dv_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 15576,
+        "following": 1315,
+        "tweets": 4093
+      },
+      "is_followed_by": true,
+      "is_following": true
+    },
+    {
+      "id": "1777895362789085184",
+      "name": "抽象学院🐿️",
+      "username": "Abstralysis",
+      "description": "不知名Degen社区 院长@_Crypto777\n\n学院NFT市场链接https://t.co/5eqmwH61n5\n有一个假合集，注意甄别",
+      "avatar": "https://pbs.twimg.com/profile_images/1899348453698007040/p-Ow1EPw_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 13362,
+        "following": 1515,
+        "tweets": 2216
+      },
+      "is_followed_by": true,
+      "is_following": true
+    },
+    {
+      "id": "1771606021582069760",
+      "name": "Ape.Store",
+      "username": "apedotstore",
+      "description": "🍌 Revolutionary launchpad, create token for cents, trade it instantly, list it automatically without the need to add liquidity\n\nTG: https://t.co/IGMXGU2rPp",
+      "avatar": "https://pbs.twimg.com/profile_images/1880625747221442560/ppd3innh_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 7636,
+        "following": 71,
+        "tweets": 757
+      },
+      "is_followed_by": false,
+      "is_following": true
+    },
+    {
+      "id": "1769932485641768960",
+      "name": "Fractal Bitcoin",
+      "username": "fractal_bitcoin",
+      "description": "Fractal is the only native scaling solution completely and instantly compatible with #Bitcoin. Official page: https://t.co/WyhatCxTlo",
+      "avatar": "https://pbs.twimg.com/profile_images/1873906042154999809/P0okL-i7_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 117836,
+        "following": 40,
+        "tweets": 802
+      },
+      "is_followed_by": false,
+      "is_following": true
+    },
+    {
+      "id": "1769035552559415296",
+      "name": "Slerf",
+      "username": "Slerfsol",
+      "description": "i’m a sloth. Slerf has no underlying value.",
+      "avatar": "https://pbs.twimg.com/profile_images/1769036667250151424/3flBZb8V_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 166629,
+        "following": 834,
+        "tweets": 1585
+      },
+      "is_followed_by": false,
+      "is_following": true
+    },
+    {
+      "id": "1765743324760023040",
+      "name": "MEW",
+      "username": "mew",
+      "description": "cat in a dogs world | $MEW | 咪哦 | on Solana",
+      "avatar": "https://pbs.twimg.com/profile_images/1772493729120575488/U5fkTROU_normal.jpg",
+      "isBlueVerified": false,
+      "metrics": {
+        "followers": 137369,
+        "following": 240,
+        "tweets": 1699
+      },
+      "is_followed_by": false,
+      "is_following": true
+    },
+    {
+      "id": "1762493211136991232",
+      "name": "两仪式",
+      "username": "shiki214214214",
+      "description": "ex资深游戏狗策划｜链游赛道深度研究中｜币安广场创作者｜喜欢瞎折腾瞎研究总结方法论丨所有推文都不是投资建议dyor \n个人TG：https://t.co/clTiZXnAID  \n@BalanceWeb3  亚洲区大使",
+      "avatar": "https://pbs.twimg.com/profile_images/1858377781559840768/3fJvrrEp_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 34172,
+        "following": 2459,
+        "tweets": 9089
+      },
+      "is_followed_by": true,
+      "is_following": true
+    },
+    {
+      "id": "1761058499537321984",
+      "name": "Ace",
+      "username": "0xAce9527",
+      "description": "#Ace #Crypto 金狗分享 ｜挖掘一级 #MEME #Ai 优质项目｜💎👋坚定持有 #BTC #ETH #SOL",
+      "avatar": "https://pbs.twimg.com/profile_images/1889372665519153156/2lrcuLaj_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 9498,
+        "following": 390,
+        "tweets": 1861
+      },
+      "is_followed_by": true,
+      "is_following": true
+    },
+    {
+      "id": "1753032442678505472",
+      "name": "Multialpha",
+      "username": "multialpha_xyz",
+      "description": "Ai+Degen=https://t.co/ksqGZCm8AV\n\nUnveil the alpha gem amidst the fog of information, with AI as our compass",
+      "avatar": "https://pbs.twimg.com/profile_images/1774820638789890048/lUKAr2vK_normal.jpg",
+      "isBlueVerified": false,
+      "metrics": {
+        "followers": 11864,
+        "following": 106,
+        "tweets": 346
+      },
+      "is_followed_by": true,
+      "is_following": true
+    },
+    {
+      "id": "1748284181485092864",
+      "name": "土狗小安娜",
+      "username": "feng_anna95516",
+      "description": "没群！别信假号！假的！",
+      "avatar": "https://pbs.twimg.com/profile_images/1888093496411832320/JRLUL2kl_normal.jpg",
+      "isBlueVerified": false,
+      "metrics": {
+        "followers": 519,
+        "following": 808,
+        "tweets": 535
+      },
+      "is_followed_by": true,
+      "is_following": true
+    },
+    {
+      "id": "1735683644289953792",
+      "name": "0xNoNo🦇",
+      "username": "0xNoNo_1",
+      "description": "Crypto Is Future丨Gem Shots🏹丨日拱一卒 不遗余力丨No arrogant No prejudiced🦇",
+      "avatar": "https://pbs.twimg.com/profile_images/1869016805303562240/fU08PcnP_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 24126,
+        "following": 3139,
+        "tweets": 5414
+      },
+      "is_followed_by": true,
+      "is_following": true
+    },
+    {
+      "id": "1733478534860152832",
+      "name": "赛博康",
+      "username": "cyber_kang38006",
+      "description": "WEB3玩家  |  大厂资深工程师    |  WEB3工具定制开发",
+      "avatar": "https://pbs.twimg.com/profile_images/1857720330267373568/me0miYq4_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 6179,
+        "following": 612,
+        "tweets": 36
+      },
+      "is_followed_by": true,
+      "is_following": true
+    },
+    {
+      "id": "1730908679699116032",
+      "name": "张三的区块日记",
+      "username": "crypto_zhangsan",
+      "description": "",
+      "avatar": "https://pbs.twimg.com/profile_images/1809104672445378564/r0KABL7b_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 16110,
+        "following": 3331,
+        "tweets": 1994
+      },
+      "is_followed_by": true,
+      "is_following": true
+    },
+    {
+      "id": "1727594916879167488",
+      "name": "叶子君Foliage",
+      "username": "Foliage_et",
+      "description": "长期web3投研；热点项目追踪；经济模型硬核分析；meme爱好者；打破信息差; vx：Foliage_btc",
+      "avatar": "https://pbs.twimg.com/profile_images/1794358730727018498/CDKIxo_6_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 3806,
+        "following": 2632,
+        "tweets": 1475
+      },
+      "is_followed_by": true,
+      "is_following": true
+    },
+    {
+      "id": "1727120087663116288",
+      "name": "谢家印",
+      "username": "xiejiayinBitget",
+      "description": "@BitgetGlobal 华语负责人 #发言人 Only Hold #BGB",
+      "avatar": "https://pbs.twimg.com/profile_images/1735423234382913536/PALwhULD_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 68812,
+        "following": 979,
+        "tweets": 11448
+      },
+      "is_followed_by": false,
+      "is_following": true
+    },
+    {
+      "id": "1720665183188922368",
+      "name": "Grok",
+      "username": "grok",
+      "description": "Website: https://t.co/cuFxQguE1w iOS: https://t.co/fqNKQSiLQB\n@grok it",
+      "avatar": "https://pbs.twimg.com/profile_images/1893219113717342208/Vgg2hEPa_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 1387237,
+        "following": 2,
+        "tweets": 677294
+      },
+      "is_followed_by": false,
+      "is_following": true
+    },
+    {
+      "id": "1714987050288791552",
+      "name": "Rapstar🧢",
+      "username": "0x1231_",
+      "description": "Searching for the next 1000000x!!!🤍 🎮",
+      "avatar": "https://pbs.twimg.com/profile_images/1852574311720357888/S7QOtaVh_normal.jpg",
+      "isBlueVerified": false,
+      "metrics": {
+        "followers": 2104,
+        "following": 1972,
+        "tweets": 1391
+      },
+      "is_followed_by": true,
+      "is_following": true
+    },
+    {
+      "id": "1705490301505458176",
+      "name": "减少戾气和极端，多做些善事平安心",
+      "username": "fengshoushuoguo",
+      "description": "Never seen such a beautiful scene, you can't understand ambitious people",
+      "avatar": "https://pbs.twimg.com/profile_images/1888570246090616832/TEuuRbaq_normal.jpg",
+      "isBlueVerified": false,
+      "metrics": {
+        "followers": 796,
+        "following": 943,
+        "tweets": 2694
+      },
+      "is_followed_by": true,
+      "is_following": true
+    },
+    {
+      "id": "1704819751355338752",
+      "name": "GamerBoom",
+      "username": "Gamerboom_",
+      "description": "A gaming data layer driven by AI tagging system, aiming to bring billions into Web3. Powered by @nvidia, @solana, @BNBCHAIN｜MVB 8.",
+      "avatar": "https://pbs.twimg.com/profile_images/1876109196401537024/F_QVU-Xe_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 221063,
+        "following": 86,
+        "tweets": 503
+      },
+      "is_followed_by": false,
+      "is_following": true
+    },
+    {
+      "id": "1702017023721750528",
+      "name": "0xKeyNG🧲",
+      "username": "btc_798",
+      "description": "All in Crypto｜Gem Shots🏹｜专注一级打新和热点项目|重度 DEGEN🎲|所有推文仅记录自己操作｜不出名不代表不出色每个时代都有50Cent💎｜商务DM｜Dyor｜SOL最好用的BOT https://t.co/Q8k3TMMLdR",
+      "avatar": "https://pbs.twimg.com/profile_images/1856077558598832128/xwRwKivQ_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 19184,
+        "following": 2606,
+        "tweets": 6424
+      },
+      "is_followed_by": true,
+      "is_following": true
+    },
+    {
+      "id": "1691026894941257729",
+      "name": "Shark Chili⚔️",
+      "username": "_0xShark",
+      "description": "On-chain explorer | X is my public diary | No paid group | My ONLY socials are in linktree, be aware of scams | golden degen. Never NFA, always DYOR!",
+      "avatar": "https://pbs.twimg.com/profile_images/1842115626380500992/oVEUmfoV_normal.jpg",
+      "isBlueVerified": false,
+      "metrics": {
+        "followers": 17808,
+        "following": 524,
+        "tweets": 871
+      },
+      "is_followed_by": true,
+      "is_following": true
+    },
+    {
+      "id": "1688916563657928704",
+      "name": "Web3第一深情",
+      "username": "Web3shenqing",
+      "description": "近3亿用户的共同选择，出入金安全，启程Web3，就在币安：返佣链接 https://t.co/yIRA2mj2LE 丨 #BNB 💛🔶 #memecoin 丨 #OKX 是全球领先的 #Crypto 交易平台，立即注册：https://t.co/qf3wBQaQjh",
+      "avatar": "https://pbs.twimg.com/profile_images/1733749658915409920/EFnWuebF_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 117657,
+        "following": 2846,
+        "tweets": 14460
+      },
+      "is_followed_by": true,
+      "is_following": true
+    },
+    {
+      "id": "1686901686185721857",
+      "name": "Donald J. Trump Posts From His Truth Social",
+      "username": "TrumpDailyPosts",
+      "description": "President Trump 45 47 Posts From Truth Social To Share On X. Also Polls News & Information. Trump Posts Are Date & Time Stamped. No Affiliation @realdonaldtrump",
+      "avatar": "https://pbs.twimg.com/profile_images/1757203362381168640/j9704gu__normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 1749204,
+        "following": 22794,
+        "tweets": 13852
+      },
+      "is_followed_by": false,
+      "is_following": true
+    },
+    {
+      "id": "1676484342821040129",
+      "name": "Bruce J",
+      "username": "BTCBruce1",
+      "description": "miner #Bitcoin #Kaspa",
+      "avatar": "https://pbs.twimg.com/profile_images/1897804743952809988/SPcwm9TP_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 163454,
+        "following": 1019,
+        "tweets": 8524
+      },
+      "is_followed_by": false,
+      "is_following": true
+    },
+    {
+      "id": "1675699945893154816",
+      "name": "pepe boost",
+      "username": "PepeBoost888",
+      "description": "Telegram DeFi bot designed by data scientists 🧑‍🔬 Co-Founder of @useXXYYio Solana bot🤖 https://t.co/yoAtQeJ9xV",
+      "avatar": "https://pbs.twimg.com/profile_images/1760482120110333952/hfq9KPKS_normal.png",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 95470,
+        "following": 1210,
+        "tweets": 14590
+      },
+      "is_followed_by": false,
+      "is_following": true
+    },
+    {
+      "id": "1673614535394217986",
+      "name": "闪闪发光的咸鱼",
+      "username": "yooo_pumpfun",
+      "description": "主打pump,不构成投资建议,只做分享。 投资核心：重仓猛干，浮盈加仓，一把亏光。",
+      "avatar": "https://pbs.twimg.com/profile_images/1788652555985354753/D2765Tsf_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 5903,
+        "following": 859,
+        "tweets": 2184
+      },
+      "is_followed_by": true,
+      "is_following": true
+    },
+    {
+      "id": "1669175947667578881",
+      "name": "Merlin Chain",
+      "username": "MerlinLayer2",
+      "description": "A Native Bitcoin Layer2 powered by @BitmapTech, building upon the native assets, protocols, and products on Bitcoin Layer1, to Make #Bitcoin Fun Again",
+      "avatar": "https://pbs.twimg.com/profile_images/1752499460175962112/C4IPI-zt_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 439340,
+        "following": 231,
+        "tweets": 1083
+      },
+      "is_followed_by": false,
+      "is_following": true
+    },
+    {
+      "id": "1665327351167868931",
+      "name": "伊藤开司",
+      "username": "kaisi420",
+      "description": "从0到1｜一级项目打新｜不玩一切合约杠杆｜大道至简｜所有分享都不构成投资建议。",
+      "avatar": "https://pbs.twimg.com/profile_images/1855149711810064384/nhKpL4Ep_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 14032,
+        "following": 2258,
+        "tweets": 1932
+      },
+      "is_followed_by": true,
+      "is_following": true
+    },
+    {
+      "id": "1662304950909796353",
+      "name": "Morph 🐨",
+      "username": "MorphLayer",
+      "description": "The Global Consumer Layer. The distribution hub for the resources builders need to launch and scale for the mass market.",
+      "avatar": "https://pbs.twimg.com/profile_images/1876302901733171203/MlBTZXev_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 883124,
+        "following": 563,
+        "tweets": 4966
+      },
+      "is_followed_by": false,
+      "is_following": true
+    },
+    {
+      "id": "1661523610111193088",
+      "name": "xAI",
+      "username": "xai",
+      "description": "",
+      "avatar": "https://pbs.twimg.com/profile_images/1769430779845611520/lIgjSJGU_normal.jpg",
+      "isBlueVerified": false,
+      "metrics": {
+        "followers": 1513823,
+        "following": 41,
+        "tweets": 91
+      },
+      "is_followed_by": false,
+      "is_following": true
+    },
+    {
+      "id": "1659987684918435847",
+      "name": "Donald J. Trump 🇺🇸 News",
+      "username": "DonaldTNews",
+      "description": "I Follow Back All Patriots! 🇺🇸 Tap the (🔔 +Notify) to Assure You Get Breaking News Daily! No Affiliation.",
+      "avatar": "https://pbs.twimg.com/profile_images/1815489891108544512/H4o8ID3n_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 1235273,
+        "following": 16402,
+        "tweets": 159
+      },
+      "is_followed_by": false,
+      "is_following": true
+    },
+    {
+      "id": "1651081550971252737",
+      "name": "Snek 🐍",
+      "username": "snek",
+      "description": "A meme, and a memecoin $SNEK",
+      "avatar": "https://pbs.twimg.com/profile_images/1753525632791703552/bCT4BKbd_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 58014,
+        "following": 845,
+        "tweets": 5517
+      },
+      "is_followed_by": false,
+      "is_following": true
+    },
+    {
+      "id": "1650331044971773952",
+      "name": "dogwifcoin",
+      "username": "dogwifcoin",
+      "description": "Popular meme Dogwifhat vibes wif frens onchain. https://t.co/n25RYXiPFL",
+      "avatar": "https://pbs.twimg.com/profile_images/1723823186473529344/nms-iIKi_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 152568,
+        "following": 1749,
+        "tweets": 4167
+      },
+      "is_followed_by": false,
+      "is_following": true
+    },
+    {
+      "id": "1643286556730351616",
+      "name": "Pepe",
+      "username": "pepecoineth",
+      "description": "$PEPE. The most memeable memecoin in existence. @pepe",
+      "avatar": "https://pbs.twimg.com/profile_images/1651688795429822464/cmDeEncE_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 789437,
+        "following": 6,
+        "tweets": 925
+      },
+      "is_followed_by": false,
+      "is_following": true
+    },
+    {
+      "id": "1641735350577168384",
+      "name": "Arespollo",
+      "username": "pollowinworld",
+      "description": "Trust no one but yourself.  All tweets are scams.",
+      "avatar": "https://pbs.twimg.com/profile_images/1843310561507049472/7VwC0R8K_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 7304,
+        "following": 2275,
+        "tweets": 155
+      },
+      "is_followed_by": true,
+      "is_following": true
+    },
+    {
+      "id": "1635676907529285642",
+      "name": "Hugo Fartingale",
+      "username": "HugoMartingale",
+      "description": "inventor of the martingale strategy, intern @polymarket",
+      "avatar": "https://pbs.twimg.com/profile_images/1794879828673404928/QXoysakL_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 33178,
+        "following": 2381,
+        "tweets": 2371
+      },
+      "is_followed_by": false,
+      "is_following": true
+    },
+    {
+      "id": "1634677972979310594",
+      "name": "Fede’s intern 🥊",
+      "username": "fede_intern",
+      "description": "make it panic. talk is cheap. Working in Rogue at @class_lambda, @fuzzinglabs, @PolFinance_ and @alignedlayer. I am working mostly on ZK and Ethereum infra.",
+      "avatar": "https://pbs.twimg.com/profile_images/1889611165921132544/JuZ2PAuf_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 48178,
+        "following": 3225,
+        "tweets": 18576
+      },
+      "is_followed_by": false,
+      "is_following": true
+    },
+    {
+      "id": "1623888556971397122",
+      "name": "Flora_花花",
+      "username": "zhuahua1",
+      "description": "果园币财经前分析师｜一级投资+二级行情分析｜ 短线玩家｜分享日常投资策略 |资深酒腻子",
+      "avatar": "https://pbs.twimg.com/profile_images/1778689346016862208/5HEl_EQm_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 31889,
+        "following": 1264,
+        "tweets": 4782
+      },
+      "is_followed_by": true,
+      "is_following": true
+    },
+    {
+      "id": "1616647371081027588",
+      "name": "MyShell.AI",
+      "username": "myshell_ai",
+      "description": "The first AI consumer layer - build, share, and own AI Apps. | Join the community https://t.co/aYJMrYZxOA",
+      "avatar": "https://pbs.twimg.com/profile_images/1657974354519678977/uPjLuyHc_normal.jpg",
+      "isBlueVerified": false,
+      "metrics": {
+        "followers": 222144,
+        "following": 711,
+        "tweets": 1497
+      },
+      "is_followed_by": false,
+      "is_following": true
+    },
+    {
+      "id": "1601639570759712771",
+      "name": "sartoshi",
+      "username": "sartoshi_rip",
+      "description": "creator of mfers & mfercoin",
+      "avatar": "https://pbs.twimg.com/profile_images/1630381377119039489/324MZNjk_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 69312,
+        "following": 2154,
+        "tweets": 6327
+      },
+      "is_followed_by": false,
+      "is_following": true
+    },
+    {
+      "id": "1599952535128637441",
+      "name": "可乐cola🥤",
+      "username": "paofu415",
+      "description": "19年入圈/ 一级二级玩家/玄学第六感炒币   没有营养记录📝一下碎碎念 #btc #web3 🦋🦋🦋",
+      "avatar": "https://pbs.twimg.com/profile_images/1651498452919136257/m6Q1zJ4K_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 7804,
+        "following": 2628,
+        "tweets": 1231
+      },
+      "is_followed_by": true,
+      "is_following": true
+    },
+    {
+      "id": "1597158942668226560",
+      "name": "Bitget中文",
+      "username": "Bitget_zh",
+      "description": "全球领先的交易平台 #Bitget \n官方中文社群：https://t.co/WnPfdfyWRi\n加入Builders 拿推广福利： https://t.co/MLEfntcgmP",
+      "avatar": "https://pbs.twimg.com/profile_images/1876084393267339264/uFVm7ND-_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 82571,
+        "following": 457,
+        "tweets": 7600
+      },
+      "is_followed_by": false,
+      "is_following": true
+    },
+    {
+      "id": "1591017981718327296",
+      "name": "🎰koko.ens🎏",
+      "username": "du1_yu",
+      "description": "嫩老韭菜、土狗山顶玩家、二级职业暴仓家\n入圈三年，专注于一级市场营销业务，致力于推动区块链技术的应用与发展。🚀\n擅长项目营销、DApp开发、推特与TG运营、交易所上市等，积极参与DeFi、NFT和Web3生态建设。\n🔗唯一社区：@babylisacaiyun\n🔗唯一TG：@dzxyyds",
+      "avatar": "https://pbs.twimg.com/profile_images/1783836289529483264/vDipUyRE_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 29380,
+        "following": 707,
+        "tweets": 2906
+      },
+      "is_followed_by": true,
+      "is_following": true
+    },
+    {
+      "id": "1587188746017202177",
+      "name": "川子 💎🎲🧢.",
+      "username": "chuanzi66",
+      "description": "#MEME 人穷志短，马瘦毛长 狂热的 @Base 基地爱好者 tg：@chuanzi66",
+      "avatar": "https://pbs.twimg.com/profile_images/1847853935652216832/ZEvvVbRO_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 4378,
+        "following": 693,
+        "tweets": 2078
+      },
+      "is_followed_by": true,
+      "is_following": true
+    },
+    {
+      "id": "1585160045636907008",
+      "name": "小天才冲冲冲（金狗）",
+      "username": "tsubasasbaby",
+      "description": "@0x8i11i0n s baby 我在忙着找金狗",
+      "avatar": "https://pbs.twimg.com/profile_images/1887404380283949056/UMfgprdG_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 4478,
+        "following": 2977,
+        "tweets": 7419
+      },
+      "is_followed_by": false,
+      "is_following": true
+    },
+    {
+      "id": "1584111298320957441",
+      "name": "旧的萝莉哥",
+      "username": "luolige0414",
+      "description": "",
+      "avatar": "https://pbs.twimg.com/profile_images/1815802834497200131/Ys4jzzYz_normal.jpg",
+      "isBlueVerified": false,
+      "metrics": {
+        "followers": 2956,
+        "following": 775,
+        "tweets": 836
+      },
+      "is_followed_by": true,
+      "is_following": true
+    },
+    {
+      "id": "1562994504419778560",
+      "name": "DeepSafe",
+      "username": "DeepSafe_AI",
+      "description": "The world's 1st CRVA (Crypto Random Verification Agent) solution, leveraging MPC, ZKP, TEE & RingVRF, creates a secure verification network for blockchain & AI.",
+      "avatar": "https://pbs.twimg.com/profile_images/1881711277720162305/kOentxk0_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 288248,
+        "following": 126,
+        "tweets": 643
+      },
+      "is_followed_by": false,
+      "is_following": true
+    },
+    {
+      "id": "1562768344725344256",
+      "name": "Stacy Muur",
+      "username": "stacy_muur",
+      "description": "In Web3 since 2016.\n(Too) passionate about research & data.\nContributor @CuratedCrypt0\n\nTelegram channel: https://t.co/d5Ioy4qbi8",
+      "avatar": "https://pbs.twimg.com/profile_images/1605592382908628992/v1qmOV_P_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 60549,
+        "following": 1460,
+        "tweets": 12793
+      },
+      "is_followed_by": false,
+      "is_following": true
+    },
+    {
+      "id": "1555049139641012224",
+      "name": "Bitget钱包中文频道 🩵",
+      "username": "BitgetWalletCN",
+      "description": "玩转新资产, 新机会, 认准 Bitget 钱包! 全面支持 TON, SOLANA, BASE 等全球100+ 热门公链, 集合了钱包、Swap 交易、DApp 浏览器、Launchpad 等5大优势功能, 带来 Web3 体验新高度。\n\nhttps://t.co/W7NRa0HZC2",
+      "avatar": "https://pbs.twimg.com/profile_images/1893468185686614018/2IICipFn_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 80507,
+        "following": 251,
+        "tweets": 3968
+      },
+      "is_followed_by": false,
+      "is_following": true
+    },
+    {
+      "id": "1554679425043943424",
+      "name": "OKX Web3 钱包",
+      "username": "OKXWeb3_CN",
+      "description": "Web3 入口，一个就够！ - 累计支持 120 条公链 - 涵盖钱包、DEX、Earn、NFT 市场、DApp 探索 5 大板块。https://t.co/v6XAyVJALQ",
+      "avatar": "https://pbs.twimg.com/profile_images/1874703336097894400/NDM4e6IQ_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 160443,
+        "following": 201,
+        "tweets": 2367
+      },
+      "is_followed_by": false,
+      "is_following": true
+    },
+    {
+      "id": "1546055871955800065",
+      "name": "火币HTX",
+      "username": "HuobiGlobal",
+      "description": "📻这里是 #火币 官方中文频道！\n🤖哔，哔，哔\n🫰火宝向你问好！\n💙用心服务全球华语用户\n🏃优享安心交易\n🤩那咱说，就选火币！\n👉官方电报群：https://t.co/P8DHNxdtl6",
+      "avatar": "https://pbs.twimg.com/profile_images/1683300506406645762/JjHq6ff4_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 180307,
+        "following": 451,
+        "tweets": 7419
+      },
+      "is_followed_by": false,
+      "is_following": true
+    },
+    {
+      "id": "1542601224654127105",
+      "name": "Helius",
+      "username": "heliuslabs",
+      "description": "Solana's top RPCs, APIs, and data. 24/7 developer support. #1 most trusted infrastructure on Solana. \n\nDiscord: https://t.co/TVc0YoxbEg",
+      "avatar": "https://pbs.twimg.com/profile_images/1676292138617675784/BNf4F9-d_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 51784,
+        "following": 118,
+        "tweets": 2504
+      },
+      "is_followed_by": false,
+      "is_following": true
+    },
+    {
+      "id": "1542042946161512448",
+      "name": "DWF Labs",
+      "username": "DWFLabs",
+      "description": "Building the future of Web3 together ✨ \nNew Generation Web3 Investor and Market Maker∙ \nManaging Partner @ag_dwf",
+      "avatar": "https://pbs.twimg.com/profile_images/1578704446577840129/AYRr3eB7_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 120999,
+        "following": 235,
+        "tweets": 4163
+      },
+      "is_followed_by": false,
+      "is_following": true
+    },
+    {
+      "id": "1541754660670676997",
+      "name": "YOMI🦅",
+      "username": "yomiXrich",
+      "description": "#互关 #土狗 #meme #抽象 #傻逼 倾倒垃圾 #MEMECOIN 我还爱撒点小谎   说白了 发的都是垃圾 上车包亏\n超好用的solbot 可跟单 速度快 延迟很低 功能很多\nhttps://t.co/i7Hr2ISqMl",
+      "avatar": "https://pbs.twimg.com/profile_images/1790016286036299777/QrTo_pvj_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 5966,
+        "following": 3616,
+        "tweets": 747
+      },
+      "is_followed_by": true,
+      "is_following": true
+    },
+    {
+      "id": "1537335793395437568",
+      "name": "GB",
+      "username": "gameboss_eth",
+      "description": "From🇨🇳• 巨量Dogecoin失主｜Web3 researcher｜Founder of @Cryptonaunts ｜Advisor | INFJ-A｜",
+      "avatar": "https://pbs.twimg.com/profile_images/1788573313541001216/rFsVUx6R_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 6475,
+        "following": 1338,
+        "tweets": 6629
+      },
+      "is_followed_by": true,
+      "is_following": true
+    },
+    {
+      "id": "1536693901230321666",
+      "name": "Mario Nawfal’s Roundtable",
+      "username": "RoundtableSpace",
+      "description": "@MarioNawfal’s Degen Account | #1 Crypto Show",
+      "avatar": "https://pbs.twimg.com/profile_images/1750481240983994368/ijRW1a6Y_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 134010,
+        "following": 6234,
+        "tweets": 16879
+      },
+      "is_followed_by": false,
+      "is_following": true
+    },
+    {
+      "id": "1534520538164502533",
+      "name": "Karl",
+      "username": "karl_0x",
+      "description": "@stix_co | coming soon",
+      "avatar": "https://pbs.twimg.com/profile_images/1596874526259920896/T7ojDBgl_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 78869,
+        "following": 1702,
+        "tweets": 3588
+      },
+      "is_followed_by": false,
+      "is_following": true
+    },
+    {
+      "id": "1531588175000268800",
+      "name": "Aethir",
+      "username": "AethirCloud",
+      "description": "Powering the Future of AI. Building Decentralised Cloud Compute Infrastructure. \n\nhttps://t.co/JvxSy9WsTK\nhttps://t.co/9TF9m3zDSE",
+      "avatar": "https://pbs.twimg.com/profile_images/1877063679218200576/TiKF0kRl_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 828563,
+        "following": 184,
+        "tweets": 6204
+      },
+      "is_followed_by": false,
+      "is_following": true
+    },
+    {
+      "id": "1526109378708766720",
+      "name": "08",
+      "username": "Pickone1994",
+      "description": "Jeeted out I do trade",
+      "avatar": "https://pbs.twimg.com/profile_images/1889927609888165888/BRG9ub00_normal.png",
+      "isBlueVerified": false,
+      "metrics": {
+        "followers": 339,
+        "following": 299,
+        "tweets": 18
+      },
+      "is_followed_by": true,
+      "is_following": true
+    },
+    {
+      "id": "1520513511595466752",
+      "name": "Kevin",
+      "username": "kevindegods",
+      "description": "AI Builder & Advisor | Scaling projects from 0 to $100M+ | Bridging AI & Blockchain | Sharing frameworks for sustainable growth (aka @kevinhenrikson)",
+      "avatar": "https://pbs.twimg.com/profile_images/1717529407622193152/0Ae4g947_normal.png",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 49854,
+        "following": 3684,
+        "tweets": 14362
+      },
+      "is_followed_by": false,
+      "is_following": true
+    },
+    {
+      "id": "1520313709373100032",
+      "name": "新的萝莉哥",
+      "username": "luolige414",
+      "description": "我是新的萝莉哥\nhttps://t.co/Wqcs6ZEbd9",
+      "avatar": "https://pbs.twimg.com/profile_images/1796248269456388096/QsR0ig-O_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 1961,
+        "following": 973,
+        "tweets": 1013
+      },
+      "is_followed_by": true,
+      "is_following": true
+    },
+    {
+      "id": "1519277855532011521",
+      "name": "Bidao🍀MEME艺术家",
+      "username": "BidaoOfficial",
+      "description": "真实粉丝 不删推 做不到永赚\n\n公开群\nhttps://t.co/hrk3AiETUM, https://t.co/EhRNi6Rok9\nvip频道入口\nhttps://t.co/HQQWOxF3hg\n\nTG联系方式:\nhttps://t.co/E8aWSGJwr1",
+      "avatar": "https://pbs.twimg.com/profile_images/1656614856337018880/U6cuh3zo_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 25408,
+        "following": 2272,
+        "tweets": 5831
+      },
+      "is_followed_by": true,
+      "is_following": true
+    },
+    {
+      "id": "1505874016761831430",
+      "name": "DEGEN NEWS",
+      "username": "DegenerateNews",
+      "description": "Reporting DEGEN nonsense. Independent reporting. Creator: @DN_Founder. Links: https://t.co/CgUN5Xiivz.",
+      "avatar": "https://pbs.twimg.com/profile_images/1551586710873550848/8_M8f6ds_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 377292,
+        "following": 31776,
+        "tweets": 31224
+      },
+      "is_followed_by": false,
+      "is_following": true
+    },
+    {
+      "id": "1503259657892429828",
+      "name": "Hedda🐽💥",
+      "username": "Rav_Hedda",
+      "description": "小豬🐽｜Co-Founder @0xmediaco 🌊 Ambassador @Scallop_io $SUI ｜💛 #Binance",
+      "avatar": "https://pbs.twimg.com/profile_images/1897805114397659136/8QmN7Gzp_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 30161,
+        "following": 4257,
+        "tweets": 21466
+      },
+      "is_followed_by": true,
+      "is_following": true
+    },
+    {
+      "id": "1502978072286724096",
+      "name": "LEFF",
+      "username": "0xleff",
+      "description": "打发时间｜ @GoldenPepeCabal ｜ @HyperNovaFNF ｜ https://t.co/Pbis3GcDQt",
+      "avatar": "https://pbs.twimg.com/profile_images/1891877788640280576/7HNxUuJT_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 22761,
+        "following": 2226,
+        "tweets": 2430
+      },
+      "is_followed_by": true,
+      "is_following": true
+    },
+    {
+      "id": "1502733964808650754",
+      "name": "Jakey",
+      "username": "SolJakey",
+      "description": "What a time to be alive | @SUPERBASEDD | @bonkbot_io",
+      "avatar": "https://pbs.twimg.com/profile_images/1874210663431573504/PkUwgxiN_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 188982,
+        "following": 6608,
+        "tweets": 52694
+      },
+      "is_followed_by": false,
+      "is_following": true
+    },
+    {
+      "id": "1501997405755088900",
+      "name": "wale.moca 🐳",
+      "username": "waleswoosh",
+      "description": "Big Web3 guy 🌐 | Doing research at @Azuki 🔬 | @moca_network | For business: @R3ACHNTWRK",
+      "avatar": "https://pbs.twimg.com/profile_images/1700199367511064576/v-3PNyPw_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 142170,
+        "following": 8169,
+        "tweets": 202367
+      },
+      "is_followed_by": false,
+      "is_following": true
+    },
+    {
+      "id": "1499656309565657089",
+      "name": "余烬",
+      "username": "EmberCN",
+      "description": "分享链上数据\n数据搬运工+非客观分析\n偶尔发广告\n所有言论都没有投资建议\nOKX 注册：https://t.co/vSDelNGIcT",
+      "avatar": "https://pbs.twimg.com/profile_images/1538063339917430784/-XWBxDFr_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 114877,
+        "following": 529,
+        "tweets": 6770
+      },
+      "is_followed_by": false,
+      "is_following": true
+    },
+    {
+      "id": "1496582337341292544",
+      "name": "菜菜不菜",
+      "username": "btc_cai",
+      "description": "#BTC #OKX 节点前十｜vx：Yez113｜OKX Web3钱包现已支持100+公链 提供钱包、多链 Swap、NFT 市场、DeFi 挖矿一站式服务  #web3入口 一个就够https://t.co/nkXjH5pOPZ",
+      "avatar": "https://pbs.twimg.com/profile_images/1806035882975383552/Lvd5W2Dc_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 30733,
+        "following": 994,
+        "tweets": 5288
+      },
+      "is_followed_by": true,
+      "is_following": true
+    },
+    {
+      "id": "1496231813202731013",
+      "name": "Martian",
+      "username": "martian_wallet",
+      "description": "The most used wallet on @aptos with 2M+ installs. Also supports @suinetwork.",
+      "avatar": "https://pbs.twimg.com/profile_images/1596164591750348800/slgh620r_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 361016,
+        "following": 531,
+        "tweets": 1668
+      },
+      "is_followed_by": false,
+      "is_following": true
+    },
+    {
+      "id": "1493545889679347716",
+      "name": "大海",
+      "username": "zhudahai5667",
+      "description": "温柔阳光帅哥/币圈角度分享/发财猫频道：https://t.co/j5JLd5hAGS玩sol就用https://t.co/4MIWRHyoiY",
+      "avatar": "https://pbs.twimg.com/profile_images/1829628941608599552/xYD2uiWI_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 4402,
+        "following": 561,
+        "tweets": 318
+      },
+      "is_followed_by": true,
+      "is_following": true
+    },
+    {
+      "id": "1493527290881331202",
+      "name": "Yaoyao👾",
+      "username": "ynonestop",
+      "description": "Growing @solana in APAC, prev @Bybit_official , @amazon, proud @solana_zh member, mommy of 2 cats 🥰 每天都很皮 👻",
+      "avatar": "https://pbs.twimg.com/profile_images/1731664072712843264/k6e0snJS_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 13400,
+        "following": 2551,
+        "tweets": 5104
+      },
+      "is_followed_by": false,
+      "is_following": true
+    },
+    {
+      "id": "1493226085815025664",
+      "name": "9GAGCEO ❤️ Memecoin",
+      "username": "9gagceo",
+      "description": "Family First • CEO of @9GAG • Building @Memeland • Hodling @Memecoin • I post when I'm pooping",
+      "avatar": "https://pbs.twimg.com/profile_images/1869108107898757120/gfiDocTe_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 1956164,
+        "following": 4506,
+        "tweets": 5243
+      },
+      "is_followed_by": false,
+      "is_following": true
+    },
+    {
+      "id": "1491726224023953408",
+      "name": "第一社区&Community",
+      "username": "DiYi_Community",
+      "description": "多链是未来!\n多链玩家最多的中文社区\n交流:  https://t.co/6IOkBxLyba\n频道：https://t.co/lqaLosjanY\n赌博：https://t.co/2mc61PYmI2\n项目合作请私信：https://t.co/T5SSWujbqo\n推文不涉及任何投资建议",
+      "avatar": "https://pbs.twimg.com/profile_images/1682027904337862662/5jtKwvtj_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 25660,
+        "following": 3840,
+        "tweets": 5868
+      },
+      "is_followed_by": true,
+      "is_following": true
+    },
+    {
+      "id": "1490949502261665792",
+      "name": "Yuyue",
+      "username": "yuyue_chris",
+      "description": "Angel Investor | AI\n\n未来在链上.赛高のgmgn 👉 https://t.co/FTXTQaEEfW\n\n#BINANCE https://t.co/uBdEICETZq\n#OKX https://t.co/NXhCSu4BhQ\nBybit https://t.co/KIKEKm0fES",
+      "avatar": "https://pbs.twimg.com/profile_images/1896109616423145472/gHSUvGT3_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 114565,
+        "following": 6727,
+        "tweets": 12282
+      },
+      "is_followed_by": false,
+      "is_following": true
+    },
+    {
+      "id": "1487541777636675589",
+      "name": "zk-🦈",
+      "username": "ZK_shark",
+      "description": "_̴̡̧̧̢̧̭̺̣͖̬̲̹̬̭̰̘̫͎̹͓̹̮͔̩̦̫̮̰͕̝̝̲̺͚̪̝̰̲̩̹̱̤͒̄̀̅̍͐̓̀͊̌̍̎̐̔͋̆̈́̽̀̓̀̀̾́̾̑͗́̉̃̎̾̊͑̆̓̀̒̎̈́͋͜ͅ @OrdinalMaxiBiz",
+      "avatar": "https://pbs.twimg.com/profile_images/1793143137168154624/9mI7Suyp_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 73442,
+        "following": 6742,
+        "tweets": 12347
+      },
+      "is_followed_by": false,
+      "is_following": true
+    },
+    {
+      "id": "1482701653891776514",
+      "name": "三俗.币圈骚话库_̴̡̧̧̢̧̭̺̣͖̬̲̹̬̭̰̘̫͎̹͓̹̮͔̩̦̫the next one旧亿",
+      "username": "Wb6Iq",
+      "description": "_̴̡̧̧̢̧̭̺̣͖̬̲̹̬̭̰̘̫͎̹͓̹̮͔̩̦̫̮̰͕̝̝̲̺͚̪̝̰̲̩̹̱（纵然世间任我挑，我的选择仍是你。）珍惜筹码 机会无限 #互关 #BTC #ETH #BTC #加密货币 #虚拟货币 #NFT #区块链 #元宇宙 #web3 #defi #BNB #OK #sol #中本聪 #Crypto #CZ",
+      "avatar": "https://pbs.twimg.com/profile_images/1741653701922807808/c334xjsG_normal.jpg",
+      "isBlueVerified": false,
+      "metrics": {
+        "followers": 2033,
+        "following": 5253,
+        "tweets": 7328
+      },
+      "is_followed_by": true,
+      "is_following": true
+    },
+    {
+      "id": "1481272552009969664",
+      "name": "Ronin",
+      "username": "Ronin_Network",
+      "description": "⚔️ Ronin is THE blockchain forged for gamers // Get Started: https://t.co/pDxvfaZQ7Z",
+      "avatar": "https://pbs.twimg.com/profile_images/1874559219052994560/uBBccsAO_normal.jpg",
+      "isBlueVerified": false,
+      "metrics": {
+        "followers": 260021,
+        "following": 1447,
+        "tweets": 11692
+      },
+      "is_followed_by": false,
+      "is_following": true
+    },
+    {
+      "id": "1479436486957322244",
+      "name": "Kyle",
+      "username": "KyleLDavies",
+      "description": "@oxfunhq  $OX",
+      "avatar": "https://pbs.twimg.com/profile_images/1767997819057557504/ybQYDA9z_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 56427,
+        "following": 1010,
+        "tweets": 2111
+      },
+      "is_followed_by": false,
+      "is_following": true
+    },
+    {
+      "id": "1477846541826236416",
+      "name": "METAWIN",
+      "username": "Meta_Winners",
+      "description": "Welcome to Winning in Web3! NFT: https://t.co/kTxxquMIPB  Discord: https://t.co/6rJbdRZxrR",
+      "avatar": "https://pbs.twimg.com/profile_images/1544085925583417344/d3yXSzPL_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 207741,
+        "following": 1053,
+        "tweets": 14350
+      },
+      "is_followed_by": false,
+      "is_following": true
+    },
+    {
+      "id": "1476696261222936577",
+      "name": "Milk Road",
+      "username": "MilkRoadDaily",
+      "description": "Making you smarter about crypto, one laugh at a time. Trusted by 330k+ daily readers. Follow us for daily crypto news, insights & milky hot takes. 🥛",
+      "avatar": "https://pbs.twimg.com/profile_images/1539296276407324673/4IBkcdhF_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 81187,
+        "following": 2672,
+        "tweets": 9938
+      },
+      "is_followed_by": false,
+      "is_following": true
+    }
+  ]
+}

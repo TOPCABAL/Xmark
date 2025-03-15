@@ -2069,6 +2069,70 @@ app.use((err, req, res, next) => {
   });
 });
 
+// API端点：获取用户的共同关注者列表
+app.get('/api/same-followers/:username', async (req, res) => {
+  let { username } = req.params;
+  const refresh = req.query.refresh === 'true';
+  
+  try {
+    console.log(`[共同关注] 收到请求获取用户 ${username} 的共同关注者，refresh=${refresh}`);
+    
+    // 确保用户目录存在
+    const userDir = path.join(__dirname, 'data', username);
+    if (!fs.existsSync(userDir)) {
+      fs.mkdirSync(userDir, { recursive: true });
+      console.log(`[共同关注] 创建用户目录: ${userDir}`);
+    }
+    
+    const sameFollowersPath = path.join(userDir, 'samefollower.json');
+    let result;
+    
+    // 如果需要刷新或文件不存在，则重新获取数据
+    if (refresh || !fs.existsSync(sameFollowersPath)) {
+      console.log(`[共同关注] 需要获取新数据: ${sameFollowersPath}`);
+      
+      try {
+        // 使用外部脚本获取共同关注者数据
+        const scriptsDir = path.join(__dirname, '..', 'scripts');
+        const scriptPath = path.join(scriptsDir, 'getSameFollowers.js');
+        
+        console.log(`[共同关注] 执行脚本: ${scriptPath} ${username}`);
+        
+        // 执行脚本获取共同关注者数据
+        const { getSameFollowersForUser } = await import('../scripts/getSameFollowers.js');
+        result = await getSameFollowersForUser(username);
+        
+        if (!result.success) {
+          console.error(`[共同关注] 获取失败: ${result.error}`);
+          throw new Error(result.error || '获取数据失败');
+        }
+      } catch (error) {
+        console.error(`[共同关注] 处理失败: ${error.message}`);
+        return res.status(500).send({ 
+          success: false, 
+          message: `获取用户 ${username} 的共同关注者数据失败`, 
+          error: error.message 
+        });
+      }
+    } else {
+      // 如果文件存在，直接读取文件
+      console.log(`[共同关注] 读取现有数据: ${sameFollowersPath}`);
+      const fileData = await fsPromises.readFile(sameFollowersPath, 'utf8');
+      result = JSON.parse(fileData);
+    }
+    
+    res.send({ 
+      success: true, 
+      username,
+      data: result
+    });
+  } catch (error) {
+    console.error(`[共同关注] 处理请求失败: ${error.message}`);
+    res.status(500).send({ success: false, message: '服务器错误', error: error.message });
+  }
+});
+
+// 以下内容需放在末尾
 // 404处理
 app.use((req, res) => {
   res.setHeader('Content-Type', 'application/json');
@@ -2083,5 +2147,6 @@ app.listen(PORT, () => {
   console.log(`Twitter API服务器已启动: http://localhost:${PORT}`);
   console.log(`API测试端点: http://localhost:${PORT}/api/status`);
   console.log(`关注列表API: http://localhost:${PORT}/api/twitter/following?username=dotyyds1234`);
+  console.log(`共同关注者API: http://localhost:${PORT}/api/same-followers/elonmusk`);
   console.log(`账号列表API: http://localhost:${PORT}/api/accounts`);
-}); 
+});
