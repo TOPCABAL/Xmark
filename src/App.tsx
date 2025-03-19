@@ -19,7 +19,7 @@ import { getAnnotatedAccounts, saveAnnotatedAccount, AnnotatedAccount } from './
 import TwitterSelector from "./components/TwitterSelector";
 import TwitterEmbed from './components/TwitterEmbed';
 // 导入数据库服务
-import { fetchAccountsFromDB, fetchCategoriesFromDB, saveAnnotationToDB, exportDataFromDB, fetchDBStats, AccountFilterOptions } from './services/dbService';
+import { fetchAccountsFromDB, fetchCategoriesFromDB, saveAnnotationToDB, exportDataFromDB, fetchDBStats, AccountFilterOptions, addCategoryToDB } from './services/dbService';
 
 const { TextArea } = Input;
 const { Title } = Typography;
@@ -47,6 +47,7 @@ function App() {
   const [fetchingFollowing, setFetchingFollowing] = useState(false);
   const [pagesCount, setPagesCount] = useState(0); // 页数设置，默认0页表示自动计算
   const [availableCategories, setAvailableCategories] = useState<string[]>([]); // 可用的分类列表
+  const [newCategoryInput, setNewCategoryInput] = useState(''); // 新增：添加分类输入框的值
   
   // 当前选中的Twitter用户名
   const [currentScreenName, setCurrentScreenName] = useState<string>('');
@@ -102,11 +103,24 @@ function App() {
         const serverStatus = await testServerConnection();
         if (!serverStatus.success) {
           message.error(`无法连接到服务器: ${serverStatus.message}`);
+          console.error('服务器连接测试失败:', serverStatus.message);
           setLoading(false);
           return;
         }
         
-        // 2. 从数据库加载账号数据
+        console.log('成功连接到服务器:', serverStatus);
+        
+        // 2. 测试API连接 - 获取分类列表
+        try {
+          console.log('正在验证API连接...');
+          const categoriesFromDB = await fetchCategoriesFromDB();
+          console.log(`API连接成功，获取到 ${categoriesFromDB.length} 个分类`);
+        } catch (apiError) {
+          console.error('API连接测试失败:', apiError);
+          message.warning('API连接测试失败，某些功能可能无法正常工作');
+        }
+        
+        // 3. 从数据库加载账号数据
         const accountsFromDB = await fetchAccountsFromDB({
           limit: 1000, // 设置较大的限制，获取更多数据
           sortBy: 'import_date', 
@@ -121,7 +135,7 @@ function App() {
         const annotatedFromDB = accountsFromDB.filter(account => account.isAnnotated) as unknown as AnnotatedAccount[];
         setAnnotatedAccounts(annotatedFromDB);
         
-        // 3. 加载统计数据
+        // 4. 加载统计数据
         try {
           const stats = await fetchDBStats();
           message.success(`成功加载 ${stats.totalAccounts} 个账号，其中 ${stats.annotatedAccounts} 个已标注，共 ${stats.totalCategories} 个分类`);
@@ -130,7 +144,7 @@ function App() {
           message.success(`成功加载 ${accountsFromDB.length} 个账号`);
         }
         
-        // 4. 加载分类列表
+        // 5. 加载分类列表
         const categoriesFromDB = await fetchCategoriesFromDB();
         setAvailableCategories(categoriesFromDB.map(cat => cat.name));
       } catch (error) {
@@ -303,6 +317,49 @@ function App() {
       }
       return prev;
     });
+  };
+
+  // 添加新分类到数据库
+  const addNewCategory = async (categoryName: string) => {
+    if (!categoryName.trim()) {
+      message.warning('分类名称不能为空');
+      return;
+    }
+    
+    try {
+      message.loading({ content: `正在添加分类 ${categoryName}...`, key: 'addCategory' });
+      console.log(`[添加分类] 开始添加分类: ${categoryName}`);
+      
+      // 添加到数据库
+      const success = await addCategoryToDB(categoryName);
+      
+      if (success) {
+        message.success({ content: `成功添加分类 ${categoryName}`, key: 'addCategory' });
+        console.log(`[添加分类] 成功添加分类到数据库: ${categoryName}`);
+        
+        // 更新可用分类列表
+        try {
+          console.log(`[添加分类] 正在刷新分类列表...`);
+          const categoriesFromDB = await fetchCategoriesFromDB();
+          setAvailableCategories(categoriesFromDB.map(cat => cat.name));
+          console.log(`[添加分类] 分类列表已更新，共 ${categoriesFromDB.length} 个分类`);
+          
+          // 添加到当前选中的分类
+          handleAddCategory(categoryName);
+        } catch (refreshError) {
+          console.error('[添加分类] 刷新分类列表失败:', refreshError);
+          message.warning('分类已添加，但刷新列表失败，请手动刷新页面');
+        }
+      }
+    } catch (error) {
+      console.error('[添加分类] 添加分类失败:', error);
+      console.error('[添加分类] 错误详情:', JSON.stringify(error));
+      message.error({ 
+        content: `添加分类失败: ${error instanceof Error ? error.message : '未知错误'}`, 
+        key: 'addCategory',
+        duration: 5
+      });
+    }
   };
 
   // 处理删除分类
@@ -654,34 +711,68 @@ function App() {
                 <TagOutlined className="mr-2" />
                 <span className="text-sm font-medium">分类</span>
               </div>
-              <div className="flex flex-wrap gap-2 mb-2">
-                {categories.map(cat => (
+              <div className="flex flex-wrap gap-2 mb-3">
+                {availableCategories.map(cat => (
                   <Tag
                     key={cat}
-                    closable
-                    onClose={() => handleRemoveCategory(cat)}
-                    className="mb-1"
+                    className={`mb-1 cursor-pointer ${categories.includes(cat) ? 'ant-tag-blue' : ''}`}
+                    onClick={() => {
+                      if (categories.includes(cat)) {
+                        handleRemoveCategory(cat);
+                      } else {
+                        handleAddCategory(cat);
+                      }
+                    }}
+                    style={{ fontSize: '16px', padding: '4px 8px' }}
                   >
                     {cat}
                   </Tag>
                 ))}
               </div>
               <div className="flex gap-2">
-                <Select
-                  mode="multiple"
-                  style={{ width: '100%' }}
-                  placeholder="选择或输入分类"
-                  value={categories}
-                  onChange={setCategories}
-                  options={availableCategories.map(cat => ({ label: cat, value: cat }))}
-                  onDeselect={handleRemoveCategory}
-                  onSelect={handleAddCategory}
-                  allowClear
-                  showSearch
-                  filterOption={(input, option) =>
-                    (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
-                  }
+                <Input
+                  placeholder="输入新分类"
+                  value={newCategoryInput}
+                  onChange={(e) => setNewCategoryInput(e.target.value)}
+                  onPressEnter={() => {
+                    if (newCategoryInput.trim()) {
+                      addNewCategory(newCategoryInput.trim());
+                      setNewCategoryInput('');
+                    }
+                  }}
                 />
+                <Button
+                  type="primary"
+                  icon={<PlusOutlined />}
+                  onClick={() => {
+                    if (newCategoryInput.trim()) {
+                      addNewCategory(newCategoryInput.trim());
+                      setNewCategoryInput('');
+                    }
+                  }}
+                >
+                  添加
+                </Button>
+              </div>
+              <div className="mt-3">
+                <p className="text-sm font-medium mb-2">已选分类:</p>
+                <div className="flex flex-wrap gap-2">
+                  {categories.map(cat => (
+                    <Tag
+                      key={cat}
+                      closable
+                      color="blue"
+                      onClose={() => handleRemoveCategory(cat)}
+                      className="mb-1"
+                      style={{ fontSize: '16px', padding: '4px 8px' }}
+                    >
+                      {cat}
+                    </Tag>
+                  ))}
+                  {categories.length === 0 && (
+                    <span className="text-gray-400 text-sm">暂无选择的分类</span>
+                  )}
+                </div>
               </div>
             </div>
             

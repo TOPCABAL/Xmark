@@ -187,4 +187,51 @@ export async function fetchDBStats(): Promise<DatabaseStats> {
     console.error('获取数据库统计信息失败:', error);
     throw error;
   }
+}
+
+/**
+ * 添加新分类
+ * @param name 分类名称
+ * @returns 添加结果
+ */
+export async function addCategoryToDB(name: string): Promise<boolean> {
+  try {
+    if (!name.trim()) {
+      throw new Error('分类名称不能为空');
+    }
+    
+    console.log(`[API] 正在添加分类: ${name}`);
+    console.log(`[API] 请求URL: ${API_BASE_URL}/api/categories/add`);
+    
+    const response = await fetch(`${API_BASE_URL}/api/categories/add`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name
+      })
+    });
+    
+    console.log(`[API] 响应状态: ${response.status} ${response.statusText}`);
+    
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error(`[API] 错误响应内容: ${errorText}`);
+      throw new Error(`添加分类失败: ${response.status} ${response.statusText} - ${errorText}`);
+    }
+    
+    const data = await response.json();
+    console.log(`[API] 响应数据: ${JSON.stringify(data)}`);
+    
+    if (data.success) {
+      console.log(`[API] 成功添加分类 ${name}`);
+      return true;
+    }
+    
+    throw new Error(data.message || '添加分类失败');
+  } catch (error) {
+    console.error(`[API] 添加分类到数据库失败:`, error);
+    throw error;
+  }
 } 
