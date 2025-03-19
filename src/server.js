@@ -1560,29 +1560,22 @@ app.get('/api/accounts', async (req, res) => {
 // 新增API：保存账号标注
 app.post('/api/annotation', async (req, res) => {
   try {
-    console.log('[数据库] 收到保存标注请求');
-    console.log('[数据库] 请求参数:', req.body);
-    
-    const { username, category, notes } = req.body;
+    const { username, category, notes, categories } = req.body;
     
     if (!username) {
-      return res.status(400).json({
-        success: false,
-        message: '缺少必需的username参数'
-      });
+      return res.status(400).json({ success: false, message: '用户名是必需的' });
     }
     
-    // 保存标注到数据库
-    const result = await saveAnnotation(username, category, notes);
-    
-    console.log(`[数据库] 成功保存标注: ${JSON.stringify(result)}`);
+    // 保存标注
+    const result = await saveAnnotation(username, category, notes, categories || []);
     
     res.json({
       success: true,
-      ...result
+      message: '标注已保存',
+      username
     });
   } catch (error) {
-    console.error('[数据库] 保存标注失败:', error);
+    console.error('保存标注失败:', error);
     res.status(500).json({
       success: false,
       message: `保存标注失败: ${error.message}`

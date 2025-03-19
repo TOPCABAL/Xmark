@@ -196,6 +196,17 @@ const AccountList: React.FC<AccountListProps> = ({
                           </span>
                         </div>
                       )}
+                      
+                      {/* 显示多标签 */}
+                      {account.categories && account.categories.length > 0 && (
+                        <div className="mt-1 flex flex-wrap gap-1">
+                          {account.categories.map(tag => (
+                            <span key={tag} className="bg-green-100 text-green-800 text-xs px-2 py-0.5 rounded-full">
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      )}
                     </div>
                     {account.following !== undefined && (
                       <div className="ml-2" onClick={e => handleToggleFollow(e, account)}>

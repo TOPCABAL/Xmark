@@ -37,6 +37,7 @@ function App() {
   // UI状态
   const [currentIndex, setCurrentIndex] = useState(0);
   const [category, setCategory] = useState("");
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]); // 多选标签状态
   const [notes, setNotes] = useState("");
   const [importModalVisible, setImportModalVisible] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -174,12 +175,14 @@ function App() {
   useEffect(() => {
     if (displayAccounts.length === 0 || currentIndex >= displayAccounts.length) {
       setCategory("");
+      setSelectedCategories([]);
       setNotes("");
       return;
     }
     
     const current = displayAccounts[currentIndex];
     setCategory(current.category || "");
+    setSelectedCategories(current.categories || []);
     setNotes(current.notes || "");
   }, [currentIndex, displayAccounts]);
 
@@ -390,22 +393,27 @@ function App() {
 
   const currentAccount = displayAccounts[currentIndex];
 
-  // 处理标注当前账号
+  // 保存当前账号的标注
   const handleAnnotateCurrentAccount = async () => {
-    if (!currentAccount) return;
+    if (!currentAccount) {
+      message.error('没有选中账号');
+      return;
+    }
     
     try {
-      // 使用数据库API保存标注
+      // 保存标注到数据库
       await saveAnnotationToDB(
         currentAccount.username,
         category,
-        notes
+        notes,
+        selectedCategories // 添加多标签参数
       );
       
       // 更新本地状态
       const annotatedAccount = {
         ...currentAccount,
         category,
+        categories: selectedCategories, // 添加多标签数据
         notes,
         isAnnotated: true,
         annotatedAt: Date.now()
@@ -431,6 +439,7 @@ function App() {
         updated[currentIndex] = {
           ...updated[currentIndex],
           category,
+          categories: selectedCategories, // 添加多标签数据
           notes,
           isAnnotated: true,
           annotatedAt: Date.now()
@@ -506,6 +515,34 @@ function App() {
 
   // 分组选项
   const categoryOptions = ["项目方", "Alpha选手", "p小将", "社区主", "Coin", "二级选手"];
+
+  // 处理标签切换（选择/取消选择）
+  const handleToggleTag = (tag: string) => {
+    if (selectedCategories.includes(tag)) {
+      // 如果已选中，则移除
+      setSelectedCategories(prevTags => prevTags.filter(t => t !== tag));
+    } else {
+      // 如果未选中，则添加
+      setSelectedCategories(prevTags => [...prevTags, tag]);
+    }
+  };
+
+  // 添加新标签
+  const handleAddNewTag = (value: string) => {
+    const trimmedValue = value?.trim();
+    if (!trimmedValue) {
+      return false;
+    }
+    
+    if (selectedCategories.includes(trimmedValue)) {
+      message.info(`标签 "${trimmedValue}" 已存在`);
+      return false;
+    }
+    
+    setSelectedCategories(prevTags => [...prevTags, trimmedValue]);
+    message.success(`已添加标签 "${trimmedValue}"`);
+    return true;
+  };
 
   return (
     <Layout style={{ minHeight: '100vh' }}>
@@ -639,7 +676,7 @@ function App() {
         <div style={{ width: '30%', padding: '15px', borderLeft: '1px solid #f0f0f0', height: '100%', overflowY: 'auto' }}>
           <div className="p-4">
             <div className="flex justify-between items-center mb-4">
-              <Title level={3} className="m-0">分组 & 备注</Title>
+              <Title level={3} className="m-0">分组 & 标签</Title>
               <Button 
                 type="primary" 
                 icon={<SaveOutlined />} 
@@ -650,7 +687,7 @@ function App() {
             </div>
             
             <div className="mb-4">
-              <div className="mb-2 font-semibold">选择分组:</div>
+              <div className="mb-2 font-semibold">主要分组:</div>
               <div className="flex flex-wrap gap-2 mb-2">
                 {categoryOptions.map(cat => (
                   <Tag 
@@ -680,6 +717,61 @@ function App() {
                     }}
                   >
                     添加
+                  </Button>
+                }
+              />
+            </div>
+            
+            {/* 多标签选择区域 */}
+            <div className="mb-4 mt-4">
+              <div className="mb-2 font-semibold">多选标签:</div>
+              <div className="flex flex-wrap gap-2 mb-2">
+                {categoryOptions.map(cat => (
+                  <Tag 
+                    key={cat}
+                    color={selectedCategories.includes(cat) ? "green" : "default"}
+                    className="cursor-pointer px-3 py-1"
+                    onClick={() => handleToggleTag(cat)}
+                  >
+                    {cat}
+                  </Tag>
+                ))}
+                {selectedCategories
+                  .filter(tag => !categoryOptions.includes(tag))
+                  .map(tag => (
+                    <Tag 
+                      key={tag}
+                      color="green"
+                      closable
+                      onClose={() => setSelectedCategories(prev => prev.filter(t => t !== tag))}
+                      className="px-3 py-1"
+                    >
+                      {tag}
+                    </Tag>
+                  ))}
+              </div>
+              <Input 
+                placeholder="添加自定义标签" 
+                onPressEnter={(e) => {
+                  const input = e.currentTarget;
+                  const value = input.value.trim();
+                  if (handleAddNewTag(value)) {
+                    input.value = '';
+                  }
+                }}
+                suffix={
+                  <Button 
+                    type="link" 
+                    size="small"
+                    icon={<PlusOutlined />}
+                    onClick={(e) => {
+                      const input = e.currentTarget.parentElement?.previousSibling as HTMLInputElement;
+                      if (input && handleAddNewTag(input.value)) {
+                        input.value = '';
+                      }
+                    }}
+                  >
+                    添加标签
                   </Button>
                 }
               />

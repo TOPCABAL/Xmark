@@ -6,7 +6,8 @@ export interface AccountProps {
   avatar: string;
   verified?: boolean;
   following?: boolean;
-  category?: string;
+  category?: string; // 保留单个标签支持
+  categories?: string[]; // 新增多标签支持
   description?: string;
   metrics?: {
     followers: number;
@@ -46,6 +47,7 @@ function transformTwitterResponse(twitterData: any[]): AccountProps[] {
       verified: user.verified || false,
       following: true, // 从关注列表获取的用户默认已关注
       category: user.category, // 只保留原始数据的分类，不再自动分配
+      categories: user.categories || [], // 支持多标签
       description: user.description,
       metrics,
       isAnnotated: false // 默认为未标注
@@ -647,6 +649,7 @@ export function mergeWithAnnotatedAccounts(apiAccounts: AccountProps[], annotate
       return {
         ...apiAccount,
         category: annotated.category || apiAccount.category,
+        categories: annotated.categories || apiAccount.categories,
         notes: annotated.notes,
         isAnnotated: true,
         annotatedAt: annotated.annotatedAt
@@ -873,6 +876,7 @@ export async function fetchUserFollowing(username: string, pages: number = 3): P
         verified: account.verified || account.legacy?.verified || account.result?.legacy?.verified || false,
         following: true,
         category: account.category || account.legacy?.category || account.result?.legacy?.category || '',
+        categories: account.categories || [],
         description: account.description || account.legacy?.description || account.result?.legacy?.description || '',
         metrics: account.public_metrics || account.legacy?.public_metrics || account.result?.legacy?.public_metrics || {
           followers_count: account.followers_count || account.legacy?.followers_count || account.result?.legacy?.followers_count || 0,

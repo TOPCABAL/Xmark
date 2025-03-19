@@ -168,8 +168,9 @@ export async function getAccounts(options = {}) {
   let params = [];
   
   if (category) {
-    conditions.push('category = ?');
-    params.push(category);
+    // 同时支持查找单个分类或多分类中包含的情况
+    conditions.push('(category = ? OR categories LIKE ?)');
+    params.push(category, `%${category}%`);
   }
   
   if (isAnnotated === true) {
@@ -199,6 +200,7 @@ export async function getAccounts(options = {}) {
       avatar_url AS avatar,
       verified,
       category,
+      categories,
       notes,
       followers_count,
       following_count,
@@ -226,6 +228,7 @@ export async function getAccounts(options = {}) {
       formatted_username: `@${account.username} https://x.com/${account.username}`,
       twitter_link: `https://x.com/${account.username}`,
       category: account.category || '',
+      categories: account.categories ? JSON.parse(account.categories) : [],
       notes: account.notes || '',
       verified: Boolean(account.verified),
       annotatedAt: account.annotated_at,
@@ -245,16 +248,20 @@ export async function getAccounts(options = {}) {
 /**
  * 保存账号标注信息
  * @param {string} username 用户名
- * @param {string} category 分类
+ * @param {string} category 主分类
+ * @param {string[]} categories 多标签分类数组
  * @param {string} notes 备注
  * @returns {Promise<Object>} 保存结果
  */
-export async function saveAnnotation(username, category, notes) {
+export async function saveAnnotation(username, category, notes, categories = []) {
   const db = await getDatabase();
   const now = new Date().toISOString();
   
   // 移除用户名中的@符号
   username = username.replace(/^@/, '');
+  
+  // 格式化分类数组为JSON字符串
+  const categoriesJson = JSON.stringify(categories);
   
   try {
     // 开始事务
@@ -264,34 +271,24 @@ export async function saveAnnotation(username, category, notes) {
     await db.run(`
       UPDATE twitter_accounts SET
         category = ?,
+        categories = ?,
         notes = ?,
         annotated_at = COALESCE(annotated_at, ?),
         last_updated = ?
       WHERE username = ?
-    `, [category, notes, now, now, username]);
+    `, [category, categoriesJson, notes, now, now, username]);
     
-    // 如果指定了分类，更新分类表
+    // 处理主分类
     if (category && category.trim() !== '') {
-      // 先检查分类是否存在
-      const existingCategory = await db.get(
-        'SELECT * FROM categories WHERE name = ?', 
-        category
-      );
-      
-      if (existingCategory) {
-        // 更新分类计数
-        await db.run(`
-          UPDATE categories SET
-            count = (SELECT COUNT(*) FROM twitter_accounts WHERE category = ?),
-            created_at = MIN(created_at, ?)
-          WHERE name = ?
-        `, [category, now, category]);
-      } else {
-        // 插入新分类
-        await db.run(`
-          INSERT INTO categories (name, count, created_at)
-          VALUES (?, 1, ?)
-        `, [category, now]);
+      await updateOrCreateCategory(db, category, now);
+    }
+    
+    // 处理多标签分类
+    if (categories && categories.length > 0) {
+      for (const cat of categories) {
+        if (cat && cat.trim() !== '') {
+          await updateOrCreateCategory(db, cat, now);
+        }
       }
     }
     
@@ -304,6 +301,36 @@ export async function saveAnnotation(username, category, notes) {
     await db.exec('ROLLBACK');
     console.error(`保存标注失败 (${username}):`, error);
     throw error;
+  }
+}
+
+/**
+ * 更新或创建分类
+ * @param {Object} db 数据库连接
+ * @param {string} category 分类名称
+ * @param {string} now 当前时间
+ */
+async function updateOrCreateCategory(db, category, now) {
+  // 先检查分类是否存在
+  const existingCategory = await db.get(
+    'SELECT * FROM categories WHERE name = ?', 
+    category
+  );
+  
+  if (existingCategory) {
+    // 更新分类计数
+    await db.run(`
+      UPDATE categories SET
+        count = (SELECT COUNT(*) FROM twitter_accounts WHERE category = ? OR categories LIKE ?),
+        created_at = MIN(created_at, ?)
+      WHERE name = ?
+    `, [category, `%${category}%`, now, category]);
+  } else {
+    // 插入新分类
+    await db.run(`
+      INSERT INTO categories (name, count, created_at)
+      VALUES (?, 1, ?)
+    `, [category, now]);
   }
 }
 

@@ -92,7 +92,7 @@ export async function fetchCategoriesFromDB(): Promise<CategoryCount[]> {
 /**
  * 保存账号标注
  */
-export async function saveAnnotationToDB(username: string, category: string, notes: string): Promise<boolean> {
+export async function saveAnnotationToDB(username: string, category: string, notes: string, categories: string[] = []): Promise<boolean> {
   try {
     const response = await fetch(`${API_BASE_URL}/api/annotation`, {
       method: 'POST',
@@ -102,7 +102,8 @@ export async function saveAnnotationToDB(username: string, category: string, not
       body: JSON.stringify({
         username,
         category,
-        notes
+        notes,
+        categories
       })
     });
     
