@@ -189,6 +189,27 @@
                     <button id="viewCategoryAccounts" class="btn btn-outline-primary">查看</button>
                   </div>
                 </div>
+
+                <!-- 新增标签管理部分 -->
+                <div class="mb-3">
+                  <label class="form-label">标签管理</label>
+                  <div class="input-group mb-2">
+                    <input type="text" id="newTagInput" class="form-control" placeholder="输入新标签名称">
+                    <button id="addNewTag" class="btn btn-outline-success">添加</button>
+                  </div>
+                  <div id="tagsList" class="border rounded p-2 mb-2" style="max-height: 150px; overflow-y: auto;">
+                    <div class="text-muted small">加载标签中...</div>
+                  </div>
+                  <div class="input-group mb-2">
+                    <select id="editTagSelect" class="form-select">
+                      <option value="">选择要编辑的标签</option>
+                    </select>
+                    <input type="text" id="editTagInput" class="form-control" placeholder="新标签名称">
+                    <button id="editTag" class="btn btn-outline-warning">修改</button>
+                    <button id="deleteTag" class="btn btn-outline-danger">删除</button>
+                  </div>
+                </div>
+
                 <div class="mb-3">
                   <label class="form-label">重命名分类</label>
                   <div class="input-group mb-3">
@@ -315,7 +336,19 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     // API基础URL
-    const API_BASE_URL = 'http://localhost:3001';
+    const API_BASE_URL = (() => {
+      const protocol = window.location.protocol;
+      const hostname = window.location.hostname;
+      const port = '3001';  // API服务器端口
+      
+      // 如果是本地开发环境
+      if (hostname === 'localhost' || hostname === '127.0.0.1') {
+        return `${protocol}//${hostname}:${port}`;
+      }
+      
+      // 生产环境
+      return `${protocol}//${hostname}:${port}`;
+    })();
     
     // DOM元素
     const elements = {
@@ -324,6 +357,15 @@
       annotatedAccounts: document.getElementById('annotatedAccounts'),
       unannotatedAccounts: document.getElementById('unannotatedAccounts'),
       totalCategories: document.getElementById('totalCategories'),
+      
+      // 标签管理
+      newTagInput: document.getElementById('newTagInput'),
+      addNewTag: document.getElementById('addNewTag'),
+      tagsList: document.getElementById('tagsList'),
+      editTagSelect: document.getElementById('editTagSelect'),
+      editTagInput: document.getElementById('editTagInput'),
+      editTag: document.getElementById('editTag'),
+      deleteTag: document.getElementById('deleteTag'),
       
       // 关注列表管理
       importSourceSelect: document.getElementById('importSourceSelect'),
@@ -374,10 +416,20 @@
       loadStats();
       loadImportSources();
       loadCategories();
+      loadTags(); // 加载标签列表
       
       // 按钮事件处理
       elements.refreshStats.addEventListener('click', loadStats);
       elements.backupDatabase.addEventListener('click', backupDatabase);
+      
+      // 标签管理事件处理
+      elements.addNewTag.addEventListener('click', addNewTag);
+      elements.editTag.addEventListener('click', editTag);
+      elements.deleteTag.addEventListener('click', () => showConfirmDialog(
+        '删除标签',
+        `确定要删除标签"${elements.editTagSelect.value}"吗？此操作不可撤销！`,
+        deleteTag
+      ));
       
       elements.viewSourceAccounts.addEventListener('click', viewSourceAccounts);
       elements.deleteSourceAccounts.addEventListener('click', () => showConfirmDialog(
@@ -412,28 +464,62 @@
         showLoading();
         
         const url = `${API_BASE_URL}${endpoint}`;
-        console.log(`API调用: ${url}`);
+        console.log(`[API请求] ${options.method || 'GET'} ${url}`);
+        
+        // 如果没有提供signal，创建一个默认的超时处理
+        if (!options.signal) {
+          const controller = new AbortController();
+          const timeoutId = setTimeout(() => controller.abort(), 15000);
+          options.signal = controller.signal;
+          
+          // 请求完成后清除超时
+          setTimeout(() => clearTimeout(timeoutId), 15500);
+        }
         
         const response = await fetch(url, {
           ...options,
           headers: {
             'Content-Type': 'application/json',
+            'Accept': 'application/json',
             ...options.headers
-          }
+          },
+          mode: 'cors'
         });
         
         if (!response.ok) {
-          const errorText = await response.text();
-          throw new Error(`API请求失败 (${response.status}): ${errorText}`);
+          let errorMessage = `HTTP错误 ${response.status}`;
+          try {
+            const errorData = await response.json();
+            errorMessage = errorData.message || errorData.error || errorMessage;
+          } catch (e) {
+            try {
+              errorMessage = await response.text() || errorMessage;
+            } catch (textError) {
+              // 如果无法读取响应内容，保持默认错误消息
+            }
+          }
+          throw new Error(errorMessage);
         }
         
         const data = await response.json();
+        console.log(`[API响应] ${endpoint}:`, data);
+        // 不在这里调用hideLoading，避免覆盖后续的成功或错误消息
         return data;
       } catch (error) {
-        showError(`API请求错误: ${error.message}`);
-        throw error;
+        console.error(`[API错误] ${endpoint}:`, error);
+        
+        if (error.name === 'AbortError') {
+          showError(`请求超时: ${endpoint}`);
+          throw new Error(`请求超时`);
+        } else if (error.name === 'SyntaxError') {
+          showError(`解析响应失败: 服务器返回了无效的JSON数据`);
+          throw new Error(`解析响应失败`);
+        } else {
+          showError(`请求失败: ${error.message}`);
+          throw error;
+        }
       } finally {
-        hideLoading();
+        hideLoading(); // 确保在任何情况下都隐藏加载状态
       }
     }
     
@@ -894,7 +980,228 @@
     
     // 隐藏加载状态
     function hideLoading() {
-      // 不做任何事情，结果会被其他函数更新
+      // 仅当当前显示的是加载状态时才清除它
+      // 这样可以避免覆盖已经显示的成功或错误消息
+      const loadingMessage = elements.resultsContainer.querySelector('.alert-info');
+      if (loadingMessage && loadingMessage.textContent.includes('正在处理请求')) {
+        // 不要自动替换为默认信息，因为这可能覆盖即将显示的成功消息
+        // 只有在没有其他显示消息的情况下才显示默认信息
+        const successMessage = elements.resultsContainer.querySelector('.alert-success');
+        const errorMessage = elements.resultsContainer.querySelector('.alert-danger');
+        
+        if (!successMessage && !errorMessage) {
+          elements.resultsContainer.innerHTML = `
+            <div class="alert alert-info m-3">
+              请使用左侧功能执行操作，结果将显示在此处。
+            </div>
+          `;
+        }
+      }
+    }
+
+    // 加载标签列表
+    async function loadTags() {
+      try {
+        const data = await callApi('/api/categories');
+        if (data.success && Array.isArray(data.categories)) {
+          // 更新标签列表显示
+          updateTagsList(data.categories);
+          // 更新编辑下拉框
+          populateSelect(elements.editTagSelect, [
+            { value: '', text: '选择要编辑的标签' },
+            ...data.categories.map(tag => ({
+              value: tag.name,
+              text: `${tag.name} (${tag.count || 0})`
+            }))
+          ]);
+          // 更新其他相关的下拉框
+          populateSelect(elements.categorySelect, data.categories.map(c => ({
+            value: c.name,
+            text: `${c.name} (${c.count || 0})`
+          })));
+          populateSelect(elements.categoryRenameSource, data.categories.map(c => ({
+            value: c.name,
+            text: `${c.name} (${c.count || 0})`
+          })));
+          populateSelect(elements.categoryMergeSource, data.categories.map(c => ({
+            value: c.name,
+            text: `${c.name} (${c.count || 0})`
+          })));
+          populateSelect(elements.categoryMergeTarget, data.categories.map(c => ({
+            value: c.name,
+            text: `${c.name} (${c.count || 0})`
+          })));
+          populateSelect(elements.queryCategory, [
+            { value: '', text: '全部分类' },
+            ...data.categories.map(c => ({
+              value: c.name,
+              text: `${c.name} (${c.count || 0})`
+            }))
+          ]);
+        } else {
+          showError('获取标签列表失败');
+        }
+      } catch (error) {
+        console.error('加载标签失败:', error);
+      }
+    }
+
+    // 更新标签列表显示
+    function updateTagsList(tags) {
+      if (!tags || tags.length === 0) {
+        elements.tagsList.innerHTML = '<div class="text-muted small">暂无标签</div>';
+        return;
+      }
+
+      const tagsHtml = tags.map(tag => `
+        <span class="badge bg-info me-2 mb-2" style="font-size: 0.9em;">
+          ${tag.name}
+          <span class="badge bg-secondary ms-1">${tag.count || 0}</span>
+        </span>
+      `).join('');
+
+      elements.tagsList.innerHTML = tagsHtml;
+    }
+
+    // 添加新标签
+    async function addNewTag() {
+      const newTagName = elements.newTagInput.value.trim();
+      if (!newTagName) {
+        showError('请输入标签名称');
+        return;
+      }
+
+      try {
+        console.log(`[添加标签] 正在添加新标签: ${newTagName}`);
+        
+        // 确保使用正确的API端点 - /api/categories/add
+        const data = await callApi('/api/categories/add', {
+          method: 'POST',
+          body: JSON.stringify({ name: newTagName })
+        });
+
+        if (data.success) {
+          showSuccess(data.message || `成功添加标签"${newTagName}"`);
+          elements.newTagInput.value = '';
+          console.log(`[添加标签] 刷新数据开始`);
+          await loadTags();  // 重新加载所有标签
+          await loadStats(); // 更新统计信息 
+          console.log(`[添加标签] 刷新数据完成`);
+        } else {
+          showError(data.message || `添加标签失败`);
+        }
+      } catch (error) {
+        console.error('添加标签失败:', error);
+        showError(`添加标签失败: ${error.message || '未知错误'}`);
+      }
+    }
+
+    // 编辑标签
+    async function editTag() {
+      const oldTagName = elements.editTagSelect.value;
+      const newTagName = elements.editTagInput.value.trim();
+
+      if (!oldTagName || !newTagName) {
+        showError('请选择要编辑的标签并输入新的标签名称');
+        return;
+      }
+
+      try {
+        console.log(`[编辑标签] 正在将标签 "${oldTagName}" 重命名为 "${newTagName}"`);
+        
+        // 确保使用正确的API端点 - /api/categories/rename
+        const data = await callApi('/api/categories/rename', {
+          method: 'POST',
+          body: JSON.stringify({
+            sourceCategory: oldTagName,
+            targetCategory: newTagName
+          })
+        });
+
+        if (data.success) {
+          showSuccess(data.message || `成功将标签"${oldTagName}"修改为"${newTagName}"`);
+          elements.editTagInput.value = '';
+          console.log(`[编辑标签] 刷新数据开始`);
+          await loadTags();  // 重新加载所有标签
+          await loadStats(); // 更新统计信息
+          console.log(`[编辑标签] 刷新数据完成`);
+        } else {
+          showError(data.message || `编辑标签失败`);
+        }
+      } catch (error) {
+        console.error('编辑标签失败:', error);
+        showError(`编辑标签失败: ${error.message || '未知错误'}`);
+      }
+    }
+
+    // 删除标签
+    async function deleteTag() {
+      const tagName = elements.editTagSelect.value;
+      if (!tagName) {
+        showError('请选择要删除的标签');
+        return;
+      }
+
+      try {
+        // 添加超时处理
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 10000);
+        
+        console.log(`[删除标签] 正在删除标签: ${tagName}`);
+        
+        // 确保使用正确的API端点 - /api/categories/delete 而不是 /api/tags/delete
+        const data = await callApi('/api/categories/delete', {
+          method: 'POST',
+          body: JSON.stringify({ name: tagName }),
+          signal: controller.signal
+        });
+        
+        clearTimeout(timeoutId);
+        
+        if (data.success) {
+          // 先显示成功消息
+          const successMessage = data.message || `成功删除标签"${tagName}"`;
+          showSuccess(successMessage);
+          
+          // 强制刷新所有标签相关数据
+          try {
+            console.log(`[删除标签] 刷新数据开始`);
+            await loadTags();
+            await loadStats();
+            await loadCategories();
+            console.log(`[删除标签] 刷新数据完成`);
+            
+            // 刷新完成后再次显示成功消息，确保它不会被覆盖
+            showSuccess(successMessage);
+          } catch (refreshError) {
+            console.error('刷新数据失败:', refreshError);
+            // 确保即使刷新失败也显示成功消息
+            showSuccess(`标签"${tagName}"已删除，但刷新数据失败: ${refreshError.message}`);
+          }
+        } else {
+          showError(data.message || `删除标签失败`);
+        }
+      } catch (error) {
+        console.error('删除标签失败:', error);
+        
+        if (error.name === 'AbortError') {
+          showError(`删除标签请求超时，但操作可能已成功。正在刷新数据...`);
+          
+          // 即使请求超时，仍然尝试刷新数据
+          try {
+            await loadTags();
+            await loadStats();
+            await loadCategories();
+          } catch (refreshError) {
+            console.error('刷新数据失败:', refreshError);
+          }
+        } else {
+          showError(`删除标签失败: ${error.message || '未知错误'}`);
+        }
+      } finally {
+        // 确保无论如何都清除加载状态
+        hideLoading();
+      }
     }
   </script>
 </body>

@@ -168,8 +168,9 @@ export async function getAccounts(options = {}) {
   let params = [];
   
   if (category) {
-    conditions.push('category = ?');
-    params.push(category);
+    // 使用JSON数组查询
+    conditions.push('(categories IS NOT NULL AND JSON_EXTRACT(categories, \'$\') LIKE ?)');
+    params.push(`%"${category}"%`);
   }
   
   if (isAnnotated === true) {
@@ -198,7 +199,7 @@ export async function getAccounts(options = {}) {
       description,
       avatar_url AS avatar,
       verified,
-      category,
+      categories,
       notes,
       followers_count,
       following_count,
@@ -218,6 +219,22 @@ export async function getAccounts(options = {}) {
   try {
     const accounts = await db.all(query, params);
     
+    // 检查已标注账号的多标签数据
+    const annotatedAccounts = accounts.filter(account => account.annotated_at);
+    if (annotatedAccounts.length > 0) {
+      console.log(`[调试] 发现 ${annotatedAccounts.length} 个已标注账号：`);
+      annotatedAccounts.forEach(account => {
+        console.log(`[调试] 账号 ${account.username}：`);
+        console.log(`  - 多标签原始数据: ${account.categories || '[]'}`);
+        try {
+          const parsedCategories = account.categories ? JSON.parse(account.categories) : [];
+          console.log(`  - 解析后多标签: ${JSON.stringify(parsedCategories)}`);
+        } catch (err) {
+          console.error(`  - 解析多标签失败: ${err.message}`);
+        }
+      });
+    }
+    
     // 转换为前端需要的格式
     return accounts.map(account => ({
       id: account.id,
@@ -225,7 +242,7 @@ export async function getAccounts(options = {}) {
       username: '@' + account.username,
       formatted_username: `@${account.username} https://x.com/${account.username}`,
       twitter_link: `https://x.com/${account.username}`,
-      category: account.category || '',
+      categories: account.categories ? JSON.parse(account.categories) : [],
       notes: account.notes || '',
       verified: Boolean(account.verified),
       annotatedAt: account.annotated_at,
@@ -243,18 +260,60 @@ export async function getAccounts(options = {}) {
 }
 
 /**
+ * 更新或创建分类
+ * @param {Object} db 数据库连接
+ * @param {string} category 分类名称
+ * @param {string} now 当前时间
+ */
+async function updateOrCreateCategory(db, category, now) {
+  try {
+    // 检查分类是否存在
+    const existing = await db.get('SELECT * FROM categories WHERE name = ?', category);
+    
+    if (existing) {
+      // 更新分类计数
+      await db.run(`
+        UPDATE categories 
+        SET count = (
+          SELECT COUNT(*) 
+          FROM twitter_accounts 
+          WHERE categories LIKE ?
+        )
+        WHERE name = ?
+      `, [`%"${category}"%`, category]);
+    } else {
+      // 创建新分类
+      await db.run(`
+        INSERT INTO categories (name, count, created_at)
+        VALUES (?, (
+          SELECT COUNT(*) 
+          FROM twitter_accounts 
+          WHERE categories LIKE ?
+        ), ?)
+      `, [category, `%"${category}"%`, now]);
+    }
+  } catch (error) {
+    console.error(`更新分类失败 (${category}):`, error);
+    throw error;
+  }
+}
+
+/**
  * 保存账号标注信息
  * @param {string} username 用户名
- * @param {string} category 分类
  * @param {string} notes 备注
+ * @param {string[]} categories 多标签数组
  * @returns {Promise<Object>} 保存结果
  */
-export async function saveAnnotation(username, category, notes) {
+export async function saveAnnotation(username, notes, categories = []) {
   const db = await getDatabase();
   const now = new Date().toISOString();
   
   // 移除用户名中的@符号
   username = username.replace(/^@/, '');
+  
+  // 将分类数组转换为JSON字符串
+  const categoriesJson = JSON.stringify(categories || []);
   
   try {
     // 开始事务
@@ -263,35 +322,19 @@ export async function saveAnnotation(username, category, notes) {
     // 更新账号标注
     await db.run(`
       UPDATE twitter_accounts SET
-        category = ?,
+        categories = ?,
         notes = ?,
         annotated_at = COALESCE(annotated_at, ?),
         last_updated = ?
       WHERE username = ?
-    `, [category, notes, now, now, username]);
+    `, [categoriesJson, notes, now, now, username]);
     
-    // 如果指定了分类，更新分类表
-    if (category && category.trim() !== '') {
-      // 先检查分类是否存在
-      const existingCategory = await db.get(
-        'SELECT * FROM categories WHERE name = ?', 
-        category
-      );
-      
-      if (existingCategory) {
-        // 更新分类计数
-        await db.run(`
-          UPDATE categories SET
-            count = (SELECT COUNT(*) FROM twitter_accounts WHERE category = ?),
-            created_at = MIN(created_at, ?)
-          WHERE name = ?
-        `, [category, now, category]);
-      } else {
-        // 插入新分类
-        await db.run(`
-          INSERT INTO categories (name, count, created_at)
-          VALUES (?, 1, ?)
-        `, [category, now]);
+    // 更新多标签
+    if (categories && categories.length > 0) {
+      for (const tag of categories) {
+        if (tag && tag.trim() !== '') {
+          await updateOrCreateCategory(db, tag, now);
+        }
       }
     }
     

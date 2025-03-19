@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
-import { Layout, Row, Col, Input, Button, Typography, Divider, Tag, message, Spin, Tabs, InputNumber } from 'antd';
+import { Layout, Row, Col, Input, Button, Typography, Divider, Tag, message, Spin, Tabs, InputNumber, Select } from 'antd';
 import { 
   PlusOutlined, 
   UploadOutlined, 
@@ -36,7 +36,7 @@ function App() {
   
   // UI状态
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [category, setCategory] = useState("");
+  const [categories, setCategories] = useState<string[]>([]);
   const [notes, setNotes] = useState("");
   const [importModalVisible, setImportModalVisible] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -46,6 +46,7 @@ function App() {
   const [usernameInput, setUsernameInput] = useState('');
   const [fetchingFollowing, setFetchingFollowing] = useState(false);
   const [pagesCount, setPagesCount] = useState(0); // 页数设置，默认0页表示自动计算
+  const [availableCategories, setAvailableCategories] = useState<string[]>([]); // 可用的分类列表
   
   // 当前选中的Twitter用户名
   const [currentScreenName, setCurrentScreenName] = useState<string>('');
@@ -128,6 +129,10 @@ function App() {
           console.warn('获取统计数据失败', error);
           message.success(`成功加载 ${accountsFromDB.length} 个账号`);
         }
+        
+        // 4. 加载分类列表
+        const categoriesFromDB = await fetchCategoriesFromDB();
+        setAvailableCategories(categoriesFromDB.map(cat => cat.name));
       } catch (error) {
         console.error('加载数据失败:', error);
         message.error('加载数据失败，请确保后端服务已启动');
@@ -173,13 +178,15 @@ function App() {
   // 每次当前账号改变时，更新分类和备注信息
   useEffect(() => {
     if (displayAccounts.length === 0 || currentIndex >= displayAccounts.length) {
-      setCategory("");
+      setCategories([]);
       setNotes("");
       return;
     }
     
     const current = displayAccounts[currentIndex];
-    setCategory(current.category || "");
+    // 兼容旧版和新版数据格式
+    const currentCategories = current.categories || (current.category ? [current.category] : []);
+    setCategories(currentCategories);
     setNotes(current.notes || "");
   }, [currentIndex, displayAccounts]);
 
@@ -189,7 +196,9 @@ function App() {
     
     if (index >= 0 && index < displayAccounts.length) {
       const account = displayAccounts[index];
-      setCategory(account.category || "");
+      // 兼容旧版和新版数据格式
+      const accountCategories = account.categories || (account.category ? [account.category] : []);
+      setCategories(accountCategories);
       setNotes(account.notes || "");
       
       // 设置当前选中用户名
@@ -277,6 +286,79 @@ function App() {
     } finally {
       setFetchingFollowing(false);
       console.log(`===== 结束获取关注列表 =====`);
+    }
+  };
+
+  // 处理添加分类
+  const handleAddCategory = (newCategory: string) => {
+    if (!newCategory.trim()) return;
+    if (categories.includes(newCategory)) {
+      message.warning('该分类已存在');
+      return;
+    }
+    setCategories([...categories, newCategory]);
+    setAvailableCategories(prev => {
+      if (!prev.includes(newCategory)) {
+        return [...prev, newCategory];
+      }
+      return prev;
+    });
+  };
+
+  // 处理删除分类
+  const handleRemoveCategory = (categoryToRemove: string) => {
+    setCategories(categories.filter(cat => cat !== categoryToRemove));
+  };
+
+  // 处理保存标注
+  const handleAnnotateCurrentAccount = async () => {
+    if (currentIndex < 0 || currentIndex >= displayAccounts.length) {
+      message.warning('请先选择一个账号');
+      return;
+    }
+
+    const currentAccount = displayAccounts[currentIndex];
+    
+    try {
+      // 保存到数据库
+      await saveAnnotationToDB(
+        currentAccount.username,
+        categories,
+        notes
+      );
+      
+      // 更新本地状态
+      const updatedAccount: AnnotatedAccount = {
+        ...currentAccount,
+        category: categories[0] || '', // 保持向后兼容
+        categories: categories,
+        notes,
+        isAnnotated: true,
+        annotatedAt: Date.now()  // 使用数字时间戳
+      };
+      
+      // 更新显示列表中的账号
+      const newDisplayAccounts = [...displayAccounts];
+      newDisplayAccounts[currentIndex] = updatedAccount;
+      setDisplayAccounts(newDisplayAccounts);
+      
+      // 更新已标注账号列表
+      const newAnnotatedAccounts = [...annotatedAccounts];
+      const existingIndex = newAnnotatedAccounts.findIndex(
+        acc => acc.id === currentAccount.id
+      );
+      
+      if (existingIndex >= 0) {
+        newAnnotatedAccounts[existingIndex] = updatedAccount;
+      } else {
+        newAnnotatedAccounts.push(updatedAccount);
+      }
+      setAnnotatedAccounts(newAnnotatedAccounts);
+      
+      message.success('标注保存成功');
+    } catch (error) {
+      console.error('保存标注失败:', error);
+      message.error('保存标注失败，请重试');
     }
   };
 
@@ -394,73 +476,6 @@ function App() {
 
   const currentAccount = displayAccounts[currentIndex];
 
-  // 处理标注当前账号
-  const handleAnnotateCurrentAccount = async () => {
-    if (!currentAccount) return;
-    
-    try {
-      // 使用数据库API保存标注
-      await saveAnnotationToDB(
-        currentAccount.username,
-        category,
-        notes
-      );
-      
-      // 更新本地状态
-      const annotatedAccount = {
-        ...currentAccount,
-        category,
-        notes,
-        isAnnotated: true,
-        annotatedAt: Date.now()
-      } as AnnotatedAccount;
-      
-      // 更新已标注账号列表
-      setAnnotatedAccounts(prevAnnotated => {
-        const index = prevAnnotated.findIndex(a => a.id === annotatedAccount.id);
-        if (index >= 0) {
-          // 更新现有账号
-          const updated = [...prevAnnotated];
-          updated[index] = annotatedAccount;
-          return updated;
-        } else {
-          // 添加新账号
-          return [...prevAnnotated, annotatedAccount];
-        }
-      });
-      
-      // 更新当前显示的账号列表
-      setDisplayAccounts(prevDisplay => {
-        const updated = [...prevDisplay];
-        updated[currentIndex] = {
-          ...updated[currentIndex],
-          category,
-          notes,
-          isAnnotated: true,
-          annotatedAt: Date.now()
-        };
-        return updated;
-      });
-      
-      message.success(`已标注账号: ${currentAccount.name}`);
-    } catch (error) {
-      console.error('保存标注失败:', error);
-      message.error(`标注保存失败: ${error instanceof Error ? error.message : '未知错误'}`);
-    }
-  };
-
-  const handleNext = () => {
-    if (currentIndex < displayAccounts.length - 1) {
-      setCurrentIndex(currentIndex + 1);
-    }
-  };
-
-  const handlePrev = () => {
-    if (currentIndex > 0) {
-      setCurrentIndex(currentIndex - 1);
-    }
-  };
-
   // 处理关注状态切换
   const handleToggleFollow = (accountId: string, newFollowState: boolean) => {
     // 更新账号列表中的关注状态
@@ -491,25 +506,6 @@ function App() {
     const accountName = displayAccounts.find(acc => acc.id === accountId)?.name;
     message.success(`${newFollowState ? '已关注' : '已取消关注'} ${accountName}`);
   };
-
-  // 更新当前账号的分类
-  const handleUpdateCategory = (newCategory: string) => {
-    if (!currentAccount) return;
-    
-    // 更新显示账号的分类
-    setCategory(newCategory);
-    
-    // 更新显示列表
-    const updatedAccounts = displayAccounts.map((account, idx) => 
-      idx === currentIndex
-        ? { ...account, category: newCategory }
-        : account
-    );
-    setDisplayAccounts(updatedAccounts);
-  };
-
-  // 分组选项
-  const categoryOptions = ["Solana生态", "Base生态", "BTC生态", "BSC生态", "公链", "交易所", "顶级名人", "Caller-T0", "Caller-T1", "Alpha博主", "艺术家", "开发者", "项目创始人", "知名项目", "DEV"];
 
   return (
     <Layout style={{ minHeight: '100vh' }}>
@@ -654,40 +650,39 @@ function App() {
             </div>
             
             <div className="mb-4">
-              <div className="mb-2 font-semibold">选择分组:</div>
+              <div className="flex items-center mb-2">
+                <TagOutlined className="mr-2" />
+                <span className="text-sm font-medium">分类</span>
+              </div>
               <div className="flex flex-wrap gap-2 mb-2">
-                {categoryOptions.map(cat => (
-                  <Tag 
+                {categories.map(cat => (
+                  <Tag
                     key={cat}
-                    color={category === cat ? "blue" : "default"}
-                    className="cursor-pointer px-3 py-1"
-                    onClick={() => handleUpdateCategory(cat)}
-                    style={{ fontSize: '14px', padding: '4px 8px', margin: '4px' }}
+                    closable
+                    onClose={() => handleRemoveCategory(cat)}
+                    className="mb-1"
                   >
                     {cat}
                   </Tag>
                 ))}
               </div>
-              <Input 
-                placeholder="输入自定义分组" 
-                value={category}
-                onChange={(e) => setCategory(e.target.value)}
-                suffix={
-                  <Button 
-                    type="link" 
-                    size="small"
-                    icon={<PlusOutlined />}
-                    onClick={() => {
-                      if (category.trim()) {
-                        handleUpdateCategory(category.trim());
-                        message.success(`已更新分组为 "${category.trim()}"`);
-                      }
-                    }}
-                  >
-                    添加
-                  </Button>
-                }
-              />
+              <div className="flex gap-2">
+                <Select
+                  mode="multiple"
+                  style={{ width: '100%' }}
+                  placeholder="选择或输入分类"
+                  value={categories}
+                  onChange={setCategories}
+                  options={availableCategories.map(cat => ({ label: cat, value: cat }))}
+                  onDeselect={handleRemoveCategory}
+                  onSelect={handleAddCategory}
+                  allowClear
+                  showSearch
+                  filterOption={(input, option) =>
+                    (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
+                  }
+                />
+              </div>
             </div>
             
             <Divider />

@@ -6,16 +6,25 @@ export interface AccountProps {
   avatar: string;
   verified?: boolean;
   following?: boolean;
-  category?: string;
+  category?: string;       // 保留向后兼容
+  categories?: string[];   // 新增多标签支持
   description?: string;
   metrics?: {
     followers: number;
     following: number;
     tweets: number;
   };
-  isAnnotated?: boolean; // 是否已标注
-  annotatedAt?: number;  // 标注时间
-  notes?: string;        // 备注信息
+  isAnnotated?: boolean;   // 是否已标注
+  annotatedAt?: number | string;  // 标注时间
+  notes?: string;         // 备注信息
+}
+
+// 定义标注账号接口
+export interface AnnotatedAccount extends AccountProps {
+  isAnnotated: true;
+  annotatedAt: number | string;
+  notes: string;
+  categories: string[];
 }
 
 // 将Twitter API响应转换为我们的AccountProps格式

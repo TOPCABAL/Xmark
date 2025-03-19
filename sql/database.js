@@ -29,6 +29,37 @@ export async function initDatabase() {
   // 开启外键约束
   await db.exec('PRAGMA foreign_keys = ON');
   
+  // 检查并迁移现有的category数据到categories字段（JSON数组格式）
+  try {
+    // 检查表中是否存在category字段（旧结构）
+    const tableInfo = await db.all("PRAGMA table_info(twitter_accounts)");
+    const hasCategoryField = tableInfo.some(column => column.name === 'category');
+    const hasCategoriesField = tableInfo.some(column => column.name === 'categories');
+    
+    if (hasCategoryField && !hasCategoriesField) {
+      console.log('检测到旧的category字段，正在进行数据迁移...');
+      
+      // 添加新的categories字段
+      await db.exec('ALTER TABLE twitter_accounts ADD COLUMN categories TEXT');
+      
+      // 将category数据迁移到categories
+      await db.exec(`
+        UPDATE twitter_accounts 
+        SET categories = CASE 
+          WHEN category IS NULL OR category = '' THEN '[]'
+          ELSE json_array(category) 
+        END
+      `);
+      
+      // 创建categories索引
+      await db.exec('CREATE INDEX IF NOT EXISTS idx_twitter_accounts_categories ON twitter_accounts(categories)');
+      
+      console.log('数据迁移完成：单一category已转换为categories JSON数组');
+    }
+  } catch (error) {
+    console.error('迁移category数据时出错:', error);
+  }
+  
   // 创建表结构
   await db.exec(`
     -- Twitter账号与标注信息表
@@ -39,7 +70,7 @@ export async function initDatabase() {
       description TEXT,                        -- 个人简介
       avatar_url TEXT,                         -- 头像URL
       verified BOOLEAN DEFAULT 0,              -- 是否认证
-      category TEXT,                           -- 用户分类
+      categories TEXT,                         -- 用户分类（JSON数组格式）
       notes TEXT,                              -- 备注内容
       followers_count INTEGER DEFAULT 0,       -- 粉丝数
       following_count INTEGER DEFAULT 0,       -- 关注数
@@ -64,11 +95,11 @@ export async function initDatabase() {
       accounts_count INTEGER DEFAULT 0,        -- 导入账号数量
       success_count INTEGER DEFAULT 0,         -- 成功导入数量
       import_date TIMESTAMP,                   -- 导入时间
-      notes TEXT                               -- 备注
+      notes TEXT                              -- 备注
     );
 
     -- 索引
-    CREATE INDEX IF NOT EXISTS idx_twitter_accounts_category ON twitter_accounts(category);
+    CREATE INDEX IF NOT EXISTS idx_twitter_accounts_categories ON twitter_accounts(categories);
     CREATE INDEX IF NOT EXISTS idx_twitter_accounts_import_date ON twitter_accounts(import_date);
     CREATE INDEX IF NOT EXISTS idx_twitter_accounts_annotated_at ON twitter_accounts(annotated_at);
   `);

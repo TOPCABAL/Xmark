@@ -31,12 +31,12 @@ const PORT = process.env.PORT || 3001;
 
 // 启用CORS - 允许所有来源访问
 app.use(cors({
-  origin: '*', // 允许所有来源访问
+  origin: '*',
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'HEAD', 'PATCH'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'Accept', 'Origin', 'X-Requested-With', 'Cache-Control', 'X-CSRF-Token'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'Accept', 'Origin', 'X-Requested-With'],
   exposedHeaders: ['Content-Length', 'Content-Type'],
-  credentials: true,
-  maxAge: 86400 // 预检请求结果缓存1天
+  credentials: false,
+  maxAge: 86400
 }));
 
 // 中间件
@@ -1604,7 +1604,7 @@ app.post('/api/annotation', async (req, res) => {
     console.log('[数据库] 收到保存标注请求');
     console.log('[数据库] 请求参数:', req.body);
     
-    const { username, category, notes } = req.body;
+    const { username, categories, notes } = req.body;
     
     if (!username) {
       return res.status(400).json({
@@ -1613,15 +1613,15 @@ app.post('/api/annotation', async (req, res) => {
       });
     }
     
-    // 保存标注到数据库
-    const result = await saveAnnotation(username, category, notes);
+    // 确保categories是数组
+    const categoriesArray = Array.isArray(categories) ? categories : [categories].filter(Boolean);
+    
+    // 调用accountService中的saveAnnotation函数
+    const result = await saveAnnotation(username, notes, categoriesArray);
     
     console.log(`[数据库] 成功保存标注: ${JSON.stringify(result)}`);
     
-    res.json({
-      success: true,
-      ...result
-    });
+    res.json(result);
   } catch (error) {
     console.error('[数据库] 保存标注失败:', error);
     res.status(500).json({
@@ -1650,6 +1650,103 @@ app.get('/api/categories', async (req, res) => {
     res.status(500).json({
       success: false,
       message: `获取分类列表失败: ${error.message}`
+    });
+  }
+});
+
+// 新增API：添加分类
+app.post('/api/categories/add', async (req, res) => {
+  try {
+    const { name } = req.body;
+    
+    if (!name || typeof name !== 'string' || name.trim() === '') {
+      return res.status(400).json({ 
+        success: false, 
+        message: '请提供有效的分类名称' 
+      });
+    }
+
+    console.log(`[数据库] 添加新分类: ${name}`);
+    
+    const db = await getDatabase();
+    
+    // 检查分类是否已存在
+    const existing = await db.get(`
+      SELECT * FROM categories
+      WHERE name = ?
+    `, [name]);
+    
+    if (existing) {
+      return res.status(400).json({
+        success: false,
+        message: `分类 "${name}" 已存在`
+      });
+    }
+    
+    // 插入新分类
+    await db.run(`
+      INSERT INTO categories (name, count, created_at)
+      VALUES (?, 0, datetime('now'))
+    `, [name]);
+    
+    res.json({ 
+      success: true, 
+      message: `已添加分类 "${name}"` 
+    });
+  } catch (error) {
+    console.error('[数据库] 添加分类失败:', error);
+    res.status(500).json({ success: false, message: `添加分类失败: ${error.message}` });
+  }
+});
+
+// 新增API：删除分类
+app.post('/api/categories/delete', async (req, res) => {
+  try {
+    const { name } = req.body;
+    
+    if (!name) {
+      return res.status(400).json({ 
+        success: false, 
+        message: '请提供要删除的分类名称' 
+      });
+    }
+    
+    console.log(`[数据库] 删除分类: ${name}`);
+    
+    const db = await getDatabase();
+    
+    // 获取使用此分类的账号数量
+    const countResult = await db.get(`
+      SELECT COUNT(*) AS count 
+      FROM twitter_accounts 
+      WHERE category = ?
+    `, [name]);
+    
+    // 清除使用此分类的账号的分类
+    await db.run(`
+      UPDATE twitter_accounts 
+      SET category = NULL
+      WHERE category = ?
+    `, [name]);
+    
+    // 删除分类
+    await db.run(`
+      DELETE FROM categories
+      WHERE name = ?
+    `, [name]);
+    
+    console.log(`[数据库] 成功删除分类 "${name}", 影响账号: ${countResult ? countResult.count : 0}`);
+    
+    res.json({ 
+      success: true, 
+      count: countResult ? countResult.count : 0,
+      message: `已删除分类 "${name}"，${countResult ? countResult.count : 0} 个账号的分类已被清除` 
+    });
+  } catch (error) {
+    console.error('[数据库] 删除分类失败:', error);
+    res.status(500).json({ 
+      success: false, 
+      message: `删除分类失败: ${error.message}` 
     });
   }
 });
@@ -2227,6 +2324,28 @@ app.post('/api/unfollow', async (req, res) => {
   }
 });
 
+
+
+// 保存账号标注
+app.post('/api/annotate', async (req, res) => {
+  try {
+    const { username, categories, notes } = req.body;
+    
+    if (!username) {
+      return res.status(400).json({ message: '用户名不能为空' });
+    }
+    
+    // 确保categories是数组
+    const categoriesArray = Array.isArray(categories) ? categories : [categories].filter(Boolean);
+    
+    const result = await saveAnnotation(username, notes, categoriesArray);
+    res.json(result);
+  } catch (error) {
+    console.error('保存标注失败:', error);
+    res.status(500).json({ message: '保存标注失败' });
+  }
+});
+
 // 以下内容需放在末尾
 // 404处理
 app.use((req, res) => {
@@ -2242,3 +2361,5 @@ app.listen(PORT, '0.0.0.0', () => {
   console.log(`服务器运行在 http://0.0.0.0:${PORT}`);
   console.log(`可通过 http://服务器IP:${PORT} 访问`);
 });
+
+
