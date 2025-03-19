@@ -505,7 +505,7 @@ function App() {
   };
 
   // 分组选项
-  const categoryOptions = ["项目方", "Alpha选手", "p小将", "社区主", "Coin", "二级选手"];
+  const categoryOptions = ["Solana生态", "Base生态", "BTC生态", "BSC生态", "公链", "交易所", "顶级名人", "Caller-T0", "Caller-T1", "Alpha博主", "艺术家", "开发者", "项目创始人", "知名项目", "DEV"];
 
   return (
     <Layout style={{ minHeight: '100vh' }}>
@@ -658,6 +658,7 @@ function App() {
                     color={category === cat ? "blue" : "default"}
                     className="cursor-pointer px-3 py-1"
                     onClick={() => handleUpdateCategory(cat)}
+                    style={{ fontSize: '14px', padding: '4px 8px', margin: '4px' }}
                   >
                     {cat}
                   </Tag>
