@@ -1,7 +1,7 @@
 import { AccountProps } from './twitterService';
 
-// 基础API URL
-const API_BASE_URL = 'http://localhost:3001';
+// 基础API URL - 修改为相对路径或自动检测服务器地址
+const API_BASE_URL = ''; // 使用相对路径，这样会自动使用当前域名
 
 // 账号过滤选项接口
 export interface AccountFilterOptions {

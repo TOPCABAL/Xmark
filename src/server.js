@@ -319,8 +319,49 @@ async function generateProfileHtml(username) {
         tweetsData = JSON.parse(tweetsContent);
         console.log(`成功读取推文数据`);
       } else {
-        console.log(`推文数据文件不存在，使用空数据`);
-        tweetsData = { data: { user: { result: { timeline_v2: { timeline: { instructions: [] } } } } } };
+        console.log(`推文数据文件不存在，尝试获取推文数据...`);
+        
+        try {
+          // 从用户数据中获取用户ID
+          const userId = userData.data?.user?.result?.rest_id;
+          
+          if (!userId) {
+            console.error(`无法从用户数据中获取用户ID`);
+            tweetsData = { data: { user: { result: { timeline_v2: { timeline: { instructions: [] } } } } } };
+          } else {
+            console.log(`获取到用户ID: ${userId}，执行originTweets.js脚本获取推文...`);
+            
+            // 执行originTweets.js脚本获取推文数据
+            const originTweetsScript = path.join(__dirname, '..', 'scripts', 'originTweets.js');
+            
+            if (!fs.existsSync(originTweetsScript)) {
+              console.error(`获取推文脚本不存在: ${originTweetsScript}`);
+              tweetsData = { data: { user: { result: { timeline_v2: { timeline: { instructions: [] } } } } } };
+            } else {
+              // 执行脚本获取推文
+              try {
+                await execAsync(`node "${originTweetsScript}" "${userId}" "${userDir}"`);
+                console.log(`成功执行获取推文脚本，检查是否生成推文数据文件...`);
+                
+                // 检查是否成功生成推文文件
+                if (fs.existsSync(tweetsDataPath)) {
+                  const tweetsContent = await fsPromises.readFile(tweetsDataPath, 'utf-8');
+                  tweetsData = JSON.parse(tweetsContent);
+                  console.log(`成功获取并读取推文数据`);
+                } else {
+                  console.error(`脚本执行完毕但未生成推文数据文件`);
+                  tweetsData = { data: { user: { result: { timeline_v2: { timeline: { instructions: [] } } } } } };
+                }
+              } catch (execError) {
+                console.error(`执行获取推文脚本失败: ${execError.message}`);
+                tweetsData = { data: { user: { result: { timeline_v2: { timeline: { instructions: [] } } } } } };
+              }
+            }
+          }
+        } catch (tweetError) {
+          console.error(`获取推文数据失败: ${tweetError.message}`);
+          tweetsData = { data: { user: { result: { timeline_v2: { timeline: { instructions: [] } } } } } };
+        }
       }
     } catch (err) {
       console.error(`读取推文数据失败: ${err.message}`);

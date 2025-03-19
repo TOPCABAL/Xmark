@@ -660,31 +660,27 @@ export function mergeWithAnnotatedAccounts(apiAccounts: AccountProps[], annotate
 // 添加一个导入Twitter用户数据的函数
 export async function createTwitterUser(username: string, userData: any, tweetsData?: any) {
   try {
-    // 移除用户名中的@符号
-    const cleanUsername = username.replace('@', '');
+    console.log(`创建Twitter用户档案: ${username}`);
     
-    // 调用API端点
-    const response = await fetch('http://localhost:3001/api/twitter-profile/create', {
+    const response = await fetch('/api/twitter-profile/create', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        username: cleanUsername,
+        username,
         userData,
         tweetsData
-      }),
+      })
     });
     
-    const result = await response.json();
-    
-    if (!result.success) {
-      throw new Error(result.message || '创建用户数据失败');
+    if (!response.ok) {
+      throw new Error(`创建用户档案失败: ${response.status} ${response.statusText}`);
     }
     
-    return result;
+    return await response.json();
   } catch (error) {
-    console.error('创建Twitter用户数据失败:', error);
+    console.error('创建Twitter用户档案时出错:', error);
     throw error;
   }
 }
@@ -753,29 +749,22 @@ export function extractTwitterUserData(jsonData: any) {
  * @returns Promise<{success: boolean, message: string, serverTime?: string}>
  */
 export async function testServerConnection(): Promise<{success: boolean, message: string, serverTime?: string}> {
-  console.log(`开始测试服务器连接...`);
-  
   try {
-    // 添加随机参数避免缓存
+    // 添加随机参数防止缓存
     const randomParam = Math.random().toString(36).substring(7);
-    // 使用正确的服务器状态端点
-    const testUrl = `http://localhost:3001/api/status?r=${randomParam}`;
-    console.log(`测试连接URL: ${testUrl}`);
+    const testUrl = `/api/status?r=${randomParam}`;
     
-    // 设置5秒超时
+    // 添加超时控制
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 5000);
+    const timeoutId = setTimeout(() => controller.abort(), 10000); // 10秒超时
     
-    // 发送测试请求
+    console.log(`尝试测试服务器连接: ${testUrl}`);
     const response = await fetch(testUrl, {
-      method: 'GET',
+      signal: controller.signal,
       headers: {
-        'Accept': 'application/json',
-        'Cache-Control': 'no-cache'
-      },
-      mode: 'cors', // 显式设置CORS模式
-      credentials: 'omit', // 不发送凭据
-      signal: controller.signal
+        'Cache-Control': 'no-cache',
+        'Pragma': 'no-cache'
+      }
     }).finally(() => clearTimeout(timeoutId));
     
     console.log(`服务器连接测试响应状态: ${response.status}`);
@@ -823,8 +812,8 @@ export async function fetchUserFollowing(username: string, pages: number = 3): P
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 60000); // 60秒超时
     
-    // 构建请求URL - 使用固定的后端服务器URL
-    const baseUrl = 'http://localhost:3001'; // 使用服务器的端口
+    // 构建请求URL - 使用相对路径
+    const baseUrl = ''; // 使用相对路径，自动使用当前域名
     const apiEndpoint = `/api/twitter/following`;
     const requestUrl = `${baseUrl}${apiEndpoint}?username=${encodeURIComponent(username.trim())}&pages=${pages}`;
     
@@ -921,7 +910,7 @@ export async function fetchMutualFollowers(username: string, refresh = false): P
 }> {
   try {
     console.log(`获取用户 ${username} 的共同关注者数据, refresh=${refresh}`);
-    const url = `http://localhost:3001/api/same-followers/${encodeURIComponent(username)}${refresh ? '?refresh=true' : ''}`;
+    const url = `/api/same-followers/${encodeURIComponent(username)}${refresh ? '?refresh=true' : ''}`;
     
     const response = await fetch(url, {
       method: 'GET',

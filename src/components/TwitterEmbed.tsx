@@ -10,8 +10,8 @@ interface TwitterEmbedProps {
   screenName?: string; // 可选的Twitter用户名参数
 }
 
-// API服务器URL - 可以根据环境变量或配置文件设置
-const API_BASE_URL = 'http://localhost:3001';
+// 修改为相对路径
+const API_BASE_URL = '';
 
 const TwitterEmbed: React.FC<TwitterEmbedProps> = ({ screenName = 'dotyyds1234' }) => {
   const [htmlContent, setHtmlContent] = useState('');

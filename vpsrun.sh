@@ -20,7 +20,7 @@ sleep 2
 # 启动后端服务
 echo "启动后端API服务器..."
 # 使用 setsid 创建新的会话
-setsid node src/server.js > server.log 2>&1 &
+setsid node src/server.js --host 0.0.0.0 > server.log 2>&1 &
 BACKEND_PID=$!
 # 将进程从当前shell中分离
 disown $BACKEND_PID
@@ -31,8 +31,8 @@ sleep 3
 
 # 启动前端开发服务器
 echo "启动前端开发服务器..."
-# 使用 setsid 创建新的会话
-setsid npm run dev > frontend.log 2>&1 &
+# 使用 setsid 创建新的会话，添加 --host 0.0.0.0 参数
+setsid npm run dev -- --host 0.0.0.0 > frontend.log 2>&1 &
 FRONTEND_PID=$!
 # 将进程从当前shell中分离
 disown $FRONTEND_PID
