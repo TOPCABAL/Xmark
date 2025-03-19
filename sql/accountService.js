@@ -341,11 +341,15 @@ export async function saveAnnotation(username, notes, categories = []) {
     // 提交事务
     await db.exec('COMMIT');
     
-    return { success: true, username };
+    // 验证更新是否成功
+    const updated = await db.get('SELECT * FROM twitter_accounts WHERE username = ?', username);
+    console.log(`[数据库-标注] 验证更新，当前分类: ${updated ? updated.categories : 'null'}`);
+    
+    return { success: true, username, categories: categories };
   } catch (error) {
     // 回滚事务
     await db.exec('ROLLBACK');
-    console.error(`保存标注失败 (${username}):`, error);
+    console.error(`[数据库-标注] 保存标注失败 (${username}):`, error);
     throw error;
   }
 }

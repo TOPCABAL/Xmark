@@ -189,31 +189,51 @@ function App() {
     setCurrentIndex(0);
   }, [activeTab, apiAccounts, annotatedAccounts]);
 
-  // 每次当前账号改变时，更新分类和备注信息
-  useEffect(() => {
-    if (displayAccounts.length === 0 || currentIndex >= displayAccounts.length) {
-      setCategories([]);
-      setNotes("");
-      return;
-    }
-    
-    const current = displayAccounts[currentIndex];
-    // 兼容旧版和新版数据格式
-    const currentCategories = current.categories || (current.category ? [current.category] : []);
-    setCategories(currentCategories);
-    setNotes(current.notes || "");
-  }, [currentIndex, displayAccounts]);
-
   // 处理选择账号
   const handleSelectAccount = (index: number) => {
     setCurrentIndex(index);
     
     if (index >= 0 && index < displayAccounts.length) {
       const account = displayAccounts[index];
-      // 兼容旧版和新版数据格式
-      const accountCategories = account.categories || (account.category ? [account.category] : []);
-      setCategories(accountCategories);
-      setNotes(account.notes || "");
+      console.log(`[选择账号] 选择账号: ${account.username}`);
+      console.log(`[选择账号] 账号原始数据:`, account);
+      
+      // 防止自动分类设置，优先使用数据库中已有的分类数据
+      if (account.isAnnotated) {
+        console.log(`[选择账号] 该账号已标注，从数据库获取最新数据...`);
+        // 优先从数据库获取最新分类数据
+        fetchAccountsFromDB({
+          searchTerm: account.username,
+          limit: 1
+        }).then(refreshedAccounts => {
+          if (refreshedAccounts.length > 0) {
+            const refreshedAccount = refreshedAccounts[0];
+            console.log(`[选择账号] 从数据库获取到的分类: ${JSON.stringify(refreshedAccount.categories)}`);
+            setCategories(refreshedAccount.categories || []);
+            setNotes(refreshedAccount.notes || "");
+          } else {
+            // 兼容旧版和新版数据格式
+            console.log(`[选择账号] 从数据库未找到账号，使用本地数据`);
+            const accountCategories = account.categories || (account.category ? [account.category] : []);
+            console.log(`[选择账号] 本地数据的分类: ${JSON.stringify(accountCategories)}`);
+            setCategories(accountCategories);
+            setNotes(account.notes || "");
+          }
+        }).catch(error => {
+          console.error('[选择账号] 获取数据库数据失败:', error);
+          // 出错时使用本地数据
+          const accountCategories = account.categories || (account.category ? [account.category] : []);
+          setCategories(accountCategories);
+          setNotes(account.notes || "");
+        });
+      } else {
+        // 未标注的账号使用本地数据
+        console.log(`[选择账号] 该账号未标注，使用本地数据`);
+        const accountCategories = account.categories || (account.category ? [account.category] : []);
+        console.log(`[选择账号] 本地数据的分类: ${JSON.stringify(accountCategories)}`);
+        setCategories(accountCategories);
+        setNotes(account.notes || "");
+      }
       
       // 设置当前选中用户名
       setCurrentScreenName(account.username);
@@ -368,7 +388,12 @@ function App() {
   };
 
   // 处理保存标注
-  const handleAnnotateCurrentAccount = async () => {
+  const handleAnnotateCurrentAccount = async (event?: React.MouseEvent | React.FormEvent) => {
+    // 阻止表单默认提交行为，防止页面刷新
+    if (event && event.preventDefault) {
+      event.preventDefault();
+    }
+    
     if (currentIndex < 0 || currentIndex >= displayAccounts.length) {
       message.warning('请先选择一个账号');
       return;
@@ -377,45 +402,123 @@ function App() {
     const currentAccount = displayAccounts[currentIndex];
     
     try {
+      // 添加日志，记录要保存的分类
+      console.log(`[保存标注] 开始保存标注: ${currentAccount.username}`);
+      console.log(`[保存标注] 当前分类: ${JSON.stringify(categories)}`);
+      console.log(`[保存标注] 分类数组类型: ${Array.isArray(categories) ? 'Array' : typeof categories}`);
+      console.log(`[保存标注] 分类数组长度: ${Array.isArray(categories) ? categories.length : 'N/A'}`);
+      console.log(`[保存标注] 备注内容: ${notes}`);
+      
       // 保存到数据库
-      await saveAnnotationToDB(
+      console.log(`[保存标注] 调用saveAnnotationToDB...`);
+      const result = await saveAnnotationToDB(
         currentAccount.username,
         categories,
         notes
       );
-      
-      // 更新本地状态
-      const updatedAccount: AnnotatedAccount = {
-        ...currentAccount,
-        category: categories[0] || '', // 保持向后兼容
-        categories: categories,
-        notes,
-        isAnnotated: true,
-        annotatedAt: Date.now()  // 使用数字时间戳
-      };
-      
-      // 更新显示列表中的账号
-      const newDisplayAccounts = [...displayAccounts];
-      newDisplayAccounts[currentIndex] = updatedAccount;
-      setDisplayAccounts(newDisplayAccounts);
-      
-      // 更新已标注账号列表
-      const newAnnotatedAccounts = [...annotatedAccounts];
-      const existingIndex = newAnnotatedAccounts.findIndex(
-        acc => acc.id === currentAccount.id
-      );
-      
-      if (existingIndex >= 0) {
-        newAnnotatedAccounts[existingIndex] = updatedAccount;
-      } else {
-        newAnnotatedAccounts.push(updatedAccount);
-      }
-      setAnnotatedAccounts(newAnnotatedAccounts);
+      console.log(`[保存标注] saveAnnotationToDB返回结果: ${JSON.stringify(result)}`);
       
       message.success('标注保存成功');
+      
+      // 立即从数据库获取最新数据，而不是依赖本地状态
+      try {
+        console.log(`[保存标注] 立即从数据库获取最新数据...`);
+        const refreshedAccounts = await fetchAccountsFromDB({
+          searchTerm: currentAccount.username,
+          limit: 1
+        });
+        
+        if (refreshedAccounts.length > 0) {
+          const refreshedAccount = refreshedAccounts[0];
+          console.log(`[保存标注] 获取到最新数据: ${JSON.stringify({
+            username: refreshedAccount.username,
+            categories: refreshedAccount.categories,
+            notes: refreshedAccount.notes
+          })}`);
+          
+          // 使用数据库返回的最新数据更新前端状态
+          const updatedAccount: AnnotatedAccount = {
+            ...refreshedAccount,
+            isAnnotated: true,
+            annotatedAt: refreshedAccount.annotatedAt ? Number(refreshedAccount.annotatedAt) : Date.now()
+          };
+          
+          // 更新显示列表中的账号
+          const newDisplayAccounts = [...displayAccounts];
+          newDisplayAccounts[currentIndex] = updatedAccount;
+          setDisplayAccounts(newDisplayAccounts);
+          
+          // 更新已标注账号列表
+          const newAnnotatedAccounts = [...annotatedAccounts];
+          const existingIndex = newAnnotatedAccounts.findIndex(
+            acc => acc.id === currentAccount.id || 
+                  acc.username.toLowerCase() === currentAccount.username.toLowerCase()
+          );
+          
+          if (existingIndex >= 0) {
+            newAnnotatedAccounts[existingIndex] = updatedAccount;
+            console.log(`[保存标注] 已更新现有的标注账号 (索引: ${existingIndex})`);
+          } else {
+            newAnnotatedAccounts.push(updatedAccount);
+            console.log(`[保存标注] 已添加新的标注账号到列表`);
+          }
+          setAnnotatedAccounts(newAnnotatedAccounts);
+          
+          // 显式设置分类和备注 - 防止其他地方的自动设置覆盖
+          console.log(`[保存标注] 显式设置分类: ${JSON.stringify(refreshedAccount.categories || [])}`);
+          setCategories(refreshedAccount.categories || []);
+          setNotes(refreshedAccount.notes || "");
+          
+          console.log(`[保存标注] 前端数据已更新为数据库最新状态`);
+        } else {
+          console.warn(`[保存标注] 从数据库未找到账号: ${currentAccount.username}`);
+          // 如果数据库没有找到，则使用API返回的结果
+          const savedCategories = result.categories || categories;
+          
+          // 更新本地状态
+          const updatedAccount: AnnotatedAccount = {
+            ...currentAccount,
+            category: savedCategories[0] || '', // 保持向后兼容
+            categories: [...savedCategories], // 确保使用categories的副本
+            notes,
+            isAnnotated: true,
+            annotatedAt: Date.now()  // 使用数字时间戳
+          };
+          
+          // 更新显示列表中的账号
+          const newDisplayAccounts = [...displayAccounts];
+          newDisplayAccounts[currentIndex] = updatedAccount;
+          setDisplayAccounts(newDisplayAccounts);
+          
+          // 更新已标注账号列表
+          const newAnnotatedAccounts = [...annotatedAccounts];
+          const existingIndex = newAnnotatedAccounts.findIndex(
+            acc => acc.id === currentAccount.id
+          );
+          
+          if (existingIndex >= 0) {
+            newAnnotatedAccounts[existingIndex] = updatedAccount;
+          } else {
+            newAnnotatedAccounts.push(updatedAccount);
+          }
+          setAnnotatedAccounts(newAnnotatedAccounts);
+          
+          // 显式设置分类和备注 - 防止其他地方的自动设置覆盖
+          console.log(`[保存标注] 显式设置分类: ${JSON.stringify(savedCategories)}`);
+          setCategories(savedCategories);
+        }
+      } catch (refreshError) {
+        console.error('[保存标注] 重新获取数据失败:', refreshError);
+        message.warning('标注已保存，但获取最新数据失败');
+      }
+      
+      // 返回false阻止表单提交
+      return false;
     } catch (error) {
-      console.error('保存标注失败:', error);
-      message.error('保存标注失败，请重试');
+      console.error('[保存标注] 保存标注失败:', error);
+      message.error(`保存标注失败: ${error instanceof Error ? error.message : '未知错误'}`);
+      // 返回false阻止表单提交
+      return false;
     }
   };
 
@@ -697,13 +800,6 @@ function App() {
           <div className="p-4">
             <div className="flex justify-between items-center mb-4">
               <Title level={3} className="m-0">分组 & 备注</Title>
-              <Button 
-                type="primary" 
-                icon={<SaveOutlined />} 
-                onClick={handleAnnotateCurrentAccount}
-              >
-                保存标注
-              </Button>
             </div>
             
             <div className="mb-4">
@@ -789,9 +885,11 @@ function App() {
               <div className="text-right mt-2">
                 <Button 
                   type="primary"
-                  onClick={handleAnnotateCurrentAccount}
+                  icon={<SaveOutlined />}
+                  onClick={(e) => handleAnnotateCurrentAccount(e)}
+                  size="large"
                 >
-                  保存备注
+                  保存标注
                 </Button>
               </div>
             </div>

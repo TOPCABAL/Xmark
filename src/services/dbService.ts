@@ -97,34 +97,69 @@ export async function saveAnnotationToDB(
   username: string, 
   categories: string[], 
   notes: string
-): Promise<boolean> {
+): Promise<{ success: boolean, username: string, categories: string[] }> {
   try {
+    if (!username) {
+      throw new Error('用户名不能为空');
+    }
+    
+    console.log(`[API] 开始保存标注: ${username}`);
+    console.log(`[API] 要保存的分类: ${JSON.stringify(categories)}`);
+    console.log(`[API] 备注内容: ${notes}`);
+    
+    // 构建请求体，确保categories是数组
+    const requestBody = {
+      username,
+      categories: Array.isArray(categories) ? categories : [],
+      notes
+    };
+    
+    console.log(`[API] 发送请求体: ${JSON.stringify(requestBody)}`);
+    
     const response = await fetch(`${API_BASE_URL}/api/annotation`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        username,
-        categories,
-        notes
-      })
+      body: JSON.stringify(requestBody)
     });
     
+    console.log(`[API] 响应状态: ${response.status} ${response.statusText}`);
+    
     if (!response.ok) {
-      throw new Error(`保存标注失败: ${response.status} ${response.statusText}`);
+      const errorText = await response.text();
+      console.error(`[API] 响应错误: ${errorText}`);
+      throw new Error(`保存标注失败: ${response.status} ${response.statusText} - ${errorText}`);
     }
     
-    const data = await response.json();
+    const responseText = await response.text();
+    console.log(`[API] 原始响应文本: ${responseText}`);
+    
+    // 尝试解析JSON响应
+    let data;
+    try {
+      data = JSON.parse(responseText);
+      console.log(`[API] 解析后的响应数据: ${JSON.stringify(data)}`);
+    } catch (parseError) {
+      console.error(`[API] 响应数据解析失败:`, parseError);
+      throw new Error(`响应数据解析失败: ${responseText}`);
+    }
     
     if (data.success) {
-      console.log(`成功保存账号 ${username} 的标注信息`);
-      return true;
+      console.log(`[API] 成功保存账号 ${username} 的标注信息`);
+      console.log(`[API] 返回的分类: ${JSON.stringify(data.categories)}`);
+      
+      // 确保返回数据格式正确
+      return {
+        success: true,
+        username: data.username || username,
+        categories: Array.isArray(data.categories) ? data.categories : categories
+      };
     }
     
     throw new Error(data.message || '保存标注失败');
   } catch (error) {
-    console.error('保存标注到数据库失败:', error);
+    console.error('[API] 保存标注到数据库失败:', error);
     throw error;
   }
 }
