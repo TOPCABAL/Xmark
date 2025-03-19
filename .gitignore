@@ -25,4 +25,5 @@ dist-ssr
 
 # 数据缓存文件
 src/data/
+followdata/*
 *.pid

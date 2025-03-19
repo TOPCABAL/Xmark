@@ -58,7 +58,7 @@ async function axiosWithRetry(options, retries = MAX_RETRIES) {
 /**
  * 获取Twitter用户ID
  * @param {string} username - Twitter用户名
- * @returns {Promise<string>} 用户ID
+ * @returns {Promise<Object>} 包含用户ID和关注数量的对象
  */
 async function getUserId(username, headers) {
   // 验证用户名
@@ -123,8 +123,14 @@ async function getUserId(username, headers) {
         response.data.data.user && 
         response.data.data.user.result) {
       const userId = response.data.data.user.result.rest_id;
-      console.log(`成功获取用户ID: ${userId}`);
-      return userId;
+      // 获取关注数量
+      const friendsCount = response.data.data.user.result.legacy?.friends_count || 0;
+      console.log(`成功获取用户ID: ${userId}, 关注数量: ${friendsCount}`);
+      
+      return { 
+        userId, 
+        friendsCount 
+      };
     } else {
       throw new Error('未找到用户ID');
     }
@@ -196,13 +202,20 @@ async function getFollowingList(username = 'dotyyds1234', pages = 3, dataDir) {
     // console.log(`使用HTTPS代理获取用户 ${username} 的关注列表 (代理: ${PROXY_HOST}:${PROXY_PORT})`);
     
     // 获取用户ID
-    const userId = await getUserId(username, headers);
-    if (!userId) {
+    const userIdData = await getUserId(username, headers);
+    if (!userIdData.userId) {
       throw new Error(`无法获取用户 ${username} 的ID`);
     }
     
+    // 计算要获取的页数（每页实际为20个，但按50个计算加1以减少页数）
+    if (pages <= 0) {
+      // 自动计算需要的页数 (按照每页50人计算并加1)
+      pages = Math.ceil(userIdData.friendsCount / 50) + 1;
+      console.log(`根据关注人数 ${userIdData.friendsCount} 自动计算页数: ${pages}`);
+    }
+    
     // 执行获取关注列表
-    console.log(`开始获取 ${username} (ID: ${userId}) 的关注列表, 最多获取${pages}页...`);
+    console.log(`开始获取 ${username} (ID: ${userIdData.userId}) 的关注列表, 最多获取${pages}页 (目标关注数: ${userIdData.friendsCount}人)...`);
     
     const allFollowing = [];
     let cursor = '';
@@ -216,7 +229,7 @@ async function getFollowingList(username = 'dotyyds1234', pages = 3, dataDir) {
       
       // 构建请求参数
       const variables = {
-        userId: userId,
+        userId: userIdData.userId,
         count: 20,
         includePromotedContent: false
       };
@@ -455,7 +468,7 @@ async function getFollowingList(username = 'dotyyds1234', pages = 3, dataDir) {
     return {
       success: true,
       username: username,
-      userId: userId,
+      userId: userIdData.userId,
       total: allFollowing.length,
       accounts: allFollowing
     };
@@ -509,9 +522,22 @@ async function main() {
   try {
     // 从命令行获取用户名和页数参数
     const username = process.argv[2] || 'dotyyds1234';
-    const pages = parseInt(process.argv[3]) || 3;
     
-    console.log(`准备获取用户 ${username} 的关注列表，计划获取 ${pages} 页`);
+    // 尝试解析页数参数
+    let pages = 0; // 默认为0，表示自动计算
+    
+    if (process.argv.length > 3) {
+      // 检查参数是否包含 --pages= 格式
+      const pagesArg = process.argv[3];
+      if (pagesArg.startsWith('--pages=')) {
+        pages = parseInt(pagesArg.split('=')[1]) || 0;
+      } else {
+        // 直接作为数字参数
+        pages = parseInt(pagesArg) || 0;
+      }
+    }
+    
+    console.log(`准备获取用户 ${username} 的关注列表，页数: ${pages === 0 ? '自动计算' : pages}`);
     
     // 创建数据目录
     const dataDir = path.join(__dirname, '..', 'followdata');

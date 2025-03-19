@@ -45,7 +45,7 @@ function App() {
   const [exportModalVisible, setExportModalVisible] = useState(false);
   const [usernameInput, setUsernameInput] = useState('');
   const [fetchingFollowing, setFetchingFollowing] = useState(false);
-  const [pagesCount, setPagesCount] = useState(3); // 页数设置，默认3页
+  const [pagesCount, setPagesCount] = useState(0); // 页数设置，默认0页表示自动计算
   
   // 当前选中的Twitter用户名
   const [currentScreenName, setCurrentScreenName] = useState<string>('');
@@ -225,10 +225,14 @@ function App() {
 
     try {
       setFetchingFollowing(true);
-      message.loading({ content: `正在获取 ${usernameInput} 的关注列表，将获取 ${pagesCount} 页数据...`, key: 'fetchFollowing', duration: 0 });
+      message.loading({ 
+        content: `正在获取 ${usernameInput} 的关注列表，${pagesCount === 0 ? '自动计算页数' : `将获取 ${pagesCount} 页数据`}...`, 
+        key: 'fetchFollowing', 
+        duration: 0 
+      });
       
       console.log(`===== 开始获取关注列表 =====`);
-      console.log(`用户名: ${usernameInput}, 页数: ${pagesCount}`);
+      console.log(`用户名: ${usernameInput}, 页数: ${pagesCount === 0 ? '自动计算' : pagesCount}`);
       
       // 先测试服务器连接
       console.log(`测试服务器连接...`);
@@ -314,14 +318,14 @@ function App() {
             
             <span style={{ fontSize: '12px', marginRight: '4px' }}>确认页数:</span>
             <InputNumber 
-              min={1} 
+              min={0} 
               max={10} 
               value={pagesCount}
               onChange={(value) => setPagesCount(value as number)} 
               size="small"
               style={{ width: '50px', margin: '0 4px' }} 
             />
-            <span style={{ fontSize: '12px', color: '#888', whiteSpace: 'nowrap' }}>约 {pagesCount * 50} 账号</span>
+            <span style={{ fontSize: '12px', color: '#888', whiteSpace: 'nowrap' }}>{pagesCount === 0 ? '0代表自动计算页数' : `约 ${pagesCount * 50} 账号`}</span>
           </div>
           
           {/* 搜索框单独一行 */}
@@ -539,14 +543,14 @@ function App() {
                 
                 <span style={{ fontSize: '12px', marginRight: '4px' }}>确认页数:</span>
                 <InputNumber 
-                  min={1} 
-                  max={10} 
+                  min={0} 
+                  max={50} 
                   value={pagesCount}
                   onChange={(value) => setPagesCount(value as number)} 
                   size="small"
                   style={{ width: '50px', margin: '0 4px' }} 
                 />
-                <span style={{ fontSize: '12px', color: '#888', whiteSpace: 'nowrap' }}>约 {pagesCount * 50} 账号</span>
+                <span style={{ fontSize: '12px', color: '#888', whiteSpace: 'nowrap' }}>{pagesCount === 0 ? '0代表自动计算页数' : `约 ${pagesCount * 50} 账号`}</span>
               </div>
               
               {/* 搜索框单独一行 */}

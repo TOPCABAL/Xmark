@@ -1166,10 +1166,10 @@ app.get('/api/twitter/following', async (req, res) => {
   console.log('====== 获取Twitter关注列表请求 ======');
   console.log('请求参数:', req.query);
   console.log('用户名:', req.query.username);
-  console.log('页数:', req.query.pages || '默认');
+  console.log('页数:', req.query.pages || '自动计算');
   
   const username = req.query.username;
-  const pages = parseInt(req.query.pages) || 3;
+  const pages = parseInt(req.query.pages) || 0; // 默认为0，表示自动计算页数
   
   if (!username) {
     console.log('错误: 缺少username参数');
@@ -1179,7 +1179,7 @@ app.get('/api/twitter/following', async (req, res) => {
     });
   }
   
-  console.log(`开始处理用户 ${username} 的关注列表，页数: ${pages}`);
+  console.log(`开始处理用户 ${username} 的关注列表，页数: ${pages === 0 ? '自动计算' : pages}`);
   
   try {
     // 检查followdata目录是否存在，如果不存在则创建
@@ -1268,9 +1268,9 @@ app.get('/api/twitter/following', async (req, res) => {
     }
     
     // 执行脚本获取数据
-    console.log(`[脚本执行] 开始执行脚本: node ${scriptPath} ${username} --pages=${pages}`);
+    console.log(`[脚本执行] 开始执行脚本: node ${scriptPath} ${username} ${pages}`);
     
-    const scriptCommand = `node "${scriptPath}" "${username}" --pages=${pages}`;
+    const scriptCommand = `node "${scriptPath}" "${username}" ${pages}`;
     console.log(`[脚本执行] 完整命令: ${scriptCommand}`);
     
     exec(scriptCommand, async (error, stdout, stderr) => {
