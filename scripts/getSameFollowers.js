@@ -9,11 +9,11 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // 代理设置
-const PROXY_HOST = '127.0.0.1';
-const PROXY_PORT = 7890;
+// const PROXY_HOST = '127.0.0.1';
+// const PROXY_PORT = 7890;
 
 // 创建HTTPS代理代理
-const agent = new HttpsProxyAgent(`http://${PROXY_HOST}:${PROXY_PORT}`);
+// const agent = new HttpsProxyAgent(`http://${PROXY_HOST}:${PROXY_PORT}`);
 
 // 添加Axios超时和重试配置
 const AXIOS_TIMEOUT = 30000; // 30秒
@@ -134,8 +134,7 @@ async function getUserId(username) {
     method: 'GET',
     url: `${url}?${queryParams.toString()}`,
     headers: headers,
-    // 添加HTTPS代理支持
-    httpsAgent: agent,
+    // httpsAgent: agent,
     proxy: false, // 使用httpsAgent替代proxy配置
     validateStatus: status => status < 500 // 允许非500错误状态码通过，以便我们可以检查响应
   };
@@ -202,7 +201,7 @@ async function getMutualFollowerCount(userId) {
     'sec-fetch-dest': 'empty',
     'accept-language': 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
     'priority': 'u=1, i',
-    'Cookie': '_monitor_extras={\"deviceId\":\"tx5f4AddIhAiP7ZKJXTL95\",\"eventId\":2,\"sequenceNumber\":2}; lang=en; guest_id=v1%3A173423373458271509; guest_id_marketing=v1%3A173423373458271509; guest_id_ads=v1%3A173423373458271509; kdt=6CQQu8MZEWKHmkUtg18FieBz9iZtFIfh2P8xDw4k; auth_token=44f3eb7825cf9acd31958dacda2bb2ff6cc2c70e; ct0=360f7e4c9c5692734d81fc830ddc0872cbb2ae19e8d24d826f197bbcde8f6a6bb340195dd64521161bf5e90e6e0efedb614585701ecb4f5e97eff597029562d5cf85c89e7c9a801483d2ad959fbf59fe; twid=u%3D1641735350577168384; personalization_id=\"v1_UJnoALZB1ugiCWExU5qhdg==\"; night_mode=0; _twitter_sess=BAh7CSIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo%250ASGFzaHsABjoKQHVzZWR7ADoPY3JlYXRlZF9hdGwrCIodo9WUAToMY3NyZl9p%250AZCIlMjIxMmM2YzVmMTdhMjJkYjc5OTgyNTRlZGU5NDQ4MTI6B2lkIiVlYzM3%250AYjgyOGE4NTAxMWJlMzAwZDJiOGUzMmI0ODQ4MA%253D%253D--015d9d58ef3cae5e39af46e3cdeaacbcd44ed243; first_ref=https%3A%2F%2Fpro.xxyy.io%2F; amp_56bf9d=28d8c263-3142-4002-b315-87d7d4a9dc05...1ikn8ecoi.1ikn9piln.3u.1rg.1ve; ok_global={\"_expire\":{}}; ok_default={\"_expire\":{}}; ok_okg={\"_expire\":{},\"currentMedia\":\"lg\"}; external_referer=padhuUp37zj8BsK%2BMhryGM91JgorFWmA|0|8e8t2xd8A2w%3D; amp_69ec37=28d8c263-3142-4002-b315-87d7d4a9dc05...1ilhiepkl.1ilhjou96.f.49.4o'
+    'Cookie': '_monitor_extras={\"deviceId\":\"tx5f4AddIhAiP7ZKJXTL95\",\"eventId\":2,\"sequenceNumber\":2}; lang=en; guest_id=v1%3A173423373458271509; guest_id_marketing=v1%3A173423373458271509; guest_id_ads=v1%3A173423373458271509; kdt=6CQQu8MZEWKHmkUtg18FieBz9iZtFIfh2P8xDw4k; auth_token=44f3eb7825cf9acd31958dacda2bb2ff6cc2c70e; ct0=360f7e4c9c5692734d81fc830ddc0872cbb2ae19e8d24d826f197bbcde8f6a6bb340195dd64521161bf5e90e6e0efedb614585701ecb4f5e97eff597029562d5cf85c89e7c9a801483d2ad959fbf59fe; twid=u%3D1641735350577168384; personalization_id=\"v1_UJnoALZB1ugiCWExU5qhdg==\"; night_mode=0; _twitter_sess=BAh7CSIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNoHsABjoKQHVzZWR7ADoPY3JlYXRlZF9hdGwrCIodo9WUAToMY3NyZl9pZCIlMjIxMmM2YzVmMTdhMjJkYjc5OTgyNTRlZGU5NDQ4MTI6B2lkIiVlYzM3YjgyOGE4NTAxMWJlMzAwZDJiOGUzMmI0ODQ4MA%3D%3D--015d9d58ef3cae5e39af46e3cdeaacbcd44ed243; first_ref=https%3A%2F%2Fpro.xxyy.io%2F; amp_56bf9d=28d8c263-3142-4002-b315-87d7d4a9dc05...1ikn8ecoi.1ikn9piln.3u.1rg.1ve; ok_global={\"_expire\":{}}; ok_default={\"_expire\":{}}; ok_okg={\"_expire\":{},\"currentMedia\":\"lg\"}; external_referer=padhuUp37zj8BsK%2BMhryGM91JgorFWmA|0|8e8t2xd8A2w%3D; amp_69ec37=28d8c263-3142-4002-b315-87d7d4a9dc05...1ilhiepkl.1ilhjou96.f.49.4o'
   };
 
   try {
@@ -213,8 +212,7 @@ async function getMutualFollowerCount(userId) {
         method: 'GET',
         url: url,
         headers: headers,
-        // 添加HTTPS代理支持
-        httpsAgent: agent,
+        // httpsAgent: agent,
         proxy: false, // 使用httpsAgent替代proxy配置
         validateStatus: status => status < 500 // 允许非500错误状态码通过，以便我们可以检查响应
       };
@@ -342,7 +340,7 @@ async function getSameFollowers(userId, username, count) {
       method: 'GET',
       url: `${url}?${queryParams.toString()}`,
       headers: headers,
-      httpsAgent: agent,
+      // httpsAgent: agent,
       proxy: false,
       validateStatus: status => status < 500
     };

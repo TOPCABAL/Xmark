@@ -2197,10 +2197,7 @@ app.use((req, res) => {
 });
 
 // 启动服务器
-app.listen(PORT, () => {
-  console.log(`Twitter API服务器已启动: http://localhost:${PORT}`);
-  console.log(`API测试端点: http://localhost:${PORT}/api/status`);
-  console.log(`关注列表API: http://localhost:${PORT}/api/twitter/following?username=dotyyds1234`);
-  console.log(`共同关注者API: http://localhost:${PORT}/api/same-followers/elonmusk`);
-  console.log(`账号列表API: http://localhost:${PORT}/api/accounts`);
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`服务器运行在 http://0.0.0.0:${PORT}`);
+  console.log(`可通过 http://服务器IP:${PORT} 访问`);
 });

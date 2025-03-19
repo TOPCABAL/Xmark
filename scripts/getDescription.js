@@ -9,11 +9,11 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // 代理设置
-const PROXY_HOST = '127.0.0.1';
-const PROXY_PORT = 7890;
+// const PROXY_HOST = '127.0.0.1';
+// const PROXY_PORT = 7890;
 
 // 创建HTTPS代理代理
-const agent = new HttpsProxyAgent(`http://${PROXY_HOST}:${PROXY_PORT}`);
+// const agent = new HttpsProxyAgent(`http://${PROXY_HOST}:${PROXY_PORT}`);
 
 /**
  * 获取Twitter用户描述信息
@@ -55,13 +55,14 @@ async function getUserData(username = 'dotyyds1234') {
       'priority': 'u=1, i',
       'Cookie': 'kdt=mQkD8KTMIJoI3XqBCEQYaQiwT6aF7XBeEDgxKj6u; night_mode=0; amp_669cbf=a71e99d4-fb09-4932-850b-60d990de15bf.YTcxZTk5ZDQtZmIwOS00OTMyLTg1MGItNjBkOTkwZGUxNWJm..1i705f1f9.1i705gbsp.s.2.u; auth_token=8389e38c3707d26e06bb94dd68e12629adc3f473; guest_id=v1%3A173892170788592691; ct0=31056c96fe8a0413bc9d0397f308b7adf8a1e11aee8966001d220f3c5ced5fbd71a79d982f1920075c878d72753fdac57b22bf2917b2f92b38a47c02c5819f3e645fd5e00684d97893a91c3360fa6532; guest_id_ads=v1%3A173892170788592691; guest_id_marketing=v1%3A173892170788592691; twid=u%3D1392861982529753094; first_ref=https%3A%2F%2Fx.com%2FEd_x0101%2Fstatus%2F1888506928260649063; amp_56bf9d=a71e99d4-fb09-4932-850b-60d990de15bf...1iktjrie9.1iktjriec.3g.nk.r4; _monitor_extras={"deviceId":"EJYN9SIBCsHOX2FF5sfwOt","eventId":32,"sequenceNumber":32}; personalization_id="v1_MwlB32Eg8Wz7h9rm3EVzHg=="; external_referer=8e8t2xd8A2w%3D|0|GlWr2u5wzZipnVja1ZbglPkPMjOgQE2KgmAMWWfTCXhp0%2FHSfkOhmd2TJyvExtBNwLZU6CoWvBe32OMU1olhowe8nuP9Vuo9T44u1MtEoy0%3D; lang=zh-cn; amp_69ec37=a71e99d4-fb09-4932-850b-60d990de15bf...1iltjp5cd.1iltmd8vf.j.2f.32'
     },
-    // 添加HTTPS代理支持
-    httpsAgent: agent,
-    proxy: false // 使用httpsAgent替代proxy配置
+    // 移除代理设置
+    // httpsAgent: agent,
+    // proxy: false // 使用httpsAgent替代proxy配置
   };
 
   try {
-    console.log(`使用HTTPS代理获取用户 ${username} 的数据: ${PROXY_HOST}:${PROXY_PORT}`);
+    // console.log(`使用HTTPS代理获取用户 ${username} 的数据: ${PROXY_HOST}:${PROXY_PORT}`);
+    console.log(`直接获取用户 ${username} 的数据（不使用代理）`);
     const response = await axios(options);
     
     // 不再保存文件，只返回数据

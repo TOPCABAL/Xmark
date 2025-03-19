@@ -4,9 +4,9 @@ import { URLSearchParams } from 'url';
 import qs from 'qs';
 
 // 配置代理
-const PROXY_HOST = '127.0.0.1';
-const PROXY_PORT = 7890;
-const agent = new HttpsProxyAgent(`http://${PROXY_HOST}:${PROXY_PORT}`);
+// const PROXY_HOST = '127.0.0.1';
+// const PROXY_PORT = 7890;
+// const agent = new HttpsProxyAgent(`http://${PROXY_HOST}:${PROXY_PORT}`);
 
 /**
  * 带重试功能的axios请求
@@ -94,19 +94,17 @@ async function getUserId(username) {
     };
     
     // 请求配置
-    const options = {
-      method: 'GET',
-      url: `${url}?${queryParams.toString()}`,
+    const config = {
+      method: 'get',
+      url: `${url}?variables=${encodeURIComponent(JSON.stringify(variables))}&features=${encodeURIComponent(JSON.stringify(features))}`,
       headers: headers,
-      // 添加HTTPS代理支持
-      httpsAgent: agent,
-      proxy: false, // 使用httpsAgent替代proxy配置
-      validateStatus: status => status < 500 // 允许非500错误状态码通过，以便我们可以检查响应
+      // httpsAgent: agent,
+      proxy: false
     };
   
     try {
       console.log(`正在获取用户 ${username} 的ID...`);
-      const response = await axiosWithRetry(options);
+      const response = await axiosWithRetry(config);
       
       // 检查HTML响应
       const contentType = response.headers['content-type'] || '';
@@ -162,23 +160,12 @@ async function main() {
 // 处理取消关注逻辑
 async function unfollow(identifier, isUsername) {
   try {
-    let userId = identifier;
-    
-    // 如果是用户名，先获取对应的用户ID
-    if (isUsername) {
-      console.log(`使用用户名模式，正在查询用户 "${identifier}" 的ID...`);
-      try {
-        userId = await getUserId(identifier);
-        console.log(`成功将用户名 "${identifier}" 解析为ID: ${userId}`);
-      } catch (error) {
-        console.error(`解析用户名失败: ${error.message}`);
-        throw error;
-      }
-    }
-    
-    console.log(`正在取消关注用户ID: ${userId}`);
-    console.log(`使用代理: ${PROXY_HOST}:${PROXY_PORT}`);
-    
+    // 获取用户ID
+    const userId = isUsername ? await getUserId(identifier) : identifier;
+
+    console.log(`准备取消关注用户ID: ${userId}`);
+    // console.log(`使用代理: ${PROXY_HOST}:${PROXY_PORT}`);
+
     // 构建请求数据
     let data = qs.stringify({
       'include_profile_interstitial_type': '1',
@@ -197,8 +184,8 @@ async function unfollow(identifier, isUsername) {
     });
     
     let config = {
-      method: 'POST',
-      url: 'https://x.com/i/api/1.1/friendships/destroy.json',
+      method: 'post',
+      url: 'https://twitter.com/i/api/1.1/friendships/destroy.json',
       headers: {
         'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36',
         'Accept-Encoding': 'gzip, deflate, br, zstd',
@@ -223,11 +210,8 @@ async function unfollow(identifier, isUsername) {
         'Cookie': 'kdt=WXXkFyTWDuI7IVHBkUppJDAvz7KX3029vDOGYQSI; _monitor_extras={"deviceId":"UXvs2BP719YE9XugjdiY_Q","eventId":2,"sequenceNumber":2}; night_mode=2; dnt=1; guest_id=v1%3A172571846612249493; guest_id_marketing=v1%3A172571846612249493; guest_id_ads=v1%3A172571846612249493; g_state={"i_l":0}; first_ref=https%3A%2F%2Fx.com%2Fi%2Fflow%2Fsingle_sign_on; lang=en; gt=1900930645045768464; personalization_id="v1_qu7EXyfCpXC6YKSmWI+DtQ=="; auth_token=79c7b1fe689dd861b23ddbac74430bd34c9459ae; ct0=d125c8af9cbfea5dbb79547395659a7ad27a163d6ea65c909158f1a9fde77ef9a0ce6b683e78071cbcd3e78635c66ce636b056841a18da766bbf3262d2af56b78052ff4135462cb38f3ab94c93ba5f37; att=1-XS9wUGbWwH48rwrQjdRNhFN3lgaxrufhpBQzZ7F5; twid=u%3D1894813209720496128; __cf_bm=3QUJcTiqQB9x6B2mC7Iap_sVKm10kjlLeIsF9g_ZOwE-1742053970-1.0.1.1-aPwZ9lcxprQ.lt8MxSYr3eMfKPhVdpUIPG4Sx4DC8rgox6hF_VzphtBiwJEYFbIUqj7REKZgGYLNs1kaLLVLptaIiR4Qiz1xLpLw8MIWjWs; amp_56bf9d=7c2c5996-fc31-48a4-bdf5-7c2e10d95a7d...1imd5tlf1.1imd861af.t.t.1q'
       },
       data: data,
-      // 添加代理配置
-      httpsAgent: agent,
-      proxy: false, // 使用 httpsAgent 替代 proxy 配置
-      // 添加超时设置
-      timeout: 30000 // 30秒
+      // httpsAgent: agent,
+      proxy: false
     };
     
     const response = await axiosWithRetry(config);

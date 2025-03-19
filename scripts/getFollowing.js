@@ -9,11 +9,11 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // 代理设置
-const PROXY_HOST = '127.0.0.1';
-const PROXY_PORT = 7890;
+// const PROXY_HOST = '127.0.0.1';
+// const PROXY_PORT = 7890;
 
 // 创建HTTPS代理代理
-const agent = new HttpsProxyAgent(`http://${PROXY_HOST}:${PROXY_PORT}`);
+// const agent = new HttpsProxyAgent(`http://${PROXY_HOST}:${PROXY_PORT}`);
 
 // 添加Axios超时和重试配置
 const AXIOS_TIMEOUT = 30000; // 30秒
@@ -101,7 +101,7 @@ async function getUserId(username, headers) {
     url: `${url}?${queryParams.toString()}`,
     headers: headers,
     // 添加HTTPS代理支持
-    httpsAgent: agent,
+    // httpsAgent: agent,
     proxy: false, // 使用httpsAgent替代proxy配置
     validateStatus: status => status < 500 // 允许非500错误状态码通过，以便我们可以检查响应
   };
@@ -192,7 +192,8 @@ async function getFollowingList(username = 'dotyyds1234', pages = 3, dataDir) {
   };
 
   try {
-    console.log(`使用HTTPS代理获取用户 ${username} 的关注列表 (代理: ${PROXY_HOST}:${PROXY_PORT})`);
+    console.log(`开始获取用户 ${username} 的关注列表...`);
+    // console.log(`使用HTTPS代理获取用户 ${username} 的关注列表 (代理: ${PROXY_HOST}:${PROXY_PORT})`);
     
     // 获取用户ID
     const userId = await getUserId(username, headers);
@@ -266,7 +267,7 @@ async function getFollowingList(username = 'dotyyds1234', pages = 3, dataDir) {
         method: 'GET',
         url: `${url}?${queryParams.toString()}`,
         headers: headers,
-        httpsAgent: agent,
+        // httpsAgent: agent,
         proxy: false,
         validateStatus: status => status < 500 // 允许非500错误状态码通过，以便我们可以检查响应
       };
