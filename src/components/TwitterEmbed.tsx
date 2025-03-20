@@ -50,8 +50,9 @@ const TwitterEmbed: React.FC<TwitterEmbedProps> = ({ screenName = 'dotyyds1234' 
       try {
         setLoadingMutual(true);
         const result = await fetchMutualFollowers(screenName);
-        if (result && result.data && result.data.accounts) {
-          setMutualCount(result.data.total || result.data.accounts.length);
+        if (result && result.data) {
+          // 优先使用realTotal，如果不存在则使用total，最后回退到accounts数组长度
+          setMutualCount(result.data.realTotal || result.data.total || (result.data.accounts ? result.data.accounts.length : 0));
         }
       } catch (error) {
         console.error("获取共同关注数据失败:", error);

@@ -62,6 +62,8 @@ const MutualFollowersList: React.FC<MutualFollowersListProps> = ({
           setLoading(true);
           setError(null);
           const result = await fetchMutualFollowers(username);
+          console.log('共同关注者数据:', result);
+          console.log('真实总数量:', result.data?.realTotal, '实际加载数量:', result.data?.total);
           setData(result);
         } catch (err) {
           setError(err instanceof Error ? err.message : '获取共同关注者失败');
@@ -106,7 +108,7 @@ const MutualFollowersList: React.FC<MutualFollowersListProps> = ({
         backgroundColor: '#f8f9fa'
       }}>
         <Title level={5} style={{ margin: 0 }}>共同关注列表</Title>
-        <Badge count={data?.data?.total || 0} overflowCount={999} />
+        <Badge count={data?.data?.realTotal || data?.data?.total || 0} overflowCount={999} />
       </div>
 
       <div style={{ overflow: 'auto', maxHeight: '350px', padding: '0 0' }}>

@@ -198,7 +198,7 @@
                     resultDiv.innerHTML = `
                         <p class="success">✅ 获取共同关注者成功! (${duration}ms)</p>
                         <p>用户: ${data.username || username}</p>
-                        <p>共获取到 ${data.data?.total || 0} 个共同关注者</p>
+                        <p>共获取到 ${data.data?.realTotal || data.data?.total || 0} 个共同关注者</p>
                         <pre>${JSON.stringify(data, null, 2).substring(0, 1000)}...</pre>
                     `;
                 } else {

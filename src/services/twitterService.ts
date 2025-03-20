@@ -906,13 +906,14 @@ export async function fetchUserFollowing(username: string, pages: number = 3): P
  * @param refresh 是否强制刷新数据
  * @returns 共同关注者数据
  */
-export async function fetchMutualFollowers(username: string, refresh = false): Promise<{
+export async function fetchMutualFollowers(username: string, refresh = true): Promise<{
   success: boolean;
   username: string;
   data: {
     success: boolean;
     userId: string;
     total: number;
+    realTotal?: number;  // 添加可选的realTotal字段
     accounts: AccountProps[];
     timestamp: string;
   }

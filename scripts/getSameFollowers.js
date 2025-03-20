@@ -175,7 +175,7 @@ async function getUserId(username) {
 }
 
 /**
- * 获取用户的共同关注数量
+ * 获取用户真实的共同关注数量
  * @param {string} userId - 用户ID
  * @returns {Promise<number>} - 共同关注数量
  */
@@ -251,9 +251,10 @@ async function getMutualFollowerCount(userId) {
  * @param {string} userId - 用户ID
  * @param {string} username - 用户名，用于保存文件
  * @param {number} count - 获取数量
+ * @param {number} realTotal - 实际的共同关注者总数
  * @returns {Promise<Object>} - 共同关注者列表数据
  */
-async function getSameFollowers(userId, username, count) {
+async function getSameFollowers(userId, username, count, realTotal) {
   // 确保数据目录存在
   const dataDir = path.join(__dirname, '..', 'src', 'data', username);
   if (!fs.existsSync(dataDir)) {
@@ -425,6 +426,7 @@ async function getSameFollowers(userId, username, count) {
       success: true,
       userId: userId,
       total: sameFollowersList.length,
+      realTotal: realTotal, // API返回的真实共同关注者总数
       timestamp: new Date().toISOString(),
       accounts: sameFollowersList
     };
@@ -469,7 +471,8 @@ async function getSameFollowersForUser(username) {
     console.log(`设置获取数量为: ${count}`);
     
     // 步骤4: 获取共同关注者列表并保存
-    const sameFollowers = await getSameFollowers(userId, username, count);
+    // 传递followerCount作为realTotal参数，这是API返回的真实total_count值
+    const sameFollowers = await getSameFollowers(userId, username, count, followerCount);
     
     if (sameFollowers.success) {
       console.log(`成功获取并保存 ${username} 的共同关注者列表，共 ${sameFollowers.total} 个账号`);

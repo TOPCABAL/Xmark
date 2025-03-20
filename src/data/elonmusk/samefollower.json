@@ -2,8 +2,24 @@
   "success": true,
   "userId": "44196397",
   "total": 100,
-  "timestamp": "2025-03-15T13:17:25.850Z",
+  "realTotal": 1000,
+  "timestamp": "2025-03-20T05:14:48.543Z",
   "accounts": [
+    {
+      "id": "1899104334870089728",
+      "name": "PepeX",
+      "username": "PepeX_fun",
+      "description": "The World's First AI-Powered Meme Launchpad\n\nLaunching March 24th, 11AM UTC.",
+      "avatar": "https://pbs.twimg.com/profile_images/1899104624373555201/swScBAh7_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 9026,
+        "following": 1,
+        "tweets": 21
+      },
+      "is_followed_by": false,
+      "is_following": true
+    },
     {
       "id": "1870801598160818176",
       "name": "vbot-智能扫链助手",
@@ -12,7 +28,7 @@
       "avatar": "https://pbs.twimg.com/profile_images/1870802774411411456/7t_BXdb2_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 788,
+        "followers": 784,
         "following": 7,
         "tweets": 16
       },
@@ -27,9 +43,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1898041509511045120/hDVg2qoX_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 145504,
-        "following": 259,
-        "tweets": 1135
+        "followers": 145295,
+        "following": 258,
+        "tweets": 1142
       },
       "is_followed_by": false,
       "is_following": true
@@ -42,9 +58,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1852859162268676096/qtdkg94S_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 119854,
+        "followers": 119218,
         "following": 197,
-        "tweets": 36739
+        "tweets": 36792
       },
       "is_followed_by": false,
       "is_following": true
@@ -57,9 +73,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1847811775242063874/aPQtRzhg_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 42313,
-        "following": 1716,
-        "tweets": 1596
+        "followers": 42244,
+        "following": 1768,
+        "tweets": 1647
       },
       "is_followed_by": false,
       "is_following": true
@@ -68,13 +84,13 @@
       "id": "1841079347215810564",
       "name": "0xjeet",
       "username": "jeetfucker",
-      "description": "韭菜的自我修养",
+      "description": "韭菜的自我修养，发ca就是因为我买了，fud就是因为我没货",
       "avatar": "https://pbs.twimg.com/profile_images/1900609586727657472/e8z6XBP__normal.jpg",
-      "isBlueVerified": false,
+      "isBlueVerified": true,
       "metrics": {
-        "followers": 32,
-        "following": 203,
-        "tweets": 44
+        "followers": 42,
+        "following": 216,
+        "tweets": 77
       },
       "is_followed_by": true,
       "is_following": true
@@ -87,9 +103,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1861815235755261952/xCfcj-Fc_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 15725,
-        "following": 1294,
-        "tweets": 2308
+        "followers": 15677,
+        "following": 1299,
+        "tweets": 2332
       },
       "is_followed_by": true,
       "is_following": true
@@ -102,9 +118,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1840773234251161600/Fewrz0s7_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 58738,
-        "following": 155,
-        "tweets": 975
+        "followers": 58519,
+        "following": 162,
+        "tweets": 1013
       },
       "is_followed_by": false,
       "is_following": true
@@ -115,11 +131,11 @@
       "username": "shawmakesmagic",
       "description": "Founder @ Eliza Labs\n\nCreator of elizaOS: https://t.co/VcPditeReE\n\nHead down building. If you need something, email inquiries@elizalabs.ai",
       "avatar": "https://pbs.twimg.com/profile_images/1877150361837797376/7jkUcWej_normal.jpg",
-      "isBlueVerified": true,
+      "isBlueVerified": false,
       "metrics": {
-        "followers": 151289,
-        "following": 1089,
-        "tweets": 711
+        "followers": 151294,
+        "following": 1098,
+        "tweets": 765
       },
       "is_followed_by": false,
       "is_following": true
@@ -132,8 +148,8 @@
       "avatar": "https://pbs.twimg.com/profile_images/1848214353545506816/sNT4kZ4A_normal.png",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 13114,
-        "following": 48,
+        "followers": 14068,
+        "following": 49,
         "tweets": 199
       },
       "is_followed_by": false,
@@ -147,9 +163,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1863173810419081216/u6WORMmM_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 4819,
-        "following": 400,
-        "tweets": 1020
+        "followers": 4583,
+        "following": 409,
+        "tweets": 1062
       },
       "is_followed_by": true,
       "is_following": true
@@ -162,9 +178,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1845446023348367369/L7c_E2fY_normal.jpg",
       "isBlueVerified": false,
       "metrics": {
-        "followers": 75070,
+        "followers": 75289,
         "following": 53,
-        "tweets": 1239
+        "tweets": 1254
       },
       "is_followed_by": false,
       "is_following": true
@@ -177,9 +193,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1819121309126729728/30Q2SFVH_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 566956,
+        "followers": 568204,
         "following": 15,
-        "tweets": 137
+        "tweets": 139
       },
       "is_followed_by": false,
       "is_following": true
@@ -192,8 +208,8 @@
       "avatar": "https://pbs.twimg.com/profile_images/1845879336110276608/j_iwTpMq_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 418180,
-        "following": 189,
+        "followers": 417434,
+        "following": 188,
         "tweets": 893
       },
       "is_followed_by": false,
@@ -207,8 +223,8 @@
       "avatar": "https://pbs.twimg.com/profile_images/1808180197490835457/qpvSvVf4_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 24091,
-        "following": 439,
+        "followers": 24066,
+        "following": 440,
         "tweets": 2263
       },
       "is_followed_by": false,
@@ -219,12 +235,12 @@
       "name": "Four.Meme",
       "username": "four_meme_",
       "description": "We are https://t.co/0NMWwcEtSi, the premier Meme Coins Fair Launch Platform and your go-to hub for meme launches on @BNBChain.",
-      "avatar": "https://pbs.twimg.com/profile_images/1877146158122082304/O2UofdER_normal.jpg",
-      "isBlueVerified": true,
+      "avatar": "https://pbs.twimg.com/profile_images/1902526139798814721/3JwjDYZn_normal.jpg",
+      "isBlueVerified": false,
       "metrics": {
-        "followers": 290416,
-        "following": 153,
-        "tweets": 1491
+        "followers": 291278,
+        "following": 161,
+        "tweets": 1546
       },
       "is_followed_by": false,
       "is_following": true
@@ -237,9 +253,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1808816849620250625/AQIUpfL3_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 251363,
+        "followers": 250579,
         "following": 50,
-        "tweets": 5952
+        "tweets": 6037
       },
       "is_followed_by": false,
       "is_following": true
@@ -252,9 +268,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1848356251819986944/C55Lj6Ka_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 30730,
-        "following": 4718,
-        "tweets": 4400
+        "followers": 30402,
+        "following": 4759,
+        "tweets": 4494
       },
       "is_followed_by": true,
       "is_following": true
@@ -267,9 +283,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1836501482268491776/xa4N9Aay_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 12837,
+        "followers": 12777,
         "following": 342,
-        "tweets": 1666
+        "tweets": 1667
       },
       "is_followed_by": false,
       "is_following": true
@@ -283,7 +299,7 @@
       "isBlueVerified": false,
       "metrics": {
         "followers": 42,
-        "following": 446,
+        "following": 445,
         "tweets": 25
       },
       "is_followed_by": true,
@@ -297,9 +313,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1830448088063844352/Vnc2y2Dv_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 15576,
-        "following": 1315,
-        "tweets": 4093
+        "followers": 15675,
+        "following": 1332,
+        "tweets": 4221
       },
       "is_followed_by": true,
       "is_following": true
@@ -312,9 +328,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1899348453698007040/p-Ow1EPw_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 13362,
-        "following": 1515,
-        "tweets": 2216
+        "followers": 13161,
+        "following": 1524,
+        "tweets": 2257
       },
       "is_followed_by": true,
       "is_following": true
@@ -327,9 +343,24 @@
       "avatar": "https://pbs.twimg.com/profile_images/1880625747221442560/ppd3innh_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 7636,
-        "following": 71,
-        "tweets": 757
+        "followers": 7623,
+        "following": 72,
+        "tweets": 768
+      },
+      "is_followed_by": false,
+      "is_following": true
+    },
+    {
+      "id": "1770839298360627200",
+      "name": "呜呜啦啦💎",
+      "username": "wulalalurich",
+      "description": "web3白痴/拒绝废话/拒绝浪费别人时间\n欢迎来到我的阿尔法项目记录簿\n禁言群：https://t.co/XKCmcQvYnG\n欢乐聊天群：https://t.co/eo7eq6GhM3",
+      "avatar": "https://pbs.twimg.com/profile_images/1900014556702806016/hTGsq5H8_normal.jpg",
+      "isBlueVerified": true,
+      "metrics": {
+        "followers": 7947,
+        "following": 73,
+        "tweets": 317
       },
       "is_followed_by": false,
       "is_following": true
@@ -342,9 +373,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1873906042154999809/P0okL-i7_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 117836,
+        "followers": 117150,
         "following": 40,
-        "tweets": 802
+        "tweets": 819
       },
       "is_followed_by": false,
       "is_following": true
@@ -357,9 +388,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1769036667250151424/3flBZb8V_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 166629,
-        "following": 834,
-        "tweets": 1585
+        "followers": 166101,
+        "following": 836,
+        "tweets": 1588
       },
       "is_followed_by": false,
       "is_following": true
@@ -372,9 +403,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1772493729120575488/U5fkTROU_normal.jpg",
       "isBlueVerified": false,
       "metrics": {
-        "followers": 137369,
-        "following": 240,
-        "tweets": 1699
+        "followers": 137682,
+        "following": 246,
+        "tweets": 1714
       },
       "is_followed_by": false,
       "is_following": true
@@ -387,24 +418,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1858377781559840768/3fJvrrEp_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 34172,
-        "following": 2459,
-        "tweets": 9089
-      },
-      "is_followed_by": true,
-      "is_following": true
-    },
-    {
-      "id": "1761058499537321984",
-      "name": "Ace",
-      "username": "0xAce9527",
-      "description": "#Ace #Crypto 金狗分享 ｜挖掘一级 #MEME #Ai 优质项目｜💎👋坚定持有 #BTC #ETH #SOL",
-      "avatar": "https://pbs.twimg.com/profile_images/1889372665519153156/2lrcuLaj_normal.jpg",
-      "isBlueVerified": true,
-      "metrics": {
-        "followers": 9498,
-        "following": 390,
-        "tweets": 1861
+        "followers": 33839,
+        "following": 2492,
+        "tweets": 9120
       },
       "is_followed_by": true,
       "is_following": true
@@ -417,7 +433,7 @@
       "avatar": "https://pbs.twimg.com/profile_images/1774820638789890048/lUKAr2vK_normal.jpg",
       "isBlueVerified": false,
       "metrics": {
-        "followers": 11864,
+        "followers": 11593,
         "following": 106,
         "tweets": 346
       },
@@ -429,12 +445,12 @@
       "name": "土狗小安娜",
       "username": "feng_anna95516",
       "description": "没群！别信假号！假的！",
-      "avatar": "https://pbs.twimg.com/profile_images/1888093496411832320/JRLUL2kl_normal.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/1901616789538451456/ZZBXcdry_normal.jpg",
       "isBlueVerified": false,
       "metrics": {
-        "followers": 519,
-        "following": 808,
-        "tweets": 535
+        "followers": 782,
+        "following": 875,
+        "tweets": 610
       },
       "is_followed_by": true,
       "is_following": true
@@ -447,9 +463,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1869016805303562240/fU08PcnP_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 24126,
-        "following": 3139,
-        "tweets": 5414
+        "followers": 25544,
+        "following": 3151,
+        "tweets": 5560
       },
       "is_followed_by": true,
       "is_following": true
@@ -462,9 +478,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1857720330267373568/me0miYq4_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 6179,
-        "following": 612,
-        "tweets": 36
+        "followers": 5736,
+        "following": 611,
+        "tweets": 38
       },
       "is_followed_by": true,
       "is_following": true
@@ -477,9 +493,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1809104672445378564/r0KABL7b_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 16110,
-        "following": 3331,
-        "tweets": 1994
+        "followers": 15909,
+        "following": 3337,
+        "tweets": 2009
       },
       "is_followed_by": true,
       "is_following": true
@@ -492,9 +508,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1794358730727018498/CDKIxo_6_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 3806,
-        "following": 2632,
-        "tweets": 1475
+        "followers": 3872,
+        "following": 2753,
+        "tweets": 1506
       },
       "is_followed_by": true,
       "is_following": true
@@ -507,9 +523,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1735423234382913536/PALwhULD_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 68812,
-        "following": 979,
-        "tweets": 11448
+        "followers": 69567,
+        "following": 998,
+        "tweets": 11574
       },
       "is_followed_by": false,
       "is_following": true
@@ -522,9 +538,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1893219113717342208/Vgg2hEPa_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 1387237,
+        "followers": 1764418,
         "following": 2,
-        "tweets": 677294
+        "tweets": 1178804
       },
       "is_followed_by": false,
       "is_following": true
@@ -537,9 +553,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1852574311720357888/S7QOtaVh_normal.jpg",
       "isBlueVerified": false,
       "metrics": {
-        "followers": 2104,
-        "following": 1972,
-        "tweets": 1391
+        "followers": 2139,
+        "following": 2020,
+        "tweets": 1490
       },
       "is_followed_by": true,
       "is_following": true
@@ -552,9 +568,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1888570246090616832/TEuuRbaq_normal.jpg",
       "isBlueVerified": false,
       "metrics": {
-        "followers": 796,
-        "following": 943,
-        "tweets": 2694
+        "followers": 795,
+        "following": 951,
+        "tweets": 2735
       },
       "is_followed_by": true,
       "is_following": true
@@ -567,9 +583,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1876109196401537024/F_QVU-Xe_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 221063,
-        "following": 86,
-        "tweets": 503
+        "followers": 222072,
+        "following": 87,
+        "tweets": 509
       },
       "is_followed_by": false,
       "is_following": true
@@ -582,9 +598,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1856077558598832128/xwRwKivQ_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 19184,
-        "following": 2606,
-        "tweets": 6424
+        "followers": 19349,
+        "following": 2715,
+        "tweets": 6590
       },
       "is_followed_by": true,
       "is_following": true
@@ -597,9 +613,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1842115626380500992/oVEUmfoV_normal.jpg",
       "isBlueVerified": false,
       "metrics": {
-        "followers": 17808,
-        "following": 524,
-        "tweets": 871
+        "followers": 17706,
+        "following": 233,
+        "tweets": 874
       },
       "is_followed_by": true,
       "is_following": true
@@ -612,9 +628,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1733749658915409920/EFnWuebF_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 117657,
-        "following": 2846,
-        "tweets": 14460
+        "followers": 116646,
+        "following": 2848,
+        "tweets": 14529
       },
       "is_followed_by": true,
       "is_following": true
@@ -627,9 +643,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1757203362381168640/j9704gu__normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 1749204,
-        "following": 22794,
-        "tweets": 13852
+        "followers": 1780148,
+        "following": 22790,
+        "tweets": 13954
       },
       "is_followed_by": false,
       "is_following": true
@@ -642,9 +658,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1897804743952809988/SPcwm9TP_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 163454,
-        "following": 1019,
-        "tweets": 8524
+        "followers": 161977,
+        "following": 1038,
+        "tweets": 8590
       },
       "is_followed_by": false,
       "is_following": true
@@ -657,9 +673,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1760482120110333952/hfq9KPKS_normal.png",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 95470,
-        "following": 1210,
-        "tweets": 14590
+        "followers": 98022,
+        "following": 1229,
+        "tweets": 14923
       },
       "is_followed_by": false,
       "is_following": true
@@ -672,9 +688,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1788652555985354753/D2765Tsf_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 5903,
-        "following": 859,
-        "tweets": 2184
+        "followers": 5799,
+        "following": 871,
+        "tweets": 2194
       },
       "is_followed_by": true,
       "is_following": true
@@ -687,9 +703,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1752499460175962112/C4IPI-zt_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 439340,
+        "followers": 438580,
         "following": 231,
-        "tweets": 1083
+        "tweets": 1094
       },
       "is_followed_by": false,
       "is_following": true
@@ -702,9 +718,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1855149711810064384/nhKpL4Ep_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 14032,
-        "following": 2258,
-        "tweets": 1932
+        "followers": 14267,
+        "following": 2261,
+        "tweets": 1953
       },
       "is_followed_by": true,
       "is_following": true
@@ -717,9 +733,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1876302901733171203/MlBTZXev_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 883124,
-        "following": 563,
-        "tweets": 4966
+        "followers": 880345,
+        "following": 566,
+        "tweets": 4999
       },
       "is_followed_by": false,
       "is_following": true
@@ -732,7 +748,7 @@
       "avatar": "https://pbs.twimg.com/profile_images/1769430779845611520/lIgjSJGU_normal.jpg",
       "isBlueVerified": false,
       "metrics": {
-        "followers": 1513823,
+        "followers": 1524381,
         "following": 41,
         "tweets": 91
       },
@@ -743,12 +759,12 @@
       "id": "1659987684918435847",
       "name": "Donald J. Trump 🇺🇸 News",
       "username": "DonaldTNews",
-      "description": "I Follow Back All Patriots! 🇺🇸 Tap the (🔔 +Notify) to Assure You Get Breaking News Daily! No Affiliation.",
+      "description": "I Follow Back All Patriots! 🇺🇸 Tap the (🔔 +Notify) for Breaking News Daily! The Largest Trump (News) Fan Page on 𝕏. No Affiliation to @realDonaldTrump.",
       "avatar": "https://pbs.twimg.com/profile_images/1815489891108544512/H4o8ID3n_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 1235273,
-        "following": 16402,
+        "followers": 1235754,
+        "following": 16450,
         "tweets": 159
       },
       "is_followed_by": false,
@@ -762,9 +778,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1753525632791703552/bCT4BKbd_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 58014,
-        "following": 845,
-        "tweets": 5517
+        "followers": 59505,
+        "following": 846,
+        "tweets": 5532
       },
       "is_followed_by": false,
       "is_following": true
@@ -777,9 +793,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1723823186473529344/nms-iIKi_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 152568,
-        "following": 1749,
-        "tweets": 4167
+        "followers": 152605,
+        "following": 1746,
+        "tweets": 4180
       },
       "is_followed_by": false,
       "is_following": true
@@ -792,7 +808,7 @@
       "avatar": "https://pbs.twimg.com/profile_images/1651688795429822464/cmDeEncE_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 789437,
+        "followers": 791085,
         "following": 6,
         "tweets": 925
       },
@@ -807,9 +823,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1843310561507049472/7VwC0R8K_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 7304,
-        "following": 2275,
-        "tweets": 155
+        "followers": 7238,
+        "following": 2279,
+        "tweets": 156
       },
       "is_followed_by": true,
       "is_following": true
@@ -822,9 +838,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1794879828673404928/QXoysakL_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 33178,
-        "following": 2381,
-        "tweets": 2371
+        "followers": 30387,
+        "following": 2387,
+        "tweets": 2389
       },
       "is_followed_by": false,
       "is_following": true
@@ -837,9 +853,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1889611165921132544/JuZ2PAuf_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 48178,
-        "following": 3225,
-        "tweets": 18576
+        "followers": 48058,
+        "following": 3235,
+        "tweets": 18668
       },
       "is_followed_by": false,
       "is_following": true
@@ -852,9 +868,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1778689346016862208/5HEl_EQm_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 31889,
-        "following": 1264,
-        "tweets": 4782
+        "followers": 31995,
+        "following": 1267,
+        "tweets": 4825
       },
       "is_followed_by": true,
       "is_following": true
@@ -867,9 +883,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1657974354519678977/uPjLuyHc_normal.jpg",
       "isBlueVerified": false,
       "metrics": {
-        "followers": 222144,
-        "following": 711,
-        "tweets": 1497
+        "followers": 222796,
+        "following": 715,
+        "tweets": 1515
       },
       "is_followed_by": false,
       "is_following": true
@@ -882,9 +898,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1630381377119039489/324MZNjk_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 69312,
-        "following": 2154,
-        "tweets": 6327
+        "followers": 68916,
+        "following": 2152,
+        "tweets": 6329
       },
       "is_followed_by": false,
       "is_following": true
@@ -897,9 +913,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1651498452919136257/m6Q1zJ4K_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 7804,
-        "following": 2628,
-        "tweets": 1231
+        "followers": 7780,
+        "following": 2627,
+        "tweets": 1236
       },
       "is_followed_by": true,
       "is_following": true
@@ -912,9 +928,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1876084393267339264/uFVm7ND-_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 82571,
-        "following": 457,
-        "tweets": 7600
+        "followers": 82715,
+        "following": 456,
+        "tweets": 7635
       },
       "is_followed_by": false,
       "is_following": true
@@ -927,9 +943,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1783836289529483264/vDipUyRE_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 29380,
-        "following": 707,
-        "tweets": 2906
+        "followers": 29236,
+        "following": 714,
+        "tweets": 2942
       },
       "is_followed_by": true,
       "is_following": true
@@ -942,9 +958,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1847853935652216832/ZEvvVbRO_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 4378,
-        "following": 693,
-        "tweets": 2078
+        "followers": 4381,
+        "following": 701,
+        "tweets": 2097
       },
       "is_followed_by": true,
       "is_following": true
@@ -957,9 +973,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1887404380283949056/UMfgprdG_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 4478,
-        "following": 2977,
-        "tweets": 7419
+        "followers": 4644,
+        "following": 3079,
+        "tweets": 7935
       },
       "is_followed_by": false,
       "is_following": true
@@ -972,9 +988,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1815802834497200131/Ys4jzzYz_normal.jpg",
       "isBlueVerified": false,
       "metrics": {
-        "followers": 2956,
-        "following": 775,
-        "tweets": 836
+        "followers": 2954,
+        "following": 789,
+        "tweets": 847
       },
       "is_followed_by": true,
       "is_following": true
@@ -987,9 +1003,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1881711277720162305/kOentxk0_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 288248,
+        "followers": 285616,
         "following": 126,
-        "tweets": 643
+        "tweets": 646
       },
       "is_followed_by": false,
       "is_following": true
@@ -1002,9 +1018,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1605592382908628992/v1qmOV_P_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 60549,
-        "following": 1460,
-        "tweets": 12793
+        "followers": 60529,
+        "following": 1464,
+        "tweets": 12858
       },
       "is_followed_by": false,
       "is_following": true
@@ -1017,9 +1033,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1893468185686614018/2IICipFn_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 80507,
-        "following": 251,
-        "tweets": 3968
+        "followers": 80478,
+        "following": 257,
+        "tweets": 4022
       },
       "is_followed_by": false,
       "is_following": true
@@ -1028,13 +1044,13 @@
       "id": "1554679425043943424",
       "name": "OKX Web3 钱包",
       "username": "OKXWeb3_CN",
-      "description": "Web3 入口，一个就够！ - 累计支持 120 条公链 - 涵盖钱包、DEX、Earn、NFT 市场、DApp 探索 5 大板块。https://t.co/v6XAyVJALQ",
+      "description": "Web3 入口，一个就够！ - 累计支持 120 条公链 - 涵盖钱包、DEX、Earn、NFT 市场、DApp 探索 5 大板块。https://t.co/v6XAyVJ2Wi",
       "avatar": "https://pbs.twimg.com/profile_images/1874703336097894400/NDM4e6IQ_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 160443,
+        "followers": 159097,
         "following": 201,
-        "tweets": 2367
+        "tweets": 2375
       },
       "is_followed_by": false,
       "is_following": true
@@ -1047,9 +1063,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1683300506406645762/JjHq6ff4_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 180307,
+        "followers": 180882,
         "following": 451,
-        "tweets": 7419
+        "tweets": 7496
       },
       "is_followed_by": false,
       "is_following": true
@@ -1062,9 +1078,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1676292138617675784/BNf4F9-d_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 51784,
-        "following": 118,
-        "tweets": 2504
+        "followers": 52088,
+        "following": 119,
+        "tweets": 2512
       },
       "is_followed_by": false,
       "is_following": true
@@ -1077,9 +1093,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1578704446577840129/AYRr3eB7_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 120999,
-        "following": 235,
-        "tweets": 4163
+        "followers": 120871,
+        "following": 236,
+        "tweets": 4179
       },
       "is_followed_by": false,
       "is_following": true
@@ -1088,13 +1104,13 @@
       "id": "1541754660670676997",
       "name": "YOMI🦅",
       "username": "yomiXrich",
-      "description": "#互关 #土狗 #meme #抽象 #傻逼 倾倒垃圾 #MEMECOIN 我还爱撒点小谎   说白了 发的都是垃圾 上车包亏\n超好用的solbot 可跟单 速度快 延迟很低 功能很多\nhttps://t.co/i7Hr2ISqMl",
+      "description": "#互关   #MEMECOIN 爱撒谎   \n  忠实链上玩家 也只玩链上 哪里有人去哪里\n#bsc #bnb #sol #eth #base",
       "avatar": "https://pbs.twimg.com/profile_images/1790016286036299777/QrTo_pvj_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 5966,
-        "following": 3616,
-        "tweets": 747
+        "followers": 12262,
+        "following": 3677,
+        "tweets": 932
       },
       "is_followed_by": true,
       "is_following": true
@@ -1107,8 +1123,8 @@
       "avatar": "https://pbs.twimg.com/profile_images/1788573313541001216/rFsVUx6R_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 6475,
-        "following": 1338,
+        "followers": 6468,
+        "following": 1339,
         "tweets": 6629
       },
       "is_followed_by": true,
@@ -1122,9 +1138,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1750481240983994368/ijRW1a6Y_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 134010,
-        "following": 6234,
-        "tweets": 16879
+        "followers": 134769,
+        "following": 6231,
+        "tweets": 17240
       },
       "is_followed_by": false,
       "is_following": true
@@ -1133,13 +1149,13 @@
       "id": "1534520538164502533",
       "name": "Karl",
       "username": "karl_0x",
-      "description": "@stix_co | coming soon",
+      "description": "@stix_co | coming soon | contributor @0xhypeflows",
       "avatar": "https://pbs.twimg.com/profile_images/1596874526259920896/T7ojDBgl_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 78869,
-        "following": 1702,
-        "tweets": 3588
+        "followers": 78983,
+        "following": 1709,
+        "tweets": 3598
       },
       "is_followed_by": false,
       "is_following": true
@@ -1152,9 +1168,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1877063679218200576/TiKF0kRl_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 828563,
-        "following": 184,
-        "tweets": 6204
+        "followers": 824849,
+        "following": 186,
+        "tweets": 6278
       },
       "is_followed_by": false,
       "is_following": true
@@ -1163,13 +1179,13 @@
       "id": "1526109378708766720",
       "name": "08",
       "username": "Pickone1994",
-      "description": "Jeeted out I do trade",
+      "description": "Jeeted out I do trade  TG: https://t.co/p0yOODPB7e",
       "avatar": "https://pbs.twimg.com/profile_images/1889927609888165888/BRG9ub00_normal.png",
       "isBlueVerified": false,
       "metrics": {
-        "followers": 339,
-        "following": 299,
-        "tweets": 18
+        "followers": 341,
+        "following": 301,
+        "tweets": 19
       },
       "is_followed_by": true,
       "is_following": true
@@ -1182,9 +1198,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1717529407622193152/0Ae4g947_normal.png",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 49854,
-        "following": 3684,
-        "tweets": 14362
+        "followers": 50015,
+        "following": 3693,
+        "tweets": 14527
       },
       "is_followed_by": false,
       "is_following": true
@@ -1197,9 +1213,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1796248269456388096/QsR0ig-O_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 1961,
+        "followers": 1955,
         "following": 973,
-        "tweets": 1013
+        "tweets": 1014
       },
       "is_followed_by": true,
       "is_following": true
@@ -1212,9 +1228,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1656614856337018880/U6cuh3zo_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 25408,
-        "following": 2272,
-        "tweets": 5831
+        "followers": 25370,
+        "following": 2271,
+        "tweets": 5841
       },
       "is_followed_by": true,
       "is_following": true
@@ -1223,13 +1239,13 @@
       "id": "1505874016761831430",
       "name": "DEGEN NEWS",
       "username": "DegenerateNews",
-      "description": "Reporting DEGEN nonsense. Independent reporting. Creator: @DN_Founder. Links: https://t.co/CgUN5Xiivz.",
+      "description": "Reporting DEGEN nonsense. Independent reporting. Disclosure in expanded bio. Creator: @DN_Founder. Links: https://t.co/CgUN5Xiivz.",
       "avatar": "https://pbs.twimg.com/profile_images/1551586710873550848/8_M8f6ds_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 377292,
-        "following": 31776,
-        "tweets": 31224
+        "followers": 377735,
+        "following": 31791,
+        "tweets": 31242
       },
       "is_followed_by": false,
       "is_following": true
@@ -1242,9 +1258,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1897805114397659136/8QmN7Gzp_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 30161,
-        "following": 4257,
-        "tweets": 21466
+        "followers": 30169,
+        "following": 4260,
+        "tweets": 21506
       },
       "is_followed_by": true,
       "is_following": true
@@ -1257,9 +1273,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1891877788640280576/7HNxUuJT_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 22761,
-        "following": 2226,
-        "tweets": 2430
+        "followers": 22112,
+        "following": 2299,
+        "tweets": 2535
       },
       "is_followed_by": true,
       "is_following": true
@@ -1272,9 +1288,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1874210663431573504/PkUwgxiN_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 188982,
-        "following": 6608,
-        "tweets": 52694
+        "followers": 188947,
+        "following": 6613,
+        "tweets": 52847
       },
       "is_followed_by": false,
       "is_following": true
@@ -1287,9 +1303,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1700199367511064576/v-3PNyPw_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 142170,
-        "following": 8169,
-        "tweets": 202367
+        "followers": 142289,
+        "following": 8183,
+        "tweets": 203070
       },
       "is_followed_by": false,
       "is_following": true
@@ -1302,9 +1318,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1538063339917430784/-XWBxDFr_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 114877,
-        "following": 529,
-        "tweets": 6770
+        "followers": 116444,
+        "following": 530,
+        "tweets": 6816
       },
       "is_followed_by": false,
       "is_following": true
@@ -1317,9 +1333,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1806035882975383552/Lvd5W2Dc_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 30733,
-        "following": 994,
-        "tweets": 5288
+        "followers": 30656,
+        "following": 996,
+        "tweets": 5303
       },
       "is_followed_by": true,
       "is_following": true
@@ -1332,7 +1348,7 @@
       "avatar": "https://pbs.twimg.com/profile_images/1596164591750348800/slgh620r_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 361016,
+        "followers": 360308,
         "following": 531,
         "tweets": 1668
       },
@@ -1347,9 +1363,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1829628941608599552/xYD2uiWI_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 4402,
-        "following": 561,
-        "tweets": 318
+        "followers": 4379,
+        "following": 556,
+        "tweets": 378
       },
       "is_followed_by": true,
       "is_following": true
@@ -1362,9 +1378,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1731664072712843264/k6e0snJS_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 13400,
-        "following": 2551,
-        "tweets": 5104
+        "followers": 13508,
+        "following": 2564,
+        "tweets": 5133
       },
       "is_followed_by": false,
       "is_following": true
@@ -1377,8 +1393,8 @@
       "avatar": "https://pbs.twimg.com/profile_images/1869108107898757120/gfiDocTe_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 1956164,
-        "following": 4506,
+        "followers": 1955432,
+        "following": 4511,
         "tweets": 5243
       },
       "is_followed_by": false,
@@ -1392,9 +1408,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1682027904337862662/5jtKwvtj_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 25660,
-        "following": 3840,
-        "tweets": 5868
+        "followers": 26429,
+        "following": 3875,
+        "tweets": 6031
       },
       "is_followed_by": true,
       "is_following": true
@@ -1407,9 +1423,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1896109616423145472/gHSUvGT3_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 114565,
-        "following": 6727,
-        "tweets": 12282
+        "followers": 113758,
+        "following": 6739,
+        "tweets": 12461
       },
       "is_followed_by": false,
       "is_following": true
@@ -1422,9 +1438,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1793143137168154624/9mI7Suyp_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 73442,
-        "following": 6742,
-        "tweets": 12347
+        "followers": 73502,
+        "following": 6758,
+        "tweets": 12345
       },
       "is_followed_by": false,
       "is_following": true
@@ -1437,9 +1453,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1741653701922807808/c334xjsG_normal.jpg",
       "isBlueVerified": false,
       "metrics": {
-        "followers": 2033,
-        "following": 5253,
-        "tweets": 7328
+        "followers": 2044,
+        "following": 5262,
+        "tweets": 7912
       },
       "is_followed_by": true,
       "is_following": true
@@ -1452,9 +1468,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1874559219052994560/uBBccsAO_normal.jpg",
       "isBlueVerified": false,
       "metrics": {
-        "followers": 260021,
-        "following": 1447,
-        "tweets": 11692
+        "followers": 260275,
+        "following": 1453,
+        "tweets": 11767
       },
       "is_followed_by": false,
       "is_following": true
@@ -1467,8 +1483,8 @@
       "avatar": "https://pbs.twimg.com/profile_images/1767997819057557504/ybQYDA9z_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 56427,
-        "following": 1010,
+        "followers": 56406,
+        "following": 1009,
         "tweets": 2111
       },
       "is_followed_by": false,
@@ -1482,24 +1498,9 @@
       "avatar": "https://pbs.twimg.com/profile_images/1544085925583417344/d3yXSzPL_normal.jpg",
       "isBlueVerified": true,
       "metrics": {
-        "followers": 207741,
-        "following": 1053,
-        "tweets": 14350
-      },
-      "is_followed_by": false,
-      "is_following": true
-    },
-    {
-      "id": "1476696261222936577",
-      "name": "Milk Road",
-      "username": "MilkRoadDaily",
-      "description": "Making you smarter about crypto, one laugh at a time. Trusted by 330k+ daily readers. Follow us for daily crypto news, insights & milky hot takes. 🥛",
-      "avatar": "https://pbs.twimg.com/profile_images/1539296276407324673/4IBkcdhF_normal.jpg",
-      "isBlueVerified": true,
-      "metrics": {
-        "followers": 81187,
-        "following": 2672,
-        "tweets": 9938
+        "followers": 207247,
+        "following": 1058,
+        "tweets": 14573
       },
       "is_followed_by": false,
       "is_following": true
